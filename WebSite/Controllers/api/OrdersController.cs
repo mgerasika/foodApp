@@ -9,7 +9,7 @@ using GoogleAppsConsoleApplication;
 
 namespace FoodApp.Controllers.api
 {
-    public class OrdersController : ApiController
+    public class OrdersController : System.Web.Http.ApiController
     {
         [HttpGet]
         [Route("api/orders/{userId}/{day}")]

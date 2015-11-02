@@ -216,8 +216,8 @@
     <Compile Include="Common\Parser\ExcelRow.cs" />
     <Compile Include="Common\Parser\ExcelTable.cs" />
     <Compile Include="Common\Parser\ExcelDoc.cs" />
-    <Compile Include="Common\Managers\ExcelManager.cs" />
-    <Compile Include="Common\Parser\FoodManager.cs" />
+    <Compile Include="Common\Parser\ExcelParser.cs" />
+    <Compile Include="Common\Managers\FoodManager.cs" />
     <Compile Include="Client\model\ngFoodModel.cs" />
     <Compile Include="Common\Managers\ManagerBase.cs" />
     <Compile Include="Client\model\ngModelBase.cs" />
@@ -226,8 +226,10 @@
     <Compile Include="Common\Managers\OrderManager.cs" />
     <Compile Include="Client\model\ngOrderModel.cs" />
     <Compile Include="Common\WebApiResources.cs" />
+    <Compile Include="Common\ApiUtils.cs" />
     <Compile Include="Controllers\api\ApiControllerBase.cs" />
     <Compile Include="Controllers\api\FoodsController.cs" />
+    <Compile Include="Controllers\api\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\api\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -243,6 +245,7 @@
     <Content Include="Views\Home\Orders.cshtml" />
     <Content Include="Views\Home\Foods.cshtml" />
     <Content Include="Views\Home\App.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

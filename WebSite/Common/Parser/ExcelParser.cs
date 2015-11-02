@@ -7,18 +7,20 @@ using Google.GData.Spreadsheets;
 
 namespace GoogleAppsConsoleApplication
 {
-    public class ExcelManager
+    public class ExcelParser
     {
-        public static ExcelManager Inst = new ExcelManager();
+        private static object _lockObj = new object();
+        public static ExcelParser Inst = new ExcelParser();
+        private OAuth2Parameters _parameters;
         private SpreadsheetsService _SpreadsheetsService = null;
         private readonly string CLIENT_ID = "668583993597.apps.googleusercontent.com";
         private readonly string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
         private readonly string REDIRECT_URI = "http://localhost:15845/Home/Test2";
         private readonly string SCOPE = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";
-        private OAuth2Parameters _parameters;
         public ExcelDoc Doc { get; set; }
         public SpreadsheetsService SpreadsheetsService { get; set; }
 
+        /*
         public string StartParseExcel() {
             _parameters = new OAuth2Parameters();
             _parameters.ClientId = CLIENT_ID;
@@ -32,18 +34,17 @@ namespace GoogleAppsConsoleApplication
             HttpContext.Current.Response.Redirect(authorizationUrl);
             return authorizationUrl;
         }
+         * */
 
-        public void RefreshAccessToken() {
-            OAuthUtil.RefreshAccessToken(_parameters);
-        }
-
-        public string EndParseExcel() {
+        /* public string EndParseExcel() {
             var sb = new StringBuilder();
 
             if (null == Inst.SpreadsheetsService) {
                 _parameters.AccessCode = HttpContext.Current.Request.QueryString["code"];
                 OAuthUtil.GetAccessToken(_parameters);
                 var accessToken = _parameters.AccessToken;
+                //		accessToken	"ya29.IAK0DqyyBCLy1lNBPHM4ON0m74HiPnXdJnizHC2a7w5CIDndeLPuFbJm0u34HfKpiXZ8UQ";
+
                 if (string.IsNullOrEmpty(_parameters.RefreshToken)) {
                     //changes every time!!!
                     _parameters.RefreshToken = "1/jWXrc6wJ4lUmWscyc3rozkWPKdFwvha43JfPCxMksus";
@@ -55,17 +56,45 @@ namespace GoogleAppsConsoleApplication
                 sb.AppendFormat("<div>access code={0}</div>", _parameters.AccessCode);
                 sb.AppendFormat("<div>access token={0}</div>", _parameters.AccessToken);
                 sb.AppendFormat("<div>refresh token={0}</div>", _parameters.RefreshToken);
+            }*/
+
+
+        public void RefreshAccessToken() {
+            OAuthUtil.RefreshAccessToken(_parameters);
+        }
+
+        public string Init() {
+            var sb = new StringBuilder();
+
+            lock (_lockObj) {
+                if (null == Inst.SpreadsheetsService) {
+                    _parameters = new OAuth2Parameters();
+                    _parameters.ClientId = CLIENT_ID;
+                    _parameters.ClientSecret = CLIENT_SECRET;
+                    _parameters.RedirectUri = REDIRECT_URI;
+                    _parameters.Scope = SCOPE;
+                    _parameters.TokenExpiry = DateTime.MaxValue;
+                    _parameters.AccessType = "offline";
+                    _parameters.AccessToken = "ya29.IAK0DqyyBCLy1lNBPHM4ON0m74HiPnXdJnizHC2a7w5CIDndeLPuFbJm0u34HfKpiXZ8UQ";
+                    _parameters.RefreshToken = "1/jWXrc6wJ4lUmWscyc3rozkWPKdFwvha43JfPCxMksus";
+
+                    var requestFactory = new GOAuth2RequestFactory(null, "MySpreadsheetIntegration-v1", _parameters);
+                    Inst.SpreadsheetsService = new SpreadsheetsService("MySpreadsheetIntegration-v1");
+                    Inst.SpreadsheetsService.RequestFactory = requestFactory;
+                    sb.AppendFormat("<div>access code={0}</div>", _parameters.AccessCode);
+                    sb.AppendFormat("<div>access token={0}</div>", _parameters.AccessToken);
+                    sb.AppendFormat("<div>refresh token={0}</div>", _parameters.RefreshToken);
+
+                    var service = Inst.SpreadsheetsService;
+                    var query = new SpreadsheetQuery();
+                    var feed = service.Query(query);
+
+                    var entry = GetSpreadsheetEntry(feed);
+                    Debug.Assert(null != entry);
+                    sb.Append("<h1>" + entry.Title.Text + "</h1>");
+                    RenderWeek(entry, sb);
+                }
             }
-
-            var service = Inst.SpreadsheetsService;
-            var query = new SpreadsheetQuery();
-            var feed = service.Query(query);
-
-            var entry = GetSpreadsheetEntry(feed);
-            Debug.Assert(null != entry);
-            sb.Append("<h1>" + entry.Title.Text + "</h1>");
-            RenderWeek(entry, sb);
-
             return sb.ToString();
         }
 
@@ -101,7 +130,7 @@ namespace GoogleAppsConsoleApplication
             Doc = new ExcelDoc(entry);
 
             for (var i = 0; i < 5; ++i) {
-                WorksheetEntry worksheetEntry = GetWorksheetEntry(entry, i + 1);
+                var worksheetEntry = GetWorksheetEntry(entry, i + 1);
                 renderTable(worksheetEntry, sb, Inst.Doc.GetExcelTable(i + 1));
             }
         }
@@ -110,7 +139,7 @@ namespace GoogleAppsConsoleApplication
             var listFeed = GetListFeed(workEntry);
             excelTable.Title = workEntry.Title.Text;
 
-                if (listFeed.Entries.Count > 0) {
+            if (listFeed.Entries.Count > 0) {
                 sb.Append("<table border=1>");
                 for (var i = 0; i < listFeed.Entries.Count; ++i) {
                     var row = listFeed.Entries[i] as ListEntry;
@@ -123,7 +152,7 @@ namespace GoogleAppsConsoleApplication
                     break;
                 }
 
-                    string category = "";
+                var category = "";
                 for (var i = 1; i < listFeed.Entries.Count; ++i) {
                     var xmlRow = listFeed.Entries[i] as ListEntry;
 
@@ -135,7 +164,7 @@ namespace GoogleAppsConsoleApplication
                     sb.Append("<tr>");
 
 
-                    string tmpCategory = GetCategory(xmlRow);
+                    var tmpCategory = GetCategory(xmlRow);
                     if (!string.IsNullOrEmpty(tmpCategory)) {
                         category = tmpCategory;
                     }
@@ -182,14 +211,14 @@ namespace GoogleAppsConsoleApplication
         }
 
         private static string GetCategory(ListEntry xmlRow) {
-            string res = "";
+            var res = "";
 
-            bool hasCaption = false;
+            var hasCaption = false;
             for (var j = 0; j < xmlRow.Elements.Count; ++j) {
                 var element = xmlRow.Elements[j];
                 var columnName = element.LocalName;
                 if (columnName.Equals(ColumnNames.Price)) {
-                    string val = element.Value;
+                    var val = element.Value;
                     if (!string.IsNullOrEmpty(val) && val.ToLower().Contains("ціна")) {
                         hasCaption = true;
                         break;
@@ -276,6 +305,40 @@ namespace GoogleAppsConsoleApplication
             }
 
             return res;
+        }
+    }
+
+    public class LoginTool
+    {
+        public static LoginTool Inst = new LoginTool();
+        private OAuth2Parameters _parameters;
+        private SpreadsheetsService _SpreadsheetsService = null;
+        private readonly string CLIENT_ID = "668583993597.apps.googleusercontent.com";
+        private readonly string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
+        private readonly string REDIRECT_URI = "http://localhost:15845/Home/Test2";
+        private readonly string SCOPE = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";
+
+        public string StartLogin() {
+            _parameters = new OAuth2Parameters();
+            _parameters.ClientId = CLIENT_ID;
+            _parameters.ClientSecret = CLIENT_SECRET;
+            _parameters.RedirectUri = REDIRECT_URI;
+            _parameters.Scope = SCOPE;
+            //parameters.ApprovalPrompt = "force";
+            _parameters.TokenExpiry = DateTime.MaxValue;
+            _parameters.AccessType = "offline";
+            var authorizationUrl = OAuthUtil.CreateOAuth2AuthorizationUrl(_parameters);
+            HttpContext.Current.Response.Redirect(authorizationUrl);
+            return authorizationUrl;
+        }
+
+        public string EndLogin() {
+            _parameters.AccessCode = HttpContext.Current.Request.QueryString["code"];
+            OAuthUtil.GetAccessToken(_parameters);
+            var accessToken = _parameters.AccessToken;
+
+
+            return accessToken;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace FoodApp.Controllers.api
 {
     
     
-    public class FoodsController : ApiController
+    public class FoodsController : System.Web.Http.ApiController
     {
         [HttpGet]
         [Route("api/foods/{userId}/{day}")]

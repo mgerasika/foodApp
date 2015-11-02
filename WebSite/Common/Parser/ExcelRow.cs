@@ -25,7 +25,7 @@ namespace GoogleAppsConsoleApplication
 
         internal void UpdateRow()
         {
-            ExcelManager.Inst.RefreshAccessToken();
+            ExcelParser.Inst.RefreshAccessToken();
 
             ListEntry atomEntry = _entry.Update() as ListEntry;
             _entry = atomEntry;

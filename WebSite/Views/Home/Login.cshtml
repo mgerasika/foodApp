@@ -1,0 +1,17 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+@{
+    Layout = "~/Views/Layout1.cshtml";
+}
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script type="text/javascript">
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log("Email: " + profile.getEmail());
+        var res = document.location.protocol + "//" + document.location.host + "/?login=" + profile.getEmail();
+        document.location.href = res;
+    }
+
+</script>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>

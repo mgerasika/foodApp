@@ -10,7 +10,7 @@ namespace FoodApp.Common
 
         public List<ngFoodItem> GetFoods(string userId,int day) {
             var res = new List<ngFoodItem>();
-            var excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
+            var excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
             var rows = excelTable.Rows;
             foreach (var row in rows) {
                 if (row.HasPrice) {

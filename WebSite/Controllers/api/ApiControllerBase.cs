@@ -5,7 +5,7 @@ using FoodApp.Common;
 
 namespace FoodApp.Controllers.api
 {
-    public abstract class ApiControllerBase<T> : ApiController where T : ngModelBase
+    public abstract class ApiControllerBase<T> : System.Web.Http.ApiController where T : ngModelBase
     {
         protected abstract ManagerBase<T> GetManager();
 

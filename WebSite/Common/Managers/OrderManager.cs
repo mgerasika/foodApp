@@ -13,7 +13,7 @@ namespace FoodApp.Common
         public List<ngOrderModel> GetOrders(string userId,int day)
         {
             List<ngOrderModel> res = new List<ngOrderModel>();
-            ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
+            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
             List<ExcelRow> rows = excelTable.Rows;
             foreach (ExcelRow row in rows) {
                 ExcelCell cell = row.GetCell(userId);
@@ -30,7 +30,7 @@ namespace FoodApp.Common
 
         public bool Buy(string userId,int day,string rowId)
         {
-            ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
+            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
             ExcelRow row = excelTable.GetRowById(rowId);
             ExcelCell cell = row.EnsureCell(userId);
             cell.Value += 1;
@@ -41,7 +41,7 @@ namespace FoodApp.Common
 
         internal bool Delete(string userId,int day,string rowId)
         {
-            ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
+            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
             ExcelRow row = excelTable.GetRowById(rowId);
             ExcelCell cell = row.GetCell(userId);
             cell.Value = 0;
