@@ -49,10 +49,11 @@ namespace GoogleAppsConsoleApplication
                     _parameters.RefreshToken = "1/jWXrc6wJ4lUmWscyc3rozkWPKdFwvha43JfPCxMksus";
                 }
 
-                Console.WriteLine("OAuth Access Token: " + accessToken);
                 var requestFactory = new GOAuth2RequestFactory(null, "MySpreadsheetIntegration-v1", _parameters);
                 Inst.SpreadsheetsService = new SpreadsheetsService("MySpreadsheetIntegration-v1");
                 Inst.SpreadsheetsService.RequestFactory = requestFactory;
+                sb.AppendFormat("<div>access code={0}</div>", _parameters.AccessCode);
+                sb.AppendFormat("<div>access token={0}</div>", _parameters.AccessToken);
                 sb.AppendFormat("<div>refresh token={0}</div>", _parameters.RefreshToken);
             }
 
