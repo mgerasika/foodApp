@@ -17,7 +17,7 @@ namespace FoodApp.Controllers.api
                 settings = new ngUsersSettingsModel();
                 settings.UserId = userId;
 
-                UserSettingsManager.Inst.AddItem(settings);
+                UserSettingsManager.Inst.AddItemAndSave(settings);
             }
             var favorite = settings.FoodRates;
             if (null == favorite) {

@@ -20,7 +20,7 @@ namespace FoodApp.Controllers.api
         [Route(c_sOrdersPrefix + "/{userId}/{day}")]
         public bool CompleteOrder(string userId, int day)
         {
-            OrderManager.Inst.CompleteOrder(userId, day);
+            OrderManager.Inst.CompleteOrderAndClear(userId, day);
             return true;
         }
 

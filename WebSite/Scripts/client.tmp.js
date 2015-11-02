@@ -132,6 +132,43 @@ FoodApp.Client.ngControllerBase.prototype.onRequestSuccess = function (o, s, arg
 FoodApp.Client.ngControllerBase.prototype.onRequestFailed = function (jsError, jsString, arg3){
 };
 $Inherit(FoodApp.Client.ngControllerBase, angularjs.angularController);
+FoodApp.Client.ngHistoryController = function (){
+    FoodApp.Client.ngControllerBase.call(this);
+};
+FoodApp.Client.ngHistoryController.inst = new FoodApp.Client.ngHistoryController();
+FoodApp.Client.ngHistoryController.prototype.get_name = function (){
+    return "ngHistoryController";
+};
+FoodApp.Client.ngHistoryController.prototype.get_ngItems = function (){
+    return this._scope["ngItems"];
+};
+FoodApp.Client.ngHistoryController.prototype.set_ngItems = function (value){
+    this._scope["ngItems"] = value;
+};
+FoodApp.Client.ngHistoryController.prototype.getUrl = function (){
+    return "api/history";
+};
+FoodApp.Client.ngHistoryController.prototype.init = function (scope, http, loc, filter){
+    FoodApp.Client.ngControllerBase.prototype.init.call(this, scope, http, loc, filter);
+    this.set_ngItems( []);
+    FoodApp.Client.eventManager.inst.subscribe(FoodApp.Client.eventManager.settingsLoaded, $CreateAnonymousDelegate(this, function (n){
+        this.refresh();
+    }));
+    FoodApp.Client.eventManager.inst.subscribe(FoodApp.Client.eventManager.orderCompleted, $CreateAnonymousDelegate(this, function (n){
+        this.refresh();
+    }));
+};
+FoodApp.Client.ngHistoryController.prototype.getFoodItem = function (id){
+    var item = FoodApp.Client.ngFoodController.inst.findItemById(id);
+    return item;
+};
+FoodApp.Client.ngHistoryController.prototype.refresh = function (){
+    FoodApp.Client.serviceHlp.inst.SendGet("json", this.getUrl() + "/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + FoodApp.Client.ngAppController.inst.get_ngDayOfWeek(), $CreateAnonymousDelegate(this, function (o, s, arg3){
+        this.set_ngItems(o);
+        this._scope.$apply();
+    }), $CreateDelegate(this, this.onRequestFailed));
+};
+$Inherit(FoodApp.Client.ngHistoryController, FoodApp.Client.ngControllerBase);
 FoodApp.Client.ngFavoriteController = function (){
     FoodApp.Client.ngControllerBase.call(this);
 };
@@ -154,16 +191,10 @@ FoodApp.Client.ngFavoriteController.prototype.init = function (scope, http, loc,
     FoodApp.Client.eventManager.inst.subscribe(FoodApp.Client.eventManager.settingsLoaded, $CreateAnonymousDelegate(this, function (n){
         this.refresh();
     }));
-    this.refresh();
 };
 FoodApp.Client.ngFavoriteController.prototype.getFoodItem = function (id){
     var item = FoodApp.Client.ngFoodController.inst.findItemById(id);
     return item;
-};
-FoodApp.Client.ngFavoriteController.prototype.deleteOrder = function (id){
-    FoodApp.Client.serviceHlp.inst.SendDelete("json", this.getUrl() + "/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + FoodApp.Client.ngAppController.inst.get_ngDayOfWeek() + "/" + id, new Object(), $CreateAnonymousDelegate(this, function (){
-        this.refresh();
-    }), $CreateDelegate(this, this.onRequestFailed));
 };
 FoodApp.Client.ngFavoriteController.prototype.refresh = function (){
     FoodApp.Client.serviceHlp.inst.SendGet("json", this.getUrl() + "/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + FoodApp.Client.ngAppController.inst.get_ngDayOfWeek(), $CreateAnonymousDelegate(this, function (o, s, arg3){
@@ -184,6 +215,7 @@ FoodApp.Client.eventManager = function (){
 FoodApp.Client.eventManager.dayOfWeekChanged = "dayOfWeekChanged";
 FoodApp.Client.eventManager.userIdChanged = "userIdChanged";
 FoodApp.Client.eventManager.settingsLoaded = "settingsLoaded";
+FoodApp.Client.eventManager.orderCompleted = "orderCompleted";
 FoodApp.Client.eventManager.inst = new FoodApp.Client.eventManager();
 FoodApp.Client.eventManager.prototype.GetHandlersByName = function (name){
     if (this._dict[name] == null){
@@ -303,6 +335,12 @@ FoodApp.Client.ngModelBase = function (){
 };
 if (typeof(FoodApp.Common) == "undefined")
     FoodApp.Common = {};
+FoodApp.Common.ngHistoryEntry = function (){
+    this.FoodId = null;
+    this.Date = System.DateTime.MinValue;
+    this.Value = 0;
+};
+$Inherit(FoodApp.Common.ngHistoryEntry, FoodApp.Client.ngModelBase);
 FoodApp.Common.ngFoodRate = function (){
     this.FoodId = null;
     this.Rate = 0;
@@ -450,10 +488,18 @@ FoodApp.Client.ngOrderController.prototype.init = function (scope, http, loc, fi
     FoodApp.Client.eventManager.inst.subscribe(FoodApp.Client.eventManager.settingsLoaded, $CreateAnonymousDelegate(this, function (n){
         this.refresh();
     }));
+    FoodApp.Client.eventManager.inst.subscribe(FoodApp.Client.eventManager.orderCompleted, $CreateAnonymousDelegate(this, function (n){
+        this.refresh();
+    }));
 };
 FoodApp.Client.ngOrderController.prototype.deleteOrder = function (id){
     FoodApp.Client.serviceHlp.inst.SendDelete("json", this.getUrl() + "/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + FoodApp.Client.ngAppController.inst.get_ngDayOfWeek() + "/" + id, new Object(), $CreateAnonymousDelegate(this, function (){
         this.refresh();
+    }), $CreateDelegate(this, this.onRequestFailed));
+};
+FoodApp.Client.ngOrderController.prototype.completeOrder = function (){
+    FoodApp.Client.serviceHlp.inst.SendPost("json", this.getUrl() + "/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + FoodApp.Client.ngAppController.inst.get_ngDayOfWeek(), new Object(), $CreateAnonymousDelegate(this, function (){
+        FoodApp.Client.eventManager.inst.fire(FoodApp.Client.eventManager.orderCompleted, "");
     }), $CreateDelegate(this, this.onRequestFailed));
 };
 FoodApp.Client.ngOrderController.prototype.refresh = function (){

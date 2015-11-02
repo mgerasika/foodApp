@@ -41,10 +41,6 @@
             <b> {{@orderItem .@ajs.field((ngOrderModel o) => o.Count)}}</b>
 
 
-
-           
-
-
             <div style="color: red; cursor: pointer;" ng-click="@ajs.method((ngOrderController o) => o.deleteOrder(null)) (@orderItem .@ajs.field((ngOrderModel o) => o.FoodId))">
             delete
         </div>

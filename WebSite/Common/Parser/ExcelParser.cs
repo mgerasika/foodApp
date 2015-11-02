@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
+using System.EnterpriseServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using Google.GData.Client;
 using Google.GData.Spreadsheets;
@@ -157,8 +159,9 @@ namespace GoogleAppsConsoleApplication
                     var xmlRow = listFeed.Entries[i] as ListEntry;
 
                     var excelRow = new ExcelRow(excelTable, xmlRow);
-                    excelRow.RowId = Guid.NewGuid().ToString();
+                    
                     excelRow.InternalId = GetXmlRowId(xmlRow);
+                    excelRow.RowId = CreateId(excelRow.InternalId);
                     excelTable.Rows.Add(excelRow);
 
                     sb.Append("<tr>");
@@ -208,6 +211,11 @@ namespace GoogleAppsConsoleApplication
                 }
                 sb.Append("</table>");
             }
+        }
+
+        private string CreateId(string str) {
+            string res = new Regex("\\W").Replace(str, string.Empty);
+            return res;
         }
 
         private static string GetCategory(ListEntry xmlRow) {

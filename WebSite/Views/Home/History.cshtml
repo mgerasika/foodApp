@@ -1,0 +1,28 @@
+﻿@using angularjs
+@using FoodApp.Client
+@using FoodApp.Common
+     @inherits System.Web.Mvc.WebViewPage
+
+@{
+      var orders = ajs.field((ngHistoryController o) => o.ngItems);
+      var historyItem = "historyItem";
+    var foodId = historyItem + "." + ajs.field((ngHistoryEntry o) => o.FoodId);
+}
+
+
+<h2>History</h2>
+<div ng-controller="@ajs.getClass((ngHistoryController o) => o)">
+
+    <div ng-repeat="@historyItem in @orders">
+       
+   
+
+        <i>
+            {{@ajs.method((ngHistoryController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
+        </i> <b>{{@historyItem .@ajs.field((ngHistoryEntry o) => o.Value)}}</b>
+         <u>{{@historyItem .@ajs.field((ngHistoryEntry o) => o.Date)}}</u>
+    </div>
+
+
+</div> 
+

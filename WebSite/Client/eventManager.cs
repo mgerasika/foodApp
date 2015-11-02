@@ -9,6 +9,7 @@ namespace FoodApp.Client
         public static readonly string dayOfWeekChanged = "dayOfWeekChanged";
         public static readonly string userIdChanged = "userIdChanged";
         public static readonly string settingsLoaded = "settingsLoaded";
+        public static readonly string orderCompleted = "orderCompleted";
 
         public static eventManager inst = new eventManager();
         private JsObject _dict = new JsObject();

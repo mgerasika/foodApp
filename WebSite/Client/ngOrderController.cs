@@ -55,6 +55,7 @@ namespace FoodApp.Client
 
             eventManager.inst.subscribe(eventManager.dayOfWeekChanged, delegate(int n) { refresh(); });
             eventManager.inst.subscribe(eventManager.settingsLoaded, delegate(int n) { refresh(); });
+            eventManager.inst.subscribe(eventManager.orderCompleted, delegate(int n) { refresh(); });
         }
 
         public void deleteOrder(string id) {
@@ -67,7 +68,9 @@ namespace FoodApp.Client
         {
             serviceHlp.inst.SendPost("json",
                 getUrl() + "/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek ,
-                new JsObject(), delegate { refresh(); }, onRequestFailed);
+                new JsObject(), delegate {
+                    eventManager.inst.fire(eventManager.orderCompleted,"");
+                }, onRequestFailed);
         }
 
         public void refresh() {

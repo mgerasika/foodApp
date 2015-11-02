@@ -7,34 +7,34 @@ using SharpKit.JavaScript;
 namespace FoodApp.Client
 {
     [JsType(JsMode.Prototype, Filename = WebApiResources._fileClientJs)]
-    public class ngFavoriteController : ngControllerBase
+    public class ngHistoryController : ngControllerBase
     {
-        public static ngFavoriteController inst = new ngFavoriteController();
+        public static ngHistoryController inst = new ngHistoryController();
 
-        private ngFavoriteController()
+        private ngHistoryController()
         {
         }
 
         public override string name {
-            get { return "ngFavoriteController"; }
+            get { return "ngHistoryController"; }
         }
 
-        public JsArray<ngFoodRate> ngItems {
-            get { return _scope["ngItems"].As<JsArray<ngFoodRate>>(); }
+        public JsArray<ngHistoryEntry> ngItems {
+            get { return _scope["ngItems"].As<JsArray<ngHistoryEntry>>(); }
             set { _scope["ngItems"] = value; }
         }
 
         protected string getUrl() {
-            return FavoriteFoodController.c_sGetFavorite;
+            return HistoryController.c_sHistory;
         }
 
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {
             base.init(scope, http, loc, filter);
-            ngItems = new JsArray<ngFoodRate>();
+            ngItems = new JsArray<ngHistoryEntry>();
 
             eventManager.inst.subscribe(eventManager.settingsLoaded, delegate(int n) { refresh(); });
 
-           
+            eventManager.inst.subscribe(eventManager.orderCompleted, delegate(int n) { refresh(); });
         }
 
         public ngFoodItem getFoodItem(string id)
@@ -47,17 +47,11 @@ namespace FoodApp.Client
             serviceHlp.inst.SendGet("json",
                 getUrl() + "/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek,
                 delegate(object o, JsString s, jqXHR arg3) {
-                    ngItems = o.As<JsArray<ngFoodRate>>();
+                    ngItems = o.As<JsArray<ngHistoryEntry>>();
                     _scope.apply();
                 }, onRequestFailed);
         }
 
-        public void rateChanged(ngFoodRate rate,double newRate) {
-            rate.Rate = newRate;
-
-            serviceHlp.inst.SendPost("json", getUrl() + "/" + ngAppController.inst.ngUserId + "/" + rate.FoodId + "/" + rate.Rate,
-                new JsObject(),
-                delegate { ngOrderController.inst.refresh(); }, onRequestFailed);
-        }
+       
     }
 }

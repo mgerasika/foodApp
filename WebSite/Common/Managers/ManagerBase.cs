@@ -51,7 +51,7 @@ namespace FoodApp.Common
             return res;
         }
 
-        public void AddItem(T model) {
+        public void AddItemAndSave(T model) {
             var items = GetItems();
             items.Add(model);
             SaveToFile();
@@ -79,7 +79,7 @@ namespace FoodApp.Common
             }
         }
 
-        protected void SaveToFile() {
+        public void SaveToFile() {
             if (null != GetItems()) {
                 var js = new JavaScriptSerializer();
                 var json = js.Serialize(GetItems());
@@ -96,6 +96,7 @@ namespace FoodApp.Common
                 }
             }
         }
+
 
         private string LoadFromFile(string str) {
             var file = HostingEnvironment.MapPath("~/data/") + FileName;
