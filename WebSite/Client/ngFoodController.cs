@@ -1,5 +1,6 @@
 using angularjs;
 using FoodApp.Common;
+using FoodApp.Controllers.api;
 using SharpKit.jQuery;
 using SharpKit.JavaScript;
 
@@ -33,7 +34,7 @@ namespace FoodApp.Client
         }
 
         protected string getUrl() {
-            return "api/foods";
+            return FoodsController.c_sFoodsPrefix;
         }
 
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {

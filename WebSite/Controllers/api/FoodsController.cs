@@ -1,31 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using FoodApp.Client;
 using FoodApp.Common;
-using GoogleAppsConsoleApplication;
 
 namespace FoodApp.Controllers.api
 {
-    
-    
-    public class FoodsController : System.Web.Http.ApiController
+    public class FoodsController : ApiController
     {
+        public const string c_sFoodsPrefix = "api/foods";
+
         [HttpGet]
-        [Route("api/foods/{userId}/{day}")]
-        public IList<ngFoodItem> GetFoods(string userId,int day)
-        {
-            List<ngFoodItem> items = FoodManager.Inst.GetFoods(userId,day);
+        [Route(c_sFoodsPrefix + "/{userId}/{day}")]
+        public IList<ngFoodItem> GetFoods(string userId, int day) {
+            var items = FoodManager.Inst.GetFoods(userId, day);
             return items;
         }
 
-        [HttpPost]  
-        [Route("api/foods/{userId}/{day}/{id}")]
-        public bool Buy(string userId,int day,string id) {
-            return OrderManager.Inst.Buy(userId,day,id);
+        [HttpPost]
+        [Route(c_sFoodsPrefix + "/{userId}/{day}/{id}")]
+        public bool Buy(string userId, int day, string id) {
+            return OrderManager.Inst.Buy(userId, day, id);
         }
-
-        
     }
 }

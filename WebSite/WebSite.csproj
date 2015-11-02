@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -190,7 +192,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="data\foods.json" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -207,10 +208,13 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Client\clientUtils.cs" />
+    <Compile Include="Client\ngFavoriteController.cs" />
     <Compile Include="Client\eventManager.cs" />
     <Compile Include="Client\ngAppController.cs" />
     <Compile Include="Client\ngControllerBase.cs" />
     <Compile Include="Client\serviceHlp.cs" />
+    <Compile Include="Common\Managers\UserSettingsManager.cs" />
+    <Compile Include="Common\Model\ngUsersSettingsModel.cs" />
     <Compile Include="Common\Parser\ColumnNames.cs" />
     <Compile Include="Common\Parser\ExcelCell.cs" />
     <Compile Include="Common\Parser\ExcelRow.cs" />
@@ -218,16 +222,17 @@
     <Compile Include="Common\Parser\ExcelDoc.cs" />
     <Compile Include="Common\Parser\ExcelParser.cs" />
     <Compile Include="Common\Managers\FoodManager.cs" />
-    <Compile Include="Client\model\ngFoodModel.cs" />
+    <Compile Include="Common\Model\ngFoodModel.cs" />
     <Compile Include="Common\Managers\ManagerBase.cs" />
-    <Compile Include="Client\model\ngModelBase.cs" />
+    <Compile Include="Common\Model\ngModelBase.cs" />
     <Compile Include="Client\ngFoodController.cs" />
     <Compile Include="Client\ngOrderController.cs" />
     <Compile Include="Common\Managers\OrderManager.cs" />
-    <Compile Include="Client\model\ngOrderModel.cs" />
+    <Compile Include="Common\Model\ngOrderModel.cs" />
     <Compile Include="Common\WebApiResources.cs" />
     <Compile Include="Common\ApiUtils.cs" />
     <Compile Include="Controllers\api\ApiControllerBase.cs" />
+    <Compile Include="Controllers\api\FavoriteFoodController.cs" />
     <Compile Include="Controllers\api\FoodsController.cs" />
     <Compile Include="Controllers\api\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -240,12 +245,14 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <Content Include="Views\Layout1.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Orders.cshtml" />
     <Content Include="Views\Home\Foods.cshtml" />
     <Content Include="Views\Home\App.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Favorite.cshtml" />
+    <Content Include="Views\Home\Settings.cshtml" />
+    <Content Include="Views\Layout1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -255,6 +262,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -295,7 +303,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

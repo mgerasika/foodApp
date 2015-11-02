@@ -115,6 +115,69 @@ FoodApp.Client.clientUtils.prototype.getSelectedText = function (wnd){
 FoodApp.Client.clientUtils.prototype.isEmpty = function (str){
     return (null == str) || (undefined == str) || ("" == str) || ("null" == str);
 };
+FoodApp.Client.ngControllerBase = function (){
+    angularjs.angularController.call(this);
+};
+FoodApp.Client.ngControllerBase.prototype.get_name = function (){
+    return "ngControllerBase";
+};
+FoodApp.Client.ngControllerBase.prototype.get_namespace = function (){
+    return "FoodApp.Client";
+};
+FoodApp.Client.ngControllerBase.prototype.init = function (scope, http, loc, filter){
+    angularjs.angularController.prototype.init.call(this, scope, http, loc, filter);
+};
+FoodApp.Client.ngControllerBase.prototype.onRequestSuccess = function (o, s, arg3){
+};
+FoodApp.Client.ngControllerBase.prototype.onRequestFailed = function (jsError, jsString, arg3){
+};
+$Inherit(FoodApp.Client.ngControllerBase, angularjs.angularController);
+FoodApp.Client.ngFavoriteController = function (){
+    FoodApp.Client.ngControllerBase.call(this);
+};
+FoodApp.Client.ngFavoriteController.inst = new FoodApp.Client.ngFavoriteController();
+FoodApp.Client.ngFavoriteController.prototype.get_name = function (){
+    return "ngFavoriteController";
+};
+FoodApp.Client.ngFavoriteController.prototype.get_ngItems = function (){
+    return this._scope["ngItems"];
+};
+FoodApp.Client.ngFavoriteController.prototype.set_ngItems = function (value){
+    this._scope["ngItems"] = value;
+};
+FoodApp.Client.ngFavoriteController.prototype.getUrl = function (){
+    return "api/favorite";
+};
+FoodApp.Client.ngFavoriteController.prototype.init = function (scope, http, loc, filter){
+    FoodApp.Client.ngControllerBase.prototype.init.call(this, scope, http, loc, filter);
+    this.set_ngItems( []);
+    FoodApp.Client.eventManager.inst.subscribe(FoodApp.Client.eventManager.settingsLoaded, $CreateAnonymousDelegate(this, function (n){
+        this.refresh();
+    }));
+    this.refresh();
+};
+FoodApp.Client.ngFavoriteController.prototype.getFoodItem = function (id){
+    var item = FoodApp.Client.ngFoodController.inst.findItemById(id);
+    return item;
+};
+FoodApp.Client.ngFavoriteController.prototype.deleteOrder = function (id){
+    FoodApp.Client.serviceHlp.inst.SendDelete("json", this.getUrl() + "/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + FoodApp.Client.ngAppController.inst.get_ngDayOfWeek() + "/" + id, new Object(), $CreateAnonymousDelegate(this, function (){
+        this.refresh();
+    }), $CreateDelegate(this, this.onRequestFailed));
+};
+FoodApp.Client.ngFavoriteController.prototype.refresh = function (){
+    FoodApp.Client.serviceHlp.inst.SendGet("json", this.getUrl() + "/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + FoodApp.Client.ngAppController.inst.get_ngDayOfWeek(), $CreateAnonymousDelegate(this, function (o, s, arg3){
+        this.set_ngItems(o);
+        this._scope.$apply();
+    }), $CreateDelegate(this, this.onRequestFailed));
+};
+FoodApp.Client.ngFavoriteController.prototype.rateChanged = function (rate, newRate){
+    rate.Rate = newRate;
+    FoodApp.Client.serviceHlp.inst.SendPost("json", this.getUrl() + "/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + rate.FoodId + "/" + rate.Rate, new Object(), $CreateAnonymousDelegate(this, function (){
+        FoodApp.Client.ngOrderController.inst.refresh();
+    }), $CreateDelegate(this, this.onRequestFailed));
+};
+$Inherit(FoodApp.Client.ngFavoriteController, FoodApp.Client.ngControllerBase);
 FoodApp.Client.eventManager = function (){
     this._dict = new Object();
 };
@@ -139,23 +202,6 @@ FoodApp.Client.eventManager.prototype.fire = function (name, arg){
         action(arg);
     }
 };
-FoodApp.Client.ngControllerBase = function (){
-    angularjs.angularController.call(this);
-};
-FoodApp.Client.ngControllerBase.prototype.get_name = function (){
-    return "ngControllerBase";
-};
-FoodApp.Client.ngControllerBase.prototype.get_namespace = function (){
-    return "FoodApp.Client";
-};
-FoodApp.Client.ngControllerBase.prototype.init = function (scope, http, loc, filter){
-    angularjs.angularController.prototype.init.call(this, scope, http, loc, filter);
-};
-FoodApp.Client.ngControllerBase.prototype.onRequestSuccess = function (o, s, arg3){
-};
-FoodApp.Client.ngControllerBase.prototype.onRequestFailed = function (jsError, jsString, arg3){
-};
-$Inherit(FoodApp.Client.ngControllerBase, angularjs.angularController);
 FoodApp.Client.ngAppController = function (){
     FoodApp.Client.ngControllerBase.call(this);
 };
@@ -255,6 +301,44 @@ FoodApp.Client.serviceHlp.addTimeToUrl = function (url){
 };
 FoodApp.Client.ngModelBase = function (){
 };
+if (typeof(FoodApp.Common) == "undefined")
+    FoodApp.Common = {};
+FoodApp.Common.ngFoodRate = function (){
+    this.FoodId = null;
+    this.Rate = 0;
+};
+$Inherit(FoodApp.Common.ngFoodRate, FoodApp.Client.ngModelBase);
+FoodApp.Common.ngUsersSettingsModel = function (){
+    this.FoodRates = null;
+    this.UserId = null;
+};
+FoodApp.Common.ngUsersSettingsModel.prototype.CrateFakeFoodRate = function (){
+    if (null == this.FoodRates){
+        this.FoodRates = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngFoodRate");
+        var ngFoodItems = FoodApp.Common.FoodManager.Inst.GetFoods(this.UserId, 1);
+        var $it2 = ngFoodItems.GetEnumerator();
+        while ($it2.MoveNext()){
+            var foodItem = $it2.get_Current();
+            var rate = {};
+            rate.FoodId = foodItem.FoodId;
+            rate.Rate = 0.3;
+            this.FoodRates.Add(rate);
+        }
+    }
+};
+FoodApp.Common.ngUsersSettingsModel.prototype.GetFoodRateById = function (foodId){
+    var res = null;
+    var $it3 = this.FoodRates.GetEnumerator();
+    while ($it3.MoveNext()){
+        var r = $it3.get_Current();
+        if (r.FoodId.Equals$$String(foodId)){
+            res = r;
+            break;
+        }
+    }
+    return res;
+};
+$Inherit(FoodApp.Common.ngUsersSettingsModel, FoodApp.Client.ngModelBase);
 FoodApp.Client.ngFoodItem = function (){
     this.Name = null;
     this.Description = null;
@@ -311,7 +395,7 @@ FoodApp.Client.ngFoodController.prototype.change = function (){
 };
 FoodApp.Client.ngFoodController.prototype.findItemById = function (id){
     var res = null;
-    for (var $i3 = 0,$t3 = this.get_ngItems(),$l3 = $t3.length,item = $t3[$i3]; $i3 < $l3; $i3++, item = $t3[$i3]){
+    for (var $i5 = 0,$t5 = this.get_ngItems(),$l5 = $t5.length,item = $t5[$i5]; $i5 < $l5; $i5++, item = $t5[$i5]){
         if (item.FoodId == id){
             res = item;
             break;
@@ -348,7 +432,7 @@ FoodApp.Client.ngOrderController.prototype.getFoodItem = function (id){
 };
 FoodApp.Client.ngOrderController.prototype.getTotalPrice = function (){
     var res = 0;
-    for (var $i4 = 0,$t4 = this.get_ngItems(),$l4 = $t4.length,item = $t4[$i4]; $i4 < $l4; $i4++, item = $t4[$i4]){
+    for (var $i6 = 0,$t6 = this.get_ngItems(),$l6 = $t6.length,item = $t6[$i6]; $i6 < $l6; $i6++, item = $t6[$i6]){
         var food = this.getFoodItem(item.FoodId);
         if (null != food){
             res += (food.Price * item.Count);
@@ -380,8 +464,8 @@ FoodApp.Client.ngOrderController.prototype.refresh = function (){
 };
 $Inherit(FoodApp.Client.ngOrderController, FoodApp.Client.ngControllerBase);
 FoodApp.Client.ngOrderModel = function (){
-    this.FoodId = null;
     this.Count = 0;
+    this.FoodId = null;
 };
 $Inherit(FoodApp.Client.ngOrderModel, FoodApp.Client.ngModelBase);
 

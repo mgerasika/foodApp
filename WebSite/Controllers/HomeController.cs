@@ -11,8 +11,6 @@ namespace FoodApp.Controllers
 {
     public class HomeController : Controller
     {
-        
-
         public ActionResult Index() {
             if (Request.QueryString["login"] != null) {
                 ApiUtils.SetUserLogin(Request.QueryString["login"]);

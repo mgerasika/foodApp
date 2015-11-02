@@ -12,7 +12,6 @@ namespace FoodApp.Controllers.api
 {
     public class FoodAppController : System.Web.Http.ApiController
     {
-
         [HttpPost]
         [Route("foodApp/login")]
         public bool Login(string name) {

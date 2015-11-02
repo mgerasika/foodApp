@@ -1,31 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using FoodApp.Client;
 using FoodApp.Common;
-using GoogleAppsConsoleApplication;
 
 namespace FoodApp.Controllers.api
 {
-    public class OrdersController : System.Web.Http.ApiController
+    public class OrdersController : ApiController
     {
+        public const string c_sOrdersPrefix = "api/orders";
+
         [HttpGet]
-        [Route("api/orders/{userId}/{day}")]
-        public IList<ngOrderModel> GetOrders(string userId,int day)
-        {
-            List<ngOrderModel> items = OrderManager.Inst.GetOrders(userId,day);
+        [Route(c_sOrdersPrefix + "/{userId}/{day}")]
+        public IList<ngOrderModel> GetOrders(string userId, int day) {
+            var items = OrderManager.Inst.GetOrders(userId, day);
             return items;
         }
 
         [HttpDelete]
-        [Route("api/orders/{userId}/{day}/{id}")]
-        public bool Delete(string userId,int day,string id) {
-            OrderManager.Inst.Delete(userId,day,id);
+        [Route(c_sOrdersPrefix + "/{userId}/{day}/{id}")]
+        public bool Delete(string userId, int day, string id) {
+            OrderManager.Inst.Delete(userId, day, id);
             return true;
         }
-
-       
     }
 }

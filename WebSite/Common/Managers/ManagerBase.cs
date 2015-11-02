@@ -38,12 +38,13 @@ namespace FoodApp.Common
             return _items;
         }
 
-        /*
+        protected abstract string GetId(T obj);
+
         public T GetItem(string id) {
             T res = null;
             var items = GetItems();
             foreach (var item in items) {
-                if (item.ID.Equals(id)) {
+                if (GetId(item).Equals(id)) {
                     res = item;
                 }
             }
@@ -68,7 +69,7 @@ namespace FoodApp.Common
             T res = null;
             var items = GetItems();
             foreach (var error in items) {
-                if (error.ID.Equals(id)) {
+                if (GetId(error).Equals(id)) {
                     res = error;
                 }
             }
@@ -77,7 +78,6 @@ namespace FoodApp.Common
                 SaveToFile();
             }
         }
-         * */
 
         protected void SaveToFile() {
             if (null != GetItems()) {

@@ -9,6 +9,6 @@ namespace FoodApp.Client
     public class ngOrderModel : ngModelBase
     {
         public decimal Count { get; set; }
-        public string FoodId;
+        public string FoodId { get; set; }
     }
 }
