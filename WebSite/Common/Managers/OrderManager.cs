@@ -48,5 +48,19 @@ namespace FoodApp.Common
             cell.Update();
             return true;
         }
+
+        internal void CompleteOrder(string userId, int day)
+        {
+            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
+            List<ExcelRow> rows = excelTable.Rows;
+            foreach (ExcelRow row in rows)
+            {
+                ExcelCell cell = row.GetCell(userId);
+                if (cell != null && row.HasPrice && cell.Value > 0)
+                {
+                   //Code should be here!!!
+                }
+            }
+        }
     }
 }

@@ -63,6 +63,13 @@ namespace FoodApp.Client
                 new JsObject(), delegate { refresh(); }, onRequestFailed);
         }
 
+        public void completeOrder()
+        {
+            serviceHlp.inst.SendPost("json",
+                getUrl() + "/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek ,
+                new JsObject(), delegate { refresh(); }, onRequestFailed);
+        }
+
         public void refresh() {
             serviceHlp.inst.SendGet("json",
                 getUrl() + "/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek,

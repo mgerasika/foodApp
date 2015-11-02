@@ -16,10 +16,18 @@ namespace FoodApp.Controllers.api
             return items;
         }
 
+        [HttpPost]
+        [Route(c_sOrdersPrefix + "/{userId}/{day}")]
+        public bool CompleteOrder(string userId, int day)
+        {
+            OrderManager.Inst.CompleteOrder(userId, day);
+            return true;
+        }
+
         [HttpDelete]
-        [Route(c_sOrdersPrefix + "/{userId}/{day}/{id}")]
-        public bool Delete(string userId, int day, string id) {
-            OrderManager.Inst.Delete(userId, day, id);
+        [Route(c_sOrdersPrefix + "/{userId}/{day}/{rowId}")]
+        public bool Delete(string userId, int day, string rowId) {
+            OrderManager.Inst.Delete(userId, day, rowId);
             return true;
         }
     }

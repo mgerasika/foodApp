@@ -27,6 +27,11 @@
 </style>
 <div ng-controller="@ajs.getClass((ngOrderController o) => o)">
 
+
+    <div style="color: brown; cursor: pointer;" ng-click="@ajs.method((ngOrderController o) => o.completeOrder()) ()">
+        COMPLETE ORDER
+    </div>
+
     <p>Total: <i>
             {{@ajs.method((ngOrderController o) => o.getTotalPrice()) () }}
                 </i></p>
@@ -34,6 +39,10 @@
         <div id="{{@orderItem .@ajs.field((ngOrderModel o) => o.FoodId)}}">
             {{@orderItem .@ajs.field((ngOrderModel o) => o.FoodId)}}
             <b> {{@orderItem .@ajs.field((ngOrderModel o) => o.Count)}}</b>
+
+
+
+           
 
 
             <div style="color: red; cursor: pointer;" ng-click="@ajs.method((ngOrderController o) => o.deleteOrder(null)) (@orderItem .@ajs.field((ngOrderModel o) => o.FoodId))">
