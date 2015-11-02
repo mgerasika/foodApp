@@ -1,0 +1,40 @@
+﻿@using angularjs
+@using FoodApp.Client
+@inherits System.Web.Mvc.WebViewPage
+
+@{
+    var foods = ajs.field((ngFoodController o) => o.ngItems);
+    var food = "food";
+}
+
+<style type="text/css">
+    .food {
+        float: left;
+        width: 200px;
+        border: 1px solid gray;
+        background-color: #efefef;
+        margin: 0.1em;
+        white-space: normal;
+        word-wrap: break-word;
+        padding: 0.5em;
+        border-radius: 0.5em;
+        min-height: 100px;
+    }
+</style>
+<div ng-controller="@ajs.getClass((ngFoodController o) => o)">
+
+    <div ng-repeat="@food in @foods" class="food">
+        <div id="{{@food .@ajs.field((ngFoodItem o) => o.FoodId)}}">
+             <div style="color: red;">{{@food .@ajs.field((ngFoodItem o) => o.Category)}}</div>
+            <b>{{@food .@ajs.field((ngFoodItem o) => o.Name)}}</b>
+            <i> {{@food .@ajs.field((ngFoodItem o) => o.Description)}}</i>
+            <u> {{@food .@ajs.field((ngFoodItem o) => o.Price)}}</u>
+
+            <div style="color: green; float: right; cursor: pointer;" ng-click="@ajs.method((ngFoodController o) => o.buyClick(null)) (@food .@ajs.field((ngFoodItem o) => o.FoodId))">
+                buy
+            </div>
+        </div>
+
+    </div>
+</div>  
+<div style="clear: both;"></div>

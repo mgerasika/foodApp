@@ -1,0 +1,32 @@
+﻿@using angularjs
+@using FoodApp.Client
+@inherits System.Web.Mvc.WebViewPage
+
+
+<div ng-controller="@ajs.getClass((ngAppController o) => o)">
+    <h3>Foods</h3>
+
+    <select ng-change="@ajs.method((ngAppController o) => o.changeDayOfWeek()) ()" ng-model="@ajs.field((ngAppController o) => o.ngDayOfWeek)">
+        <option value="1">Monday</option>
+        <option value="2">Tuesday</option>
+        <option value="3">Wednesday</option>
+        <option value="4">Thursday</option>
+        <option value="5">Friday</option>
+    </select>
+
+
+    <select  ng-change="@ajs.method((ngAppController o) => o.changeUserId()) ()" ng-model="@ajs.field((ngAppController o) => o.ngUserId)">
+        <option value="_chk2m">Олена К</option>
+        <option value="_ciyn3">Олена М</option>
+        <option value="_ckd7g">Ірина</option>
+        <option value="_clrrx">Андрій П</option>
+        <option value="_cyevm">Андрій Ч</option>
+        <option value="_cztg3">Aндрій М</option>
+        <option value="_d180g">Юра</option>
+        <option value="_d2mkx">Володя</option>
+        <option value="_cssly">Андрій Б</option>
+        <option value="_cu76f">Іван П</option>
+        <option value="_cvlqs">Василь З</option>
+        <option value="_cx0b9">Міша Г</option>
+    </select>
+</div> 

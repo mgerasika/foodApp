@@ -1,0 +1,53 @@
+﻿@using angularjs
+@using FoodApp.Client
+@using FoodApp.Common
+     @inherits System.Web.Mvc.WebViewPage
+
+@{
+      string item = ajs.field((ngOrderController o) => o.ngOrderModel);  
+    var orders = ajs.field((ngOrderController o) => o.ngItems);
+    var orderItem = "orderItem";
+    var foodId = orderItem + "." + ajs.field((ngOrderModel o) => o.FoodId);
+}
+
+<style type="text/css">
+    
+    .order {
+        float: left;
+        width: 150px;
+        border: 1px solid gray;
+        background-color: #efefef;
+        margin: 0.1em;
+        white-space: normal;
+        word-wrap: break-word;
+        padding: 0.5em;
+        border-radius: 0.5em;
+    }
+
+</style>
+<div ng-controller="@ajs.getClass((ngOrderController o) => o)">
+
+    <p>Total: <i>
+            {{@ajs.method((ngOrderController o) => o.getTotalPrice()) () }}
+                </i></p>
+    <div ng-repeat="@orderItem in @orders" class="order">
+        <div id="{{@orderItem .@ajs.field((ngOrderModel o) => o.FoodId)}}">
+            {{@orderItem .@ajs.field((ngOrderModel o) => o.FoodId)}}
+            <b> {{@orderItem .@ajs.field((ngOrderModel o) => o.Count)}}</b>
+
+
+            <div style="color: red; cursor: pointer;" ng-click="@ajs.method((ngOrderController o) => o.deleteOrder(null)) (@orderItem .@ajs.field((ngOrderModel o) => o.FoodId))">
+            delete
+        </div>
+
+            <i>
+            {{@ajs.method((ngOrderController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
+                </i>
+        </div>
+
+    </div>
+
+
+</div> 
+<div style="clear: both;"></div>
+

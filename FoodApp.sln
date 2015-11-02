@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "angularjs", "angularjs\angularjs.csproj", "{E298E94B-876F-48AD-BB51-E8ACCB30A6F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSite", "WebSite\WebSite.csproj", "{B9843A5C-EFAD-4938-8CBF-F7F14983EAFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E298E94B-876F-48AD-BB51-E8ACCB30A6F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E298E94B-876F-48AD-BB51-E8ACCB30A6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E298E94B-876F-48AD-BB51-E8ACCB30A6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E298E94B-876F-48AD-BB51-E8ACCB30A6F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9843A5C-EFAD-4938-8CBF-F7F14983EAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9843A5C-EFAD-4938-8CBF-F7F14983EAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9843A5C-EFAD-4938-8CBF-F7F14983EAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9843A5C-EFAD-4938-8CBF-F7F14983EAFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
