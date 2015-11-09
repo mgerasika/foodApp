@@ -12,7 +12,7 @@ namespace FoodApp.Controllers.api
         [HttpGet]
         [Route(c_sFoodsPrefix + "/{userId}/{day}")]
         public IList<ngFoodItem> GetFoods(string userId, int day) {
-            var items = FoodManager.Inst.GetFoods(userId, day);
+            var items = FoodManager.Inst.GetFoods(day);
             return items;
         }
 

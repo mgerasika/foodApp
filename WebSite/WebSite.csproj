@@ -72,6 +72,10 @@
       <HintPath>..\packages\Google.GData.Spreadsheets.2.2.0.0\lib\Google.GData.Spreadsheets.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GoogleSearchAPI, Version=0.4.0.133, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\GoogleSearchAPI.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -178,21 +182,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\idea.png" />
+    <Content Include="images\money.png" />
+    <Content Include="images\support.png" />
+    <Content Include="images\time.png" />
+    <Content Include="images\unsplash0010.jpg" />
+    <Content Include="images\unsplash002.jpg" />
+    <Content Include="images\unsplash004.jpg" />
+    <Content Include="images\unsplash006.jpg" />
+    <Content Include="images\unsplash009.jpg" />
+    <Content Include="index.html" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery.countTo.js" />
+    <Content Include="js\jquery.easings.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.mixitup.js" />
+    <Content Include="js\jquery.quovolver.js" />
+    <Content Include="js\jquery.sticky.js" />
+    <Content Include="js\jquery.waypoints.min.js" />
+    <Content Include="lib\GoogleSearchAPI.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="data\history.json" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -202,6 +228,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\output.js" />
+    <Content Include="css\style.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -234,6 +261,7 @@
     <Compile Include="Client\ngOrderController.cs" />
     <Compile Include="Common\Managers\OrderManager.cs" />
     <Compile Include="Common\Model\ngOrderModel.cs" />
+    <Compile Include="Common\Parser\LoginTool.cs" />
     <Compile Include="Common\WebApiResources.cs" />
     <Compile Include="Common\ApiUtils.cs" />
     <Compile Include="Controllers\api\ApiControllerBase.cs" />

@@ -22,10 +22,10 @@ namespace FoodApp.Common
             if (null == this.FoodRates) {
                 this.FoodRates = new List<ngFoodRate>();
 
-                List<ngFoodItem> ngFoodItems = FoodManager.Inst.GetFoods(this.UserId,1);
+                List<ngFoodItem> ngFoodItems = FoodManager.Inst.GetFoods(1);
                 foreach (ngFoodItem foodItem in ngFoodItems) {
                     ngFoodRate rate = new ngFoodRate();
-                    rate.FoodId = foodItem.FoodId;
+                    rate.FoodId = foodItem.RowId;
                     rate.Rate = 0.3;
                     this.FoodRates.Add(rate);
                 }

@@ -1,13 +1,51 @@
 ﻿@using System.Web.Mvc.Html
+@using angularjs
+@using FoodApp.Client
 @inherits System.Web.Mvc.WebViewPage
 @{
     Layout = "~/Views/Layout1.cshtml";
 }
-   <h2>Index</h2>
 
-@{Html.RenderPartial("App");}
-@{Html.RenderPartial("Orders");}
-@{Html.RenderPartial("Foods");}
+<div ng-controller="@ajs.getClass((ngFoodController o) => o)">
+    <div ng-repeat="day in [{'idx':0,'name':'Monday'}, {'idx':1,'name':'Tuesday'}, {'idx':2,'name':'Wednesday'}, {'idx':3,'name':'Thursday'}, {'idx':4,'name':'Friday'}]">
 
-@{Html.RenderPartial("Favorite");}
-@{Html.RenderPartial("History");}
+        <div style="height: 7em;">
+            <div id="_{{day.name}}Header" style="background-color: white; border-bottom: 2px solid rgba(0, 0, 0, 0.1); height: 7em; width: 100%; z-index: 999;">
+                <div style="padding-left: 3.2em;">
+
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-left: 17%;">
+                        <div class="alldesc">
+                            <div class="col-md-6 col-sm-6 col-xs-12 centertext">
+                                <p class="all-td">What's Coming New</p>
+                                <h2>{{day.name}}</h2>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <p class="desc">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="features" id="_{{day.name}}">
+            <div class="container">
+                <div class="row">
+                    @{ Html.RenderPartial("Foods", "day.idx"); }
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</div>
+
+
+@{ Html.RenderPartial("App"); }
+@{ Html.RenderPartial("Orders"); }
+
+
+@{ Html.RenderPartial("Favorite"); }
+@{ Html.RenderPartial("History"); }

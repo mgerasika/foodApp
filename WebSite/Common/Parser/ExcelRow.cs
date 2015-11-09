@@ -1,33 +1,35 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Google.GData.Client;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
+using FoodApp.Controllers;
 using Google.GData.Spreadsheets;
 
 namespace GoogleAppsConsoleApplication
 {
     public class ExcelRow
     {
-        private ListEntry _entry = null;
+        private ListEntry _entry;
         private ExcelTable _table;
-
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public string RowId { get; set; }
         public List<ExcelCell> Cells = new List<ExcelCell>();
-        public string InternalId { get; set; }
 
         public ExcelRow(ExcelTable table, ListEntry entry) {
             _entry = entry;
             _table = table;
         }
 
-        internal void UpdateRow()
-        {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public string RowId { get; set; }
+        public bool HasPrice { get; set; }
+        public string Category { get; set; }
+
+        internal void UpdateRow() {
             ExcelParser.Inst.RefreshAccessToken();
 
-            ListEntry atomEntry = _entry.Update() as ListEntry;
+            var atomEntry = _entry.Update() as ListEntry;
             _entry = atomEntry;
         }
 
@@ -38,7 +40,7 @@ namespace GoogleAppsConsoleApplication
         internal ExcelCell GetCell(string columnName) {
             ExcelCell res = null;
 
-            foreach (ExcelCell cell in this.Cells) {
+            foreach (var cell in Cells) {
                 if (cell.ColumnName.Equals(columnName)) {
                     res = cell;
                     break;
@@ -47,19 +49,30 @@ namespace GoogleAppsConsoleApplication
             return res;
         }
 
-        internal ExcelCell EnsureCell(string columnName)
-        {
-            ExcelCell res = GetCell(columnName);
+        internal ExcelCell EnsureCell(string columnName) {
+            var res = GetCell(columnName);
             if (null == res) {
                 res = new ExcelCell(this);
                 res.ColumnName = columnName;
-                this.Cells.Add(res);
+                Cells.Add(res);
             }
             return res;
         }
 
-        public bool HasPrice { get; set; }
+        public string GetFoodId() {
+            var res = "";
+            if (!string.IsNullOrEmpty(Category)) {
+                res = new Regex(@"\W").Replace(Category, "");
+            }
+            if (!string.IsNullOrEmpty(Name)) {
+                res += new Regex(@"\W").Replace(Name, "");
+            }
+            Debug.Assert(!string.IsNullOrEmpty(res));
+            res = "_" + res;
+            res = ApiUtils.GetLatinCodeFromCyrillic(res);
+            return res;
+        }
 
-        public string Category { get; set; }
+        
     }
 }

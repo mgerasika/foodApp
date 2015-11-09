@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.EnterpriseServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 using Google.GData.Client;
 using Google.GData.Spreadsheets;
 
@@ -160,8 +159,7 @@ namespace GoogleAppsConsoleApplication
 
                     var excelRow = new ExcelRow(excelTable, xmlRow);
                     
-                    excelRow.InternalId = GetXmlRowId(xmlRow);
-                    excelRow.RowId = CreateId(excelRow.InternalId);
+                    excelRow.RowId = GetXmlRowId(xmlRow);
                     excelTable.Rows.Add(excelRow);
 
                     sb.Append("<tr>");
@@ -169,7 +167,7 @@ namespace GoogleAppsConsoleApplication
 
                     var tmpCategory = GetCategory(xmlRow);
                     if (!string.IsNullOrEmpty(tmpCategory)) {
-                        category = tmpCategory;
+                        category = tmpCategory.Replace(":","");
                     }
                     excelRow.Category = category;
 
@@ -213,10 +211,6 @@ namespace GoogleAppsConsoleApplication
             }
         }
 
-        private string CreateId(string str) {
-            string res = new Regex("\\W").Replace(str, string.Empty);
-            return res;
-        }
 
         private static string GetCategory(ListEntry xmlRow) {
             var res = "";
@@ -286,7 +280,9 @@ namespace GoogleAppsConsoleApplication
         }
 
         private string GetXmlRowId(ListEntry row) {
-            return row.Id.AbsoluteUri;
+            string res = row.Id.AbsoluteUri;
+            res = new Regex("\\W").Replace(res, string.Empty);
+            return res;
         }
 
         private ListEntry GetRow(int dayOfWeek, string rowId) {
@@ -294,7 +290,6 @@ namespace GoogleAppsConsoleApplication
 
             var excelTable = Doc.GetExcelTable(dayOfWeek);
             var excelRow = excelTable.GetRowById(rowId);
-            var internalRowId = excelRow.InternalId;
 
             var service = Inst.SpreadsheetsService;
             var query = new SpreadsheetQuery();
@@ -306,47 +301,12 @@ namespace GoogleAppsConsoleApplication
             for (var i = 1; i < xmlTable.Entries.Count; ++i) {
                 var xmlRow = xmlTable.Entries[i] as ListEntry;
                 Debug.Assert(null != xmlRow);
-                if (internalRowId.Equals(GetXmlRowId(xmlRow))) {
+                if (excelRow.RowId.Equals(GetXmlRowId(xmlRow))) {
                     res = xmlRow;
                     break;
                 }
             }
-
             return res;
-        }
-    }
-
-    public class LoginTool
-    {
-        public static LoginTool Inst = new LoginTool();
-        private OAuth2Parameters _parameters;
-        private SpreadsheetsService _SpreadsheetsService = null;
-        private readonly string CLIENT_ID = "668583993597.apps.googleusercontent.com";
-        private readonly string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
-        private readonly string REDIRECT_URI = "http://localhost:15845/Home/Test2";
-        private readonly string SCOPE = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";
-
-        public string StartLogin() {
-            _parameters = new OAuth2Parameters();
-            _parameters.ClientId = CLIENT_ID;
-            _parameters.ClientSecret = CLIENT_SECRET;
-            _parameters.RedirectUri = REDIRECT_URI;
-            _parameters.Scope = SCOPE;
-            //parameters.ApprovalPrompt = "force";
-            _parameters.TokenExpiry = DateTime.MaxValue;
-            _parameters.AccessType = "offline";
-            var authorizationUrl = OAuthUtil.CreateOAuth2AuthorizationUrl(_parameters);
-            HttpContext.Current.Response.Redirect(authorizationUrl);
-            return authorizationUrl;
-        }
-
-        public string EndLogin() {
-            _parameters.AccessCode = HttpContext.Current.Request.QueryString["code"];
-            OAuthUtil.GetAccessToken(_parameters);
-            var accessToken = _parameters.AccessToken;
-
-
-            return accessToken;
         }
     }
 }

@@ -3,39 +3,37 @@
 @inherits System.Web.Mvc.WebViewPage
 
 @{
+    var day = Model;
     var foods = ajs.field((ngFoodController o) => o.ngItems);
     var food = "food";
 }
+<div>
+    <div class="col-md-6 col-sm-6 col-xs-12 featurebox" ng-repeat="category in ['Салати','Перші страви','Гарніри']">
+        <div class="fh-desc">
+            <h3>{{category}}</h3>
+        </div>
+        <div ng-repeat="@food in @foods" style="float: left; width: 50%; ">
+            <div style="margin: 0.5em; padding: 1em; padding-right: 0em;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="background-color: #cb5750; opacity: 0.3; width: 0.5em;"></td>
+                        <td style="padding-left: 0.5em;">
+                            <p class="desc">{{@food .@ajs.field((ngFoodItem o) => o.Name)}}</p>
+                            <div>
+                                <div style="color: #cb5750; float: left; font-size: 1.5em;">
+                                    {{@food .@ajs.field((ngFoodItem o) => o.Price)}}
+                                </div>
 
-<style type="text/css">
-    .food {
-        float: left;
-        width: 200px;
-        border: 1px solid gray;
-        background-color: #efefef;
-        margin: 0.1em;
-        white-space: normal;
-        word-wrap: break-word;
-        padding: 0.5em;
-        border-radius: 0.5em;
-        min-height: 100px;
-    }
-</style>
+                                <button class="btn btn-success" style="cursor: pointer; float: right;">Замовити</button>
+                            </div>
 
-<div ng-controller="@ajs.getClass((ngFoodController o) => o)">
-
-    <div ng-repeat="@food in @foods" class="food">
-        <div id="{{@food .@ajs.field((ngFoodItem o) => o.FoodId)}}">
-             <div style="color: red;">{{@food .@ajs.field((ngFoodItem o) => o.Category)}}</div>
-            <b>{{@food .@ajs.field((ngFoodItem o) => o.Name)}}</b>
-            <i> {{@food .@ajs.field((ngFoodItem o) => o.Description)}}</i>
-            <u> {{@food .@ajs.field((ngFoodItem o) => o.Price)}}</u>
-
-            <div style="color: green; float: right; cursor: pointer;" ng-click="@ajs.method((ngFoodController o) => o.buyClick(null)) (@food .@ajs.field((ngFoodItem o) => o.FoodId))">
-                buy
+                            <div style="clear: both;"></div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
-
+        <div style="clear: both;"></div>
     </div>
-</div>  
-<div style="clear: both;"></div>
+    <div style="clear: both;"></div>
+</div>

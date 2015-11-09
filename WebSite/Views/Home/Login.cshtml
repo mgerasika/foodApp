@@ -10,6 +10,7 @@
         var profile = googleUser.getBasicProfile();
         console.log("Email: " + profile.getEmail());
         var res = document.location.protocol + "//" + document.location.host + "/?login=" + profile.getEmail();
+        console.log(res)
         document.location.href = res;
     }
 
