@@ -14,12 +14,9 @@ namespace GoogleAppsConsoleApplication
 
         public void Update()
         {
-            Debug.Assert(false);
-            /*
             ListEntry.Custom entry = EnsureEntry(this.ColumnName);
             entry.Value = this.Value.ToString().Replace(".",",");
             _row.UpdateRow();
-             * */
         }
 
         private ListEntry.Custom EnsureEntry(string columnName)
