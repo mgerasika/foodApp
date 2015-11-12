@@ -10,10 +10,10 @@ namespace FoodApp.Controllers.api
         public const string c_sHistory = "api/history";
 
         [HttpGet]
-        [Route(c_sHistory + "/{userId}/{day}")]
-        public IList<ngHistoryEntry> GetHistory(string userId, int day) {
+        [Route(c_sHistory + "/{userId}/")]
+        public IList<ngHistoryEntry> GetHistory(string userId) {
             List<ngHistoryEntry> res = new List<ngHistoryEntry>();
-            HistoryModel model = HistoryManager.Inst.GetItem(userId);
+            ngHistoryModel model = HistoryManager.Inst.GetHistoryModelByUserId(userId);
             if (null != model) {
                 res = model.Entries;
             }

@@ -9,12 +9,7 @@ namespace FoodApp.Controllers.api
     {
         protected abstract ManagerBase<T> GetManager();
 
-        [HttpGet]
-        public IEnumerable<T> Get()
-        {
-            List<T> items = GetManager().GetItems();
-            return items;
-        }
+        
 
         /*
         [HttpGet]

@@ -1,19 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Text;
-using System.Web.Hosting;
 using System.Web.Mvc;
-using System.Web.Services.Discovery;
-using FoodApp.Client;
+using System.Web.Script.Serialization;
 using FoodApp.Common;
-using Google.API.Search;
+using Google.GData.Client;
 using GoogleAppsConsoleApplication;
 
 namespace FoodApp.Controllers
 {
     public class HomeController : Controller
     {
+        public const string EmailQueryString = "email";
         /*
         public string Test() {
             var sb = new StringBuilder();
@@ -87,19 +87,74 @@ namespace FoodApp.Controllers
          */
 
         public ActionResult Index() {
-            if (Request.QueryString["login"] != null) {
-                ApiUtils.SetUserLogin(Request.QueryString["login"]);
+            if (Request.QueryString["code"] != null) {
+                OAuth2Parameters lParams = CreateParameters();
+                lParams.AccessType = "offline";
+                lParams.AccessCode = HttpContext.Request.QueryString["code"];
+                OAuthUtil.GetAccessToken(lParams);
+                string lUrl = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json";
+                HttpWebRequest client = WebRequest.Create(lUrl) as HttpWebRequest;
+                client.Method = "GET";
+                client.Headers.Add("Authorization", "Bearer " + lParams.AccessToken);
+                try {
+                    using (HttpWebResponse response = (HttpWebResponse) client.GetResponse()) {
+                        using (Stream dataStream = response.GetResponseStream()) {
+                            using (StreamReader reader = new StreamReader(dataStream)) {
+                                if (response.StatusCode == HttpStatusCode.OK) {
+                                    JavaScriptSerializer json = new JavaScriptSerializer();
+                                    IDictionary<string, object> data =
+                                        json.Deserialize<IDictionary<string, object>>(reader.ReadToEnd());
+                                    
+                                    string email = Convert.ToString(data["email"]);
+                                    ngUserModel userModel = UsersManager.Inst.GetUserByEmail(email);
+                                    if (null == userModel) {
+                                        throw new UnauthorizedAccessException("You don't have permission to access");
+                                    }
+                                    if (string.IsNullOrEmpty(userModel.GoogleName)) {
+                                        userModel.Picture = Convert.ToString(data["picture"]);
+                                        userModel.GoogleName = Convert.ToString(data["name"]);
+                                        UsersManager.Inst.Save();
+                                    }
+
+                                    ApiUtils.SetSessionUserId(userModel.UserId);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex) {
+                }
             }
-            if (string.IsNullOrEmpty(ApiUtils.GetUserLogin())) {
+
+            if (string.IsNullOrEmpty(ApiUtils.GetSessionUserId())) {
                 return RedirectToAction("Login");
             }
             ExcelParser.Inst.Init();
+            MakeFavoriteFromHistoryManager.Inst.ParseHistoryAndMakeRate();
+
             return View();
         }
 
         public ActionResult Login() {
             return View();
-            //return LoginTool.Inst.StartLogin();
+        }
+
+        public ActionResult LoginClick() {
+            OAuth2Parameters lParams = CreateParameters();
+            string lUrl = OAuthUtil.CreateOAuth2AuthorizationUrl(lParams);
+            return Redirect(lUrl);
+        }
+
+        private static OAuth2Parameters CreateParameters() {
+            OAuth2Parameters lParams = new OAuth2Parameters();
+            lParams.ClientId = ApiUtils.CLIENT_ID;
+            lParams.ClientSecret = ApiUtils.CLIENT_SECRET;
+            lParams.RedirectUri = ApiUtils.REDIRECT_URL;
+            lParams.Scope = ApiUtils.USER_INFO_SCOPE;
+            //parameters.ApprovalPrompt = "force";
+            lParams.TokenExpiry = DateTime.MaxValue;
+            lParams.AccessType = "offline";
+            return lParams;
         }
     }
 }

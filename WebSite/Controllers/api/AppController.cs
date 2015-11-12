@@ -15,7 +15,7 @@ namespace FoodApp.Controllers.api
         [HttpPost]
         [Route("foodApp/login")]
         public bool Login(string name) {
-           ApiUtils.SetUserLogin(name);
+           ApiUtils.SetSessionUserId(name);
             return true;
         }
 
