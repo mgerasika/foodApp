@@ -21,13 +21,13 @@ namespace FoodApp.Client
 
         public void showLoading()
         {
-            var loadingEl = HtmlContext.document.getElementById("loadingIcon") as HtmlElement;
+            HtmlElement loadingEl = HtmlContext.document.getElementById("loadingIcon") as HtmlElement;
             loadingEl.style.display = "block";
         }
 
         public void prettyPrint(string txt, string id)
         {
-            var fn = HtmlContext.window.As<JsObject>()["prettyPrintEx"].As<JsFunction>();
+            JsFunction fn = HtmlContext.window.As<JsObject>()["prettyPrintEx"].As<JsFunction>();
             fn.call(HtmlContext.window, txt, id);
         }
 
@@ -38,24 +38,24 @@ namespace FoodApp.Client
         {
             HtmlContext.window.setTimeout(delegate
             {
-                var loadingEl = HtmlContext.document.getElementById("loadingIcon") as HtmlElement;
+                HtmlElement loadingEl = HtmlContext.document.getElementById("loadingIcon") as HtmlElement;
                 loadingEl.style.display = "none";
             }, 200);
         }
 
         public string getSelectedText(Window wnd)
         {
-            var text = "";
+            string text = "";
             if (wnd.As<JsObject>()["getSelection"] != null)
             {
                 text = wnd.getSelection().toString();
             }
             else
             {
-                var selection = wnd.document.As<JsObject>()["selection"].As<JsObject>();
+                JsObject selection = wnd.document.As<JsObject>()["selection"].As<JsObject>();
                 if (selection != null && (selection["type"] != "Control"))
                 {
-                    var fn = selection["createRange"].As<JsFunction>();
+                    JsFunction fn = selection["createRange"].As<JsFunction>();
                     text = fn.call().As<JsObject>()["text"].As<JsString>();
                 }
             }
@@ -67,6 +67,17 @@ namespace FoodApp.Client
         public bool isEmpty(object str)
         {
             return (null == str) || (JsContext.undefined == str) || ("" == str) || ("null" == str);
+        }
+
+        internal bool Contains(JsArray<string> ngCategories, string p) {
+            bool res = false;
+            foreach (string str in ngCategories) {
+                if (str == p) {
+                    res = true;
+                    break;
+                }
+            }
+            return res;
         }
     }
 }

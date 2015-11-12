@@ -15,49 +15,66 @@ namespace FoodApp.Client
         private ngFoodController() {
         }
 
-        public override string name {
+        public override string className
+        {
             get { return "ngFoodController"; }
         }
 
-        public override string @namespace {
+        public override string @namespace
+        {
             get { return WebApiResources.@namespace; }
         }
 
-        public JsArray<ngFoodItem> ngItems {
-            get { return _scope["ngItems"].As<JsArray<ngFoodItem>>(); }
-            set { _scope["ngItems"] = value; }
+        public JsArray<JsArray<ngFoodItem>> ngFoods
+        {
+            get { return _scope["ngFoods"].As<JsArray<JsArray<ngFoodItem>>>(); }
+            set { _scope["ngFoods"] = value; }
         }
 
-        public void buyClick(string rowId) {
-            serviceHlp.inst.SendPost("json", getUrl() +"/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek + "/" + rowId,
+        public JsArray<string> ngCategories
+        {
+            get { return _scope["ngCategories"].As<JsArray<string>>(); }
+            set { _scope["ngCategories"] = value; }
+        }
+
+        public void buyClick(int day, string rowId) {
+            serviceHlp.inst.SendPost("json",
+                FoodsController.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + rowId + "/",
                 new JsObject(),
-                delegate { ngOrderController.inst.refresh(); }, onRequestFailed);
+                delegate { ngOrderController.inst.refreshOrders(); }, onRequestFailed);
         }
 
-        protected string getUrl() {
-            return FoodsController.c_sFoodsPrefix;
-        }
+       
 
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {
             base.init(scope, http, loc, filter);
-            ngItems = new JsArray<ngFoodItem>();
+            ngFoods = new JsArray<JsArray<ngFoodItem>>();
+            ngCategories = new JsArray<string>();
 
-            eventManager.inst.subscribe(eventManager.dayOfWeekChanged, delegate(int n) { refresh(null); });
-            eventManager.inst.subscribe(eventManager.userIdChanged, delegate(int n) { refresh(null); });
+
+            //eventManager.inst.subscribe(eventManager.dayOfWeekChanged, delegate(int n) { refresh(null); });
+            //eventManager.inst.subscribe(eventManager.userIdChanged, delegate(int n) { refresh(null); });
             eventManager.inst.subscribe(eventManager.settingsLoaded, delegate(int n) {
-                refresh(delegate() {
+                refreshFoods(delegate {
                     JsFunction fn = HtmlContext.window.As<JsObject>()["initMenu"].As<JsFunction>();
-                fn.call(); 
+                    fn.call();
                 });
-
-               
             });
         }
 
-        public void refresh(JsAction complete) {
-            serviceHlp.inst.SendGet("json", getUrl() + "/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek,
+        public void refreshFoods(JsAction complete) {
+            serviceHlp.inst.SendGet("json", FoodsController.c_sFoodsPrefix + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
-                    ngItems = o.As<JsArray<ngFoodItem>>();
+                    ngFoods = o.As<JsArray<JsArray<ngFoodItem>>>();
+
+                    foreach (ngFoodItem item in ngFoods[0]) {
+                        if (!clientUtils.Inst.isEmpty(item.Category) &&
+                            !clientUtils.Inst.Contains(ngCategories, item.Category)) {
+                            ngCategories.push(item.Category);
+                        }
+                    }
+
+
                     _scope.apply();
 
                     if (null != complete) {
@@ -67,27 +84,22 @@ namespace FoodApp.Client
         }
 
         public void change() {
-            refresh(null);
+            refreshFoods(null);
         }
 
         internal ngFoodItem findItemById(string id) {
             ngFoodItem res = null;
 
-            foreach (var item in ngItems) {
-                if (item.RowId == id) {
-                    res = item;
+            foreach (JsArray<ngFoodItem> dayItems in ngFoods) {
+                foreach (ngFoodItem item in dayItems) {
+                    if (item.RowId == id) {
+                        res = item;
+                        break;
+                    }
+                }
+                if (null != res) {
                     break;
                 }
-            }
-            return res;
-        }
-
-        public JsArray<ngFoodItem> getFoodByDay(int day) {
-            JsArray<ngFoodItem> res = new JsArray<ngFoodItem>();
-            if (this.ngItems.length > 5) {
-                res.push(this.ngItems[0]);
-                res.push(this.ngItems[1]);
-                res.push(this.ngItems[2]);
             }
             return res;
         }

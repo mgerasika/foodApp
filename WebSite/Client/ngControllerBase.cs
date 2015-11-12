@@ -9,7 +9,7 @@ namespace FoodApp.Client
     public abstract class ngControllerBase : angularController
     {
 
-        public override string name
+        public override string className
         {
             get { return "ngControllerBase"; }
         }

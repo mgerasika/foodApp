@@ -21,7 +21,7 @@ namespace FoodApp.Client
         {
             url = addTimeToUrl(url);
 
-            var headers = new JsObject();
+            JsObject headers = new JsObject();
             jQuery.ajax(new AjaxSettings
             {
                 type = "GET",
@@ -57,8 +57,8 @@ namespace FoodApp.Client
         {
             url = addTimeToUrl(url);
 
-            var headers = new JsObject();
-            var ajaxSettings = new AjaxSettings
+            JsObject headers = new JsObject();
+            AjaxSettings ajaxSettings = new AjaxSettings
             {
                 type = httpMethod,
                 dataType = type,
@@ -68,7 +68,7 @@ namespace FoodApp.Client
                 success = delegate(object o, JsString s, jqXHR arg3) { success(o, s, arg3); },
                 error = delegate(jqXHR xhr, JsString s, JsError arg3) { failed(arg3, s, xhr); }
             };
-            var isString = data.As<JsObject>()["toLowerCase"] != null;
+            bool isString = data.As<JsObject>()["toLowerCase"] != null;
             if (isString)
             {
                 ajaxSettings.processData = true;

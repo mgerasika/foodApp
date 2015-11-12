@@ -15,7 +15,8 @@ namespace FoodApp.Client
         {
         }
 
-        public override string name {
+        public override string className
+        {
             get { return "ngHistoryController"; }
         }
 
@@ -24,9 +25,7 @@ namespace FoodApp.Client
             set { _scope["ngItems"] = value; }
         }
 
-        protected string getUrl() {
-            return HistoryController.c_sHistory;
-        }
+       
 
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {
             base.init(scope, http, loc, filter);
@@ -39,13 +38,13 @@ namespace FoodApp.Client
 
         public ngFoodItem getFoodItem(string id)
         {
-            var item = ngFoodController.inst.findItemById(id);
+            ngFoodItem item = ngFoodController.inst.findItemById(id);
             return item;
         }
 
         public void refresh() {
             serviceHlp.inst.SendGet("json",
-                getUrl() + "/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek,
+                 HistoryController.c_sHistory + "/" + ngAppController.inst.ngUserId + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
                     ngItems = o.As<JsArray<ngHistoryEntry>>();
                     _scope.apply();

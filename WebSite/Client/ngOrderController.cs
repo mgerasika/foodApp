@@ -14,35 +14,32 @@ namespace FoodApp.Client
         private ngOrderController() {
         }
 
-        public override string name {
+        public override string className
+        {
             get { return "ngOrderController"; }
         }
 
-        public ngOrderModel ngOrderModel {
-            get { return _scope["ngOrderModel"].As<ngOrderModel>(); }
-            set { _scope["ngOrderModel"] = value; }
+        public JsArray<JsArray<ngOrderModel>> ngOrders
+        {
+            get { return _scope["ngOrders"].As<JsArray<JsArray<ngOrderModel>>>(); }
+            set { _scope["ngOrders"] = value; }
         }
 
-        public JsArray<ngOrderModel> ngItems {
-            get { return _scope["ngItems"].As<JsArray<ngOrderModel>>(); }
-            set { _scope["ngItems"] = value; }
-        }
-
-        protected string getUrl() {
-            return OrdersController.c_sOrdersPrefix;
-        }
 
         public ngFoodItem getFoodItem(string id) {
-            var item = ngFoodController.inst.findItemById(id);
+            ngFoodItem item = ngFoodController.inst.findItemById(id);
             return item;
         }
 
-        public decimal getTotalPrice() {
+        public decimal getTotalPrice(int day) {
             decimal res = 0;
-            foreach (ngOrderModel item in ngItems) {
-                ngFoodItem food = getFoodItem(item.FoodId);
-                if (null != food) {
-                    res += (food.Price*item.Count);
+            JsArray<ngOrderModel> ngOrderModels = ngOrders[day];
+            if (ngOrderModels != null) {
+                foreach (ngOrderModel item in ngOrderModels) {
+                    ngFoodItem food = getFoodItem(item.FoodId);
+                    if (null != food) {
+                        res += (food.Price*item.Count);
+                    }
                 }
             }
             return res;
@@ -50,34 +47,23 @@ namespace FoodApp.Client
 
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {
             base.init(scope, http, loc, filter);
-            ngOrderModel = new ngOrderModel();
-            ngItems = new JsArray<ngOrderModel>();
+            ngOrders = new JsArray<JsArray<ngOrderModel>>();
 
-            eventManager.inst.subscribe(eventManager.dayOfWeekChanged, delegate(int n) { refresh(); });
-            eventManager.inst.subscribe(eventManager.settingsLoaded, delegate(int n) { refresh(); });
-            eventManager.inst.subscribe(eventManager.orderCompleted, delegate(int n) { refresh(); });
+            eventManager.inst.subscribe(eventManager.settingsLoaded, delegate(int n) { refreshOrders(); });
+            eventManager.inst.subscribe(eventManager.orderCompleted, delegate(int n) { refreshOrders(); });
         }
 
-        public void deleteOrder(string id) {
+        public void deleteOrder(int day, string id) {
             serviceHlp.inst.SendDelete("json",
-                getUrl() + "/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek + "/" + id,
-                new JsObject(), delegate { refresh(); }, onRequestFailed);
+                OrdersController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + id + "/",
+                new JsObject(), delegate { refreshOrders(); }, onRequestFailed);
         }
 
-        public void completeOrder()
-        {
-            serviceHlp.inst.SendPost("json",
-                getUrl() + "/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek ,
-                new JsObject(), delegate {
-                    eventManager.inst.fire(eventManager.orderCompleted,"");
-                }, onRequestFailed);
-        }
-
-        public void refresh() {
+        public void refreshOrders() {
             serviceHlp.inst.SendGet("json",
-                getUrl() + "/" + ngAppController.inst.ngUserId + "/" + ngAppController.inst.ngDayOfWeek,
+                OrdersController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserId,
                 delegate(object o, JsString s, jqXHR arg3) {
-                    ngItems = o.As<JsArray<ngOrderModel>>();
+                    ngOrders = o.As<JsArray<JsArray<ngOrderModel>>>();
                     _scope.apply();
                 }, onRequestFailed);
         }

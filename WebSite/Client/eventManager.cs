@@ -6,8 +6,6 @@ namespace FoodApp.Client
     [JsType(JsMode.Prototype, Filename = WebApiResources._fileClientJs)]
     public class eventManager
     {
-        public static readonly string dayOfWeekChanged = "dayOfWeekChanged";
-        public static readonly string userIdChanged = "userIdChanged";
         public static readonly string settingsLoaded = "settingsLoaded";
         public static readonly string orderCompleted = "orderCompleted";
 
