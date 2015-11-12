@@ -29,7 +29,7 @@ namespace GoogleAppsConsoleApplication
         internal void UpdateRow() {
             ExcelParser.Inst.RefreshAccessToken();
 
-            var atomEntry = _entry.Update() as ListEntry;
+            ListEntry atomEntry = _entry.Update() as ListEntry;
             _entry = atomEntry;
         }
 
@@ -40,7 +40,7 @@ namespace GoogleAppsConsoleApplication
         internal ExcelCell GetCell(string columnName) {
             ExcelCell res = null;
 
-            foreach (var cell in Cells) {
+            foreach (ExcelCell cell in Cells) {
                 if (cell.ColumnName.Equals(columnName)) {
                     res = cell;
                     break;
@@ -50,7 +50,7 @@ namespace GoogleAppsConsoleApplication
         }
 
         internal ExcelCell EnsureCell(string columnName) {
-            var res = GetCell(columnName);
+            ExcelCell res = GetCell(columnName);
             if (null == res) {
                 res = new ExcelCell(this);
                 res.ColumnName = columnName;
@@ -60,7 +60,7 @@ namespace GoogleAppsConsoleApplication
         }
 
         public string GetFoodId() {
-            var res = "";
+            string res = "";
             if (!string.IsNullOrEmpty(Category)) {
                 res = new Regex(@"\W").Replace(Category, "");
             }

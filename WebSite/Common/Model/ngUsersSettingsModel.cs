@@ -17,21 +17,9 @@ namespace FoodApp.Common
     {
         public List<ngFoodRate> FoodRates { get; set; }
 
-        public void CrateFakeFoodRate()
-        {
-            if (null == this.FoodRates) {
-                this.FoodRates = new List<ngFoodRate>();
-
-                List<ngFoodItem> ngFoodItems = FoodManager.Inst.GetFoods(1);
-                foreach (ngFoodItem foodItem in ngFoodItems) {
-                    ngFoodRate rate = new ngFoodRate();
-                    rate.FoodId = foodItem.RowId;
-                    rate.Rate = 0.3;
-                    this.FoodRates.Add(rate);
-                }
-            }
+        public ngUsersSettingsModel() {
+            this.FoodRates = new List<ngFoodRate>();
         }
-
         public string UserId { get; set; }
 
         public ngFoodRate GetFoodRateById(string foodId) {
@@ -41,6 +29,18 @@ namespace FoodApp.Common
                     res = r;
                     break;
                 }
+            }
+            return res;
+        }
+
+        internal ngFoodRate EnsureFoodRate(string foodId)
+        {
+            ngFoodRate res = GetFoodRateById(foodId);
+            if (null == res)
+            {
+                res = new ngFoodRate();
+                res.FoodId = foodId;
+                this.FoodRates.Add(res);
             }
             return res;
         }

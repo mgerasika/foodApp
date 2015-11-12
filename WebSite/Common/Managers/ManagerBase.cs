@@ -5,6 +5,7 @@ using System.IO;
 using System.Web.Hosting;
 using System.Web.Script.Serialization;
 using FoodApp.Client;
+using Newtonsoft.Json;
 
 namespace FoodApp.Common
 {
@@ -15,18 +16,17 @@ namespace FoodApp.Common
 
         protected abstract string FileName { get; }
 
-        public List<T> GetItems() {
+        protected List<T> GetItems() {
             if (null == _items) {
                 lock (_lockObj) {
                     if (null == _items) {
-                        var items = new List<T>();
-                        var str = "";
+                        List<T> items = new List<T>();
+                        string str = "";
 
                         str = LoadFromFile(str);
                         if (!string.IsNullOrEmpty(str)) {
-                            var js = new JavaScriptSerializer();
                             try {
-                                items = js.Deserialize<List<T>>(str);
+                                items = JsonConvert.DeserializeObject<List<T>>(str);
                             }
                             catch (Exception ex) {
                             }
@@ -40,10 +40,10 @@ namespace FoodApp.Common
 
         protected abstract string GetId(T obj);
 
-        public T GetItem(string id) {
+        protected T GetItem(string id) {
             T res = null;
-            var items = GetItems();
-            foreach (var item in items) {
+            List<T> items = GetItems();
+            foreach (T item in items) {
                 if (GetId(item).Equals(id)) {
                     res = item;
                 }
@@ -51,46 +51,50 @@ namespace FoodApp.Common
             return res;
         }
 
-        public void AddItemAndSave(T model) {
-            var items = GetItems();
+        public void Add(T model)
+        {
+            List<T> items = GetItems();
             items.Add(model);
-            SaveToFile();
+        }
+
+        public void AddItemAndSave(T model) {
+           Add(model);
+            Save();
         }
 
         public void EditItem(string id,T model) {
-            var oldItem = GetItem(id);
+            T oldItem = GetItem(id);
             Debug.Assert(oldItem != null);
             GetItems().Remove(oldItem);
             GetItems().Add(model);
-            SaveToFile();
+            Save();
         }
 
         public void Delete(string id) {
             T res = null;
-            var items = GetItems();
-            foreach (var error in items) {
+            List<T> items = GetItems();
+            foreach (T error in items) {
                 if (GetId(error).Equals(id)) {
                     res = error;
                 }
             }
             if (null != res) {
                 items.Remove(res);
-                SaveToFile();
+                Save();
             }
         }
 
-        public void SaveToFile() {
+        public void Save() {
             if (null != GetItems()) {
-                var js = new JavaScriptSerializer();
-                var json = js.Serialize(GetItems());
+                string json = JsonConvert.SerializeObject(GetItems(),Formatting.Indented);
 
                 lock (_lockObj) {
-                    var file = HostingEnvironment.MapPath("~/data/") + FileName;
+                    string file = HostingEnvironment.MapPath("~/data/") + FileName;
                     if (!File.Exists(file)) {
                         File.Create(file);
                     }
-                    using (var sw = new StreamWriter(file)) {
-                        var url = "";
+                    using (StreamWriter sw = new StreamWriter(file)) {
+                        string url = "";
                         sw.Write(json);
                     }
                 }
@@ -99,10 +103,10 @@ namespace FoodApp.Common
 
 
         private string LoadFromFile(string str) {
-            var file = HostingEnvironment.MapPath("~/data/") + FileName;
+            string file = HostingEnvironment.MapPath("~/data/") + FileName;
             lock (_lockObj) {
                 if (File.Exists(file)) {
-                    using (var sw = new StreamReader(file)) {
+                    using (StreamReader sw = new StreamReader(file)) {
                         str = sw.ReadToEnd();
                     }
                 }

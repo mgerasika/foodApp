@@ -4,11 +4,11 @@
 @inherits System.Web.Mvc.WebViewPage
 
 @{
-    var foods = ajs.field((ngFavoriteController o) => o.ngItems);
-    var item = "food";
-    var foodId = item + "." + ajs.field((ngFoodRate o) => o.FoodId);
-    var foodRate = item + "." + ajs.field((ngFoodRate o) => o.Rate);
-    var idx = "idx";
+    string foods = ajs.field((ngFavoriteController o) => o.ngItems);
+    string item = "food";
+    string foodId = item + "." + ajs.field((ngFoodRate o) => o.FoodId);
+    string foodRate = item + "." + ajs.field((ngFoodRate o) => o.Rate);
+    string idx = "idx";
 }
 
 <style type="text/css">
@@ -26,26 +26,49 @@
     }
 </style>
 
-<h2>Favorite</h2>
-<div ng-controller="@ajs.getClass((ngFavoriteController o) => o)">
-        <table>
-            <tr ng-repeat="@item in @foods">
-                <td>
-                    {{@ajs.method((ngFavoriteController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
-                </td>
 
-                <td>
-                    <div ng-repeat="@idx in [0.1, 0.2, 0.3, 0.4,0.5,0.6,0.7,0.8,0.9,1]" style="float: left;">
+<div class="headerCnt">
+    <div class="headerEl" id="_FavoriteHeader">
+        <div class="col-md-12 col-sm-12 col-xs-12 headerTitle">
+            <div class="alldesc">
+                <div class="col-md-6 col-sm-6 col-xs-12 centertext">
+                    <p class="all-td">How To Get In Touch</p>
+                    <h2>Favorite</h2>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
 
-                        <div ng-class="@foodRate >= @idx ? 'glyphicon glyphicon-star': 'glyphicon glyphicon-star-empty'" style="color: orange; cursor: pointer; float: left; font-size: 2em; margin: 0.2em;"
-                             ng-click="@ajs.method((ngFavoriteController o) => o.rateChanged(null, 1)) (@item,@idx)">
-                        </div>
-
-                    </div>
-                    <div style="clear: both;"></div>
-                </td>
-            </tr>
-        </table>
-
-
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+    <div class="features" id="_Favorite" >
+        <div class="container">
+            <div class="row">
+                <div ng-controller="@ajs.getClass((ngFavoriteController o) => o)">
+                    <table>
+                        <tr ng-repeat="@item in @foods">
+                            <td>
+                                {{@ajs.method((ngFavoriteController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
+                            </td>
+
+                            <td>
+                                <div ng-repeat="@idx in [0.1, 0.2, 0.3, 0.4,0.5,0.6,0.7,0.8,0.9,1]" style="float: left;">
+
+                                    <div ng-class="@foodRate >= @idx ? 'glyphicon glyphicon-star': 'glyphicon glyphicon-star-empty'" style="color: orange; cursor: pointer; float: left; font-size: 2em; margin: 0.2em;"
+                                         ng-click="@ajs.method((ngFavoriteController o) => o.rateChanged(null, 1)) (@item,@idx)">
+                                    </div>
+
+                                </div>
+                                <div style="clear: both;"></div>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>

@@ -1,25 +1,30 @@
-﻿using System.Security.Principal;
+﻿using System;
 using System.Web;
 
 namespace FoodApp.Controllers
 {
     public class ApiUtils
     {
-        public static string GetUserLogin() {
+        public const  string CLIENT_ID = "668583993597.apps.googleusercontent.com";
+        public const string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
+        public const string SCOPE = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";
+        //public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
+        public const string REDIRECT_URL = "http://localhost:15845/";
+        public static string USER_INFO_SCOPE = "https://www.googleapis.com/auth/userinfo.profile  https://www.googleapis.com/auth/userinfo.email";
+
+        public static string GetSessionUserId() {
             string res = null;
             if (null != HttpContext.Current.Session) {
-                return HttpContext.Current.Session["name"] as string;
+                return HttpContext.Current.Session["userId"] as string;
             }
             return res;
         }
 
-        public static void SetUserLogin(string val) {
-            HttpContext.Current.Session["name"] = val;
+        public static void SetSessionUserId(string val) {
+            HttpContext.Current.Session["userId"] = val;
         }
 
-        public static string GetLatinCodeFromCyrillic(string str)
-        {
-
+        public static string GetLatinCodeFromCyrillic(string str) {
             str = str.Replace("б", "b");
             str = str.Replace("Б", "B");
 
@@ -118,5 +123,26 @@ namespace FoodApp.Controllers
             str = str.Replace("'", "");
             return str;
         }
+
+        internal static bool TryDecimalParse(string str, out decimal lPrice) {
+            bool res = false;
+            if (!string.IsNullOrEmpty(str)) {
+                str = str.Replace("грн.", "");
+                str = str.Replace("грн ", "");
+                str = str.Replace(",", ".");
+
+                res = decimal.TryParse(str, out lPrice);
+            }
+            else {
+                lPrice = 0;
+            }
+            return res;
+        }
+
+        internal static bool EqualDate(DateTime dt1, DateTime dt2) {
+            return dt1.Year.Equals(dt2.Year) && dt1.Month.Equals(dt2.Month) && dt1.Day.Equals(dt2.Day);
+        }
+
+        
     }
 }

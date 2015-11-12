@@ -3,28 +3,30 @@
 @inherits System.Web.Mvc.WebViewPage
 
 @{
-    var day = Model;
-    var foods = ajs.field((ngFoodController o) => o.ngItems);
-    var food = "food";
+    object dayOfWeek = Model;
+    string categories = ajs.field((ngFoodController o) => o.ngCategories);
+    string foods = ajs.field((ngFoodController o) => o.ngFoods);
+    string food = "food";
+    string rowId = food + "." + ajs.field((ngFoodItem o) => o.RowId);
 }
 <div>
-    <div class="col-md-6 col-sm-6 col-xs-12 featurebox" ng-repeat="category in ['Салати','Перші страви','Гарніри']">
+    <div class="col-md-6 col-sm-6 col-xs-12 featurebox" ng-repeat="category in @categories">
         <div class="fh-desc">
             <h3>{{category}}</h3>
         </div>
-        <div ng-repeat="@food in @foods" style="float: left; width: 50%; ">
+        <div ng-repeat="@food in @foods | foodFilter:{'category':category,'day':@dayOfWeek}" class="foodItem">
             <div style="margin: 0.5em; padding: 1em; padding-right: 0em;">
-                <table style="width: 100%;">
+                <table style="width: 100%; ">
                     <tr>
                         <td style="background-color: #cb5750; opacity: 0.3; width: 0.5em;"></td>
                         <td style="padding-left: 0.5em;">
                             <p class="desc">{{@food .@ajs.field((ngFoodItem o) => o.Name)}}</p>
                             <div>
                                 <div style="color: #cb5750; float: left; font-size: 1.5em;">
-                                    {{@food .@ajs.field((ngFoodItem o) => o.Price)}}
+                                    {{@food .@ajs.field((ngFoodItem o) => o.Price)}}грн
                                 </div>
 
-                                <button class="btn btn-success" style="cursor: pointer; float: right;">Замовити</button>
+                                <button ng-click="@ajs.method((ngFoodController o) => o.buyClick(0,null)) (@dayOfWeek,@rowId)" class="btn btn-success" style="cursor: pointer; float: right;">Замовити</button>
                             </div>
 
                             <div style="clear: both;"></div>

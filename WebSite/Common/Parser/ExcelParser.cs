@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.EnterpriseServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using FoodApp.Controllers;
 using Google.GData.Client;
 using Google.GData.Spreadsheets;
 
@@ -10,15 +11,15 @@ namespace GoogleAppsConsoleApplication
 {
     public class ExcelParser
     {
+        //private const string c_sExcelFileName = "mymenutest";
+        private const string c_sExcelFileName = "ћеню на тиждень";
+
         private static object _lockObj = new object();
         public static ExcelParser Inst = new ExcelParser();
         private OAuth2Parameters _parameters;
         private SpreadsheetsService _SpreadsheetsService = null;
-        private readonly string CLIENT_ID = "668583993597.apps.googleusercontent.com";
-        private readonly string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
-        private readonly string REDIRECT_URI = "http://localhost:15845/Home/Test2";
-        private readonly string SCOPE = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";
-        public ExcelDoc Doc { get; set; }
+      
+          public ExcelDoc Doc { get; set; }
         public SpreadsheetsService SpreadsheetsService { get; set; }
 
         /*
@@ -65,32 +66,32 @@ namespace GoogleAppsConsoleApplication
         }
 
         public string Init() {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
             lock (_lockObj) {
                 if (null == Inst.SpreadsheetsService) {
                     _parameters = new OAuth2Parameters();
-                    _parameters.ClientId = CLIENT_ID;
-                    _parameters.ClientSecret = CLIENT_SECRET;
-                    _parameters.RedirectUri = REDIRECT_URI;
-                    _parameters.Scope = SCOPE;
+                    _parameters.ClientId = ApiUtils.CLIENT_ID;
+                    _parameters.ClientSecret = ApiUtils.CLIENT_SECRET;
+                    _parameters.Scope = ApiUtils.SCOPE;
+                    _parameters.RedirectUri = ApiUtils.REDIRECT_URL;
                     _parameters.TokenExpiry = DateTime.MaxValue;
                     _parameters.AccessType = "offline";
                     _parameters.AccessToken = "ya29.IAK0DqyyBCLy1lNBPHM4ON0m74HiPnXdJnizHC2a7w5CIDndeLPuFbJm0u34HfKpiXZ8UQ";
                     _parameters.RefreshToken = "1/jWXrc6wJ4lUmWscyc3rozkWPKdFwvha43JfPCxMksus";
 
-                    var requestFactory = new GOAuth2RequestFactory(null, "MySpreadsheetIntegration-v1", _parameters);
+                    GOAuth2RequestFactory requestFactory = new GOAuth2RequestFactory(null, "MySpreadsheetIntegration-v1", _parameters);
                     Inst.SpreadsheetsService = new SpreadsheetsService("MySpreadsheetIntegration-v1");
                     Inst.SpreadsheetsService.RequestFactory = requestFactory;
                     sb.AppendFormat("<div>access code={0}</div>", _parameters.AccessCode);
                     sb.AppendFormat("<div>access token={0}</div>", _parameters.AccessToken);
                     sb.AppendFormat("<div>refresh token={0}</div>", _parameters.RefreshToken);
 
-                    var service = Inst.SpreadsheetsService;
-                    var query = new SpreadsheetQuery();
-                    var feed = service.Query(query);
+                    SpreadsheetsService service = Inst.SpreadsheetsService;
+                    SpreadsheetQuery query = new SpreadsheetQuery();
+                    SpreadsheetFeed feed = service.Query(query);
 
-                    var entry = GetSpreadsheetEntry(feed);
+                    SpreadsheetEntry entry = GetSpreadsheetEntry(feed);
                     Debug.Assert(null != entry);
                     sb.Append("<h1>" + entry.Title.Text + "</h1>");
                     RenderWeek(entry, sb);
@@ -98,11 +99,14 @@ namespace GoogleAppsConsoleApplication
             }
             return sb.ToString();
         }
+       
 
         private SpreadsheetEntry GetSpreadsheetEntry(SpreadsheetFeed feed) {
-            var res = new SpreadsheetEntry();
+            SpreadsheetEntry res = new SpreadsheetEntry();
             foreach (SpreadsheetEntry entry in feed.Entries) {
-                if (entry.Title.Text.Equals("mymenutest")) {
+
+                if (entry.Title.Text.Equals(c_sExcelFileName))
+                {
                     res = entry;
                     break;
                 }
@@ -111,53 +115,53 @@ namespace GoogleAppsConsoleApplication
         }
 
         private WorksheetEntry GetWorksheetEntry(SpreadsheetEntry entry, int day) {
-            var wsFeed = entry.Worksheets;
+            WorksheetFeed wsFeed = entry.Worksheets;
             WorksheetEntry res = null;
-            res = wsFeed.Entries[day - 1] as WorksheetEntry;
+            res = wsFeed.Entries[day] as WorksheetEntry;
             return res;
         }
 
         private ListFeed GetListFeed(WorksheetEntry entry2) {
             // Define the URL to request the list feed of the worksheet.
-            var listFeedLink = entry2.Links.FindService(GDataSpreadsheetsNameTable.ListRel, null);
+            AtomLink listFeedLink = entry2.Links.FindService(GDataSpreadsheetsNameTable.ListRel, null);
 
             // Fetch the list feed of the worksheet.
-            var listQuery = new ListQuery(listFeedLink.HRef.ToString());
-            var listFeed = Inst.SpreadsheetsService.Query(listQuery);
+            ListQuery listQuery = new ListQuery(listFeedLink.HRef.ToString());
+            ListFeed listFeed = Inst.SpreadsheetsService.Query(listQuery);
             return listFeed;
         }
 
         private void RenderWeek(SpreadsheetEntry entry, StringBuilder sb) {
             Doc = new ExcelDoc(entry);
 
-            for (var i = 0; i < 5; ++i) {
-                var worksheetEntry = GetWorksheetEntry(entry, i + 1);
-                renderTable(worksheetEntry, sb, Inst.Doc.GetExcelTable(i + 1));
+            for (int i = 0; i < 5; ++i) {
+                WorksheetEntry worksheetEntry = GetWorksheetEntry(entry, i);
+                renderTable(worksheetEntry, sb, Inst.Doc.GetExcelTable(i));
             }
         }
 
         private void renderTable(WorksheetEntry workEntry, StringBuilder sb, ExcelTable excelTable) {
-            var listFeed = GetListFeed(workEntry);
+            ListFeed listFeed = GetListFeed(workEntry);
             excelTable.Title = workEntry.Title.Text;
 
             if (listFeed.Entries.Count > 0) {
                 sb.Append("<table border=1>");
-                for (var i = 0; i < listFeed.Entries.Count; ++i) {
-                    var row = listFeed.Entries[i] as ListEntry;
+                for (int i = 0; i < listFeed.Entries.Count; ++i) {
+                    ListEntry row = listFeed.Entries[i] as ListEntry;
                     sb.Append("<tr>");
-                    for (var j = 0; j < row.Elements.Count; ++j) {
-                        var element = row.Elements[j];
+                    for (int j = 0; j < row.Elements.Count; ++j) {
+                        ListEntry.Custom element = row.Elements[j];
                         sb.AppendFormat("<td><b>{0}</b></td>", element.Value);
                     }
                     sb.Append("</tr>");
                     break;
                 }
 
-                var category = "";
-                for (var i = 1; i < listFeed.Entries.Count; ++i) {
-                    var xmlRow = listFeed.Entries[i] as ListEntry;
+                string category = "";
+                for (int i = 1; i < listFeed.Entries.Count; ++i) {
+                    ListEntry xmlRow = listFeed.Entries[i] as ListEntry;
 
-                    var excelRow = new ExcelRow(excelTable, xmlRow);
+                    ExcelRow excelRow = new ExcelRow(excelTable, xmlRow);
                     
                     excelRow.RowId = GetXmlRowId(xmlRow);
                     excelTable.Rows.Add(excelRow);
@@ -165,15 +169,15 @@ namespace GoogleAppsConsoleApplication
                     sb.Append("<tr>");
 
 
-                    var tmpCategory = GetCategory(xmlRow);
+                    string tmpCategory = GetCategory(xmlRow);
                     if (!string.IsNullOrEmpty(tmpCategory)) {
                         category = tmpCategory.Replace(":","");
                     }
                     excelRow.Category = category;
 
-                    for (var j = 0; j < xmlRow.Elements.Count; ++j) {
-                        var element = xmlRow.Elements[j];
-                        var columnName = element.LocalName;
+                    for (int j = 0; j < xmlRow.Elements.Count; ++j) {
+                        ListEntry.Custom element = xmlRow.Elements[j];
+                        string columnName = element.LocalName;
                         sb.AppendFormat("<td>{0}<b>{1}</b></td>", element.Value, columnName);
 
                         if (columnName.Equals(ColumnNames.Description)) {
@@ -183,24 +187,23 @@ namespace GoogleAppsConsoleApplication
                             excelRow.Name = element.Value;
                         }
                         else if (columnName.Equals(ColumnNames.Price)) {
-                            var price = element.Value;
+                            string price = element.Value;
                             if (!string.IsNullOrEmpty(price)) {
-                                var str = price;
-                                str = str.Replace("грн.", "");
-                                str = str.Replace("грн ", "");
+                                string str = price;
+                              
                                 decimal lPrice = 0;
-                                if (decimal.TryParse(str, out lPrice)) {
+                                if (ApiUtils.TryDecimalParse(str, out lPrice)) {
                                     excelRow.Price = lPrice;
                                     excelRow.HasPrice = true;
                                 }
                             }
                         }
                         else {
-                            var cell = new ExcelCell(excelRow);
+                            ExcelCell cell = new ExcelCell(excelRow);
                             excelRow.Cells.Add(cell);
                             cell.ColumnName = columnName;
                             decimal lPrice = 0;
-                            if (decimal.TryParse(element.Value, out lPrice)) {
+                            if (ApiUtils.TryDecimalParse(element.Value, out lPrice)) {
                                 cell.Value = lPrice;
                             }
                         }
@@ -213,14 +216,14 @@ namespace GoogleAppsConsoleApplication
 
 
         private static string GetCategory(ListEntry xmlRow) {
-            var res = "";
+            string res = "";
 
-            var hasCaption = false;
-            for (var j = 0; j < xmlRow.Elements.Count; ++j) {
-                var element = xmlRow.Elements[j];
-                var columnName = element.LocalName;
+            bool hasCaption = false;
+            for (int j = 0; j < xmlRow.Elements.Count; ++j) {
+                ListEntry.Custom element = xmlRow.Elements[j];
+                string columnName = element.LocalName;
                 if (columnName.Equals(ColumnNames.Price)) {
-                    var val = element.Value;
+                    string val = element.Value;
                     if (!string.IsNullOrEmpty(val) && val.ToLower().Contains("ц≥на")) {
                         hasCaption = true;
                         break;
@@ -229,9 +232,9 @@ namespace GoogleAppsConsoleApplication
             }
 
             if (hasCaption) {
-                for (var j = 0; j < xmlRow.Elements.Count; ++j) {
-                    var element = xmlRow.Elements[j];
-                    var columnName = element.LocalName;
+                for (int j = 0; j < xmlRow.Elements.Count; ++j) {
+                    ListEntry.Custom element = xmlRow.Elements[j];
+                    string columnName = element.LocalName;
                     if (columnName.Equals(ColumnNames.Name)) {
                         res = element.Value;
                         break;
@@ -242,9 +245,9 @@ namespace GoogleAppsConsoleApplication
         }
 
         public void AddCellValue(int dayOfWeek, string rowId, string columnName, object value) {
-            var xmlRow = GetRow(dayOfWeek, rowId);
+            ListEntry xmlRow = GetRow(dayOfWeek, rowId);
             Debug.Assert(null != xmlRow);
-            var xmlCell = GetCell(xmlRow, columnName);
+            ListEntry.Custom xmlCell = GetCell(xmlRow, columnName);
             if (null == xmlCell) {
                 xmlCell = new ListEntry.Custom();
                 xmlCell.LocalName = columnName;
@@ -256,10 +259,10 @@ namespace GoogleAppsConsoleApplication
         }
 
         public string GetCellValue(int dayOfWeek, string rowId, string columnName) {
-            var res = "";
-            var xmlRow = GetRow(dayOfWeek, rowId);
+            string res = "";
+            ListEntry xmlRow = GetRow(dayOfWeek, rowId);
             Debug.Assert(null != xmlRow);
-            var xmlCell = GetCell(xmlRow, columnName);
+            ListEntry.Custom xmlCell = GetCell(xmlRow, columnName);
             if (null != xmlCell) {
                 res = xmlCell.Value;
             }
@@ -268,9 +271,9 @@ namespace GoogleAppsConsoleApplication
 
         private ListEntry.Custom GetCell(ListEntry xmlRow, string columnName) {
             ListEntry.Custom res = null;
-            for (var j = 0; j < xmlRow.Elements.Count; ++j) {
-                var xmlCell = xmlRow.Elements[j];
-                var cellName = xmlCell.LocalName;
+            for (int j = 0; j < xmlRow.Elements.Count; ++j) {
+                ListEntry.Custom xmlCell = xmlRow.Elements[j];
+                string cellName = xmlCell.LocalName;
                 if (cellName.Equals(columnName)) {
                     res = xmlCell;
                     break;
@@ -288,18 +291,18 @@ namespace GoogleAppsConsoleApplication
         private ListEntry GetRow(int dayOfWeek, string rowId) {
             ListEntry res = null;
 
-            var excelTable = Doc.GetExcelTable(dayOfWeek);
-            var excelRow = excelTable.GetRowById(rowId);
+            ExcelTable excelTable = Doc.GetExcelTable(dayOfWeek);
+            ExcelRow excelRow = excelTable.GetRowById(rowId);
 
-            var service = Inst.SpreadsheetsService;
-            var query = new SpreadsheetQuery();
-            var feed = service.Query(query);
+            SpreadsheetsService service = Inst.SpreadsheetsService;
+            SpreadsheetQuery query = new SpreadsheetQuery();
+            SpreadsheetFeed feed = service.Query(query);
 
-            var xmlDoc = GetSpreadsheetEntry(feed);
-            var xmlPage = GetWorksheetEntry(xmlDoc, dayOfWeek);
-            var xmlTable = GetListFeed(xmlPage);
-            for (var i = 1; i < xmlTable.Entries.Count; ++i) {
-                var xmlRow = xmlTable.Entries[i] as ListEntry;
+            SpreadsheetEntry xmlDoc = GetSpreadsheetEntry(feed);
+            WorksheetEntry xmlPage = GetWorksheetEntry(xmlDoc, dayOfWeek);
+            ListFeed xmlTable = GetListFeed(xmlPage);
+            for (int i = 1; i < xmlTable.Entries.Count; ++i) {
+                ListEntry xmlRow = xmlTable.Entries[i] as ListEntry;
                 Debug.Assert(null != xmlRow);
                 if (excelRow.RowId.Equals(GetXmlRowId(xmlRow))) {
                     res = xmlRow;

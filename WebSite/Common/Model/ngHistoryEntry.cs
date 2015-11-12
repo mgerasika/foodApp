@@ -9,6 +9,7 @@ namespace FoodApp.Common
     {
         public string FoodId { get; set; }
         public DateTime Date { get; set; }
-        public decimal Value { get; set; }
+        public decimal Count { get; set; }
+        public decimal FoodPrice { get; set; }
     }
 }

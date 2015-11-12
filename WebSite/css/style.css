@@ -201,7 +201,7 @@
 
 .features
 {
-	padding: 100px 0px 100px;
+	padding: 10px 0px 100px;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 .feature-icons
@@ -634,7 +634,6 @@ figure.effect-Beauty:hover p {
 	font-family: "Source Sans Pro",sans-serif;
 	font-weight: 400;
 	font-size: 12px;
-	text-transform: uppercase;
 	color: #888;
 }
 .btn-or
@@ -740,3 +739,22 @@ padding: 40px 0px;
 
 }
 }
+
+.headerCnt {
+    height: 7em;
+}
+.headerCnt .headerEl {
+    background-color: white; border-bottom: 2px solid rgba(0, 0, 0, 0.1); height: 7em; width: 100%; z-index: 999;
+}
+.headerCnt .headerTitle {
+    margin-left: 17%;
+}
+
+ .foodItem {
+            border: 1px solid transparent;
+            cursor: pointer;
+            float: left !important;
+            width: 50% !important;
+        }
+
+        .foodItem:hover { border: 1px solid gray; }

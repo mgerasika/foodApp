@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FoodApp.Common;
 
 namespace FoodApp
 {
@@ -17,6 +18,11 @@ namespace FoodApp
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            CultureInfo culture = new CultureInfo("en-US");
+            culture.NumberFormat.NumberDecimalSeparator = ",";
+            BackupHistoryManager backupHistoryManager = BackupHistoryManager.Inst;
+            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = culture;
         }
     }
 }

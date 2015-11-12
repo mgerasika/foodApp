@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Google.GData.Spreadsheets;
 
 namespace GoogleAppsConsoleApplication
@@ -13,14 +14,17 @@ namespace GoogleAppsConsoleApplication
 
         public void Update()
         {
-            var entry = EnsureEntry(this.ColumnName);
-            entry.Value = this.Value.ToString();
+            Debug.Assert(false);
+            /*
+            ListEntry.Custom entry = EnsureEntry(this.ColumnName);
+            entry.Value = this.Value.ToString().Replace(".",",");
             _row.UpdateRow();
+             * */
         }
 
         private ListEntry.Custom EnsureEntry(string columnName)
         {
-            var cell = GetEntry(columnName);
+            ListEntry.Custom cell = GetEntry(columnName);
             if (null == cell)
             {
                 cell = new ListEntry.Custom();
@@ -33,10 +37,10 @@ namespace GoogleAppsConsoleApplication
         private ListEntry.Custom GetEntry( string columnName) {
             ListEntry xmlRow = _row.GetEntry();
             ListEntry.Custom res = null;
-            for (var j = 0; j < xmlRow.Elements.Count; ++j)
+            for (int j = 0; j < xmlRow.Elements.Count; ++j)
             {
-                var xmlCell = xmlRow.Elements[j];
-                var cellName = xmlCell.LocalName;
+                ListEntry.Custom xmlCell = xmlRow.Elements[j];
+                string cellName = xmlCell.LocalName;
                 if (cellName.Equals(columnName))
                 {
                     res = xmlCell;

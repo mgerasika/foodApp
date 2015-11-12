@@ -24,7 +24,7 @@ namespace GoogleAppsConsoleApplication
             //parameters.ApprovalPrompt = "force";
             _parameters.TokenExpiry = DateTime.MaxValue;
             _parameters.AccessType = "offline";
-            var authorizationUrl = OAuthUtil.CreateOAuth2AuthorizationUrl(_parameters);
+            string authorizationUrl = OAuthUtil.CreateOAuth2AuthorizationUrl(_parameters);
             HttpContext.Current.Response.Redirect(authorizationUrl);
             return authorizationUrl;
         }
@@ -32,7 +32,7 @@ namespace GoogleAppsConsoleApplication
         public string EndLogin() {
             _parameters.AccessCode = HttpContext.Current.Request.QueryString["code"];
             OAuthUtil.GetAccessToken(_parameters);
-            var accessToken = _parameters.AccessToken;
+            string accessToken = _parameters.AccessToken;
 
 
             return accessToken;

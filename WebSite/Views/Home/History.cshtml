@@ -1,28 +1,45 @@
 ﻿@using angularjs
 @using FoodApp.Client
 @using FoodApp.Common
-     @inherits System.Web.Mvc.WebViewPage
+@inherits System.Web.Mvc.WebViewPage
 
 @{
-      var orders = ajs.field((ngHistoryController o) => o.ngItems);
-      var historyItem = "historyItem";
-    var foodId = historyItem + "." + ajs.field((ngHistoryEntry o) => o.FoodId);
+    string orders = ajs.field((ngHistoryController o) => o.ngItems);
+    string historyItem = "historyItem";
+    string foodId = historyItem + "." + ajs.field((ngHistoryEntry o) => o.FoodId);
 }
 
 
-<h2>History</h2>
-<div ng-controller="@ajs.getClass((ngHistoryController o) => o)">
+<div class="headerCnt">
+    <div class="headerEl" id="_HistoryHeader">
+        <div class="col-md-12 col-sm-12 col-xs-12 headerTitle">
+            <div class="alldesc">
+                <div class="col-md-6 col-sm-6 col-xs-12 centertext">
+                    <p class="all-td">How To Get In Touch</p>
+                    <h2>History</h2>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
 
-    <div ng-repeat="@historyItem in @orders">
-       
-   
-
-        <i>
-            {{@ajs.method((ngHistoryController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
-        </i> <b>{{@historyItem .@ajs.field((ngHistoryEntry o) => o.Value)}}</b>
-         <u>{{@historyItem .@ajs.field((ngHistoryEntry o) => o.Date)}}</u>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+<div class="features" id="_History">
+    <div class="container">
+        <div class="row">
+            <div ng-controller="@ajs.getClass((ngHistoryController o) => o)">
+
+                <div ng-repeat="@historyItem in @orders">
 
 
-</div> 
-
+                    <i>
+                        {{@ajs.method((ngHistoryController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
+                    </i><b>{{@historyItem .@ajs.field((ngHistoryEntry o) => o.Count)}}</b>
+                    <u>{{@historyItem .@ajs.field((ngHistoryEntry o) => o.Date)}}</u>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

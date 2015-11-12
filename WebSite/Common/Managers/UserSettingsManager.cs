@@ -12,8 +12,21 @@ namespace FoodApp.Common
             return obj.UserId;
         }
 
-        public void Save() {
-            SaveToFile();
+       
+
+        internal ngUsersSettingsModel GetUserSettings(string userId) {
+            return GetItem(userId);
+        }
+
+        internal ngUsersSettingsModel EnsureUserSettings(string userId) {
+            ngUsersSettingsModel res = GetUserSettings(userId);
+            if (null == res)
+            {
+                res = new ngUsersSettingsModel();
+                res.UserId = userId;
+                UserSettingsManager.Inst.Add(res);
+            }
+            return res;
         }
     }
 }

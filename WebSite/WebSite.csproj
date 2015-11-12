@@ -44,8 +44,20 @@
       <HintPath>..\packages\Google.Apis.1.9.3\lib\net40\Google.Apis.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.9.2.27817, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.2\lib\net40\Google.Apis.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.9.2.27820, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.2\lib\net40\Google.Apis.Auth.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Google.Apis.Core, Version=1.9.3.19379, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.Core.1.9.3\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Oauth2.v2, Version=1.9.2.97, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Oauth2.v2.1.9.2.970\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Oauth2.v2.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Google.Apis.PlatformServices, Version=1.9.3.19381, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
@@ -203,6 +215,7 @@
     <Content Include="images\unsplash009.jpg" />
     <Content Include="index.html" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\app.js" />
     <Content Include="js\jquery.countTo.js" />
     <Content Include="js\jquery.easings.min.js" />
     <Content Include="js\jquery.min.js" />
@@ -219,6 +232,9 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="data\users.json" />
+    <Content Include="data\userSettings.json" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -236,17 +252,23 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Client\clientUtils.cs" />
+    <Compile Include="Client\ngFoodFilter.cs" />
     <Compile Include="Client\ngHistoryController.cs" />
     <Compile Include="Client\ngFavoriteController.cs" />
     <Compile Include="Client\eventManager.cs" />
     <Compile Include="Client\ngAppController.cs" />
     <Compile Include="Client\ngControllerBase.cs" />
+    <Compile Include="Client\ngOrderFilter.cs" />
     <Compile Include="Client\serviceHlp.cs" />
+    <Compile Include="Common\Managers\BackupHistoryManager.cs" />
+    <Compile Include="Common\Managers\MakeFavoriteFromHistoryManager.cs" />
+    <Compile Include="Common\Managers\UsersManager.cs" />
     <Compile Include="Common\Model\ngHistoryEntry.cs" />
     <Compile Include="Common\Managers\HistoryManager.cs" />
-    <Compile Include="Common\Model\HistoryModel.cs" />
+    <Compile Include="Common\Model\ngHistoryModel.cs" />
     <Compile Include="Common\Managers\UserSettingsManager.cs" />
     <Compile Include="Common\Model\ngUsersSettingsModel.cs" />
+    <Compile Include="Common\Model\ngUserModel.cs" />
     <Compile Include="Common\Parser\ColumnNames.cs" />
     <Compile Include="Common\Parser\ExcelCell.cs" />
     <Compile Include="Common\Parser\ExcelRow.cs" />
