@@ -66,7 +66,7 @@ namespace angularjs
             if (expression is MemberExpression)
             {
                 // Reference type property or field
-                var memberExpression =
+                MemberExpression memberExpression =
                     (MemberExpression)expression;
                 return memberExpression.Member.Name;
             }
@@ -74,7 +74,7 @@ namespace angularjs
             if (expression is MethodCallExpression)
             {
                 // Reference type method
-                var methodCallExpression =
+                MethodCallExpression methodCallExpression =
                     (MethodCallExpression)expression;
                 return methodCallExpression.Method.Name;
             }
@@ -82,7 +82,7 @@ namespace angularjs
             if (expression is UnaryExpression)
             {
                 // Property, field of method returning value type
-                var unaryExpression = (UnaryExpression)expression;
+                UnaryExpression unaryExpression = (UnaryExpression)expression;
                 return field(unaryExpression);
             }
 
@@ -94,7 +94,7 @@ namespace angularjs
         {
             if (unaryExpression.Operand is MethodCallExpression)
             {
-                var methodExpression =
+                MethodCallExpression methodExpression =
                     (MethodCallExpression)unaryExpression.Operand;
                 return methodExpression.Method.Name;
             }
@@ -103,7 +103,7 @@ namespace angularjs
                 .Member.Name;
         }
 
-       
+      
     }
    
 }

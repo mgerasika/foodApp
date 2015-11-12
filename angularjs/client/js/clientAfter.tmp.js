@@ -4,5 +4,5 @@ if (typeof(angularjs) == "undefined")
     var angularjs = {};
 angularjs.ProgramAfter = function (){
 };
-angularjs.clientAppHelper.inst.after();
+angularUtils.inst.after();
 

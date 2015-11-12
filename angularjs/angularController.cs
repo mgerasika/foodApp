@@ -12,7 +12,7 @@ namespace angularjs
         public angularFilter Filter = null;
 
         protected angularController() {
-            clientAppHelper.inst.registerController(this);
+            angularUtils.inst.registerControllerType(this);
         }
 
         protected object _model {
@@ -34,14 +34,14 @@ namespace angularjs
             Filter = filter;
 
             JsObject copy = this.As<JsObject>();
-            foreach (var key in copy)
+            foreach (JsString key in copy)
             {
                 scope[key] = copy[key];
             }
 
         }
 
-        public abstract string name { get; }
+        public abstract string className { get; }
         public abstract string @namespace { get; }
     }
 }
