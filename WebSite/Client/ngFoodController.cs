@@ -37,14 +37,13 @@ namespace FoodApp.Client
             set { _scope["ngCategories"] = value; }
         }
 
-        public void buyClick(int day, string rowId) {
+        public void buyClick(int day, uint row) {
             serviceHlp.inst.SendPost("json",
-                FoodsController.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + rowId + "/",
+                FoodsController.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserEmail + "/" + day + "/" + row + "/",
                 new JsObject(),
                 delegate { ngOrderController.inst.refreshOrders(); }, onRequestFailed);
         }
 
-       
 
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {
             base.init(scope, http, loc, filter);
@@ -92,7 +91,7 @@ namespace FoodApp.Client
 
             foreach (JsArray<ngFoodItem> dayItems in ngFoods) {
                 foreach (ngFoodItem item in dayItems) {
-                    if (item.RowId == id) {
+                    if (item.FoodId == id) {
                         res = item;
                         break;
                     }
