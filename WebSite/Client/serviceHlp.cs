@@ -14,6 +14,7 @@ namespace FoodApp.Client
         {
         }
 
+       
         
 
         public void SendGet(string type, JsString url, JsAction<object, JsString, jqXHR> success,

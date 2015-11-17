@@ -6,13 +6,6 @@ using SharpKit.JavaScript;
 namespace FoodApp.Common
 {
     [JsType(JsMode.Json, Filename = WebApiResources._fileClientJs, Export = true)]
-    public class ngFoodRate : ngModelBase
-    {
-        public string FoodId { get; set; }
-        public double Rate { get; set; }
-    }
-
-    [JsType(JsMode.Json, Filename = WebApiResources._fileClientJs, Export = true)]
     public class ngUsersSettingsModel : ngModelBase
     {
         public List<ngFoodRate> FoodRates { get; set; }
@@ -20,7 +13,7 @@ namespace FoodApp.Common
         public ngUsersSettingsModel() {
             this.FoodRates = new List<ngFoodRate>();
         }
-        public string UserId { get; set; }
+        public string Email { get; set; }
 
         public ngFoodRate GetFoodRateById(string foodId) {
             ngFoodRate res = null;

@@ -13,25 +13,26 @@ namespace FoodApp.Common
         }
 
         protected override string GetId(ngUserModel obj) {
-            return obj.UserId;
+            return obj.Email;
         }
 
         public List<ngUserModel> GetUsers() {
             List<ngUserModel> res = base.GetItems();
             if (res.Count == 0) {
-                res.Add(new ngUserModel { Name = "Олена К", UserId = "_chk2m", Email = "okapij@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Олена М", UserId = "_ciyn3", Email = "omartsinets@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Ірина", UserId = "_ckd7g", Email = "ikhariv@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Андрій П", UserId = "_clrrx", Email = "apodanovskiy@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Андрій Ч", UserId = "_cyevm", Email = "achulyk@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Aндрій М", UserId = "_cztg3", Email = "amamchur@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Юра", UserId = "_d180g", Email = "haba.yura@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Володя", UserId = "_d2mkx", Email = "vpabyrivskyy@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Андрій Б", UserId = "_cssly", Email = "aborovyi@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Іван П", UserId = "_cu76f", Email = "iplotytsia@darwinsgrove.com" });
-                res.Add(new ngUserModel { Name = "Василь З", UserId = "_cvlqs", Email = "vzadorozhnyy@darwinsgrove.com" });
-                res.Add(new ngUserModel {Name = "Міша Г", UserId = "_cx0b9", Email = "mherasika@darwinsgrove.com"});
-                res.Add(new ngUserModel { Name = "Міша Г", UserId = "_cx0b9", Email = "mgerasika@gmail.com" });
+                res.Add(new ngUserModel { Name = "Олена К", Column = 5, Email = "okapij@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Олена М", Column =6, Email = "omartsinets@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Ірина", Column = 7, Email = "ikhariv@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Андрій П", Column =8, Email = "apodanovskiy@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Андрій Ч", Column = 9, Email = "achulyk@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Aндрій М", Column = 10, Email = "amamchur@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Юра", Column = 11, Email = "haba.yura@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Володя", Column = 12, Email = "vpabyrivskyy@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Андрій Б", Column = 13, Email = "aborovyi@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Іван П", Column = 14, Email = "iplotytsia@darwinsgrove.com" });
+                res.Add(new ngUserModel { Name = "Василь З", Column = 15, Email = "vzadorozhnyy@darwinsgrove.com" });
+                res.Add(new ngUserModel {Name = "Міша Г", Column = 16, Email = "mherasika@darwinsgrove.com"});
+                res.Add(new ngUserModel { Name = "Міша Г", Column = 16, Email = "mgerasika@gmail.com" });
+                res.Add(new ngUserModel { Name = "Aндрій Д", Column = 17, Email = "adombr@darwinsgrove.com" });
                 Save();
             }
             return res;

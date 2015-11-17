@@ -5,43 +5,41 @@ using SharpKit.Html;
 using SharpKit.jQuery;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Client
-{
+namespace FoodApp.Client {
     [JsType(JsMode.Prototype, Filename = WebApiResources._fileClientJs)]
-    public class ngFoodController : ngControllerBase
-    {
+    public class ngFoodController : ngControllerBase {
         public static ngFoodController inst = new ngFoodController();
 
         private ngFoodController() {
         }
 
-        public override string className
-        {
+        public override string className {
             get { return "ngFoodController"; }
         }
 
-        public override string @namespace
-        {
+        public override string @namespace {
             get { return WebApiResources.@namespace; }
         }
 
-        public JsArray<JsArray<ngFoodItem>> ngFoods
-        {
+        public JsArray<JsArray<ngFoodItem>> ngFoods {
             get { return _scope["ngFoods"].As<JsArray<JsArray<ngFoodItem>>>(); }
             set { _scope["ngFoods"] = value; }
         }
 
-        public JsArray<string> ngCategories
-        {
+        public JsArray<string> ngCategories {
             get { return _scope["ngCategories"].As<JsArray<string>>(); }
             set { _scope["ngCategories"] = value; }
         }
 
-        public void buyClick(int day, uint row) {
+        public void buyClick(int day, uint row,decimal value) {
+            clientUtils.Inst.showLoading();
             serviceHlp.inst.SendPost("json",
-                FoodsController.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserEmail + "/" + day + "/" + row + "/",
+                FoodsController.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserEmail + "/" + day + "/" + row + "/" + value + "/",
                 new JsObject(),
-                delegate { ngOrderController.inst.refreshOrders(); }, onRequestFailed);
+                delegate {
+                    clientUtils.Inst.hideLoading();
+                    ngOrderController.inst.refreshOrders();
+                }, onRequestFailed);
         }
 
 
@@ -49,7 +47,13 @@ namespace FoodApp.Client
             base.init(scope, http, loc, filter);
             ngFoods = new JsArray<JsArray<ngFoodItem>>();
             ngCategories = new JsArray<string>();
-
+            ngCategories.push(EFoodCategories.Salat);
+            ngCategories.push(EFoodCategories.PershiStravy);
+            ngCategories.push(EFoodCategories.Garniri);
+            ngCategories.push(EFoodCategories.MjasoRiba);
+            ngCategories.push(EFoodCategories.Kompleksniy);
+            ngCategories.push(EFoodCategories.Xlib);
+            ngCategories.push(EFoodCategories.Konteinery);
 
             //eventManager.inst.subscribe(eventManager.dayOfWeekChanged, delegate(int n) { refresh(null); });
             //eventManager.inst.subscribe(eventManager.userIdChanged, delegate(int n) { refresh(null); });
@@ -61,18 +65,32 @@ namespace FoodApp.Client
             });
         }
 
+        public string getPrefix(JsNumber price)
+        {
+            JsString res = price.As<JsString>();
+            if (res.indexOf(".")>0) {
+                res = res.substr(0, res.indexOf("."));
+            }
+            return res;
+        }
+
+        public string getSuffix(JsNumber price) {
+            JsString res = price.As<JsString>();
+            if (res.indexOf(".") > 0) {
+                res = res.substr(res.indexOf(".")+1);
+            }
+            else {
+                res = "";
+            }
+            return res;
+        }
+
         public void refreshFoods(JsAction complete) {
             serviceHlp.inst.SendGet("json", FoodsController.c_sFoodsPrefix + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
                     ngFoods = o.As<JsArray<JsArray<ngFoodItem>>>();
-
-                    foreach (ngFoodItem item in ngFoods[0]) {
-                        if (!clientUtils.Inst.isEmpty(item.Category) &&
-                            !clientUtils.Inst.Contains(ngCategories, item.Category)) {
-                            ngCategories.push(item.Category);
-                        }
-                    }
-
+                    
+                    
 
                     _scope.apply();
 

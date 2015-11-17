@@ -11,28 +11,28 @@ namespace FoodApp.Controllers.api
 
 
         [HttpGet]
-        [Route(c_sOrdersPrefix + "/{userId}")]
-        public IList<IList<ngOrderModel>> GetAllOrders(string userId) {
+        [Route(c_sOrdersPrefix + "/{email}/")]
+        public IList<IList<ngOrderModel>> GetAllOrders(string email) {
             List<IList<ngOrderModel>> res = new List<IList<ngOrderModel>>();
-            res.Add(OrderManager.Inst.GetOrders(userId, 0));
-            res.Add(OrderManager.Inst.GetOrders(userId, 1));
-            res.Add(OrderManager.Inst.GetOrders(userId, 2));
-            res.Add(OrderManager.Inst.GetOrders(userId, 3));
-            res.Add(OrderManager.Inst.GetOrders(userId, 4));
+            res.Add(OrderManager.Inst.GetOrders(email, 0));
+            res.Add(OrderManager.Inst.GetOrders(email, 1));
+            res.Add(OrderManager.Inst.GetOrders(email, 2));
+            res.Add(OrderManager.Inst.GetOrders(email, 3));
+            res.Add(OrderManager.Inst.GetOrders(email, 4));
             return res;
         }
 
         [HttpGet]
-        [Route(c_sOrdersPrefix + "/{userId}/{day}")]
-        public IList<ngOrderModel> GetOrders(string userId, int day) {
-            List<ngOrderModel> items = OrderManager.Inst.GetOrders(userId, day);
+        [Route(c_sOrdersPrefix + "/{email}/{day}")]
+        public IList<ngOrderModel> GetOrders(string email, int day) {
+            List<ngOrderModel> items = OrderManager.Inst.GetOrders(email, day);
             return items;
         }
 
         [HttpDelete]
-        [Route(c_sOrdersPrefix + "/{userId}/{day}/{rowId}/")]
-        public bool Delete(string userId, int day, string rowId) {
-            OrderManager.Inst.Delete(userId, day, rowId);
+        [Route(c_sOrdersPrefix + "/{email}/{day}/{foodId}/")]
+        public bool Delete(string email, int day, string foodId) {
+            OrderManager.Inst.Delete(email, day, foodId);
             return true;
         }
     }

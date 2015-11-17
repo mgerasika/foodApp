@@ -55,22 +55,23 @@ $(".quotes").quovolver({
 
 
 $(document).ready(function() {
-    $(document).on("scroll", onScroll);
+    //$(document).on("scroll", onScroll);
     $("a[href^=\"#\"]").on("click", function(e) {
         e.preventDefault();
-        $(document).off("scroll");
+        //$(document).off("scroll");
         $("a").each(function() {
             $(this).removeClass("active");
         });
         $(this).addClass("active");
         var target = this.hash;
         $target = $(target);
+        var diff = ($($(this).attr("href")).height());
         $("html, body").stop().animate({
-            'scrollTop': $target.offset().top
+            'scrollTop': $target.offset().top - diff -10
 
-        }, 500, "swing", function() {
+    }, 500, "swing", function() {
             window.location.hash = target;
-            $(document).on("scroll", onScroll);
+            //$(document).on("scroll", onScroll);
         });
     });
 });
@@ -80,14 +81,21 @@ function onScroll(event) {
     var scrollPosition = $(document).scrollTop();
     $(".nav li a").each(function() {
         var currentLink = $(this);
-        var refElement = $(currentLink.attr("href"));
+        if (currentLink.height() > 0) {
+            var str = currentLink.attr("href");
+            str = str.replace("Header", "");
+            var refElement = $(str).parent();
+            var refPosition = refElement.position().top;
+            refPosition -= $(currentLink.attr("href")).height();
+            if (refElement && refPosition && (refPosition <= scrollPosition && refPosition + refElement.height() > scrollPosition)) {
+                if (!currentLink.hasClass("active")) {
+                    $(".nav li a").removeClass("active");
+                    currentLink.addClass("active");
+                }
 
-        if (refElement && refElement.position() && (refElement.position().top <= scrollPosition && refElement.position().top + refElement.height() > scrollPosition)) {
-            $(".nav li a").removeClass("active");
-            currentLink.addClass("active");
-
-        } else {
-            currentLink.removeClass("active");
+            } else {
+                currentLink.removeClass("active");
+            }
         }
     });
 }

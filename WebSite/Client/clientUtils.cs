@@ -21,24 +21,15 @@ namespace FoodApp.Client
 
         public void showLoading()
         {
-            HtmlElement loadingEl = HtmlContext.document.getElementById("loadingIcon") as HtmlElement;
+            HtmlElement loadingEl = HtmlContext.document.getElementById("loadingDiv") as HtmlElement;
             loadingEl.style.display = "block";
         }
-
-        public void prettyPrint(string txt, string id)
-        {
-            JsFunction fn = HtmlContext.window.As<JsObject>()["prettyPrintEx"].As<JsFunction>();
-            fn.call(HtmlContext.window, txt, id);
-        }
-
-       
-
 
         public void hideLoading()
         {
             HtmlContext.window.setTimeout(delegate
             {
-                HtmlElement loadingEl = HtmlContext.document.getElementById("loadingIcon") as HtmlElement;
+                HtmlElement loadingEl = HtmlContext.document.getElementById("loadingDiv") as HtmlElement;
                 loadingEl.style.display = "none";
             }, 200);
         }

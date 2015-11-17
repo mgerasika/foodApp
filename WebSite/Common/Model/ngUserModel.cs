@@ -6,7 +6,7 @@ namespace FoodApp.Common
      [JsType(JsMode.Json, Filename = WebApiResources._fileClientJs, Export = true)]
     public class ngUserModel : ngModelBase
     {
-        public string UserId { get; set; }
+        public uint Column { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
 
@@ -16,7 +16,6 @@ namespace FoodApp.Common
 
 
         public string Picture { get; set; }
-
         public string GoogleName { get; set; }
     }
 }

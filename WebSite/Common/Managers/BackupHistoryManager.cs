@@ -20,7 +20,7 @@ namespace FoodApp.Common
 
         private void _timer_Elapsed(object sender, ElapsedEventArgs e) {
             //start sunday
-            if (DateTime.Now.Hour == 13) {
+            if (DateTime.Now.Hour == 12) {
                 DateTime dt = DateTime.Now;
                 if (!HistoryManager.Inst.HasAnyEntry(dt)) {
                     int dayOfWeek = (int) dt.DayOfWeek - 1;
@@ -32,7 +32,7 @@ namespace FoodApp.Common
         private static void CreateHistoryByDay(int dayOfWeek) {
             bool hasChanges = false;
             foreach (ngUserModel user in UsersManager.Inst.GetUsers()) {
-                List<ngOrderModel> orders = OrderManager.Inst.GetOrders(user.UserId, dayOfWeek);
+                List<ngOrderModel> orders = OrderManager.Inst.GetOrders(user.Email, dayOfWeek);
 
                 if (orders.Count > 0) {
                     AddHistoryEntryToModel(user, orders, dayOfWeek);
@@ -45,11 +45,11 @@ namespace FoodApp.Common
         }
 
         private static void AddHistoryEntryToModel(ngUserModel ngUser, List<ngOrderModel> orders, int dayOfWeek) {
-            ngHistoryModel model = HistoryManager.Inst.GetHistoryModelByUserId(ngUser.UserId);
+            ngHistoryModel model = HistoryManager.Inst.GetHistoryModelByEmail(ngUser.Email);
             if (null == model) {
                 model = new ngHistoryModel();
                 HistoryManager.Inst.AddItemAndSave(model);
-                model.UserId = ngUser.UserId;
+                model.Email = ngUser.Email;
                 model.Entries = new List<ngHistoryEntry>();
             }
 

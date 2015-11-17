@@ -9,21 +9,21 @@ namespace FoodApp.Common
         }
 
         protected override string GetId(ngUsersSettingsModel obj) {
-            return obj.UserId;
+            return obj.Email;
         }
 
        
 
-        internal ngUsersSettingsModel GetUserSettings(string userId) {
-            return GetItem(userId);
+        internal ngUsersSettingsModel GetUserSettings(string email) {
+            return GetItem(email);
         }
 
-        internal ngUsersSettingsModel EnsureUserSettings(string userId) {
-            ngUsersSettingsModel res = GetUserSettings(userId);
+        internal ngUsersSettingsModel EnsureUserSettings(string email) {
+            ngUsersSettingsModel res = GetUserSettings(email);
             if (null == res)
             {
                 res = new ngUsersSettingsModel();
-                res.UserId = userId;
+                res.Email = email;
                 UserSettingsManager.Inst.Add(res);
             }
             return res;

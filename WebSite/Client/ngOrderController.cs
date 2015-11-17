@@ -54,16 +54,26 @@ namespace FoodApp.Client
         }
 
         public void deleteOrder(int day, string row) {
+            clientUtils.Inst.showLoading();
             serviceHlp.inst.SendDelete("json",
                 OrdersController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserEmail + "/" + day + "/" + row + "/",
-                new JsObject(), delegate { refreshOrders(); }, onRequestFailed);
+                new JsObject(), delegate {
+                    clientUtils.Inst.hideLoading();
+                    refreshOrders();
+                }, onRequestFailed);
         }
 
         public void refreshOrders() {
             serviceHlp.inst.SendGet("json",
                 OrdersController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserEmail + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
-                    ngOrders = o.As<JsArray<JsArray<ngOrderModel>>>();
+                    JsArray<JsArray<ngOrderModel>> tmp = o.As<JsArray<JsArray<ngOrderModel>>>();
+                    while (ngOrders.length>0) {
+                        ngOrders.pop();
+                    }
+                    foreach (JsArray<ngOrderModel> obj in tmp) {
+                        ngOrders.push(obj);
+                    }
                     _scope.apply();
                 }, onRequestFailed);
         }

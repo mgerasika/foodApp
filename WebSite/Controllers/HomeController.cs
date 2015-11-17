@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Web.Mvc;
@@ -9,10 +8,8 @@ using FoodApp.Common;
 using Google.GData.Client;
 using GoogleAppsConsoleApplication;
 
-namespace FoodApp.Controllers
-{
-    public class HomeController : Controller
-    {
+namespace FoodApp.Controllers {
+    public class HomeController : Controller {
         public const string EmailQueryString = "email";
         /*
         public string Test() {
@@ -104,7 +101,7 @@ namespace FoodApp.Controllers
                                     JavaScriptSerializer json = new JavaScriptSerializer();
                                     IDictionary<string, object> data =
                                         json.Deserialize<IDictionary<string, object>>(reader.ReadToEnd());
-                                    
+
                                     string email = Convert.ToString(data["email"]);
                                     ngUserModel userModel = UsersManager.Inst.GetUserByEmail(email);
                                     if (null == userModel) {
@@ -116,7 +113,7 @@ namespace FoodApp.Controllers
                                         UsersManager.Inst.Save();
                                     }
 
-                                    ApiUtils.SetSessionUserId(userModel.UserId);
+                                    ApiUtils.SetSessionEmail(userModel.Email);
                                 }
                             }
                         }
@@ -125,8 +122,7 @@ namespace FoodApp.Controllers
                 catch (Exception ex) {
                 }
             }
-
-            if (string.IsNullOrEmpty(ApiUtils.GetSessionUserId())) {
+            if (string.IsNullOrEmpty(ApiUtils.GetSessionEmail())) {
                 return RedirectToAction("Login");
             }
             ExcelParser.Inst.Init();

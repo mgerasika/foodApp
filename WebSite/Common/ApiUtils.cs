@@ -5,23 +5,27 @@ namespace FoodApp.Controllers
 {
     public class ApiUtils
     {
+        public const string c_sExcelFileName = "mykhaylo_test";
+        //public const string c_sExcelFileName = "Меню на тиждень";
+        //public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
+        public const string REDIRECT_URL = "http://localhost:15845/";
+   
         public const  string CLIENT_ID = "668583993597.apps.googleusercontent.com";
         public const string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
         public const string SCOPE = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";
-        //public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
-        public const string REDIRECT_URL = "http://localhost:15845/";
+     
         public static string USER_INFO_SCOPE = "https://www.googleapis.com/auth/userinfo.profile  https://www.googleapis.com/auth/userinfo.email";
 
-        public static string GetSessionUserId() {
+        public static string GetSessionEmail() {
             string res = null;
             if (null != HttpContext.Current.Session) {
-                return HttpContext.Current.Session["userId"] as string;
+                return HttpContext.Current.Session["email"] as string;
             }
             return res;
         }
 
-        public static void SetSessionUserId(string val) {
-            HttpContext.Current.Session["userId"] = val;
+        public static void SetSessionEmail(string val) {
+            HttpContext.Current.Session["email"] = val;
         }
 
         public static string GetLatinCodeFromCyrillic(string str) {

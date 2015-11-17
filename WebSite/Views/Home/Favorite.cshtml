@@ -27,30 +27,31 @@
 </style>
 
 
-<div class="headerCnt">
-    <div class="headerEl" id="_FavoriteHeader">
-        <div class="col-md-12 col-sm-12 col-xs-12 headerTitle">
-            <div class="alldesc">
-                <div class="col-md-6 col-sm-6 col-xs-12 centertext">
-                    <p class="all-td">How To Get In Touch</p>
-                    <h2>Favorite</h2>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
+<div style="display: none;">
+    <div class="headerCnt">
+        <div class="headerEl" id="_FavoriteHeader">
+            <div class="col-md-12 col-sm-12 col-xs-12 headerTitle">
+                <div class="alldesc">
+                    <div class="col-md-6 col-sm-6 col-xs-12 centertext">
+                        <p class="all-td">How To Get In Touch</p>
+                        <h2>Favorite</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-    <div class="features" id="_Favorite" >
+    <div class="features" id="_Favorite">
         <div class="container">
             <div class="row">
                 <div ng-controller="@ajs.getClass((ngFavoriteController o) => o)">
                     <table>
                         <tr ng-repeat="@item in @foods">
                             <td>
-                                {{@ajs.method((ngFavoriteController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
+                                {{@ajs.method((ngFavoriteController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.FoodId)}}
                             </td>
 
                             <td>
@@ -72,3 +73,4 @@
         </div>
 
     </div>
+</div>

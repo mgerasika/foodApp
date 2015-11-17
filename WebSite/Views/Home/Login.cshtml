@@ -1,4 +1,4 @@
-﻿@using FoodApp.Controllers
+﻿@using System.Web.Mvc.Html
 @inherits System.Web.Mvc.WebViewPage
 @{
     Layout = "~/Views/Layout1.cshtml";
@@ -6,6 +6,18 @@
 
 
 
+ <div class="container-fluid banner text-center" id="banner">
+    <div class="row">
+        <div class="col-md-12 line">
+            <div class="tablebox">
+                <div class="banner-text" id="bannertext">
+                    <h1 class="hostyle" id="heads">Гам-Гам</h1>
+                    <p class="pstyle">For DarwinsGrove</p>
+                  
+                    <a class="pstyle" href="LoginClick" style="color: white; cursor: pointer;">  login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-<a href="LoginClick">My login</a>

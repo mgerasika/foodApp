@@ -5,24 +5,13 @@ namespace GoogleAppsConsoleApplication
 {
     public class ExcelDoc
     {
-        public List<ExcelTable> Tables = new List<ExcelTable>(); 
-        private SpreadsheetEntry _entry;
+        private readonly SpreadsheetEntry _entry;
+        public List<ExcelTable> Tables = new List<ExcelTable>();
+
         public ExcelDoc(SpreadsheetEntry entry) {
             _entry = entry;
-
-            for (int i = 0; i < 5; ++i) {
-                ExcelTable tbl = new ExcelTable(i, GetWorksheetEntry(i+1));
-                Tables.Add(tbl);
-            }
         }
 
-        private WorksheetEntry GetWorksheetEntry(int day)
-        {
-            WorksheetFeed wsFeed = _entry.Worksheets;
-            WorksheetEntry res = null;
-            res = wsFeed.Entries[day] as WorksheetEntry;
-            return res;
-        }
 
         public ExcelTable GetExcelTable(int day) {
             ExcelTable res = null;
@@ -33,6 +22,24 @@ namespace GoogleAppsConsoleApplication
                 }
             }
             return res;
+        }
+
+        private WorksheetEntry GetWorksheetEntry(SpreadsheetEntry entry, int day) {
+            WorksheetFeed wsFeed = entry.Worksheets;
+            WorksheetEntry res = null;
+            res = wsFeed.Entries[day] as WorksheetEntry;
+            return res;
+        }
+
+        public void Parse() {
+            for (int i = 0; i < 5; ++i) {
+                WorksheetEntry worksheetEntry = GetWorksheetEntry(_entry, i);
+
+                ExcelTable table = new ExcelTable(i,this, worksheetEntry);
+                table.Title = worksheetEntry.Title.Text;
+                ExcelParser.Inst.Doc.Tables.Add(table);
+                table.Parse();
+            }
         }
     }
 }

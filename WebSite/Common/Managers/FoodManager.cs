@@ -4,10 +4,8 @@ using System.Diagnostics;
 using FoodApp.Client;
 using GoogleAppsConsoleApplication;
 
-namespace FoodApp.Common
-{
-    public class FoodManager
-    {
+namespace FoodApp.Common {
+    public class FoodManager {
         public static FoodManager Inst = new FoodManager();
 
         public List<ngFoodItem> GetFoods(int day) {
@@ -20,9 +18,9 @@ namespace FoodApp.Common
                     Debug.Assert(!string.IsNullOrEmpty(row.Name));
                     item.Name = row.Name;
                     item.Description = row.Description;
-                    item.Category = row.Category;
+                    item.Category = EFoodCategories.GetCategory(row);
+                    item.IsByWeight = row.IsByWeight();
                     item.Price = row.Price;
-                    item.RowId = row.RowId;
                     item.FoodId = row.GetFoodId();
                     res.Add(item);
                 }
@@ -60,7 +58,7 @@ namespace FoodApp.Common
             ngFoodItem res = null;
             List<ngFoodItem> foods = GetFoods(dayOfWeek);
             foreach (ngFoodItem item in foods) {
-                if (item.RowId.Equals(foodId)) {
+                if (item.FoodId.Equals(foodId)) {
                     res = item;
                     break;
                 }

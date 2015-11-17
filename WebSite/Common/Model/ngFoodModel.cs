@@ -12,9 +12,7 @@ namespace FoodApp.Client
         public string Description { get; set; }
         public string Category { get; set; }
         public decimal Price { get; set; }
-        public string RowId { get; set; }
         public string FoodId { get; set; }
-
-
+        public bool IsByWeight { get; set; }
     }
 }

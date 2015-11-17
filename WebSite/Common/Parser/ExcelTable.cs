@@ -5,20 +5,37 @@ namespace GoogleAppsConsoleApplication
 {
     public class ExcelTable
     {
-        private WorksheetEntry _entry;
+        private readonly WorksheetEntry _entry;
         public List<ExcelRow> Rows = new List<ExcelRow>();
+        private ExcelDoc _doc;
+        private CellFeed _cellFeed;
 
-        public string Title { get; set; }
 
-        public ExcelTable(int day, WorksheetEntry entry) {
+        public CellFeed GetCellFeed() {
+            return _cellFeed;
+        }
+
+        public ExcelDoc GetParent() {
+            return _doc;
+        }
+
+        public ExcelTable(int day,ExcelDoc doc, WorksheetEntry entry) {
             _entry = entry;
+            _doc = doc;
             DayOfWeek = day;
         }
 
-        internal ExcelRow GetRowById(string rowId) {
+        public string Title { get; set; }
+        public int DayOfWeek { get; set; }
+
+        public WorksheetEntry GetEntry() {
+            return _entry;
+        }
+
+        public ExcelRow GetRowByFoodId(string foodId) {
             ExcelRow res = null;
             foreach (ExcelRow row in Rows) {
-                if (row.RowId.Equals(rowId)) {
+                if (row.GetFoodId().Equals(foodId)) {
                     res = row;
                     break;
                 }
@@ -26,6 +43,29 @@ namespace GoogleAppsConsoleApplication
             return res;
         }
 
-        public int DayOfWeek { get; set; }
+
+        public void Parse() {
+            Title = _entry.Title.Text;
+
+            CellQuery cellQuery = new CellQuery(_entry.CellFeedLink);
+            CellFeed cellFeed = ExcelParser.Inst.SpreadsheetsService.Query(cellQuery);
+            _cellFeed = cellFeed;
+
+            Dictionary<uint, List<CellEntry>> groupRows = new Dictionary<uint, List<CellEntry>>();
+            foreach (CellEntry cell in cellFeed.Entries) {
+                if (!groupRows.ContainsKey(cell.Row)) {
+                    groupRows[cell.Row] = new List<CellEntry>();
+                }
+                groupRows[cell.Row].Add(cell);
+            }
+
+            string category = "";
+            foreach (KeyValuePair<uint, List<CellEntry>> row in groupRows) {
+                ExcelRow excelRow = new ExcelRow(this,row.Key, row.Value);
+                Rows.Add(excelRow);
+
+                excelRow.Parse(ref category);
+            }
+        }
     }
 }

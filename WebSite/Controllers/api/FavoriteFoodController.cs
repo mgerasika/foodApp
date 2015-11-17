@@ -10,12 +10,12 @@ namespace FoodApp.Controllers.api
         public const string c_sGetFavorite = "api/favorite";
 
         [HttpGet]
-        [Route(c_sGetFavorite + "/{userId}/")]
-        public IList<ngFoodRate> GetFavorite(string userId) {
-            ngUsersSettingsModel settings = UserSettingsManager.Inst.GetUserSettings(userId);
+        [Route(c_sGetFavorite + "/{email}/")]
+        public IList<ngFoodRate> GetFavorite(string email) {
+            ngUsersSettingsModel settings = UserSettingsManager.Inst.GetUserSettings(email);
             if (null == settings) {
                 settings = new ngUsersSettingsModel();
-                settings.UserId = userId;
+                settings.Email = email;
 
                 UserSettingsManager.Inst.AddItemAndSave(settings);
             }
@@ -24,9 +24,9 @@ namespace FoodApp.Controllers.api
         }
 
         [HttpPost]
-        [Route(c_sGetFavorite + "/{userId}/{foodId}/{rate}/")]
-        public bool ChangeRate(string userId, string foodId, double rate) {
-            ngUsersSettingsModel settings = UserSettingsManager.Inst.GetUserSettings(userId);
+        [Route(c_sGetFavorite + "/{email}/{foodId}/{rate}/")]
+        public bool ChangeRate(string email, string foodId, double rate) {
+            ngUsersSettingsModel settings = UserSettingsManager.Inst.GetUserSettings(email);
             Debug.Assert(null != settings);
             ngFoodRate rateObj = settings.GetFoodRateById(foodId);
             Debug.Assert(null != rateObj);

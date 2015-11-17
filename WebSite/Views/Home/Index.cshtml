@@ -8,22 +8,10 @@
 }
 
 
-<input type="hidden" value="@ApiUtils.GetSessionUserId()" id="userId"/>
-<div class="container-fluid banner text-center" id="banner">
-    <div class="row">
-        <div class="col-md-12 line">
-            <div class="tablebox">
-                <div class="banner-text" id="bannertext">
-                    <h1 class="hostyle" id="heads">Гам-Гам</h1>
-                    <p class="pstyle">For DarwinsGrove</p>
-                    <a href="#_HeaderMonday" class="page-scroll arrow">
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<input type="hidden" value="@ApiUtils.GetSessionEmail()" id="userEmail"/>
+
+
+<div>
 <div class="navbar menubar" id="menu">
     <div class="container">
         <div class="navbar-header">
@@ -35,9 +23,7 @@
         <div>
             <nav class="collapse navbar-collapse" id="myNavbar" role="navigation">
                 <ul class="nav navbar-nav navbar-right navstyle">
-                    <li>
-                        <a href="#banner" class="page-scroll active">Home</a>
-                    </li>
+                   
                     <li>
                         <a href="#_MondayHeader" class="page-scroll">Monday</a>
                     </li>
@@ -53,10 +39,10 @@
                     <li>
                         <a href="#_FridayHeader" class="page-scroll">Friday</a>
                     </li>
-                    <li>
+                    <li style="display: none;">
                         <a href="#_FavoriteHeader" class="page-scroll">Favorite</a>
                     </li>
-                    <li>
+                    <li style="display: none;">
                         <a href="#_HistoryHeader" class="page-scroll">History</a>
                     </li>
                     <li>
@@ -68,54 +54,55 @@
         </div>
     </div>
 </div>
+  </div>
 
+<div ng-controller="@ajs.getClass((ngAppController o) => o)">
+    <div ng-controller="@ajs.getClass((ngOrderController o) => o)">
+        <div ng-controller="@ajs.getClass((ngFoodController o) => o)">
 
-<div ng-controller="@ajs.getClass((ngOrderController o) => o)">
-    <div ng-controller="@ajs.getClass((ngFoodController o) => o)">
+            <div ng-repeat="day in [{'idx':0,'name':'Monday'}, {'idx':1,'name':'Tuesday'}, {'idx':2,'name':'Wednesday'}, {'idx':3,'name':'Thursday'}, {'idx':4,'name':'Friday'}]">
 
-        <div ng-repeat="day in [{'idx':0,'name':'Monday'}, {'idx':1,'name':'Tuesday'}, {'idx':2,'name':'Wednesday'}, {'idx':3,'name':'Thursday'}, {'idx':4,'name':'Friday'}]">
-
-            <div class="headerCnt">
-                <div id="_{{day.name}}Header" class="headerEl">
-                    <div class="col-md-12 col-sm-12 col-xs-12 headerTitle">
-                        <div class="alldesc">
-                            <div class="col-md-6 col-sm-6 col-xs-12 centertext">
-                                <p class="all-td">What's Coming New</p>
-                                <h2>{{day.name}}</h2>
+                <div class="headerCnt">
+                    <div id="_{{day.name}}Header" class="headerEl">
+                        <div class="col-md-12 col-sm-12 col-xs-12 headerTitle">
+                            <div class="alldesc">
+                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="width: 30%;">
+                                    <p class="all-td">&nbsp;</p>
+                                    <h2>{{day.name}}</h2>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
+                                    <p class="desc">
+                                        @{ Html.RenderPartial("Orders", "day.idx"); }
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <p class="desc">
-                                    @{ Html.RenderPartial("Orders", "day.idx"); }
-                                </p>
-                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+
+                <div class="features" id="_{{day.name}}">
+                    <div class="container">
+                        <div class="row">
+                            @{ Html.RenderPartial("Foods", "day.idx"); }
                         </div>
                     </div>
                     <div style="clear: both;"></div>
                 </div>
-            </div>
-
-            <div class="features" id="_{{day.name}}">
-                <div class="container">
-                    <div class="row">
-                        @{ Html.RenderPartial("Foods", "day.idx"); }
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
             </div>
         </div>
     </div>
 </div>
 
 
-@{ Html.RenderPartial("App"); }
 
 
-@{ Html.RenderPartial("Favorite"); }
+
+    @{ Html.RenderPartial("Favorite"); }
+    @{ Html.RenderPartial("History"); }
 
 
-@{ Html.RenderPartial("History"); }
-
-
+<div>
 <div class="address" id="contact">
     <div class="container">
         <div class="row">
@@ -132,4 +119,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>  </div>

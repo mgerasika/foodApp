@@ -6,25 +6,23 @@
     object dayOfWeek = Model;
     string orders = ajs.field((ngOrderController o) => o.ngOrders);
     string orderItem = "orderItem";
-    string foodId = orderItem + "." + ajs.field((ngOrderModel o) => o.FoodId);
+    string row = orderItem + "." + ajs.field((ngOrderModel o) => o.FoodId);
 }
 
 
 <p>
-    Total: <i>
+    Ціна замовлення: <i>
         {{@ajs.method((ngOrderController o) => o.getTotalPrice(0)) (@dayOfWeek) }}грн
     </i>
 </p>
-
-<div ng-repeat="@orderItem in @orders | orderFilter:{'day':@dayOfWeek}" style="float: left;">
-    <div id="{{@orderItem .@ajs.field((ngOrderModel o) => o.FoodId)}}">
-        <i>
-            {{@ajs.method((ngOrderController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
-        </i> 
-        <b> {{@orderItem .@ajs.field((ngOrderModel o) => o.Count)}}</b>
-        <div style="color: red; cursor: pointer; float: left;" ng-click="@ajs.method((ngOrderController o) => o.deleteOrder(0, null)) (@dayOfWeek,@orderItem .@ajs.field((ngOrderModel o) => o.FoodId))">
-            delete
+<div style="width: 100%;">
+    <div ng-repeat="@orderItem in @orders | orderFilter:{'day':@dayOfWeek}" style="float: left; margin-right: 1em; padding: 0.3em; padding-left: 0px;">
+        <div id="{{@orderItem .@ajs.field((ngOrderModel o) => o.FoodId)}}">
+             <div style="background-color: #cb5750; opacity: 0.3; width: 0.5em; float: left; margin-right: 0.3em;">&nbsp;</div>
+            <div style="float: left;">{{@ajs.method((ngOrderController o) => o.getFoodItem(null)) (@row).@ajs.field((ngFoodItem o) => o.Name)}}</div>
+            <div style="float: left;">&nbsp;{{@orderItem .@ajs.field((ngOrderModel o) => o.Count)}}</div>
+            <div class="glyphicon glyphicon-remove" style="color: #cb5750; opacity: 0.3; font-weight: normal; cursor: pointer; float: left; line-height: 1.35em;" ng-click="@ajs.method((ngOrderController o) => o.deleteOrder(0, null)) (@dayOfWeek,@orderItem .@ajs.field((ngOrderModel o) => o.FoodId))">
+            </div>
         </div>
     </div>
-
 </div>

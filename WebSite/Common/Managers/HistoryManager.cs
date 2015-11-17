@@ -12,20 +12,20 @@ namespace FoodApp.Common
         }
 
         protected override string GetId(ngHistoryModel obj) {
-            return obj.UserId;
+            return obj.Email;
         }
 
         public void CreateFake() {
         }
 
-        internal ngHistoryModel GetHistoryModelByUserId(string userId) {
-            return GetItem(userId);
+        internal ngHistoryModel GetHistoryModelByEmail(string email) {
+            return GetItem(email);
         }
 
         internal bool HasAnyEntry(DateTime dt) {
             bool res = false;
             foreach (ngUserModel users in UsersManager.Inst.GetUsers()) {
-                ngHistoryModel model = GetHistoryModelByUserId(users.UserId);
+                ngHistoryModel model = GetHistoryModelByEmail(users.Email);
                 if (null != model) {
                     var entries = model.GetEntriesByDate(dt);
                     if (entries.Count > 0) {

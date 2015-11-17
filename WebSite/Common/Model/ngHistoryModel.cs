@@ -14,7 +14,7 @@ namespace FoodApp.Common
             Entries = new List<ngHistoryEntry>();
         }
 
-        public string UserId { get; set; }
+        public string Email { get; set; }
         public List<ngHistoryEntry> Entries { get; set; }
 
 
