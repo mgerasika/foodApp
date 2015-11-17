@@ -7,15 +7,22 @@
     string categories = ajs.field((ngFoodController o) => o.ngCategories);
     string foods = ajs.field((ngFoodController o) => o.ngFoods);
     string food = "food";
-    string rowId = food + "." + ajs.field((ngFoodItem o) => o.RowId);
+    string row = food + "." + ajs.field((ngFoodItem o) => o.FoodId);
+    string isByWeight = food + "." + ajs.field((ngFoodItem o) => o.IsByWeight);
+    string price = food + "." + ajs.field((ngFoodItem o) => o.Price);
+
+    string prefix = ajs.method((ngFoodController o) => o.getPrefix(0)) + "(" + price + ")";
+    string sufix = ajs.method((ngFoodController o) => o.getSuffix(0)) + "(" + price + ")";
 }
+
+
 <div>
-    <div class="col-md-6 col-sm-6 col-xs-12 featurebox" ng-repeat="category in @categories">
-        <div class="fh-desc">
+    <div class="featurebox" ng-repeat="category in @categories">
+        <div style="margin-left: 1.5em;">
             <h3>{{category}}</h3>
         </div>
         <div ng-repeat="@food in @foods | foodFilter:{'category':category,'day':@dayOfWeek}" class="foodItem">
-            <div style="margin: 0.5em; padding: 1em; padding-right: 0em;">
+            <div style="margin: 0.5em; padding: 1em; padding-right: 0em; padding-left: 0em;">
                 <table style="width: 100%; ">
                     <tr>
                         <td style="background-color: #cb5750; opacity: 0.3; width: 0.5em;"></td>
@@ -23,10 +30,18 @@
                             <p class="desc">{{@food .@ajs.field((ngFoodItem o) => o.Name)}}</p>
                             <div>
                                 <div style="color: #cb5750; float: left; font-size: 1.5em;">
-                                    {{@food .@ajs.field((ngFoodItem o) => o.Price)}}грн
+
+                                   
                                 </div>
 
-                                <button ng-click="@ajs.method((ngFoodController o) => o.buyClick(0,null)) (@dayOfWeek,@rowId)" class="btn btn-success" style="cursor: pointer; float: right;">Замовити</button>
+                                <div ng-show="@isByWeight" style="float: right;">
+                                    <button ng-click="@ajs.method((ngFoodController o) => o.buyClick(0,0,0)) (@dayOfWeek,@row,2)" class="btn btn-success foodBtn" style="cursor: pointer; float: right;">+2</button>
+                                    <button ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, 0, 0)) (@dayOfWeek,@row,1.5)" class="btn btn-success foodBtn" style="cursor: pointer; float: right;">+1,5</button>
+                                    <button ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, 0, 0)) (@dayOfWeek,@row,1)" class="btn btn-success foodBtn" style="cursor: pointer; float: right;">+1</button>
+                                </div>
+                                <div ng-hide="@isByWeight">
+                                      <button ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, 0, 0)) (@dayOfWeek,@row,1)" class="btn btn-success foodBtn" style="cursor: pointer; float: right;">+1</button>
+                                </div>
                             </div>
 
                             <div style="clear: both;"></div>
