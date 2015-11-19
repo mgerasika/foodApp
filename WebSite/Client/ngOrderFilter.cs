@@ -37,8 +37,16 @@ namespace FoodApp.Client
             JsArray<ngOrderModel> res = new JsArray<ngOrderModel>();
             int day = arg["day"].As<int>();
             JsArray<JsArray<ngOrderModel>> allOrders = obj.As<JsArray<JsArray<ngOrderModel>>>();
-            res= allOrders[day];
-           
+            JsArray<ngOrderModel> tmp = allOrders[day];
+            if (tmp != null && tmp.length > 0) {
+                foreach (ngOrderModel order in tmp) {
+                    ngFoodItem foodItem = ngFoodController.inst.findFoodById(order.FoodId);
+                    if (!foodItem.isContainer) {
+                        res.Add(order);
+                    }
+                }
+            }
+
             return res;
         }
     }

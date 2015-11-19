@@ -70,5 +70,11 @@ namespace FoodApp.Client
             }
             return res;
         }
+
+        internal decimal fixNumber(decimal p) {
+            JsNumber jsNumber = JsContext.parseFloat(p.As<JsString>()).As<JsNumber>();
+            string tmp = jsNumber.toPrecision(5).As<string>();
+            return JsContext.parseFloat(tmp).As<decimal>();
+        }
     }
 }

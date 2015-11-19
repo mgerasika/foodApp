@@ -38,7 +38,7 @@ namespace FoodApp.Client
 
         public ngFoodItem getFoodItem(string id)
         {
-            ngFoodItem item = ngFoodController.inst.findItemById(id);
+            ngFoodItem item = ngFoodController.inst.findFoodById(id);
             return item;
         }
 

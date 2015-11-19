@@ -12,61 +12,60 @@
 
 
 <div>
-<div class="navbar menubar" id="menu">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
-                <span class="glyphicon glyphicon-align-justify"></span>
-            </button>
-            <a class="navbar-brand logo" href="#">Гам-Гам</a>
-        </div>
-        <div>
-            <nav class="collapse navbar-collapse" id="myNavbar" role="navigation">
-                <ul class="nav navbar-nav navbar-right navstyle">
-                   
-                    <li>
-                        <a href="#_MondayHeader" class="page-scroll">Monday</a>
-                    </li>
-                    <li>
-                        <a href="#_TuesdayHeader" class="page-scroll">Tuesday</a>
-                    </li>
-                    <li>
-                        <a href="#_WednesdayHeader" class="page-scroll">Wednesday</a>
-                    </li>
-                    <li>
-                        <a href="#_ThursdayHeader" class="page-scroll">Thursday</a>
-                    </li>
-                    <li>
-                        <a href="#_FridayHeader" class="page-scroll">Friday</a>
-                    </li>
-                    <li style="display: none;">
-                        <a href="#_FavoriteHeader" class="page-scroll">Favorite</a>
-                    </li>
-                    <li style="display: none;">
-                        <a href="#_HistoryHeader" class="page-scroll">History</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="page-scroll">Contact</a>
-                    </li>
-                </ul>
-            </nav>
+    <div class="navbar menubar" id="menu">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </button>
+                <a class="navbar-brand logo" href="#">Гам-Гам</a>
+            </div>
+            <div>
+                <nav class="collapse navbar-collapse"  class="nav nav-tabs" role="tablist">
+                    <ul id="tab" class="nav navbar-nav navbar-right navstyle">
 
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header0" class="page-scroll">Понеділок</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header1" class="page-scroll">Вівторок</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header2" class="page-scroll">Середа</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header3" class="page-scroll">Четвер</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header4" class="page-scroll">Пятниця</a>
+                        </li>
+                        <li style="display: none;">
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#_FavoriteHeader" class="page-scroll">Favorite</a>
+                        </li>
+                        <li style="display: none;">
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#_HistoryHeader" class="page-scroll">History</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#contact" class="page-scroll">Контакти</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
         </div>
     </div>
 </div>
-  </div>
 
 <div ng-controller="@ajs.getClass((ngAppController o) => o)">
     <div ng-controller="@ajs.getClass((ngOrderController o) => o)">
-        <div ng-controller="@ajs.getClass((ngFoodController o) => o)">
+        <div ng-controller="@ajs.getClass((ngFoodController o) => o)" class="tab-content">
 
-            <div ng-repeat="day in [{'idx':0,'name':'Monday'}, {'idx':1,'name':'Tuesday'}, {'idx':2,'name':'Wednesday'}, {'idx':3,'name':'Thursday'}, {'idx':4,'name':'Friday'}]">
-
-                <div class="headerCnt">
-                    <div id="_{{day.name}}Header" class="headerEl">
-                        <div class="col-md-12 col-sm-12 col-xs-12 headerTitle">
+            <div id="header{{day.idx}}" role="tabpanel" class="tab-pane fade in" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
+                <div class="container">
+                    <div class="row bottomBorder" style="padding-bottom: 2em;" >
+                        <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="alldesc">
-                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="width: 30%;">
+                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="width: 30%;padding-left: 0px;">
                                     <p class="all-td">&nbsp;</p>
                                     <h2>{{day.name}}</h2>
                                 </div>
@@ -77,46 +76,61 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="features">
+                        <div class="container">
+                            <div class="row">
+                                @{ Html.RenderPartial("Foods", "day.idx"); }
+                            </div>
+                        </div>
                         <div style="clear: both;"></div>
                     </div>
                 </div>
+            </div>
 
-                <div class="features" id="_{{day.name}}">
-                    <div class="container">
-                        <div class="row">
-                            @{ Html.RenderPartial("Foods", "day.idx"); }
+            <div id="contact" role="tabpanel" class="address tab-pane fade in">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="alldesc">
+                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px;">
+                                    <p class="all-td"></p>
+                                    <h2>Контакти</h2>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
+                                    <p>Email : mgerasika@gmail.com</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div style="clear: both;"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<script type="text/javascript">
+   
 
 
+    window.addEventListener("load", function () {
+        var date = new Date();
+        var day = date.getDay()-1;
+        var id = '#tab a[href="#header'+day+'"]';
+        $(id).tab('show');
+        var active = $(id);
+        active.addClass('active');
 
+        $('#tab a').click(function (e) {
+            if (active != $(this)) {
+                active.removeClass('active');
+                e.preventDefault();
+                $(this).tab('show');
+            }
+        });
+    });
+   
+</script>
 
-    @{ Html.RenderPartial("Favorite"); }
-    @{ Html.RenderPartial("History"); }
-
-
-<div>
-<div class="address" id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="alldesc">
-                    <div class="col-md-6 col-sm-6 col-xs-12 centertext">
-                        <p class="all-td">How To Get In Touch</p>
-                        <h2>Contact</h2>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
-                        <p>Email : mgerasika@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>  </div>
+@{ Html.RenderPartial("Favorite"); }
+@{ Html.RenderPartial("History"); }

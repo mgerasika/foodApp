@@ -1,20 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Web;
+using FoodApp.Client;
+using FoodApp.Common;
 
-namespace FoodApp.Controllers
-{
-    public class ApiUtils
-    {
+namespace FoodApp.Controllers {
+    public class ApiUtils {
         public const string c_sExcelFileName = "mykhaylo_test";
         //public const string c_sExcelFileName = "Меню на тиждень";
         //public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
         public const string REDIRECT_URL = "http://localhost:15845/";
-   
-        public const  string CLIENT_ID = "668583993597.apps.googleusercontent.com";
+
+        public const string CLIENT_ID = "668583993597.apps.googleusercontent.com";
         public const string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
         public const string SCOPE = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";
-     
-        public static string USER_INFO_SCOPE = "https://www.googleapis.com/auth/userinfo.profile  https://www.googleapis.com/auth/userinfo.email";
+
+        public static string USER_INFO_SCOPE =
+            "https://www.googleapis.com/auth/userinfo.profile  https://www.googleapis.com/auth/userinfo.email";
 
         public static string GetSessionEmail() {
             string res = null;
@@ -128,6 +131,64 @@ namespace FoodApp.Controllers
             return str;
         }
 
+        public static List<ngOrderModel> AddContainersToFood(string email, int day, List<ngOrderModel> orders) {
+            List<ngOrderModel> res = new List<ngOrderModel>();
+
+            List<ngFoodItem> foods = OrderManager.Inst.GetOrderedFoods(email, day);
+            int smallContainersCount = 0;
+            int bigContainersCount = 0;
+
+            int meathOrFish = 0;
+            int garnirOrSalat = 0;
+            foreach (ngFoodItem food in foods) {
+                if (food.isFirst) {
+                    smallContainersCount++;
+                    if (food.isKvasoleva) {
+                        smallContainersCount++;
+                    }
+                }
+                else if (food.isMeatOrFish) {
+                    meathOrFish++;
+                }
+                else if (food.isSalat || food.isGarnir) {
+                    garnirOrSalat++;
+                }
+            }
+            if ((garnirOrSalat == 1 && meathOrFish == 0) || (garnirOrSalat == 0 && meathOrFish == 1)) {
+                smallContainersCount++;
+            }
+            else if ((garnirOrSalat != 0) || (meathOrFish != 0)) {
+                bigContainersCount++;
+            }
+
+            // remove containers
+            foreach (ngOrderModel order in orders) {
+                ngFoodItem ngFoodItem = FoodManager.Inst.GetFoodById(day, order.FoodId);
+                if (!ngFoodItem.isContainer) {
+                    res.Add(order);
+                }
+            }
+
+            //update small containers cout
+            ngFoodItem foodSmallContainer = FoodManager.Inst.GetSmallContainer(day);
+            Debug.Assert(null != foodSmallContainer);
+            ngOrderModel smallContainerOrder = new ngOrderModel();
+            smallContainerOrder.FoodId = foodSmallContainer.FoodId;
+            smallContainerOrder.Count = smallContainersCount;
+            res.Add(smallContainerOrder);
+
+            //update big containers count
+            ngFoodItem foodBigContainer = FoodManager.Inst.GetBigContainer(day);
+            Debug.Assert(null != foodBigContainer);
+            ngOrderModel bigContainerOrder = new ngOrderModel();
+            bigContainerOrder.FoodId = foodBigContainer.FoodId;
+            bigContainerOrder.Count = bigContainersCount;
+            res.Add(bigContainerOrder);
+
+            return res;
+        }
+
+
         internal static bool TryDecimalParse(string str, out decimal lPrice) {
             bool res = false;
             if (!string.IsNullOrEmpty(str)) {
@@ -146,7 +207,5 @@ namespace FoodApp.Controllers
         internal static bool EqualDate(DateTime dt1, DateTime dt2) {
             return dt1.Year.Equals(dt2.Year) && dt1.Month.Equals(dt2.Month) && dt1.Day.Equals(dt2.Day);
         }
-
-        
     }
 }

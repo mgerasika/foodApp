@@ -48,12 +48,11 @@ namespace FoodApp.Client {
             ngFoods = new JsArray<JsArray<ngFoodItem>>();
             ngCategories = new JsArray<string>();
             ngCategories.push(EFoodCategories.Salat);
-            ngCategories.push(EFoodCategories.PershiStravy);
-            ngCategories.push(EFoodCategories.Garniri);
-            ngCategories.push(EFoodCategories.MjasoRiba);
-            ngCategories.push(EFoodCategories.Kompleksniy);
-            ngCategories.push(EFoodCategories.Xlib);
-            ngCategories.push(EFoodCategories.Konteinery);
+            ngCategories.push(EFoodCategories.First);
+            ngCategories.push(EFoodCategories.Garnir);
+            ngCategories.push(EFoodCategories.MeatOrFish);
+            ngCategories.push(EFoodCategories.ComplexDinner);
+            ngCategories.push(EFoodCategories.Breat);
 
             //eventManager.inst.subscribe(eventManager.dayOfWeekChanged, delegate(int n) { refresh(null); });
             //eventManager.inst.subscribe(eventManager.userIdChanged, delegate(int n) { refresh(null); });
@@ -104,7 +103,7 @@ namespace FoodApp.Client {
             refreshFoods(null);
         }
 
-        internal ngFoodItem findItemById(string id) {
+        internal ngFoodItem findFoodById(string id) {
             ngFoodItem res = null;
 
             foreach (JsArray<ngFoodItem> dayItems in ngFoods) {

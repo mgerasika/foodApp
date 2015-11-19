@@ -2,26 +2,21 @@ using angularjs;
 using FoodApp.Common;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Client
-{
+namespace FoodApp.Client {
     [JsType(JsMode.Prototype, Filename = WebApiResources._fileClientJs)]
-    public class ngFoodFilter : angularFilter
-    {
+    public class ngFoodFilter : angularFilter {
         protected ngFoodFilter() {
         }
 
-        public override string className
-        {
+        public override string className {
             get { return "ngFoodFilter"; }
         }
 
-        public override string @namespace
-        {
+        public override string @namespace {
             get { return WebApiResources.@namespace; }
         }
 
-        public override string filterName
-        {
+        public override string filterName {
             get { return "foodFilter"; }
         }
 
@@ -32,15 +27,16 @@ namespace FoodApp.Client
 
         public override object filter(JsObject obj, JsObject arg) {
             JsArray<ngFoodItem> res = new JsArray<ngFoodItem>();
-            
+
             string category = arg["category"].As<JsString>();
             int day = arg["day"].As<int>();
             JsArray<JsArray<ngFoodItem>> allFoods = obj.As<JsArray<JsArray<ngFoodItem>>>();
             JsArray<ngFoodItem> items = allFoods[day];
-            foreach (ngFoodItem item in items)
-            {
-                if (item.Category == category) {
-                    res.Add(item);
+            if (null != items) {
+                foreach (ngFoodItem item in items) {
+                    if ((item.Category == category) && !item.isContainer) {
+                        res.Add(item);
+                    }
                 }
             }
             return res;

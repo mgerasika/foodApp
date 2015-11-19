@@ -18,10 +18,22 @@ namespace FoodApp.Common {
                     Debug.Assert(!string.IsNullOrEmpty(row.Name));
                     item.Name = row.Name;
                     item.Description = row.Description;
-                    item.Category = EFoodCategories.GetCategory(row);
-                    item.IsByWeight = row.IsByWeight();
+
+
+                    
+                    item.isContainer = row.IsContainer();
+                    item.isBigContainer = row.IsBigContainer();
+                    item.isSmallContainer = row.IsSmallContainer();
+                    item.isSalat = row.IsSalat();
+                    item.isGarnir = row.IsGarnir();
+                    item.isMeatOrFish = row.IsMeatOrFish();
+                    item.isKvasoleva = row.IsKvasoleva();
+                    item.isFirst = row.IsFirst();
+                    item.IsByWeightItem = row.IsByWeightItem();
                     item.Price = row.Price;
                     item.FoodId = row.GetFoodId();
+                    item.Category = row.Category;
+                    
                     res.Add(item);
                 }
             }
@@ -59,6 +71,30 @@ namespace FoodApp.Common {
             List<ngFoodItem> foods = GetFoods(dayOfWeek);
             foreach (ngFoodItem item in foods) {
                 if (item.FoodId.Equals(foodId)) {
+                    res = item;
+                    break;
+                }
+            }
+            return res;
+        }
+
+        public ngFoodItem GetSmallContainer(int dayOfWeek) {
+            ngFoodItem res = null;
+            List<ngFoodItem> foods = GetFoods(dayOfWeek);
+            foreach (ngFoodItem item in foods) {
+                if (item.isContainer && item.isSmallContainer) {
+                    res = item;
+                    break;
+                }
+            }
+            return res;
+        }
+
+        public ngFoodItem GetBigContainer(int dayOfWeek) {
+            ngFoodItem res = null;
+            List<ngFoodItem> foods = GetFoods(dayOfWeek);
+            foreach (ngFoodItem item in foods) {
+                if (item.isContainer && item.isBigContainer) {
                     res = item;
                     break;
                 }

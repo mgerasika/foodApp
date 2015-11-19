@@ -8,7 +8,7 @@
     string foods = ajs.field((ngFoodController o) => o.ngFoods);
     string food = "food";
     string row = food + "." + ajs.field((ngFoodItem o) => o.FoodId);
-    string isByWeight = food + "." + ajs.field((ngFoodItem o) => o.IsByWeight);
+    string isByWeight = food + "." + ajs.field((ngFoodItem o) => o.IsByWeightItem);
     string price = food + "." + ajs.field((ngFoodItem o) => o.Price);
 
     string prefix = ajs.method((ngFoodController o) => o.getPrefix(0)) + "(" + price + ")";
@@ -17,7 +17,7 @@
 
 
 <div>
-    <div class="featurebox" ng-repeat="category in @categories">
+    <div ng-show="@foods. length>0" class="featurebox" ng-repeat="category in @categories">
         <div style="margin-left: 1.5em;">
             <h3>{{category}}</h3>
         </div>

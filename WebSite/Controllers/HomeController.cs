@@ -84,7 +84,7 @@ namespace FoodApp.Controllers {
          */
 
         public ActionResult Index() {
-            if (Request.QueryString["code"] != null) {
+            if (Request.QueryString["code"] != null && !ExcelParser.Inst.IsInit) {
                 OAuth2Parameters lParams = CreateParameters();
                 lParams.AccessType = "offline";
                 lParams.AccessCode = HttpContext.Request.QueryString["code"];

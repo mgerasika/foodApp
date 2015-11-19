@@ -97,6 +97,8 @@ namespace GoogleAppsConsoleApplication
                     Debug.Assert(null != entry);
                     sb.Append("<h1>" + entry.Title.Text + "</h1>");
                     RenderWeek(entry);
+
+                    this.IsInit = true;
                 }
             }
             return sb.ToString();
@@ -122,5 +124,7 @@ namespace GoogleAppsConsoleApplication
 
             Doc.Parse();
         }
+
+        public bool IsInit { get; set; }
     }
 }

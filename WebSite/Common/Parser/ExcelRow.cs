@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using FoodApp.Common;
 using FoodApp.Controllers;
 using Google.GData.Spreadsheets;
 
@@ -40,6 +41,30 @@ namespace GoogleAppsConsoleApplication {
             return res;
         }
 
+        internal ExcelCell GetCellByBatchId(string batchId) {
+            ExcelCell res = null;
+
+            foreach (ExcelCell cell in Cells) {
+                if (cell.GetBatchID().Equals(batchId)) {
+                    res = cell;
+                    break;
+                }
+            }
+            return res;
+        }
+
+        public static ExcelCell GetCellByBatchId(List<ExcelCell> cells, string batchId) {
+            ExcelCell res = null;
+
+            foreach (ExcelCell cell in cells) {
+                if (cell.GetBatchID().Equals(batchId)) {
+                    res = cell;
+                    break;
+                }
+            }
+            return res;
+        }
+
         public string GetFoodId() {
             string res = "";
             if (!string.IsNullOrEmpty(Category)) {
@@ -67,7 +92,7 @@ namespace GoogleAppsConsoleApplication {
             return cell;
         }
 
-        private string GetCategory() {
+        private string ParseCategory() {
             string res = "";
 
             bool hasCaption = false;
@@ -94,12 +119,12 @@ namespace GoogleAppsConsoleApplication {
             return res;
         }
 
-        public void Parse(ref string category) {
-            string tmpCategory = GetCategory();
+        public void Parse(ref string lCategory) {
+            string tmpCategory = ParseCategory();
             if (!string.IsNullOrEmpty(tmpCategory)) {
-                category = tmpCategory.Replace(":", "");
+                lCategory = tmpCategory.Replace(":", "");
             }
-            Category = category;
+            Category = lCategory;
 
             for (int j = 0; j < _entry.Count; ++j) {
                 CellEntry cell = _entry[j];
@@ -129,13 +154,43 @@ namespace GoogleAppsConsoleApplication {
                 }
             }
 
-            if (Category.Contains("Налисники") && !Name.Contains("Контейнери"))
-            {
+
+            if (Category != null && Name != null && Category.Contains("Налисники") && !Name.Contains("Контейнери")) {
                 Name = Category + " " + Name;
             }
         }
 
-        internal void Merge(CellEntry newEntry) {
+        public static string CombineCategories(string category, string name) {
+            string res = category;
+            if (category.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
+                res = EFoodCategories.Salat;
+            }
+
+            else if (category.Equals("Гарніри", StringComparison.OrdinalIgnoreCase)) {
+                res = EFoodCategories.Garnir;
+            }
+
+            else if (category.Equals("Перші страви", StringComparison.OrdinalIgnoreCase)) {
+                res = EFoodCategories.First;
+            }
+            else if (name != null && name.Contains("Контейнери")) {
+                res = EFoodCategories.PlacticContainer;
+            }
+            else if (name != null && name.Contains("батон")) {
+                res = EFoodCategories.Breat;
+            }
+            else if (category.Contains("Комплексний")) {
+                res = EFoodCategories.ComplexDinner;
+            }
+
+            else {
+                res = EFoodCategories.MeatOrFish;
+            }
+
+            return res;
+        }
+
+        internal void MergeEntry(CellEntry newEntry) {
             CellEntry old = null;
             foreach (CellEntry obj in _entry) {
                 if (obj.Column == newEntry.Column && obj.Row == newEntry.Row) {
@@ -150,27 +205,86 @@ namespace GoogleAppsConsoleApplication {
             _entry.Add(newEntry);
         }
 
-        internal bool IsByWeight() {
+        public bool IsByWeightItem() {
             bool res = false;
-            if (this.Category.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
+            if (Category.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
                 res = true;
             }
-            if (this.Name.Contains("Стегна кур.запечені")||
-                this.Name.Contains("Кур.філе в гриб")||
-                this.Name.Contains("Буженина")||
-                this.Name.Contains("Ковбаска смажена") ||
-                this.Name.Contains("Телятина") ||
-                this.Name.Contains("Горохове пюре") ||
-                this.Name.Contains("Курка відварна") ||
-                this.Name.Contains("Шашлик") ||
-                this.Name.Contains("Курка відварна") ||
-                this.Name.Contains("Курка відварна") ||
-                this.Name.Contains("Курка відварна") ||
-                this.Name.Contains("Печінка з цибулею"))
-            {
+            if (Name.Contains("Стегна кур.запечені") ||
+                Name.Contains("Кур.філе в гриб") ||
+                Name.Contains("Буженина") ||
+                Name.Contains("Ковбаска смажена") ||
+                Name.Contains("Телятина") ||
+                Name.Contains("Горохове пюре") ||
+                Name.Contains("Курка відварна") ||
+                Name.Contains("Шашлик") ||
+                Name.Contains("Курка відварна") ||
+                Name.Contains("Курка відварна") ||
+                Name.Contains("Курка відварна") ||
+                Name.Contains("Печінка з цибулею")) {
                 res = true;
             }
 
+            return res;
+        }
+
+        public bool IsFirst() {
+            bool res = false;
+            if (Category.Equals(EFoodCategories.First)) {
+                res = true;
+            }
+            return res;
+        }
+
+        public bool IsMeatOrFish() {
+            bool res = false;
+            if (Category.Equals(EFoodCategories.MeatOrFish)) {
+                res = true;
+            }
+            return res;
+        }
+
+        public bool IsSalat() {
+            bool res = false;
+            if (Category.Equals(EFoodCategories.Salat)) {
+                res = true;
+            }
+            return res;
+        }
+
+        public bool IsGarnir() {
+            bool res = false;
+            if (Category.Equals(EFoodCategories.Garnir)) {
+                res = true;
+            }
+            return res;
+        }
+
+        public bool IsKvasoleva() {
+            return Name.Contains(EFoodCategories.Kvasoleva);
+        }
+
+        public bool IsContainer() {
+            bool res = false;
+            if (Name.Contains(EFoodCategories.PlacticContainer)) {
+                res = true;
+            }
+            return res;
+        }
+
+        public bool IsSmallContainer() {
+            bool res = false;
+            if (Name.Contains(EFoodCategories.PlacticContainer) && Name.Contains("1")) {
+                res = true;
+            }
+            return res;
+        }
+
+        public bool IsBigContainer() {
+            bool res = false;
+            if (Name.Contains(EFoodCategories.PlacticContainer) && Name.Contains("2")) {
+                res = true;
+            }
             return res;
         }
     }

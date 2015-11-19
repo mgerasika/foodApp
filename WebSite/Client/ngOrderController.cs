@@ -27,7 +27,7 @@ namespace FoodApp.Client
 
 
         public ngFoodItem getFoodItem(string id) {
-            ngFoodItem item = ngFoodController.inst.findItemById(id);
+            ngFoodItem item = ngFoodController.inst.findFoodById(id);
             return item;
         }
 
@@ -38,10 +38,12 @@ namespace FoodApp.Client
                 foreach (ngOrderModel item in ngOrderModels) {
                     ngFoodItem food = getFoodItem(item.FoodId);
                     if (null != food) {
-                        res += (food.Price*item.Count);
+                        res += clientUtils.Inst.fixNumber(food.Price*item.Count);
+                        res = clientUtils.Inst.fixNumber(res);
                     }
                 }
             }
+            res = clientUtils.Inst.fixNumber(res);
             return res;
         }
 

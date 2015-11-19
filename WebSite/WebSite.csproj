@@ -246,6 +246,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\output.js" />
     <Content Include="css\style.css" />
+    <Content Include="tab.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -272,6 +273,7 @@
     <Compile Include="Common\Managers\UserSettingsManager.cs" />
     <Compile Include="Common\Model\ngUsersSettingsModel.cs" />
     <Compile Include="Common\Model\ngUserModel.cs" />
+    <Compile Include="Common\Parser\BatchCellUpdater.cs" />
     <Compile Include="Common\Parser\ColumnNames.cs" />
     <Compile Include="Common\Parser\ExcelCell.cs" />
     <Compile Include="Common\Parser\ExcelRow.cs" />
@@ -279,7 +281,7 @@
     <Compile Include="Common\Parser\ExcelDoc.cs" />
     <Compile Include="Common\Parser\ExcelParser.cs" />
     <Compile Include="Common\Managers\FoodManager.cs" />
-    <Compile Include="Common\Model\ngFoodModel.cs" />
+    <Compile Include="Common\Model\ngFoodItem.cs" />
     <Compile Include="Common\Managers\ManagerBase.cs" />
     <Compile Include="Common\Model\ngModelBase.cs" />
     <Compile Include="Client\ngFoodController.cs" />

@@ -741,3 +741,7 @@ figure.effect-Beauty:hover p {
     margin: 0.1em;
     padding: 0.2em 0.4em!important;
 }
+
+.bottomBorder {
+     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
