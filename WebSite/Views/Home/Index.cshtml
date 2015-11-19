@@ -5,6 +5,7 @@
 @inherits System.Web.Mvc.WebViewPage
 @{
     Layout = "~/Views/Layout1.cshtml";
+    string imgUrl = ApiUtils.GetUserImageUrl();
 }
 
 
@@ -21,7 +22,13 @@
                 <a class="navbar-brand logo" href="#">Гам-Гам</a>
             </div>
             <div>
-                <nav class="collapse navbar-collapse"  class="nav nav-tabs" role="tablist">
+                <nav class="collapse navbar-collapse" class="nav nav-tabs" role="tablist">
+
+
+                    @if (!string.IsNullOrEmpty(imgUrl)) {
+                        <div style="float: left;background-image: url('@imgUrl'); background-size: cover; height: 5em; width: 5em;"></div>
+                    }
+
                     <ul id="tab" class="nav navbar-nav navbar-right navstyle">
 
                         <li>
@@ -62,10 +69,10 @@
 
             <div id="header{{day.idx}}" role="tabpanel" class="tab-pane fade in" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
                 <div class="container">
-                    <div class="row bottomBorder" style="padding-bottom: 2em;" >
+                    <div class="row bottomBorder" style="padding-bottom: 2em;">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="alldesc">
-                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="width: 30%;padding-left: 0px;">
+                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
                                     <p class="all-td">&nbsp;</p>
                                     <h2>{{day.name}}</h2>
                                 </div>
@@ -110,18 +117,17 @@
 </div>
 
 <script type="text/javascript">
-   
 
 
-    window.addEventListener("load", function () {
+    window.addEventListener("load", function() {
         var date = new Date();
-        var day = date.getDay()-1;
-        var id = '#tab a[href="#header'+day+'"]';
+        var day = date.getDay() - 1;
+        var id = '#tab a[href="#header' + day + '"]';
         $(id).tab('show');
         var active = $(id);
         active.addClass('active');
 
-        $('#tab a').click(function (e) {
+        $('#tab a').click(function(e) {
             if (active != $(this)) {
                 active.removeClass('active');
                 e.preventDefault();
@@ -129,7 +135,7 @@
             }
         });
     });
-   
+
 </script>
 
 @{ Html.RenderPartial("Favorite"); }

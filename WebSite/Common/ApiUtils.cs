@@ -7,10 +7,10 @@ using FoodApp.Common;
 
 namespace FoodApp.Controllers {
     public class ApiUtils {
-        public const string c_sExcelFileName = "mykhaylo_test";
-        //public const string c_sExcelFileName = "Меню на тиждень";
-        //public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
-        public const string REDIRECT_URL = "http://localhost:15845/";
+        //public const string c_sExcelFileName = "mykhaylo_test";
+        public const string c_sExcelFileName = "Меню на тиждень";
+        public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
+        //public const string REDIRECT_URL = "http://localhost:15845/";
 
         public const string CLIENT_ID = "668583993597.apps.googleusercontent.com";
         public const string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
@@ -23,6 +23,17 @@ namespace FoodApp.Controllers {
             string res = null;
             if (null != HttpContext.Current.Session) {
                 return HttpContext.Current.Session["email"] as string;
+            }
+            return res;
+        }
+
+        public static string GetUserImageUrl() {
+            string res = "";
+            string email = GetSessionEmail();
+            if (!string.IsNullOrEmpty(email)) {
+                ngUserModel userByEmail = UsersManager.Inst.GetUserByEmail(email);
+                Debug.Assert(null != userByEmail);
+                res = userByEmail.Picture;
             }
             return res;
         }
