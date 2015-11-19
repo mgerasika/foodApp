@@ -3,22 +3,22 @@
     "Column": 5,
     "Email": "okapij@darwinsgrove.com",
     "Name": "Олена К",
-    "Picture": null,
-    "GoogleName": null
+    "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+    "GoogleName": "Olena Kapij"
   },
   {
     "Column": 6,
     "Email": "omartsinets@darwinsgrove.com",
     "Name": "Олена М",
-    "Picture": null,
-    "GoogleName": null
+    "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+    "GoogleName": "Olena Martsinets"
   },
   {
     "Column": 7,
     "Email": "ikhariv@darwinsgrove.com",
     "Name": "Ірина",
-    "Picture": null,
-    "GoogleName": null
+    "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+    "GoogleName": "Iryna Khariv"
   },
   {
     "Column": 8,
@@ -73,15 +73,15 @@
     "Column": 15,
     "Email": "vzadorozhnyy@darwinsgrove.com",
     "Name": "Василь З",
-    "Picture": null,
-    "GoogleName": null
+    "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+    "GoogleName": "Vasyl Zadorozhnyy"
   },
   {
     "Column": 16,
     "Email": "mherasika@darwinsgrove.com",
     "Name": "Міша Г",
-    "Picture": null,
-    "GoogleName": null
+    "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+    "GoogleName": "Mykhaylo Herasika"
   },
   {
     "Column": 16,
@@ -89,12 +89,5 @@
     "Name": "Міша Г",
     "Picture": "https://lh6.googleusercontent.com/-63abJDn2EVk/AAAAAAAAAAI/AAAAAAAAWmA/jKEV1zwBYoU/photo.jpg",
     "GoogleName": "Mykhaylo H"
-  },
-    {
-    "Column": 17,
-    "Email": "adombr@darwinsgrove.com",
-    "Name": "Андрій Д",
-    "Picture": null,
-    "GoogleName": null
-  },
+  }
 ]
