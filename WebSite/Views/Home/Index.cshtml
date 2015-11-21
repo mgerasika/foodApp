@@ -13,7 +13,7 @@
 
 
 <div>
-    <div class="navbar menubar" id="menu">
+    <div class="navbar menubar" id="menu" style="position: fixed; top: 0px; width: 100%;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
@@ -26,7 +26,7 @@
 
 
                     @if (!string.IsNullOrEmpty(imgUrl)) {
-                        <div style="float: left;background-image: url('@imgUrl'); background-size: cover; height: 5em; width: 5em;"></div>
+                        <div style="background-image: url('@imgUrl'); background-size: cover; float: left; height: 5em; width: 5em;"></div>
                     }
 
                     <ul id="tab" class="nav navbar-nav navbar-right navstyle">
@@ -63,28 +63,33 @@
     </div>
 </div>
 
-<div ng-controller="@ajs.getClass((ngAppController o) => o)">
+<div ng-controller="@ajs.getClass((ngAppController o) => o)" style="margin-top: 70px;">
     <div ng-controller="@ajs.getClass((ngOrderController o) => o)">
         <div ng-controller="@ajs.getClass((ngFoodController o) => o)" class="tab-content">
 
             <div id="header{{day.idx}}" role="tabpanel" class="tab-pane fade in" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
-                <div class="container">
-                    <div class="row bottomBorder" style="padding-bottom: 2em;">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="alldesc">
-                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
-                                    <p class="all-td">&nbsp;</p>
-                                    <h2>{{day.name}}</h2>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
-                                    <p class="desc">
-                                        @{ Html.RenderPartial("Orders", "day.idx"); }
-                                    </p>
+                <div style="background-color: white;  position: fixed; top: 70px; width: 100%; z-index: 4;">
+                    <div class="container">
+                        <div class="row bottomBorder" style="height: 100px;">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="alldesc">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
+                                        <p class="all-td">&nbsp;</p>
+                                        <h2>{{day.name}}</h2>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
+                                        <p class="desc">
+                                            @{ Html.RenderPartial("Orders", "day.idx"); }
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="features">
+                </div>
+                <div class="container">
+
+                    <div class="features" style="margin-top: 100px;">
                         <div class="container">
                             <div class="row">
                                 @{ Html.RenderPartial("Foods", "day.idx"); }
@@ -122,6 +127,9 @@
     window.addEventListener("load", function() {
         var date = new Date();
         var day = date.getDay() - 1;
+        if (day > 4) {
+            day = 0;
+        }
         var id = '#tab a[href="#header' + day + '"]';
         $(id).tab('show');
         var active = $(id);

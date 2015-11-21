@@ -68,8 +68,8 @@ namespace GoogleAppsConsoleApplication
             }
 
             foreach (ExcelRow excelRow in Rows) {
-                if (!string.IsNullOrEmpty(excelRow.Category)) {
-                    excelRow.Category = ExcelRow.CombineCategories(excelRow.Category, excelRow.Name);
+                if (!string.IsNullOrEmpty(excelRow.OriginalCategory)) {
+                    excelRow.Category = ExcelRow.GetNewCategory(excelRow.OriginalCategory, excelRow.Name);
                 }
             }
         }

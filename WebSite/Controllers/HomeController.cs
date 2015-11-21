@@ -84,7 +84,7 @@ namespace FoodApp.Controllers {
          */
 
         public ActionResult Index() {
-            if (Request.QueryString["code"] != null && !ExcelParser.Inst.IsInit) {
+            if (Request.QueryString["code"] != null && string.IsNullOrEmpty(ApiUtils.GetSessionEmail())) {
                 OAuth2Parameters lParams = CreateParameters();
                 lParams.AccessType = "offline";
                 lParams.AccessCode = HttpContext.Request.QueryString["code"];
@@ -114,6 +114,7 @@ namespace FoodApp.Controllers {
                                     }
 
                                     ApiUtils.SetSessionEmail(userModel.Email);
+                                    return RedirectToAction("Index");
                                 }
                             }
                         }

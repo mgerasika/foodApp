@@ -4,13 +4,14 @@ using System.Diagnostics;
 using System.Web;
 using FoodApp.Client;
 using FoodApp.Common;
+using SharpKit.JavaScript;
 
 namespace FoodApp.Controllers {
     public class ApiUtils {
-        //public const string c_sExcelFileName = "mykhaylo_test";
-        public const string c_sExcelFileName = "Меню на тиждень";
-        public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
-        //public const string REDIRECT_URL = "http://localhost:15845/";
+        public const string c_sExcelFileName = "mykhaylo_test";
+        //public const string c_sExcelFileName = "Меню на тиждень";
+        //public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
+        public const string REDIRECT_URL = "http://localhost:15845/";
 
         public const string CLIENT_ID = "668583993597.apps.googleusercontent.com";
         public const string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
@@ -161,7 +162,7 @@ namespace FoodApp.Controllers {
                 else if (food.isMeatOrFish) {
                     meathOrFish++;
                 }
-                else if (food.isSalat || food.isGarnir) {
+                else if (food.isSalat || food.isGarnir ) {
                     garnirOrSalat++;
                 }
             }
@@ -169,7 +170,10 @@ namespace FoodApp.Controllers {
                 smallContainersCount++;
             }
             else if ((garnirOrSalat != 0) || (meathOrFish != 0)) {
-                bigContainersCount++;
+                bigContainersCount = Convert.ToInt16(Math.Round(garnirOrSalat/(decimal)2,MidpointRounding.ToEven));
+                if (garnirOrSalat%2 > 0) {
+                    smallContainersCount++;
+                }
             }
 
             // remove containers

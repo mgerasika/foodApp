@@ -23,6 +23,7 @@ namespace GoogleAppsConsoleApplication {
         public decimal Price { get; set; }
         private uint Row { get; set; }
         public bool HasPrice { get; set; }
+        public string OriginalCategory { get; set; }
         public string Category { get; set; }
 
         public ExcelTable GetTable() {
@@ -67,8 +68,8 @@ namespace GoogleAppsConsoleApplication {
 
         public string GetFoodId() {
             string res = "";
-            if (!string.IsNullOrEmpty(Category)) {
-                res = new Regex(@"\W").Replace(Category, "");
+            if (!string.IsNullOrEmpty(OriginalCategory)) {
+                res = new Regex(@"\W").Replace(OriginalCategory, "");
             }
             if (!string.IsNullOrEmpty(Name)) {
                 res += new Regex(@"\W").Replace(Name, "");
@@ -124,7 +125,7 @@ namespace GoogleAppsConsoleApplication {
             if (!string.IsNullOrEmpty(tmpCategory)) {
                 lCategory = tmpCategory.Replace(":", "");
             }
-            Category = lCategory;
+            OriginalCategory = lCategory;
 
             for (int j = 0; j < _entry.Count; ++j) {
                 CellEntry cell = _entry[j];
@@ -155,12 +156,13 @@ namespace GoogleAppsConsoleApplication {
             }
 
 
-            if (Category != null && Name != null && Category.Contains("Налисники") && !Name.Contains("Контейнери")) {
-                Name = Category + " " + Name;
+            if (OriginalCategory != null && Name != null && OriginalCategory.Contains("Налисники") &&
+                !Name.Contains("Контейнери")) {
+                Name = OriginalCategory + " " + Name;
             }
         }
 
-        public static string CombineCategories(string category, string name) {
+        public static string GetNewCategory(string category, string name) {
             string res = category;
             if (category.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
                 res = EFoodCategories.Salat;
@@ -181,6 +183,9 @@ namespace GoogleAppsConsoleApplication {
             }
             else if (category.Contains("Комплексний")) {
                 res = EFoodCategories.ComplexDinner;
+            }
+            else if (name != null && name.Contains("Налисники")) {
+                res = EFoodCategories.Garnir;
             }
 
             else {
@@ -207,7 +212,7 @@ namespace GoogleAppsConsoleApplication {
 
         public bool IsByWeightItem() {
             bool res = false;
-            if (Category.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
+            if (Category.Equals(EFoodCategories.Salat, StringComparison.OrdinalIgnoreCase)) {
                 res = true;
             }
             if (Name.Contains("Стегна кур.запечені") ||
