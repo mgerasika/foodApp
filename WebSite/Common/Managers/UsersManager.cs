@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FoodApp.Common
 {
@@ -35,6 +36,22 @@ namespace FoodApp.Common
                 res.Add(new ngUserModel { Name = "Aндрій Д", Column = 17, Email = "adombr@darwinsgrove.com" });
                 Save();
             }
+            return res;
+        }
+
+        public List<ngUserModel> GetUniqueUsers()
+        {
+            List<ngUserModel> res = new List<ngUserModel>();
+
+            foreach (ngUserModel user in base.GetItems())
+            {
+                ngUserModel userInResult = res.SingleOrDefault(r => r.Column == user.Column);
+                if (null == userInResult)
+                {
+                    res.Add(user);
+                }
+            }
+
             return res;
         }
 

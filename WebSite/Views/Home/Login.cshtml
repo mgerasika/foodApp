@@ -4,7 +4,11 @@
     Layout = "~/Views/Layout1.cshtml";
 }
 
-
+<script type="text/javascript">
+    function onLoginClick() {
+        document.getElementById('loadingDiv').style.display = 'block'; 
+    }
+</script>
 
  <div class="container-fluid banner text-center" id="banner">
     <div class="row">
@@ -14,7 +18,7 @@
                     <h1 class="hostyle" id="heads">Гам-Гам</h1>
                     <p class="pstyle">For DarwinsGrove</p>
                   
-                    <a class="pstyle" href="LoginClick" style="color: white; cursor: pointer;">  login</a>
+                    <a class="pstyle" onclick="onLoginClick()" href="LoginClick" style="color: white; cursor: pointer;">  login</a>
                 </div>
             </div>
         </div>

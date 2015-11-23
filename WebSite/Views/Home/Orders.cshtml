@@ -6,7 +6,8 @@
     object dayOfWeek = Model;
     string orders = ajs.field((ngOrderController o) => o.ngOrders);
     string orderItem = "orderItem";
-    string row = orderItem + "." + ajs.field((ngOrderModel o) => o.FoodId);
+    string foodId = orderItem + "." + ajs.field((ngOrderModel o) => o.FoodId);
+    string isByWeight = ajs.method((ngOrderController o) => o.getFoodItem(foodId)) + "("+foodId+")." + ajs.field((ngFoodItem o) => o.IsByWeightItem);
 }
 
 
@@ -20,8 +21,10 @@
     <div ng-repeat="@orderItem in @orders | orderFilter:{'day':@dayOfWeek}" style="float: left; margin-right: 1em; padding: 0.3em; padding-left: 0px;">
         <div id="{{@orderItem .@ajs.field((ngOrderModel o) => o.FoodId)}}">
             <div style="background-color: #cb5750; float: left; margin-right: 0.3em; opacity: 0.3; width: 0.5em;">&nbsp;</div>
-            <div style="float: left;">{{@ajs.method((ngOrderController o) => o.getFoodItem(null)) (@row).@ajs.field((ngFoodItem o) => o.Name)}}</div>
-            <div style="float: left;">&nbsp;{{@orderItem .@ajs.field((ngOrderModel o) => o.Count)}}</div>
+            <div style="float: left;">{{@ajs.method((ngOrderController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}</div>
+            <div style="float: left;">&nbsp;{{@ajs.method((ngOrderController o) => o.formatCount(null)) (@orderItem)}}</div>
+            <div style="float: left;" ng-show="@isByWeight"> гр</div>
+            <div style="float: left;" ng-show="!@isByWeight"> шт</div>
             <div class="glyphicon glyphicon-remove" style="color: #cb5750; cursor: pointer; float: left; font-weight: normal; line-height: 1.35em; opacity: 0.3;" ng-click="@ajs.method((ngOrderController o) => o.deleteOrder(0, null)) (@dayOfWeek,@orderItem .@ajs.field((ngOrderModel o) => o.FoodId))">
             </div>
         </div>

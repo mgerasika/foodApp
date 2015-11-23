@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Web;
 using FoodApp.Client;
 using FoodApp.Common;
-using SharpKit.JavaScript;
 
 namespace FoodApp.Controllers {
     public class ApiUtils {
@@ -23,7 +22,16 @@ namespace FoodApp.Controllers {
         public static string GetSessionEmail() {
             string res = null;
             if (null != HttpContext.Current.Session) {
-                return HttpContext.Current.Session["email"] as string;
+                res = HttpContext.Current.Session["email"] as string;
+            }
+            if (string.IsNullOrEmpty(res)) {
+                HttpRequest request = GetHttpRequest();
+                if (null != request) {
+                    HttpCookie httpCookie = request.Cookies.Get("email");
+                    if (null != httpCookie) {
+                        res = httpCookie.Value;
+                    }
+                }
             }
             return res;
         }
@@ -41,6 +49,30 @@ namespace FoodApp.Controllers {
 
         public static void SetSessionEmail(string val) {
             HttpContext.Current.Session["email"] = val;
+            HttpResponse response = GetHttpResponse();
+            if (null != response) {
+                response.Cookies.Add(new HttpCookie("email", val));
+            }
+        }
+
+        private static HttpRequest GetHttpRequest() {
+            HttpRequest res = null;
+            try {
+                res = HttpContext.Current.Request;
+            }
+            catch (Exception e) {
+            }
+            return res;
+        }
+
+        private static HttpResponse GetHttpResponse() {
+            HttpResponse res = null;
+            try {
+                res = HttpContext.Current.Response;
+            }
+            catch (Exception e) {
+            }
+            return res;
         }
 
         public static string GetLatinCodeFromCyrillic(string str) {
@@ -162,7 +194,7 @@ namespace FoodApp.Controllers {
                 else if (food.isMeatOrFish) {
                     meathOrFish++;
                 }
-                else if (food.isSalat || food.isGarnir ) {
+                else if (food.isSalat || food.isGarnir) {
                     garnirOrSalat++;
                 }
             }
@@ -170,7 +202,7 @@ namespace FoodApp.Controllers {
                 smallContainersCount++;
             }
             else if ((garnirOrSalat != 0) || (meathOrFish != 0)) {
-                bigContainersCount = Convert.ToInt16(Math.Round(garnirOrSalat/(decimal)2,MidpointRounding.ToEven));
+                bigContainersCount = Convert.ToInt16(Math.Round(garnirOrSalat/(decimal) 2, MidpointRounding.ToEven));
                 if (garnirOrSalat%2 > 0) {
                     smallContainersCount++;
                 }

@@ -52,9 +52,10 @@ public class BatchCellUpdater {
         return res;
     }
 
-    private static Dictionary<string, CellEntry> CreateEntryCellsMap(SpreadsheetsService service, CellFeed cellFeed,List<ExcelCell> cells) {
+    private static Dictionary<string, CellEntry> CreateEntryCellsMap(SpreadsheetsService service, CellFeed cellFeed,
+        List<ExcelCell> cells) {
         Dictionary<string, CellEntry> res = new Dictionary<string, CellEntry>();
-        
+
         CellFeed batchRequest = new CellFeed(new Uri(cellFeed.Self), service);
         foreach (ExcelCell cell in cells) {
             if (cell.GetEntry() == null) {
@@ -64,7 +65,9 @@ public class BatchCellUpdater {
                 batchRequest.Entries.Add(batchEntry);
             }
             else {
-                res.Add(cell.GetBatchID(), cell.GetEntry());
+                if (!res.ContainsKey(cell.GetBatchID())) {
+                    res.Add(cell.GetBatchID(), cell.GetEntry());
+                }
             }
         }
 
@@ -78,18 +81,28 @@ public class BatchCellUpdater {
         return res;
     }
 
-    public static void Update(string email, int day, List<ngOrderModel> newOrders) {
+    public static void Update(string email, int day, List<ngOrderModel> orders) {
+        ExcelParser.Inst.RefreshAccessToken();
+
+        ngUserModel user = UsersManager.Inst.GetUserByEmail(email);
+       
+        Dictionary<ngUserModel,List<ngOrderModel>>  res = new Dictionary<ngUserModel, List<ngOrderModel>>();
+        res.Add(user,orders);
+        Update(day,res);
+    }
+
+    public static void Update(int day, Dictionary<ngUserModel, List<ngOrderModel>> orders) {
         ExcelParser.Inst.RefreshAccessToken();
 
         ExcelTable table = ExcelParser.Inst.Doc.GetExcelTable(day);
-        ngUserModel user = UsersManager.Inst.GetUserByEmail(email);
         List<ExcelCell> newCells = new List<ExcelCell>();
-        foreach (ngOrderModel order in newOrders) {
-            ExcelRow row = table.GetRowByFoodId(order.FoodId);
-            ExcelCell cell = row.EnsureCell(user.Column);
-            cell.Value = order.Count;
-            newCells.Add(cell);
-           
+        foreach (KeyValuePair<ngUserModel, List<ngOrderModel>> keyValuePair in orders) {
+            foreach (ngOrderModel order in keyValuePair.Value) {
+                ExcelRow row = table.GetRowByFoodId(order.FoodId);
+                ExcelCell cell = row.EnsureCell(keyValuePair.Key.Column);
+                cell.Value = order.Count;
+                newCells.Add(cell);
+            }
         }
         RequestUpdateCells(newCells);
     }

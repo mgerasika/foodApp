@@ -4,23 +4,19 @@ using FoodApp.Controllers.api;
 using SharpKit.jQuery;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Client
-{
+namespace FoodApp.Client {
     [JsType(JsMode.Prototype, Filename = WebApiResources._fileClientJs)]
-    public class ngOrderController : ngControllerBase
-    {
+    public class ngOrderController : ngControllerBase {
         public static ngOrderController inst = new ngOrderController();
 
         private ngOrderController() {
         }
 
-        public override string className
-        {
+        public override string className {
             get { return "ngOrderController"; }
         }
 
-        public JsArray<JsArray<ngOrderModel>> ngOrders
-        {
+        public JsArray<JsArray<ngOrderModel>> ngOrders {
             get { return _scope["ngOrders"].As<JsArray<JsArray<ngOrderModel>>>(); }
             set { _scope["ngOrders"] = value; }
         }
@@ -29,6 +25,15 @@ namespace FoodApp.Client
         public ngFoodItem getFoodItem(string id) {
             ngFoodItem item = ngFoodController.inst.findFoodById(id);
             return item;
+        }
+
+        public string formatCount(ngOrderModel order) {
+            string res = order.Count.As<string>() + "";
+            ngFoodItem food = getFoodItem(order.FoodId);
+            if (food.IsByWeightItem) {
+                res = JsContext.parseInt((order.Count*100).As<string>(), 10).As<string>() + "";
+            }
+            return res;
         }
 
         public decimal getTotalPrice(int day) {
@@ -70,14 +75,31 @@ namespace FoodApp.Client
                 OrdersController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserEmail + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
                     JsArray<JsArray<ngOrderModel>> tmp = o.As<JsArray<JsArray<ngOrderModel>>>();
-                    while (ngOrders.length>0) {
+                    while (ngOrders.length > 0) {
                         ngOrders.pop();
                     }
                     foreach (JsArray<ngOrderModel> obj in tmp) {
                         ngOrders.push(obj);
                     }
+                    eventManager.inst.fire(eventManager.orderListChanged,ngOrders);
                     _scope.apply();
                 }, onRequestFailed);
+        }
+
+        public JsArray<ngOrderModel> getOrders(int day) {
+            return ngOrders[day];
+        }
+
+        public ngOrderModel getOrderByFoodId(int day, string foodId) {
+            ngOrderModel res = null;
+            JsArray<ngOrderModel> orders = inst.getOrders(day);
+            foreach (ngOrderModel order in orders) {
+                if (order.FoodId == foodId) {
+                    res = order;
+                    break;
+                }
+            }
+            return res;
         }
     }
 }

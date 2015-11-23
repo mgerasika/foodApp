@@ -263,6 +263,7 @@
     <Compile Include="Client\ngOrderFilter.cs" />
     <Compile Include="Client\serviceHlp.cs" />
     <Compile Include="Common\Managers\BackupHistoryManager.cs" />
+    <Compile Include="Common\Managers\ClearOrdersManager.cs" />
     <Compile Include="Common\Managers\EFoodCategories.cs" />
     <Compile Include="Common\Managers\MakeFavoriteFromHistoryManager.cs" />
     <Compile Include="Common\Managers\UsersManager.cs" />

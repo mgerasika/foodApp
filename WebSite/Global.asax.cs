@@ -22,6 +22,7 @@ namespace FoodApp
             CultureInfo culture = new CultureInfo("en-US");
             culture.NumberFormat.NumberDecimalSeparator = ",";
             BackupHistoryManager backupHistoryManager = BackupHistoryManager.Inst;
+            ClearOrdersManager clearOrdersManage2R = ClearOrdersManager.Inst;
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = culture;
         }
     }

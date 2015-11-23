@@ -8,6 +8,7 @@ namespace FoodApp.Client
     {
         public static readonly string settingsLoaded = "settingsLoaded";
         public static readonly string orderCompleted = "orderCompleted";
+        public static readonly string orderListChanged = "orderListChanged";
 
         public static eventManager inst = new eventManager();
         private JsObject _dict = new JsObject();
