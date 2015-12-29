@@ -51,7 +51,7 @@ namespace FoodApp.Common
             return res;
         }
 
-        public void Add(T model)
+        public virtual void Add(T model)
         {
             List<T> items = GetItems();
             items.Add(model);

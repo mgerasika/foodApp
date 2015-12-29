@@ -3,91 +3,130 @@
     "Column": 5,
     "Email": "okapij@darwinsgrove.com",
     "Name": "Олена К",
+    "Id": "7788e0d7-8179-4e99-9325-ef41c1616827",
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-    "GoogleName": "Olena Kapij"
+    "GoogleName": "Olena Kapij",
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 6,
     "Email": "omartsinets@darwinsgrove.com",
     "Name": "Олена М",
+    "Id": "a3a15191-72e2-4532-a2ca-3bde06a719cb",
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-    "GoogleName": "Olena Martsinets"
+    "GoogleName": "Olena Martsinets",
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 7,
     "Email": "ikhariv@darwinsgrove.com",
     "Name": "Ірина",
+    "Id": "2f08815c-0908-4008-8d75-2242faf6fbb9",
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-    "GoogleName": "Iryna Khariv"
+    "GoogleName": "Iryna Khariv",
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 8,
     "Email": "apodanovskiy@darwinsgrove.com",
     "Name": "Андрій П",
+    "Id": "746e9bd4-e998-4c8b-99bf-e9647b2ffc48",
     "Picture": null,
-    "GoogleName": null
+    "GoogleName": null,
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 9,
     "Email": "achulyk@darwinsgrove.com",
     "Name": "Андрій Ч",
+    "Id": "cb28bf01-a4f9-4cf6-ba14-d641658a0399",
     "Picture": null,
-    "GoogleName": null
+    "GoogleName": null,
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 10,
     "Email": "amamchur@darwinsgrove.com",
     "Name": "Aндрій М",
+    "Id": "dccc8bd6-200d-421d-bb31-45a29370748a",
     "Picture": null,
-    "GoogleName": null
+    "GoogleName": null,
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 11,
     "Email": "haba.yura@darwinsgrove.com",
     "Name": "Юра",
+    "Id": "d483f9b9-1792-4d96-90a1-e75e63315b62",
     "Picture": null,
-    "GoogleName": null
+    "GoogleName": null,
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 12,
     "Email": "vpabyrivskyy@darwinsgrove.com",
     "Name": "Володя",
+    "Id": "ea9dfa39-7af2-439d-81f4-f1ef84afae4e",
     "Picture": null,
-    "GoogleName": null
+    "GoogleName": null,
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 13,
     "Email": "aborovyi@darwinsgrove.com",
     "Name": "Андрій Б",
+    "Id": "cfd6b89a-8b5d-440e-a5b4-d4148708ace6",
     "Picture": null,
-    "GoogleName": null
+    "GoogleName": null,
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 14,
     "Email": "iplotytsia@darwinsgrove.com",
     "Name": "Іван П",
+    "Id": "dd54c9fb-4f26-4d36-909f-b2b9314f8e9e",
     "Picture": null,
-    "GoogleName": null
+    "GoogleName": null,
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 15,
     "Email": "vzadorozhnyy@darwinsgrove.com",
     "Name": "Василь З",
+    "Id": "8008ce3a-d7e2-4c75-9ddb-d442de33f608",
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-    "GoogleName": "Vasyl Zadorozhnyy"
+    "GoogleName": "Vasyl Zadorozhnyy",
+    "IsAdmin": false,
+    "GoogleFirstName": null
   },
   {
     "Column": 16,
     "Email": "mherasika@darwinsgrove.com",
     "Name": "Міша Г",
+    "Id": "47258346-5281-4fd7-9234-d5eb994c534c",
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-    "GoogleName": "Mykhaylo Herasika"
+    "GoogleName": "Mykhaylo Herasika",
+    "IsAdmin": true,
+    "GoogleFirstName": "Mykhaylo"
   },
   {
     "Column": 16,
     "Email": "mgerasika@gmail.com",
     "Name": "Міша Г",
+    "Id": "47258346-5281-4fd7-9234-d5eb994c534c",
     "Picture": "https://lh6.googleusercontent.com/-63abJDn2EVk/AAAAAAAAAAI/AAAAAAAAWmA/jKEV1zwBYoU/photo.jpg",
-    "GoogleName": "Mykhaylo H"
+    "GoogleName": "Mykhaylo H",
+    "IsAdmin": true,
+    "GoogleFirstName": "Mykhaylo"
   }
 ]

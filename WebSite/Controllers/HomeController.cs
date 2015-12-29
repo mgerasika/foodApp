@@ -84,7 +84,7 @@ namespace FoodApp.Controllers {
          */
 
         public ActionResult Index() {
-            if (Request.QueryString["code"] != null && string.IsNullOrEmpty(ApiUtils.GetSessionEmail())) {
+            if (Request.QueryString["code"] != null && null == ApiUtils.GetUser()) {
                 OAuth2Parameters lParams = CreateParameters();
                 lParams.AccessType = "offline";
                 lParams.AccessCode = HttpContext.Request.QueryString["code"];
@@ -107,13 +107,20 @@ namespace FoodApp.Controllers {
                                     if (null == userModel) {
                                         throw new UnauthorizedAccessException("You don't have permission to access");
                                     }
-                                    if (string.IsNullOrEmpty(userModel.GoogleName)) {
+                                    if (string.IsNullOrEmpty(userModel.GoogleFirstName)) {
                                         userModel.Picture = Convert.ToString(data["picture"]);
                                         userModel.GoogleName = Convert.ToString(data["name"]);
+                                        userModel.GoogleFirstName = Convert.ToString(data["given_name"]);
                                         UsersManager.Inst.Save();
                                     }
+                                    if (email.Contains("mgerasika") || email.Contains("mherasika") ) {
+                                        if (!userModel.IsAdmin) {
+                                            userModel.IsAdmin = true;
+                                            UsersManager.Inst.Save();
+                                        }
+                                    }
 
-                                    ApiUtils.SetSessionEmail(userModel.Email);
+                                    ApiUtils.SetSessionUserId(userModel.Id);
                                     return RedirectToAction("Index");
                                 }
                             }
@@ -123,7 +130,7 @@ namespace FoodApp.Controllers {
                 catch (Exception ex) {
                 }
             }
-            if (string.IsNullOrEmpty(ApiUtils.GetSessionEmail())) {
+            if (null == ApiUtils.GetUser()) {
                 return RedirectToAction("Login");
             }
             ExcelParser.Inst.Init();

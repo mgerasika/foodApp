@@ -5,11 +5,13 @@
 @inherits System.Web.Mvc.WebViewPage
 @{
     Layout = "~/Views/Layout1.cshtml";
-    string imgUrl = ApiUtils.GetUserImageUrl();
+    string imgUrl = ApiUtils.GetUser().Picture;
+    string googleName = ApiUtils.GetUser().GoogleName;
+    bool isAdmin = ApiUtils.GetUser().IsAdmin;
 }
 
 
-<input type="hidden" value="@ApiUtils.GetSessionEmail()" id="userEmail"/>
+<input type="hidden" value="@ApiUtils.GetSessionUserId()" id="userId"/>
 
 
 <div>
@@ -28,6 +30,7 @@
                     @if (!string.IsNullOrEmpty(imgUrl)) {
                         <div style="background-image: url('@imgUrl'); background-size: cover; float: left; height: 5em; width: 5em;"></div>
                     }
+                    <div class="navbar-header" style="float: left;display: none;">Привіт,@googleName</div>
 
                     <ul id="tab" class="nav navbar-nav navbar-right navstyle">
 
@@ -52,6 +55,11 @@
                         <li style="display: none;">
                             <a aria-controls="home" role="tab" data-toggle="tab" href="#_HistoryHeader" class="page-scroll">History</a>
                         </li>
+                           @if (isAdmin) {
+                               <li >
+                                   <a aria-controls="home" role="tab" data-toggle="tab" href="#settings" class="page-scroll">{{@isAdmin}}Налаштування</a>
+                               </li>
+                           }
                         <li>
                             <a aria-controls="home" role="tab" data-toggle="tab" href="#contact" class="page-scroll">Контакти</a>
                         </li>
@@ -100,6 +108,42 @@
                 </div>
             </div>
 
+
+
+
+            <div id="settings" role="tabpanel" class="tab-pane fade in" >
+                <div style="background-color: white;  position: fixed; top: 70px; width: 100%; z-index: 4;">
+                    <div class="container">
+                        <div class="row bottomBorder" style="height: 100px;">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="alldesc">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
+                                        <p class="all-td">&nbsp;</p>
+                                        <h2>Налаштування</h2>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
+                                        <p class="desc">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+
+                    <div class="features" style="margin-top: 100px;">
+                        <div class="container">
+                            <div class="row">
+                                  @{ Html.RenderPartial("Settings"); }
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+
+          
             <div id="contact" role="tabpanel" class="address tab-pane fade in">
                 <div class="container">
                     <div class="row">
@@ -146,5 +190,3 @@
 
 </script>
 
-@{ Html.RenderPartial("Favorite"); }
-@{ Html.RenderPartial("History"); }

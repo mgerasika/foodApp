@@ -20,16 +20,17 @@ namespace FoodApp.Controllers.api {
         }
 
         [HttpGet]
-        [Route(c_sFoodsPrefix + "/{email}/{day}")]
-        public IList<ngFoodItem> GetFoodsByDay(string email, int day) {
+        [Route(c_sFoodsPrefix + "/{userId}/{day}")]
+        public IList<ngFoodItem> GetFoodsByDay(string userId, int day) {
             List<ngFoodItem> items = FoodManager.Inst.GetFoods(day);
             return items;
         }
 
         [HttpPost]
-        [Route(c_sFoodsPrefix + "/{email}/{day}/{foodId}/{val}/")]
-        public bool Buy(string email, int day, string foodId, decimal val) {
-            return OrderManager.Inst.Buy(email, day, foodId, val);
+        [Route(c_sFoodsPrefix + "/{userId}/{day}/{foodId}/{val}/")]
+        public bool Buy(string userId, int day, string foodId, decimal val) {
+            ngUserModel user = UsersManager.Inst.GetUserById(userId);
+            return OrderManager.Inst.Buy(user, day, foodId, val);
         }
     }
 }

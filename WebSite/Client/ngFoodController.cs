@@ -45,7 +45,7 @@ namespace FoodApp.Client {
 
         public bool hasOrder(int day, string foodId) {
             bool res = false;
-            ngOrderModel order = ngOrderController.inst.getOrderByFoodId(day, foodId);
+            ngOrderEntry order = ngOrderController.inst.getOrderByFoodId(day, foodId);
             if (null != order) {
                 res = true;
             }
@@ -132,7 +132,7 @@ namespace FoodApp.Client {
 
         public decimal getOrderCount(int day, string foodId) {
             decimal res = 0;
-            ngOrderModel order = ngOrderController.inst.getOrderByFoodId(day, foodId);
+            ngOrderEntry order = ngOrderController.inst.getOrderByFoodId(day, foodId);
             if (null != order) {
                 res = order.Count;
             }

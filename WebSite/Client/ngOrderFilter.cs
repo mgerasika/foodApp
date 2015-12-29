@@ -34,14 +34,14 @@ namespace FoodApp.Client
 
         public override object filter(JsObject obj, JsObject arg)
         {
-            JsArray<ngOrderModel> res = new JsArray<ngOrderModel>();
+            JsArray<ngOrderEntry> res = new JsArray<ngOrderEntry>();
             int day = arg["day"].As<int>();
-            JsArray<JsArray<ngOrderModel>> allOrders = obj.As<JsArray<JsArray<ngOrderModel>>>();
-            JsArray<ngOrderModel> tmp = allOrders[day];
+            JsArray<JsArray<ngOrderEntry>> allOrders = obj.As<JsArray<JsArray<ngOrderEntry>>>();
+            JsArray<ngOrderEntry> tmp = allOrders[day];
             if (tmp != null && tmp.length > 0) {
-                foreach (ngOrderModel order in tmp) {
+                foreach (ngOrderEntry order in tmp) {
                     ngFoodItem foodItem = ngFoodController.inst.findFoodById(order.FoodId);
-                    if (!foodItem.isContainer) {
+                    if (null != foodItem && !foodItem.isContainer) {
                         res.Add(order);
                     }
                 }

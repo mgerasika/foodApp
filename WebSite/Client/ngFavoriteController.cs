@@ -20,18 +20,18 @@ namespace FoodApp.Client
             get { return "ngFavoriteController"; }
         }
 
-        public JsArray<ngFoodRate> ngItems {
-            get { return _scope["ngItems"].As<JsArray<ngFoodRate>>(); }
-            set { _scope["ngItems"] = value; }
+        public JsArray<ngFoodRate> ngFavoriteItems {
+            get { return _scope["ngFavoriteItems"].As<JsArray<ngFoodRate>>(); }
+            set { _scope["ngFavoriteItems"] = value; }
         }
 
       
 
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {
             base.init(scope, http, loc, filter);
-            ngItems = new JsArray<ngFoodRate>();
+            ngFavoriteItems = new JsArray<ngFoodRate>();
 
-            eventManager.inst.subscribe(eventManager.settingsLoaded, delegate(int n) { refresh(); });
+            eventManager.inst.subscribe(eventManager.settingsLoaded, delegate(int n) { refreshFavorite(); });
 
            
         }
@@ -42,11 +42,11 @@ namespace FoodApp.Client
             return item;
         }
 
-        public void refresh() {
+        public void refreshFavorite() {
             serviceHlp.inst.SendGet("json",
                 FavoriteFoodController.c_sGetFavorite + "/" + ngAppController.inst.ngUserEmail + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
-                    ngItems = o.As<JsArray<ngFoodRate>>();
+                    ngFavoriteItems = o.As<JsArray<ngFoodRate>>();
                     _scope.apply();
                 }, onRequestFailed);
         }

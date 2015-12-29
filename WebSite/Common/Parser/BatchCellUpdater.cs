@@ -81,23 +81,22 @@ public class BatchCellUpdater {
         return res;
     }
 
-    public static void Update(string email, int day, List<ngOrderModel> orders) {
+    public static void Update(ngUserModel user, int day, List<ngOrderEntry> orders) {
         ExcelParser.Inst.RefreshAccessToken();
 
-        ngUserModel user = UsersManager.Inst.GetUserByEmail(email);
        
-        Dictionary<ngUserModel,List<ngOrderModel>>  res = new Dictionary<ngUserModel, List<ngOrderModel>>();
+        Dictionary<ngUserModel,List<ngOrderEntry>>  res = new Dictionary<ngUserModel, List<ngOrderEntry>>();
         res.Add(user,orders);
         Update(day,res);
     }
 
-    public static void Update(int day, Dictionary<ngUserModel, List<ngOrderModel>> orders) {
+    public static void Update(int day, Dictionary<ngUserModel, List<ngOrderEntry>> orders) {
         ExcelParser.Inst.RefreshAccessToken();
 
         ExcelTable table = ExcelParser.Inst.Doc.GetExcelTable(day);
         List<ExcelCell> newCells = new List<ExcelCell>();
-        foreach (KeyValuePair<ngUserModel, List<ngOrderModel>> keyValuePair in orders) {
-            foreach (ngOrderModel order in keyValuePair.Value) {
+        foreach (KeyValuePair<ngUserModel, List<ngOrderEntry>> keyValuePair in orders) {
+            foreach (ngOrderEntry order in keyValuePair.Value) {
                 ExcelRow row = table.GetRowByFoodId(order.FoodId);
                 ExcelCell cell = row.EnsureCell(keyValuePair.Key.Column);
                 cell.Value = order.Count;

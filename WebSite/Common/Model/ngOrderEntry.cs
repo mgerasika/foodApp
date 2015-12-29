@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
 using FoodApp.Common;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Client
-{
+namespace FoodApp.Client {
     [JsType(JsMode.Json, Filename = WebApiResources._fileClientJs, Export = true)]
-    public class ngOrderModel : ngModelBase
+    public class ngOrderEntry : ngModelBase
     {
-        public decimal Count { get; set; }
         public string FoodId { get; set; }
+        public decimal Count { get; set; }
+        public decimal FoodPrice { get; set; }
     }
 }

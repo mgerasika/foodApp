@@ -14,8 +14,10 @@ namespace FoodApp.Controllers.api
     {
         [HttpPost]
         [Route("foodApp/login")]
-        public bool Login(string name) {
-           ApiUtils.SetSessionEmail(name);
+        public bool Login(string email) {
+            ngUserModel userByEmail = UsersManager.Inst.GetUserByEmail(email);
+            Debug.Assert(null != userByEmail);
+            ApiUtils.SetSessionUserId(userByEmail.Id);
             return true;
         }
 

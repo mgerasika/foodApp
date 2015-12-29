@@ -16,9 +16,9 @@ namespace FoodApp.Client {
             get { return "ngOrderController"; }
         }
 
-        public JsArray<JsArray<ngOrderModel>> ngOrders {
-            get { return _scope["ngOrders"].As<JsArray<JsArray<ngOrderModel>>>(); }
-            set { _scope["ngOrders"] = value; }
+        public JsArray<JsArray<ngOrderEntry>> ngOrderEntries {
+            get { return _scope["ngOrderEntries"].As<JsArray<JsArray<ngOrderEntry>>>(); }
+            set { _scope["ngOrderEntries"] = value; }
         }
 
 
@@ -27,7 +27,7 @@ namespace FoodApp.Client {
             return item;
         }
 
-        public string formatCount(ngOrderModel order) {
+        public string formatCount(ngOrderEntry order) {
             string res = order.Count.As<string>() + "";
             ngFoodItem food = getFoodItem(order.FoodId);
             if (food.IsByWeightItem) {
@@ -38,9 +38,9 @@ namespace FoodApp.Client {
 
         public decimal getTotalPrice(int day) {
             decimal res = 0;
-            JsArray<ngOrderModel> ngOrderModels = ngOrders[day];
+            JsArray<ngOrderEntry> ngOrderModels = ngOrderEntries[day];
             if (ngOrderModels != null) {
-                foreach (ngOrderModel item in ngOrderModels) {
+                foreach (ngOrderEntry item in ngOrderModels) {
                     ngFoodItem food = getFoodItem(item.FoodId);
                     if (null != food) {
                         res += clientUtils.Inst.fixNumber(food.Price*item.Count);
@@ -54,7 +54,7 @@ namespace FoodApp.Client {
 
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {
             base.init(scope, http, loc, filter);
-            ngOrders = new JsArray<JsArray<ngOrderModel>>();
+            ngOrderEntries = new JsArray<JsArray<ngOrderEntry>>();
 
             eventManager.inst.subscribe(eventManager.settingsLoaded, delegate(int n) { refreshOrders(); });
             eventManager.inst.subscribe(eventManager.orderCompleted, delegate(int n) { refreshOrders(); });
@@ -63,7 +63,7 @@ namespace FoodApp.Client {
         public void deleteOrder(int day, string row) {
             clientUtils.Inst.showLoading();
             serviceHlp.inst.SendDelete("json",
-                OrdersController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserEmail + "/" + day + "/" + row + "/",
+                OrderController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserEmail + "/" + day + "/" + row + "/",
                 new JsObject(), delegate {
                     clientUtils.Inst.hideLoading();
                     refreshOrders();
@@ -72,28 +72,28 @@ namespace FoodApp.Client {
 
         public void refreshOrders() {
             serviceHlp.inst.SendGet("json",
-                OrdersController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserEmail + "/",
+                OrderController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserEmail + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
-                    JsArray<JsArray<ngOrderModel>> tmp = o.As<JsArray<JsArray<ngOrderModel>>>();
-                    while (ngOrders.length > 0) {
-                        ngOrders.pop();
+                    JsArray<JsArray<ngOrderEntry>> tmp = o.As<JsArray<JsArray<ngOrderEntry>>>();
+                    while (ngOrderEntries.length > 0) {
+                        ngOrderEntries.pop();
                     }
-                    foreach (JsArray<ngOrderModel> obj in tmp) {
-                        ngOrders.push(obj);
+                    foreach (JsArray<ngOrderEntry> obj in tmp) {
+                        ngOrderEntries.push(obj);
                     }
-                    eventManager.inst.fire(eventManager.orderListChanged,ngOrders);
+                    eventManager.inst.fire(eventManager.orderListChanged,ngOrderEntries);
                     _scope.apply();
                 }, onRequestFailed);
         }
 
-        public JsArray<ngOrderModel> getOrders(int day) {
-            return ngOrders[day];
+        public JsArray<ngOrderEntry> getOrders(int day) {
+            return ngOrderEntries[day];
         }
 
-        public ngOrderModel getOrderByFoodId(int day, string foodId) {
-            ngOrderModel res = null;
-            JsArray<ngOrderModel> orders = inst.getOrders(day);
-            foreach (ngOrderModel order in orders) {
+        public ngOrderEntry getOrderByFoodId(int day, string foodId) {
+            ngOrderEntry res = null;
+            JsArray<ngOrderEntry> orders = inst.getOrders(day);
+            foreach (ngOrderEntry order in orders) {
                 if (order.FoodId == foodId) {
                     res = order;
                     break;

@@ -14,6 +14,7 @@ namespace FoodApp.Common
             this.FoodRates = new List<ngFoodRate>();
         }
         public string Email { get; set; }
+        public string UserId { get; set; }
 
         public ngFoodRate GetFoodRateById(string foodId) {
             ngFoodRate res = null;

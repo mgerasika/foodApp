@@ -37,7 +37,7 @@ namespace FoodApp.Client
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {
             base.init(scope, http, loc, filter);
 
-            ngUserEmail = HtmlContext.document.getElementById("userEmail").As<HtmlInputElement>().value;
+            ngUserEmail = HtmlContext.document.getElementById("userId").As<HtmlInputElement>().value;
             HtmlContext.console.log(@HomeController.EmailQueryString + "=" + this.ngUserEmail);
             HtmlContext.window.setTimeout(delegate() {
                 eventManager.inst.fire(eventManager.settingsLoaded,"");

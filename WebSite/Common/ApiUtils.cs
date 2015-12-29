@@ -7,8 +7,8 @@ using FoodApp.Common;
 
 namespace FoodApp.Controllers {
     public class ApiUtils {
-        public const string c_sExcelFileName = "mykhaylo_test";
-        //public const string c_sExcelFileName = "Меню на тиждень";
+        //public const string c_sExcelFileName = "mykhaylo_test";
+        public const string c_sExcelFileName = "Меню на тиждень";
         //public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
         public const string REDIRECT_URL = "http://localhost:15845/";
 
@@ -19,15 +19,15 @@ namespace FoodApp.Controllers {
         public static string USER_INFO_SCOPE =
             "https://www.googleapis.com/auth/userinfo.profile  https://www.googleapis.com/auth/userinfo.email";
 
-        public static string GetSessionEmail() {
+        public static string GetSessionUserId() {
             string res = null;
             if (null != HttpContext.Current.Session) {
-                res = HttpContext.Current.Session["email"] as string;
+                res = HttpContext.Current.Session["userId"] as string;
             }
             if (string.IsNullOrEmpty(res)) {
                 HttpRequest request = GetHttpRequest();
                 if (null != request) {
-                    HttpCookie httpCookie = request.Cookies.Get("email");
+                    HttpCookie httpCookie = request.Cookies.Get("userId");
                     if (null != httpCookie) {
                         res = httpCookie.Value;
                     }
@@ -36,22 +36,23 @@ namespace FoodApp.Controllers {
             return res;
         }
 
-        public static string GetUserImageUrl() {
-            string res = "";
-            string email = GetSessionEmail();
-            if (!string.IsNullOrEmpty(email)) {
-                ngUserModel userByEmail = UsersManager.Inst.GetUserByEmail(email);
-                Debug.Assert(null != userByEmail);
-                res = userByEmail.Picture;
+        public static ngUserModel GetUser()
+        {
+            ngUserModel res = null;
+            string id = GetSessionUserId();
+            if (!string.IsNullOrEmpty(id)) {
+                ngUserModel userById = UsersManager.Inst.GetUserById(id);
+                Debug.Assert(null != userById);
+                res = userById;
             }
             return res;
         }
 
-        public static void SetSessionEmail(string val) {
-            HttpContext.Current.Session["email"] = val;
+        public static void SetSessionUserId(string val) {
+            HttpContext.Current.Session["userId"] = val;
             HttpResponse response = GetHttpResponse();
             if (null != response) {
-                response.Cookies.Add(new HttpCookie("email", val));
+                response.Cookies.Add(new HttpCookie("userId", val));
             }
         }
 
@@ -175,10 +176,10 @@ namespace FoodApp.Controllers {
             return str;
         }
 
-        public static List<ngOrderModel> AddContainersToFood(string email, int day, List<ngOrderModel> orders) {
-            List<ngOrderModel> res = new List<ngOrderModel>();
+        public static List<ngOrderEntry> AddContainersToFood(ngUserModel user, int day, List<ngOrderEntry> orders) {
+            List<ngOrderEntry> res = new List<ngOrderEntry>();
 
-            List<ngFoodItem> foods = OrderManager.Inst.GetOrderedFoods(email, day);
+            List<ngFoodItem> foods = OrderManager.Inst.GetOrderedFoods(user, day);
             int smallContainersCount = 0;
             int bigContainersCount = 0;
 
@@ -209,7 +210,7 @@ namespace FoodApp.Controllers {
             }
 
             // remove containers
-            foreach (ngOrderModel order in orders) {
+            foreach (ngOrderEntry order in orders) {
                 ngFoodItem ngFoodItem = FoodManager.Inst.GetFoodById(day, order.FoodId);
                 if (!ngFoodItem.isContainer) {
                     res.Add(order);
@@ -219,7 +220,7 @@ namespace FoodApp.Controllers {
             //update small containers cout
             ngFoodItem foodSmallContainer = FoodManager.Inst.GetSmallContainer(day);
             Debug.Assert(null != foodSmallContainer);
-            ngOrderModel smallContainerOrder = new ngOrderModel();
+            ngOrderEntry smallContainerOrder = new ngOrderEntry();
             smallContainerOrder.FoodId = foodSmallContainer.FoodId;
             smallContainerOrder.Count = smallContainersCount;
             res.Add(smallContainerOrder);
@@ -227,7 +228,7 @@ namespace FoodApp.Controllers {
             //update big containers count
             ngFoodItem foodBigContainer = FoodManager.Inst.GetBigContainer(day);
             Debug.Assert(null != foodBigContainer);
-            ngOrderModel bigContainerOrder = new ngOrderModel();
+            ngOrderEntry bigContainerOrder = new ngOrderEntry();
             bigContainerOrder.FoodId = foodBigContainer.FoodId;
             bigContainerOrder.Count = bigContainersCount;
             res.Add(bigContainerOrder);
@@ -254,5 +255,7 @@ namespace FoodApp.Controllers {
         internal static bool EqualDate(DateTime dt1, DateTime dt2) {
             return dt1.Year.Equals(dt2.Year) && dt1.Month.Equals(dt2.Month) && dt1.Day.Equals(dt2.Day);
         }
+
+        
     }
 }

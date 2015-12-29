@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace FoodApp.Common
 {
@@ -12,20 +13,31 @@ namespace FoodApp.Common
         }
 
         protected override string GetId(ngHistoryModel obj) {
-            return obj.Email;
+            return obj.UserId;
         }
 
         public void CreateFake() {
         }
 
-        internal ngHistoryModel GetHistoryModelByEmail(string email) {
-            return GetItem(email);
+        public void Fix()
+        {
+            foreach (ngHistoryModel item in GetItems())
+            {
+                ngUserModel user = UsersManager.Inst.GetUserByEmail(item.Email);
+                Debug.Assert(null != user);
+                item.UserId = user.Id;
+            }
+            Save();
+        }
+
+        internal ngHistoryModel GetHistoryModelByUser(ngUserModel user) {
+            return GetItem(user.Email);
         }
 
         internal bool HasAnyEntry(DateTime dt) {
             bool res = false;
-            foreach (ngUserModel users in UsersManager.Inst.GetUsers()) {
-                ngHistoryModel model = GetHistoryModelByEmail(users.Email);
+            foreach (ngUserModel user in UsersManager.Inst.GetUsers()) {
+                ngHistoryModel model = GetHistoryModelByUser(user);
                 if (null != model) {
                     var entries = model.GetEntriesByDate(dt);
                     if (entries.Count > 0) {

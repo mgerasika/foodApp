@@ -235,6 +235,8 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="data\users.json" />
     <Content Include="data\userSettings.json" />
+    <Content Include="data\money.json" />
+    <Content Include="data\moneyLogs.json" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -266,12 +268,19 @@
     <Compile Include="Common\Managers\ClearOrdersManager.cs" />
     <Compile Include="Common\Managers\EFoodCategories.cs" />
     <Compile Include="Common\Managers\MakeFavoriteFromHistoryManager.cs" />
+    <Compile Include="Common\Managers\MoneyLogger.cs" />
+    <Compile Include="Common\Managers\MoneyManager.cs" />
+    <Compile Include="Common\Managers\OrderManager.cs" />
+    <Compile Include="Common\Model\EMoneyOperation.cs" />
+    <Compile Include="Common\Model\ngMoneyModel.cs" />
     <Compile Include="Common\Managers\UsersManager.cs" />
     <Compile Include="Common\Model\ngFoodRate.cs" />
     <Compile Include="Common\Model\ngHistoryEntry.cs" />
     <Compile Include="Common\Managers\HistoryManager.cs" />
     <Compile Include="Common\Model\ngHistoryModel.cs" />
     <Compile Include="Common\Managers\UserSettingsManager.cs" />
+    <Compile Include="Common\Model\ngMoneyOrdersModel.cs" />
+    <Compile Include="Common\Model\ngOrderEntry.cs" />
     <Compile Include="Common\Model\ngUsersSettingsModel.cs" />
     <Compile Include="Common\Model\ngUserModel.cs" />
     <Compile Include="Common\Parser\BatchCellUpdater.cs" />
@@ -287,8 +296,6 @@
     <Compile Include="Common\Model\ngModelBase.cs" />
     <Compile Include="Client\ngFoodController.cs" />
     <Compile Include="Client\ngOrderController.cs" />
-    <Compile Include="Common\Managers\OrderManager.cs" />
-    <Compile Include="Common\Model\ngOrderModel.cs" />
     <Compile Include="Common\Parser\LoginTool.cs" />
     <Compile Include="Common\WebApiResources.cs" />
     <Compile Include="Common\ApiUtils.cs" />
@@ -297,8 +304,8 @@
     <Compile Include="Controllers\api\FavoriteFoodController.cs" />
     <Compile Include="Controllers\api\FoodsController.cs" />
     <Compile Include="Controllers\api\AppController.cs" />
+    <Compile Include="Controllers\api\OrderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\api\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

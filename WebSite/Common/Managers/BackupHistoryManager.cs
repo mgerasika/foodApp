@@ -32,7 +32,7 @@ namespace FoodApp.Common
         private static void CreateHistoryByDay(int dayOfWeek) {
             bool hasChanges = false;
             foreach (ngUserModel user in UsersManager.Inst.GetUsers()) {
-                List<ngOrderModel> orders = OrderManager.Inst.GetOrders(user.Email, dayOfWeek);
+                List<ngOrderEntry> orders = OrderManager.Inst.GetOrders(user, dayOfWeek);
 
                 if (orders.Count > 0) {
                     AddHistoryEntryToModel(user, orders, dayOfWeek);
@@ -44,16 +44,17 @@ namespace FoodApp.Common
             }
         }
 
-        private static void AddHistoryEntryToModel(ngUserModel ngUser, List<ngOrderModel> orders, int dayOfWeek) {
-            ngHistoryModel model = HistoryManager.Inst.GetHistoryModelByEmail(ngUser.Email);
+        private static void AddHistoryEntryToModel(ngUserModel ngUser, List<ngOrderEntry> orders, int dayOfWeek) {
+            ngHistoryModel model = HistoryManager.Inst.GetHistoryModelByUser(ngUser);
             if (null == model) {
                 model = new ngHistoryModel();
                 HistoryManager.Inst.AddItemAndSave(model);
                 model.Email = ngUser.Email;
+                model.UserId = ngUser.Id;
                 model.Entries = new List<ngHistoryEntry>();
             }
 
-            foreach (ngOrderModel ngOrderModel in orders) {
+            foreach (ngOrderEntry ngOrderModel in orders) {
                 ngHistoryEntry entry = new ngHistoryEntry();
                 entry.Date = DateTime.Now;
                 entry.FoodId = ngOrderModel.FoodId;

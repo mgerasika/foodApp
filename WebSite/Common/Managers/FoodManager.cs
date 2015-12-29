@@ -13,14 +13,12 @@ namespace FoodApp.Common {
             ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
             List<ExcelRow> rows = excelTable.Rows;
             foreach (ExcelRow row in rows) {
-                if (row.HasPrice) {
+                if (row.HasPrice && !string.IsNullOrEmpty(row.Name)) {
                     ngFoodItem item = new ngFoodItem();
                     Debug.Assert(!string.IsNullOrEmpty(row.Name));
                     item.Name = row.Name;
                     item.Description = row.Description;
 
-
-                    
                     item.isContainer = row.IsContainer();
                     item.isBigContainer = row.IsBigContainer();
                     item.isSmallContainer = row.IsSmallContainer();
@@ -33,7 +31,7 @@ namespace FoodApp.Common {
                     item.Price = row.Price;
                     item.FoodId = row.GetFoodId();
                     item.Category = row.Category;
-                    
+
                     res.Add(item);
                 }
             }

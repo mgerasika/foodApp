@@ -20,9 +20,9 @@ namespace FoodApp.Common
         }   
         
         private void ParseHistoryAndMakeRateByUserId(ngUserModel user) {
-            ngUsersSettingsModel lSettings = UserSettingsManager.Inst.EnsureUserSettings(user.Email);
+            ngUsersSettingsModel lSettings = UserSettingsManager.Inst.EnsureUserSettings(user);
 
-            ngHistoryModel history = HistoryManager.Inst.GetHistoryModelByEmail(user.Email);
+            ngHistoryModel history = HistoryManager.Inst.GetHistoryModelByUser(user);
             if (null != history) {
                 IDictionary<string, List<ngHistoryEntry>> groupFoods = history.GroupByFoodId();
 
