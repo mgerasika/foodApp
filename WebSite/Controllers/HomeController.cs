@@ -10,7 +10,7 @@ using GoogleAppsConsoleApplication;
 
 namespace FoodApp.Controllers {
     public class HomeController : Controller {
-        public const string EmailQueryString = "email";
+        public const string UserIdQueryString = "email";
         /*
         public string Test() {
             var sb = new StringBuilder();
@@ -134,7 +134,7 @@ namespace FoodApp.Controllers {
                 return RedirectToAction("Login");
             }
             ExcelParser.Inst.Init();
-            MakeFavoriteFromHistoryManager.Inst.ParseHistoryAndMakeRate();
+            UserSettingsManager.Inst.Init();
 
             return View();
         }

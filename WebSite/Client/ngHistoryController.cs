@@ -44,7 +44,7 @@ namespace FoodApp.Client
 
         public void refreshHistory() {
             serviceHlp.inst.SendGet("json",
-                 HistoryController.c_sHistory + "/" + ngAppController.inst.ngUserEmail + "/",
+                 HistoryController.c_sHistory + "/" + ngAppController.inst.ngUserId + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
                     ngHistoryItems = o.As<JsArray<ngHistoryEntry>>();
                     _scope.apply();

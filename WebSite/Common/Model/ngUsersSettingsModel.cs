@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using FoodApp.Client;
 using SharpKit.JavaScript;
 
@@ -37,6 +38,24 @@ namespace FoodApp.Common
                 this.FoodRates.Add(res);
             }
             return res;
+        }
+
+        internal void Fix()
+        {
+            List<ngFoodRate> ratesThatNeedRemove = new List<ngFoodRate>();
+            foreach (ngFoodRate foodRate in FoodRates) {
+                ngFoodItem food = FoodManager.Inst.GetFoodById(foodRate.FoodId);
+                if (null == food) {
+                    ratesThatNeedRemove.Add(foodRate);
+                }
+               else if (food.isContainer) {
+                    ratesThatNeedRemove.Add(foodRate);
+                }
+            }
+
+            foreach (ngFoodRate rateToRemove in ratesThatNeedRemove) {
+                FoodRates.Remove(rateToRemove);
+            }
         }
     }
 }

@@ -44,7 +44,7 @@ namespace FoodApp.Client
 
         public void refreshFavorite() {
             serviceHlp.inst.SendGet("json",
-                FavoriteFoodController.c_sGetFavorite + "/" + ngAppController.inst.ngUserEmail + "/",
+                FavoriteFoodController.c_sGetFavorite + "/" + ngAppController.inst.ngUserId + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
                     ngFavoriteItems = o.As<JsArray<ngFoodRate>>();
                     _scope.apply();
@@ -54,7 +54,7 @@ namespace FoodApp.Client
         public void rateChanged(ngFoodRate rate,double newRate) {
             rate.Rate = newRate;
 
-            serviceHlp.inst.SendPost("json", FavoriteFoodController.c_sGetFavorite + "/" + ngAppController.inst.ngUserEmail + "/" + rate.FoodId + "/" + rate.Rate + "/",
+            serviceHlp.inst.SendPost("json", FavoriteFoodController.c_sGetFavorite + "/" + ngAppController.inst.ngUserId + "/" + rate.FoodId + "/" + rate.Rate + "/",
                 new JsObject(),
                 delegate {}, onRequestFailed);
         }

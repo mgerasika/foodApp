@@ -31,7 +31,7 @@ namespace FoodApp.Common
         }
 
         internal ngHistoryModel GetHistoryModelByUser(ngUserModel user) {
-            return GetItem(user.Email);
+            return GetItem(user.Id);
         }
 
         internal bool HasAnyEntry(DateTime dt) {

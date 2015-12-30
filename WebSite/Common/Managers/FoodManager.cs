@@ -40,7 +40,7 @@ namespace FoodApp.Common {
 
         public List<ngFoodItem> GetAllFoods() {
             List<ngFoodItem> res = new List<ngFoodItem>();
-            for (int i = 1; i <= 5; ++i) {
+            for (int i = 0; i < 5; ++i) {
                 List<ngFoodItem> items = GetFoods(i);
                 foreach (ngFoodItem item in items) {
                     if (!HasFood(res, item)) {
@@ -69,6 +69,21 @@ namespace FoodApp.Common {
             List<ngFoodItem> foods = GetFoods(dayOfWeek);
             foreach (ngFoodItem item in foods) {
                 if (item.FoodId.Equals(foodId)) {
+                    res = item;
+                    break;
+                }
+            }
+            return res;
+        }
+
+        public ngFoodItem GetFoodById(string foodId)
+        {
+            ngFoodItem res = null;
+            List<ngFoodItem> foods = GetAllFoods();
+            foreach (ngFoodItem item in foods)
+            {
+                if (item.FoodId.Equals(foodId))
+                {
                     res = item;
                     break;
                 }

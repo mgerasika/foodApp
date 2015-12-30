@@ -1,15 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using FoodApp.Client;
 using FoodApp.Controllers;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Common
-{
+namespace FoodApp.Common {
     [JsType(JsMode.Json, Filename = WebApiResources._fileClientJs, Export = true)]
-    public class ngHistoryModel : ngModelBase
-    {
+    public class ngHistoryModel : ngModelBase {
         public ngHistoryModel() {
             Entries = new List<ngHistoryEntry>();
         }
@@ -17,7 +15,6 @@ namespace FoodApp.Common
         public string Email { get; set; }
         public string UserId { get; set; }
         public List<ngHistoryEntry> Entries { get; set; }
-
 
         internal List<ngHistoryEntry> GetEntriesByDate(DateTime dt) {
             List<ngHistoryEntry> res = new List<ngHistoryEntry>();
@@ -29,27 +26,33 @@ namespace FoodApp.Common
             return res;
         }
 
-        internal IDictionary<DateTime, List<ngHistoryEntry>> GroupByDate() {
-            IDictionary<DateTime, List<ngHistoryEntry>> res = new Dictionary<DateTime, List<ngHistoryEntry>>();
-            foreach (ngHistoryEntry entry in this.Entries) {
-                if (!res.ContainsKey(entry.Date)) {
-                     res[entry.Date] = new List<ngHistoryEntry>();
+        internal IDictionary<string, List<ngHistoryEntry>> GroupByDate()
+        {
+            IDictionary<string, List<ngHistoryEntry>> res = new Dictionary<string, List<ngHistoryEntry>>();
+            foreach (ngHistoryEntry entry in Entries) {
+                ngFoodItem food = FoodManager.Inst.GetFoodById(entry.FoodId);
+                if (null != food && !food.isContainer) {
+                    string dateTime = entry.Date.ToShortDateString();
+                    if (!res.ContainsKey(dateTime)) {
+                        res[dateTime] = new List<ngHistoryEntry>();
+                    }
+                    res[dateTime].Add(entry);
                 }
-                res[entry.Date].Add(entry);
             }
             return res;
         }
 
-        internal IDictionary<string, List<ngHistoryEntry>> GroupByFoodId()
-        {
+       
+        internal IDictionary<string, List<ngHistoryEntry>> GroupByFoodId() {
             IDictionary<string, List<ngHistoryEntry>> res = new Dictionary<string, List<ngHistoryEntry>>();
-            foreach (ngHistoryEntry entry in this.Entries)
-            {
-                if (!res.ContainsKey(entry.FoodId))
-                {
-                    res[entry.FoodId] = new List<ngHistoryEntry>();
+            foreach (ngHistoryEntry entry in Entries) {
+                ngFoodItem food = FoodManager.Inst.GetFoodById(entry.FoodId);
+                if (null != food && !food.isContainer) {
+                    if (!res.ContainsKey(entry.FoodId)) {
+                        res[entry.FoodId] = new List<ngHistoryEntry>();
+                    }
+                    res[entry.FoodId].Add(entry);
                 }
-                res[entry.FoodId].Add(entry);
             }
             return res;
         }

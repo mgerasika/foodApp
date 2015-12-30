@@ -1,0 +1,27 @@
+﻿@using angularjs
+@using FoodApp.Client
+@using FoodApp.Common
+@inherits System.Web.Mvc.WebViewPage
+
+@{
+    object dayOfWeek = Model;
+    string ngPropousalItems = ajs.field((ngPropousalContoller o) => o.ngItems);
+    string ngPropousal = "ngPropousal";
+    string foodId = ngPropousal + "." + ajs.field((ngHistoryEntry o) => o.FoodId);
+}
+
+
+<div style="margin-left: 1.5em;">
+         <h3>Автоматичне замовлення обідів</h3>
+         <p>Гам-Гам дає можливість автоматичного замовлення обіду згідно ваших смаків.</p>
+         <p><span>Cьогодні пропонуємо скуштувати:</span><span ng-repeat="@ngPropousal in @ngPropousalItems| propousalFilter:{'day':@dayOfWeek}">
+            <i>
+                {{@ajs.method((ngPropousalContoller o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
+            </i>
+            <b>
+                {{@ngPropousal .@ajs.field((ngHistoryEntry o) => o.Count)}}
+            </b>
+            &nbsp;
+            &nbsp;
+    </span></p>
+</div>

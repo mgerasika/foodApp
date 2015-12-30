@@ -176,7 +176,7 @@ namespace GoogleAppsConsoleApplication {
                 res = EFoodCategories.First;
             }
             else if (name != null && name.Contains("Контейнери")) {
-                res = EFoodCategories.PlacticContainer;
+                res = EFoodCategories.PlactisContainer;
             }
             else if (name != null && name.Contains("батон")) {
                 res = EFoodCategories.Breat;
@@ -271,7 +271,7 @@ namespace GoogleAppsConsoleApplication {
 
         public bool IsContainer() {
             bool res = false;
-            if (Name.Contains(EFoodCategories.PlacticContainer)) {
+            if (Name.Contains(EFoodCategories.PlactisContainer)) {
                 res = true;
             }
             return res;
@@ -279,7 +279,7 @@ namespace GoogleAppsConsoleApplication {
 
         public bool IsSmallContainer() {
             bool res = false;
-            if (Name.Contains(EFoodCategories.PlacticContainer) && Name.Contains("1")) {
+            if (Name.Contains(EFoodCategories.PlactisContainer) && Name.Contains("1")) {
                 res = true;
             }
             return res;
@@ -287,7 +287,7 @@ namespace GoogleAppsConsoleApplication {
 
         public bool IsBigContainer() {
             bool res = false;
-            if (Name.Contains(EFoodCategories.PlacticContainer) && Name.Contains("2")) {
+            if (Name.Contains(EFoodCategories.PlactisContainer) && Name.Contains("2")) {
                 res = true;
             }
             return res;

@@ -256,7 +256,8 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Client\clientUtils.cs" />
-    <Compile Include="Client\ngFoodFilter.cs" />
+    <Compile Include="Client\ngPropousalContoller.cs" />
+    <Compile Include="Client\ngPropousalFilter.cs" />
     <Compile Include="Client\ngHistoryController.cs" />
     <Compile Include="Client\ngFavoriteController.cs" />
     <Compile Include="Client\eventManager.cs" />
@@ -266,12 +267,13 @@
     <Compile Include="Client\serviceHlp.cs" />
     <Compile Include="Common\Managers\BackupHistoryManager.cs" />
     <Compile Include="Common\Managers\ClearOrdersManager.cs" />
+    <Compile Include="Common\Managers\PropousalManager.cs" />
     <Compile Include="Common\Managers\EFoodCategories.cs" />
-    <Compile Include="Common\Managers\MakeFavoriteFromHistoryManager.cs" />
     <Compile Include="Common\Managers\MoneyLogger.cs" />
     <Compile Include="Common\Managers\MoneyManager.cs" />
     <Compile Include="Common\Managers\OrderManager.cs" />
     <Compile Include="Common\Model\EMoneyOperation.cs" />
+    <Compile Include="Common\Model\ngHistoryEntryByDate.cs" />
     <Compile Include="Common\Model\ngMoneyModel.cs" />
     <Compile Include="Common\Managers\UsersManager.cs" />
     <Compile Include="Common\Model\ngFoodRate.cs" />
@@ -300,6 +302,7 @@
     <Compile Include="Common\WebApiResources.cs" />
     <Compile Include="Common\ApiUtils.cs" />
     <Compile Include="Controllers\api\ApiControllerBase.cs" />
+    <Compile Include="Controllers\api\PropousalController.cs" />
     <Compile Include="Controllers\api\HistoryController.cs" />
     <Compile Include="Controllers\api\FavoriteFoodController.cs" />
     <Compile Include="Controllers\api\FoodsController.cs" />
@@ -322,6 +325,7 @@
     <Content Include="Views\Home\Settings.cshtml" />
     <Content Include="Views\Layout1.cshtml" />
     <Content Include="Views\Home\History.cshtml" />
+    <Content Include="Views\Home\Propousal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

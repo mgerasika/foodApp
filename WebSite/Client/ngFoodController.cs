@@ -34,7 +34,7 @@ namespace FoodApp.Client {
         public void buyClick(int day, string foodId, decimal value) {
             clientUtils.Inst.showLoading();
             serviceHlp.inst.SendPost("json",
-                FoodsController.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserEmail + "/" + day + "/" + foodId + "/" +
+                FoodsController.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + foodId + "/" +
                 value + "/",
                 new JsObject(),
                 delegate {

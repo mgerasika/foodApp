@@ -28,17 +28,17 @@ namespace FoodApp.Client
             get { return WebApiResources.@namespace; }
         }
 
-        public string ngUserEmail
+        public string ngUserId
         {
-            get { return _scope["ngUserEmail"].As<string>(); }
-            set { _scope["ngUserEmail"] = value; }
+            get { return _scope["ngUserId"].As<string>(); }
+            set { _scope["ngUserId"] = value; }
         }
 
         public override void init(angularScope scope, angularHttp http, angularLocation loc, angularFilter filter) {
             base.init(scope, http, loc, filter);
 
-            ngUserEmail = HtmlContext.document.getElementById("userId").As<HtmlInputElement>().value;
-            HtmlContext.console.log(@HomeController.EmailQueryString + "=" + this.ngUserEmail);
+            ngUserId = HtmlContext.document.getElementById("userId").As<HtmlInputElement>().value;
+            HtmlContext.console.log(@HomeController.UserIdQueryString + "=" + this.ngUserId);
             HtmlContext.window.setTimeout(delegate() {
                 eventManager.inst.fire(eventManager.settingsLoaded,"");
             },1);
