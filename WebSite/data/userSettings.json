@@ -82,7 +82,8 @@
         "Rate": 0.025
       }
     ],
-    "Email": "okapij@darwinsgrove.com"
+    "Email": "okapij@darwinsgrove.com",
+    "UserId": "a49b83f6-ac66-4484-ac99-fc2e3bcb4151"
   },
   {
     "FoodRates": [
@@ -119,7 +120,8 @@
         "Rate": 0.14285714285714285
       }
     ],
-    "Email": "omartsinets@darwinsgrove.com"
+    "Email": "omartsinets@darwinsgrove.com",
+    "UserId": "f4d2ac14-acec-470f-ba65-37b91e794b5c"
   },
   {
     "FoodRates": [
@@ -192,7 +194,8 @@
         "Rate": 0.026315789473684209
       }
     ],
-    "Email": "ikhariv@darwinsgrove.com"
+    "Email": "ikhariv@darwinsgrove.com",
+    "UserId": "3ca4058e-b2bd-43a2-a160-033a20e48754"
   },
   {
     "FoodRates": [
@@ -265,7 +268,8 @@
         "Rate": 0.045454545454545456
       }
     ],
-    "Email": "apodanovskiy@darwinsgrove.com"
+    "Email": "apodanovskiy@darwinsgrove.com",
+    "UserId": "f4bde511-6fa2-4d2f-898d-bb77af1a6650"
   },
   {
     "FoodRates": [
@@ -334,7 +338,8 @@
         "Rate": 0.071428571428571425
       }
     ],
-    "Email": "achulyk@darwinsgrove.com"
+    "Email": "achulyk@darwinsgrove.com",
+    "UserId": "d0b104c2-6de2-4b7e-be93-8e8ce988d3d6"
   },
   {
     "FoodRates": [
@@ -391,7 +396,8 @@
         "Rate": 0.055555555555555552
       }
     ],
-    "Email": "amamchur@darwinsgrove.com"
+    "Email": "amamchur@darwinsgrove.com",
+    "UserId": "4f18880e-af8f-4e32-900c-7d0766f280cb"
   },
   {
     "FoodRates": [
@@ -460,7 +466,8 @@
         "Rate": 0.05
       }
     ],
-    "Email": "haba.yura@darwinsgrove.com"
+    "Email": "haba.yura@darwinsgrove.com",
+    "UserId": "bd36018f-24ab-426c-8080-486f69cc4517"
   },
   {
     "FoodRates": [
@@ -481,7 +488,8 @@
         "Rate": 0.33333333333333331
       }
     ],
-    "Email": "vpabyrivskyy@darwinsgrove.com"
+    "Email": "vpabyrivskyy@darwinsgrove.com",
+    "UserId": "8d02f100-b7cc-42ec-9814-f9c01d9bf2ec"
   },
   {
     "FoodRates": [
@@ -510,7 +518,8 @@
         "Rate": 0.2
       }
     ],
-    "Email": "aborovyi@darwinsgrove.com"
+    "Email": "aborovyi@darwinsgrove.com",
+    "UserId": "181a27e5-b5bb-4ff7-a3b4-d5531d30ca17"
   },
   {
     "FoodRates": [
@@ -635,7 +644,8 @@
         "Rate": 0.017241379310344827
       }
     ],
-    "Email": "iplotytsia@darwinsgrove.com"
+    "Email": "iplotytsia@darwinsgrove.com",
+    "UserId": "1d987961-9c70-49e1-ba12-1fc0bb591d72"
   },
   {
     "FoodRates": [
@@ -712,7 +722,8 @@
         "Rate": 0.058823529411764705
       }
     ],
-    "Email": "vzadorozhnyy@darwinsgrove.com"
+    "Email": "vzadorozhnyy@darwinsgrove.com",
+    "UserId": "dd47c35d-8c67-415a-9290-c9173c53f033"
   },
   {
     "FoodRates": [
@@ -825,7 +836,8 @@
         "Rate": 0.021739130434782608
       }
     ],
-    "Email": "mherasika@darwinsgrove.com"
+    "Email": "mherasika@darwinsgrove.com",
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c"
   },
   {
     "FoodRates": [
@@ -938,22 +950,22 @@
         "Rate": 0.021739130434782608
       }
     ],
-    "Email": "mgerasika@gmail.com"
+    "Email": "mgerasika@gmail.com",
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c"
   },
   {
     "FoodRates": [],
-    "Email": "16"
+    "Email": "sergiy.andrusenko@gmail.com",
+    "UserId": "ce3d04ce-f5da-4367-8418-486ff0fb81c2"
   },
   {
     "FoodRates": [],
-    "Email": "sergiy.andrusenko@gmail.com"
+    "Email": "sergiy.andrusenko@gmail.com",
+    "UserId": "ce3d04ce-f5da-4367-8418-486ff0fb81c2"
   },
   {
     "FoodRates": [],
-    "Email": "sergiy.andrusenko@gmail.com"
-  },
-  {
-    "FoodRates": [],
-    "Email": "alta.romeo@gmail.com"
+    "Email": "alta.romeo@gmail.com",
+    "UserId": "3ccfe9fe-e4c9-44eb-a169-3d265b543fe3"
   }
 ]

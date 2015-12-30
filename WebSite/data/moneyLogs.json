@@ -26,5 +26,19 @@
     "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2015/12/10",
     "Operation": 1,
     "Value": 10.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2015-12-30T06:50:15.2769925+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2015/12/30",
+    "Operation": 2,
+    "Value": 10.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2015-12-30T06:50:42.9695838+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2015/12/30",
+    "Operation": 1,
+    "Value": 10.0
   }
 ]

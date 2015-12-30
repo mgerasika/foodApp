@@ -17,12 +17,13 @@ namespace FoodApp {
             CultureInfo culture = new CultureInfo("en-US");
             culture.NumberFormat.NumberDecimalSeparator = ",";
             BackupHistoryManager backupHistoryManager = BackupHistoryManager.Inst;
-            ClearOrdersManager clearOrdersManage2R = ClearOrdersManager.Inst;
+            ClearOrdersManager clearOrdersManage = ClearOrdersManager.Inst;
 
             UsersManager.Inst.Fix();
             UserSettingsManager.Inst.Fix();
             HistoryManager.Inst.Fix();
 
+            /*
             ngUserModel user = UsersManager.Inst.GetUserByEmail("mgerasika@gmail.com");
             string orderId = OrderManager.Inst.GetOrderId(user,3);
             if (!MoneyManager.Inst.CanBuy(user, 100,orderId)) {
@@ -45,6 +46,7 @@ namespace FoodApp {
             {
                 MoneyManager.Inst.Refund(user, orderId);
             }
+             * */
 
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = culture;
         }
