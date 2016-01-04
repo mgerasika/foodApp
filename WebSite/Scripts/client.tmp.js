@@ -126,6 +126,33 @@ FoodApp.Client.clientUtils.prototype.fixNumber = function (p){
     var tmp = jsNumber.toPrecision(5);
     return parseFloat(tmp);
 };
+FoodApp.Client.ngFoodFilter = function (){
+};
+FoodApp.Client.ngFoodFilter.prototype.get_className = function (){
+    return "ngFoodFilter";
+};
+FoodApp.Client.ngFoodFilter.prototype.get_namespace = function (){
+    return "FoodApp.Client";
+};
+FoodApp.Client.ngFoodFilter.prototype.get_filterName = function (){
+    return "foodFilter";
+};
+angularUtils.inst.registerFilterType(new FoodApp.Client.ngFoodFilter());
+FoodApp.Client.ngFoodFilter.prototype.filter = function (obj, arg){
+    var res =  [];
+    var category = arg["category"];
+    var day = arg["day"];
+    var allFoods = obj;
+    var items = allFoods[day];
+    if (null != items){
+        for (var $i3 = 0,$l3 = items.length,item = items[$i3]; $i3 < $l3; $i3++, item = items[$i3]){
+            if ((item.Category == category) && !item.isContainer){
+                res.push(item);
+            }
+        }
+    }
+    return res;
+};
 FoodApp.Client.ngControllerBase = function (){
     angularjs.angularController.call(this);
 };
@@ -175,33 +202,6 @@ FoodApp.Client.ngPropousalContoller.prototype.refreshPropousals = function (){
     }), $CreateDelegate(this, this.onRequestFailed));
 };
 $Inherit(FoodApp.Client.ngPropousalContoller, FoodApp.Client.ngControllerBase);
-FoodApp.Client.ngFoodFilter = function (){
-};
-FoodApp.Client.ngFoodFilter.prototype.get_className = function (){
-    return "ngPropousalFilter";
-};
-FoodApp.Client.ngFoodFilter.prototype.get_namespace = function (){
-    return "FoodApp.Client";
-};
-FoodApp.Client.ngFoodFilter.prototype.get_filterName = function (){
-    return "foodFilter";
-};
-angularUtils.inst.registerFilterType(new FoodApp.Client.ngFoodFilter());
-FoodApp.Client.ngFoodFilter.prototype.filter = function (obj, arg){
-    var res =  [];
-    var category = arg["category"];
-    var day = arg["day"];
-    var allFoods = obj;
-    var items = allFoods[day];
-    if (null != items){
-        for (var $i3 = 0,$l3 = items.length,item = items[$i3]; $i3 < $l3; $i3++, item = items[$i3]){
-            if ((item.Category == category) && !item.isContainer){
-                res.push(item);
-            }
-        }
-    }
-    return res;
-};
 FoodApp.Client.ngPropousalFilter = function (){
 };
 FoodApp.Client.ngPropousalFilter.prototype.get_className = function (){
