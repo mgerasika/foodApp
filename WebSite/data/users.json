@@ -7,7 +7,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Olena Kapij",
     "IsAdmin": false,
-    "GoogleFirstName": null
+    "GoogleFirstName": "Olena"
   },
   {
     "Column": 6,
@@ -17,7 +17,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Olena Martsinets",
     "IsAdmin": false,
-    "GoogleFirstName": null
+    "GoogleFirstName": "Olena"
   },
   {
     "Column": 7,
@@ -27,7 +27,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Iryna Khariv",
     "IsAdmin": false,
-    "GoogleFirstName": null
+    "GoogleFirstName": "Iryna"
   },
   {
     "Column": 8,
@@ -97,7 +97,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Ivan Plotytsia",
     "IsAdmin": false,
-    "GoogleFirstName": null
+    "GoogleFirstName": "Ivan"
   },
   {
     "Column": 15,
@@ -107,7 +107,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Vasyl Zadorozhnyy",
     "IsAdmin": false,
-    "GoogleFirstName": null
+    "GoogleFirstName": "Vasyl"
   },
   {
     "Column": 16,

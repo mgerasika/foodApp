@@ -320,6 +320,42 @@
         "Date": "2015-12-24T12:28:37.8006205+02:00",
         "Count": 1.00,
         "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_HarniryLobio",
+        "Date": "2016-01-04T12:00:44.8110736+02:00",
+        "Count": 2.00,
+        "FoodPrice": 7.00
+      },
+      {
+        "FoodId": "_PershistravyZupafasolzkurkrylom60250h",
+        "Date": "2016-01-04T12:00:44.8110736+02:00",
+        "Count": 1.00,
+        "FoodPrice": 17.30
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-04T12:00:44.8120739+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_PershistravyRozsol\"nyk250h",
+        "Date": "2016-01-12T12:32:04.922712+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.90
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
+        "Date": "2016-01-12T12:32:04.9237205+02:00",
+        "Count": 2.00,
+        "FoodPrice": 11.75
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-12T12:32:04.9247123+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
       }
     ]
   },
@@ -620,6 +656,120 @@
         "Date": "2015-12-24T12:28:37.8026211+02:00",
         "Count": 1.00,
         "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_SalatyMorkyabl",
+        "Date": "2016-01-04T12:00:44.8130739+02:00",
+        "Count": 1.00,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_HarniryHrechka150h",
+        "Date": "2016-01-04T12:00:44.8130739+02:00",
+        "Count": 1.00,
+        "FoodPrice": 7.50
+      },
+      {
+        "FoodId": "_ZakuskyharyachiPechinkazcybuleyu",
+        "Date": "2016-01-04T12:00:44.8140739+02:00",
+        "Count": 1.00,
+        "FoodPrice": 15.00
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejnerydlya2stravharnirmyasosalat",
+        "Date": "2016-01-04T12:00:44.8140739+02:00",
+        "Count": 1.00,
+        "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_SalatyMorkyabl",
+        "Date": "2016-01-05T12:00:13.4850313+02:00",
+        "Count": 1.00,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_HarniryRyszovochamy150h",
+        "Date": "2016-01-05T12:00:13.4860316+02:00",
+        "Count": 1.00,
+        "FoodPrice": 8.30
+      },
+      {
+        "FoodId": "_StravyizkurKotletamyasna80h",
+        "Date": "2016-01-05T12:00:13.4860316+02:00",
+        "Count": 1.00,
+        "FoodPrice": 15.00
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejnerydlya2stravharnirmyasosalat",
+        "Date": "2016-01-05T12:00:13.4870316+02:00",
+        "Count": 1.00,
+        "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_SalatyMorkyabl",
+        "Date": "2016-01-11T12:00:14.3138023+02:00",
+        "Count": 1.00,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_HarniryHrechka150h",
+        "Date": "2016-01-11T12:00:14.3148026+02:00",
+        "Count": 1.00,
+        "FoodPrice": 7.50
+      },
+      {
+        "FoodId": "_StravyizkurKurkavsousi",
+        "Date": "2016-01-11T12:00:14.3148026+02:00",
+        "Count": 1.00,
+        "FoodPrice": 21.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejnerydlya2stravharnirmyasosalat",
+        "Date": "2016-01-11T12:00:14.3158026+02:00",
+        "Count": 1.00,
+        "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_SalatyMorkyabl",
+        "Date": "2016-01-12T12:32:04.9257126+02:00",
+        "Count": 1.00,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_HarniryHrechka150h",
+        "Date": "2016-01-12T12:32:04.9267129+02:00",
+        "Count": 1.00,
+        "FoodPrice": 7.50
+      },
+      {
+        "FoodId": "_StravyizkurKotletamyasna80h",
+        "Date": "2016-01-12T12:32:04.9277132+02:00",
+        "Count": 1.00,
+        "FoodPrice": 15.00
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejnerydlya2stravharnirmyasosalat",
+        "Date": "2016-01-12T12:32:04.9287138+02:00",
+        "Count": 1.00,
+        "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_SalatyMorkyabl",
+        "Date": "2016-01-13T12:50:45.4333447+02:00",
+        "Count": 1.00,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
+        "Date": "2016-01-13T12:50:45.4343456+02:00",
+        "Count": 2.00,
+        "FoodPrice": 17.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejnerydlya2stravharnirmyasosalat",
+        "Date": "2016-01-13T12:50:45.4343456+02:00",
+        "Count": 1.00,
+        "FoodPrice": 3.50
       }
     ]
   },
@@ -788,6 +938,48 @@
         "Date": "2015-12-22T12:00:32.9866796+02:00",
         "Count": 1.00,
         "FoodPrice": 36.00
+      },
+      {
+        "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
+        "Date": "2016-01-05T12:00:13.4870316+02:00",
+        "Count": 1.00,
+        "FoodPrice": 36.00
+      },
+      {
+        "FoodId": "_SalatyMorkyabl",
+        "Date": "2016-01-13T12:50:45.435345+02:00",
+        "Count": 1.00,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_PershistravyZupaovocheva250h",
+        "Date": "2016-01-13T12:50:45.435345+02:00",
+        "Count": 1.00,
+        "FoodPrice": 7.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
+        "Date": "2016-01-13T12:50:45.4363459+02:00",
+        "Count": 1.00,
+        "FoodPrice": 17.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzkapustoyu",
+        "Date": "2016-01-13T12:50:45.4373465+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.00
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejnerydlya2stravharnirmyasosalat",
+        "Date": "2016-01-13T12:50:45.4373465+02:00",
+        "Count": 1.00,
+        "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-13T12:50:45.4383462+02:00",
+        "Count": 1.00,
+        "FoodPrice": 2.50
       }
     ]
   },
@@ -950,6 +1142,84 @@
         "Date": "2015-12-24T12:28:37.8046214+02:00",
         "Count": 2.00,
         "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatyKapusta",
+        "Date": "2016-01-04T12:00:44.8150742+02:00",
+        "Count": 1.5,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_HarniryHrechka150h",
+        "Date": "2016-01-04T12:00:44.8160742+02:00",
+        "Count": 1.00,
+        "FoodPrice": 7.50
+      },
+      {
+        "FoodId": "_PershistravyBorщchervonyj250h",
+        "Date": "2016-01-04T12:00:44.8160742+02:00",
+        "Count": 1.00,
+        "FoodPrice": 9.90
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-04T12:00:44.8170745+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Date": "2016-01-04T12:00:44.8170745+02:00",
+        "Count": 3.00,
+        "FoodPrice": 0.85
+      },
+      {
+        "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
+        "Date": "2016-01-05T12:00:13.4880319+02:00",
+        "Count": 1.00,
+        "FoodPrice": 36.00
+      },
+      {
+        "FoodId": "_SalatyMorkyabl",
+        "Date": "2016-01-11T12:00:14.3158026+02:00",
+        "Count": 1.00,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_HarniryHrechka150h",
+        "Date": "2016-01-11T12:00:14.3168041+02:00",
+        "Count": 1.00,
+        "FoodPrice": 7.50
+      },
+      {
+        "FoodId": "_PershistravyBorщchervonyj250h",
+        "Date": "2016-01-11T12:00:14.3168041+02:00",
+        "Count": 1.00,
+        "FoodPrice": 9.90
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-11T12:00:14.3178032+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Date": "2016-01-11T12:00:14.3188035+02:00",
+        "Count": 2.00,
+        "FoodPrice": 0.85
+      },
+      {
+        "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
+        "Date": "2016-01-12T12:32:04.9307141+02:00",
+        "Count": 1.00,
+        "FoodPrice": 36.00
+      },
+      {
+        "FoodId": "_KompleksnyjobidBorщukrayins\"kyjkashaperlovakotlkuryachastzkapustyxlib2kus",
+        "Date": "2016-01-13T12:50:45.441348+02:00",
+        "Count": 1.00,
+        "FoodPrice": 36.00
       }
     ]
   },
@@ -1448,6 +1718,150 @@
         "Date": "2015-12-24T12:28:37.8086223+02:00",
         "Count": 1.00,
         "FoodPrice": 0.85
+      },
+      {
+        "FoodId": "_SalatyBuryachok",
+        "Date": "2016-01-04T12:00:44.8180748+02:00",
+        "Count": 1.00,
+        "FoodPrice": 5.50
+      },
+      {
+        "FoodId": "_PershistravySupkremizshpynatu250h",
+        "Date": "2016-01-04T12:00:44.8190745+02:00",
+        "Count": 1.00,
+        "FoodPrice": 14.00
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynavhirchychnomusousi",
+        "Date": "2016-01-04T12:00:44.8200751+02:00",
+        "Count": 1.50,
+        "FoodPrice": 35.20
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-04T12:00:44.821076+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Date": "2016-01-04T12:00:44.8220769+02:00",
+        "Count": 2.00,
+        "FoodPrice": 0.85
+      },
+      {
+        "FoodId": "_SalatyVyshyvanka",
+        "Date": "2016-01-05T12:00:13.4890322+02:00",
+        "Count": 1.00,
+        "FoodPrice": 14.25
+      },
+      {
+        "FoodId": "_PershistravyZupahoroxova250h",
+        "Date": "2016-01-05T12:00:13.4890322+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.50
+      },
+      {
+        "FoodId": "_StravyizsvynynyBuzhenyna",
+        "Date": "2016-01-05T12:00:13.4900325+02:00",
+        "Count": 1.50,
+        "FoodPrice": 41.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-05T12:00:13.4900325+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Date": "2016-01-05T12:00:13.4910328+02:00",
+        "Count": 2.00,
+        "FoodPrice": 0.85
+      },
+      {
+        "FoodId": "_PershistravyBorщchervonyj250h",
+        "Date": "2016-01-11T12:00:14.3188035+02:00",
+        "Count": 1.00,
+        "FoodPrice": 9.90
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
+        "Date": "2016-01-11T12:00:14.3198035+02:00",
+        "Count": 2.00,
+        "FoodPrice": 17.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-11T12:00:14.3198035+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Date": "2016-01-11T12:00:14.3208038+02:00",
+        "Count": 2.00,
+        "FoodPrice": 0.85
+      },
+      {
+        "FoodId": "_SalatyKozac\"kyj",
+        "Date": "2016-01-12T12:32:04.9317147+02:00",
+        "Count": 1.50,
+        "FoodPrice": 13.30
+      },
+      {
+        "FoodId": "_PershistravyRozsol\"nyk250h",
+        "Date": "2016-01-12T12:32:04.9327147+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.90
+      },
+      {
+        "FoodId": "_StravyizsvynynyBuzhenyna",
+        "Date": "2016-01-12T12:32:04.9337147+02:00",
+        "Count": 1.50,
+        "FoodPrice": 41.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-12T12:32:04.9347153+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Date": "2016-01-12T12:32:04.9347153+02:00",
+        "Count": 2.00,
+        "FoodPrice": 0.85
+      },
+      {
+        "FoodId": "_SalatyBuryachok",
+        "Date": "2016-01-13T12:50:45.4423483+02:00",
+        "Count": 1.00,
+        "FoodPrice": 5.50
+      },
+      {
+        "FoodId": "_PershistravyZupaovocheva250h",
+        "Date": "2016-01-13T12:50:45.4433471+02:00",
+        "Count": 1.00,
+        "FoodPrice": 7.50
+      },
+      {
+        "FoodId": "_StravyizsvynynyVidbyvnaizsvyn80h",
+        "Date": "2016-01-13T12:50:45.4433471+02:00",
+        "Count": 1.00,
+        "FoodPrice": 30.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-13T12:50:45.4443462+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Date": "2016-01-13T12:50:45.4443462+02:00",
+        "Count": 2.00,
+        "FoodPrice": 0.85
       }
     ]
   },
@@ -1592,6 +2006,12 @@
         "Date": "2015-12-24T12:28:37.8126147+02:00",
         "Count": 1.00,
         "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidBorщukrayis\"kyjkartoplyapyurekotletapechinkovastzburyachkaxlib2kus",
+        "Date": "2016-01-11T12:00:14.3218062+02:00",
+        "Count": 1.00,
+        "FoodPrice": 36.00
       }
     ]
   },
@@ -2348,6 +2768,210 @@
         "Date": "2015-12-24T12:28:37.8166138+02:00",
         "Count": 2.00,
         "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Date": "2016-01-04T12:00:44.8230798+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.30
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Date": "2016-01-04T12:00:44.8240854+02:00",
+        "Count": 1.00,
+        "FoodPrice": 25.00
+      },
+      {
+        "FoodId": "_PershistravyYUshkahrybna250h",
+        "Date": "2016-01-04T12:00:44.8240854+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.90
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-04T12:00:44.8250763+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Date": "2016-01-04T12:00:44.8260763+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.30
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Date": "2016-01-04T12:00:44.8270766+02:00",
+        "Count": 1.00,
+        "FoodPrice": 25.00
+      },
+      {
+        "FoodId": "_PershistravyYUshkahrybna250h",
+        "Date": "2016-01-04T12:00:44.8280769+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.90
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-04T12:00:44.8290781+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatySolo",
+        "Date": "2016-01-05T12:00:13.4910328+02:00",
+        "Count": 1.50,
+        "FoodPrice": 16.30
+      },
+      {
+        "FoodId": "_PershistravyZupahoroxova250h",
+        "Date": "2016-01-05T12:00:13.4920331+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-05T12:00:13.4930334+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatySolo",
+        "Date": "2016-01-05T12:00:13.4930334+02:00",
+        "Count": 1.50,
+        "FoodPrice": 16.30
+      },
+      {
+        "FoodId": "_PershistravyZupahoroxova250h",
+        "Date": "2016-01-05T12:00:13.4940337+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-05T12:00:13.4940337+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatyNizhnyj",
+        "Date": "2016-01-11T12:00:14.3218062+02:00",
+        "Count": 1.00,
+        "FoodPrice": 13.30
+      },
+      {
+        "FoodId": "_PershistravyZupafasolzkurkrylom60250h",
+        "Date": "2016-01-11T12:00:14.3228047+02:00",
+        "Count": 1.00,
+        "FoodPrice": 17.30
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-11T12:00:14.3228047+02:00",
+        "Count": 3.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatyNizhnyj",
+        "Date": "2016-01-11T12:00:14.3238044+02:00",
+        "Count": 1.00,
+        "FoodPrice": 13.30
+      },
+      {
+        "FoodId": "_PershistravyZupafasolzkurkrylom60250h",
+        "Date": "2016-01-11T12:00:14.3238044+02:00",
+        "Count": 1.00,
+        "FoodPrice": 17.30
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-11T12:00:14.3248053+02:00",
+        "Count": 3.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatyKozac\"kyj",
+        "Date": "2016-01-12T12:32:04.9357153+02:00",
+        "Count": 1.50,
+        "FoodPrice": 13.30
+      },
+      {
+        "FoodId": "_PershistravyZupahoroxova250h",
+        "Date": "2016-01-12T12:32:04.9367153+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-12T12:32:04.9377328+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatyKozac\"kyj",
+        "Date": "2016-01-12T12:32:04.9387162+02:00",
+        "Count": 1.50,
+        "FoodPrice": 13.30
+      },
+      {
+        "FoodId": "_PershistravyZupahoroxova250h",
+        "Date": "2016-01-12T12:32:04.9507191+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-12T12:32:04.9517194+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Date": "2016-01-13T12:50:45.4453483+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.30
+      },
+      {
+        "FoodId": "_HarniryHoroxovepyure",
+        "Date": "2016-01-13T12:50:45.44635+02:00",
+        "Count": 2.00,
+        "FoodPrice": 5.50
+      },
+      {
+        "FoodId": "_StravyizkurKotletakur",
+        "Date": "2016-01-13T12:50:45.44635+02:00",
+        "Count": 1.00,
+        "FoodPrice": 16.00
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejnerydlya2stravharnirmyasosalat",
+        "Date": "2016-01-13T12:50:45.447353+02:00",
+        "Count": 1.00,
+        "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Date": "2016-01-13T12:50:45.447353+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.30
+      },
+      {
+        "FoodId": "_HarniryHoroxovepyure",
+        "Date": "2016-01-13T12:50:45.4483515+02:00",
+        "Count": 2.00,
+        "FoodPrice": 5.50
+      },
+      {
+        "FoodId": "_StravyizkurKotletakur",
+        "Date": "2016-01-13T12:50:45.4483515+02:00",
+        "Count": 1.00,
+        "FoodPrice": 16.00
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejnerydlya2stravharnirmyasosalat",
+        "Date": "2016-01-13T12:50:45.4493521+02:00",
+        "Count": 1.00,
+        "FoodPrice": 3.50
       }
     ]
   },
@@ -2486,6 +3110,36 @@
         "Date": "2015-12-23T12:03:36.0365513+02:00",
         "Count": 2.00,
         "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_SalatyKapusta",
+        "Date": "2016-01-13T12:50:45.4383462+02:00",
+        "Count": 1.50,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_PershistravySupkremzcybporej250h",
+        "Date": "2016-01-13T12:50:45.4393468+02:00",
+        "Count": 1.00,
+        "FoodPrice": 14.00
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynazchornoslyvom",
+        "Date": "2016-01-13T12:50:45.4393468+02:00",
+        "Count": 1.00,
+        "FoodPrice": 34.20
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejnerydlya2stravharnirmyasosalat",
+        "Date": "2016-01-13T12:50:45.4403474+02:00",
+        "Count": 1.00,
+        "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-13T12:50:45.441348+02:00",
+        "Count": 1.00,
+        "FoodPrice": 2.50
       }
     ]
   },
@@ -2544,6 +3198,18 @@
       {
         "FoodId": "_KontejneryKontejneryna1vidpershastraboharnirtamyaso",
         "Date": "2015-12-09T12:00:51.03533+02:00",
+        "Count": 1.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_HarniryRyszovochamy150h",
+        "Date": "2016-01-05T12:00:13.4830418+02:00",
+        "Count": 1.00,
+        "FoodPrice": 8.30
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-05T12:00:13.4840421+02:00",
         "Count": 1.00,
         "FoodPrice": 2.50
       }
@@ -2756,6 +3422,12 @@
         "Date": "2015-12-01T12:00:01.0627767+02:00",
         "Count": 1.00,
         "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Date": "2016-01-13T12:50:45.4423483+02:00",
+        "Count": 6.00,
+        "FoodPrice": 0.85
       }
     ]
   }
