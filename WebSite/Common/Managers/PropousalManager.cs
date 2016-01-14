@@ -9,6 +9,7 @@ namespace FoodApp.Common {
     public class PropousalManager
     {
         public static PropousalManager Inst = new PropousalManager();
+        private Random _random = new Random(((int)DateTime.Now.Ticks));
 
         private PropousalManager() {
             
@@ -22,7 +23,7 @@ namespace FoodApp.Common {
                 if (groups.Count > 0) {
                     groups = groups.OrderByDescending(g => g.Count).ToList();
 
-                    int randomNumber = (new Random()).Next(groups.Count-1);
+                    int randomNumber = _random.Next(groups.Count-1);
                     res = groups[randomNumber];
                 }
             }
@@ -31,7 +32,7 @@ namespace FoodApp.Common {
 
         private List<List<ngHistoryEntry>> FindPossibleMenus(int dayOfWeek, ngHistoryModel history) {
             List<List<ngHistoryEntry>> groups = new List<List<ngHistoryEntry>>();
-            IDictionary<string, List<ngHistoryEntry>> allHistoryByDate = history.GroupByDate();
+            IDictionary<string, List<ngHistoryEntry>> allHistoryByDate = history.GroupByDate(dayOfWeek);
             List<ngFoodItem> todayFoods = FoodManager.Inst.GetFoods(dayOfWeek);
             foreach (KeyValuePair<string, List<ngHistoryEntry>> entry in allHistoryByDate) {
                 if (HasFoodsInMenu(entry.Value, todayFoods)) {
@@ -44,7 +45,7 @@ namespace FoodApp.Common {
         private bool HasFoodsInMenu(List<ngHistoryEntry> historyPerDay, List<ngFoodItem> todayFoods) {
             bool res = todayFoods.Count>0 && historyPerDay.Count>0;
             foreach (ngHistoryEntry entry in historyPerDay) {
-                if (HasFood(todayFoods, entry.FoodId)) {
+                if (!HasFood(todayFoods, entry.FoodId)) {
                     res = false;
                     break;
                 }

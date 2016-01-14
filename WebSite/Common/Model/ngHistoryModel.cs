@@ -56,5 +56,25 @@ namespace FoodApp.Common {
             }
             return res;
         }
+
+        internal IDictionary<string, List<ngHistoryEntry>> GroupByDate(int dayOfWeek)
+        {
+            IDictionary<string, List<ngHistoryEntry>> res = new Dictionary<string, List<ngHistoryEntry>>();
+            foreach (ngHistoryEntry entry in Entries)
+            {
+                ngFoodItem food = FoodManager.Inst.GetFoodById(entry.FoodId);
+                int ofWeek = (int)entry.Date.DayOfWeek;
+                if (null != food && !food.isContainer && (ofWeek == dayOfWeek+1))
+                {
+                    string dateTime = entry.Date.ToShortDateString();
+                    if (!res.ContainsKey(dateTime))
+                    {
+                        res[dateTime] = new List<ngHistoryEntry>();
+                    }
+                    res[dateTime].Add(entry);
+                }
+            }
+            return res;
+        }
     }
 }

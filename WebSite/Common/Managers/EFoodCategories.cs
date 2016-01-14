@@ -10,5 +10,6 @@ namespace FoodApp.Common {
         public const string MeatOrFish = "Мясо/Риба";
         public const string Breat = "Хліб";
         public const string Kvasoleva = "Зупа фасол";
+        public const string Chanachi = "Чанахи";
     }
 }

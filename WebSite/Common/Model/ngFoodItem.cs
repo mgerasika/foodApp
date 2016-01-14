@@ -17,6 +17,6 @@ namespace FoodApp.Client {
         public bool isGarnir { get; set; }
         public bool isMeatOrFish { get; set; }
         public bool isFirst { get; set; }
-        public bool isKvasoleva { get; set; }
+        public bool isKvasolevaOrChanachi { get; set; }
     }
 }

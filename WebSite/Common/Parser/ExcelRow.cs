@@ -265,8 +265,8 @@ namespace GoogleAppsConsoleApplication {
             return res;
         }
 
-        public bool IsKvasoleva() {
-            return Name.Contains(EFoodCategories.Kvasoleva);
+        public bool IsKvasolevaOrChanachi() {
+            return Name.Contains(EFoodCategories.Kvasoleva) || Name.Contains(EFoodCategories.Chanachi);
         }
 
         public bool IsContainer() {

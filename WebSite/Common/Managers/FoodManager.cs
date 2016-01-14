@@ -25,7 +25,7 @@ namespace FoodApp.Common {
                     item.isSalat = row.IsSalat();
                     item.isGarnir = row.IsGarnir();
                     item.isMeatOrFish = row.IsMeatOrFish();
-                    item.isKvasoleva = row.IsKvasoleva();
+                    item.isKvasolevaOrChanachi = row.IsKvasolevaOrChanachi();
                     item.isFirst = row.IsFirst();
                     item.IsByWeightItem = row.IsByWeightItem();
                     item.Price = row.Price;

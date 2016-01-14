@@ -9,8 +9,8 @@ namespace FoodApp.Controllers {
     public class ApiUtils {
         //public const string c_sExcelFileName = "mykhaylo_test";
         public const string c_sExcelFileName = "Меню на тиждень";
-        public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
-        //public const string REDIRECT_URL = "http://localhost:15845/";
+        //public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
+        public const string REDIRECT_URL = "http://localhost:15845/";
 
         public const string CLIENT_ID = "668583993597.apps.googleusercontent.com";
         public const string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
@@ -188,7 +188,7 @@ namespace FoodApp.Controllers {
             foreach (ngFoodItem food in foods) {
                 if (food.isFirst) {
                     smallContainersCount++;
-                    if (food.isKvasoleva) {
+                    if (food.isKvasolevaOrChanachi) {
                         smallContainersCount++;
                     }
                 }

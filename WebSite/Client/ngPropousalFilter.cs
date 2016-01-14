@@ -33,8 +33,6 @@ namespace FoodApp.Client {
 
         public override object filter(JsObject obj, JsObject arg)
         {
-            JsContext.debugger();
-
             int day = arg["day"].As<int>();
 
             JsArray<JsArray<ngHistoryEntry>> allPropousals = obj.As<JsArray<JsArray<ngHistoryEntry>>>();
