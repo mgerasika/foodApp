@@ -27,7 +27,7 @@ namespace FoodApp.Client
             {
                 type = "GET",
                 dataType = type,
-                url = clientUtils.Inst.getLocation() + "/" + url,
+                url = jsUtils.inst.getLocation() + "/" + url,
                 headers = headers,
                 success = delegate(object o, JsString s, jqXHR arg3) { success(o, s, arg3); },
                 error = delegate(jqXHR xhr, JsString s, JsError arg3) { failed(arg3, s, xhr); }
@@ -64,7 +64,7 @@ namespace FoodApp.Client
                 type = httpMethod,
                 dataType = type,
                 data = data,
-                url = clientUtils.Inst.getLocation() + "/" + url,
+                url = jsUtils.inst.getLocation() + "/" + url,
                 headers = headers,
                 success = delegate(object o, JsString s, jqXHR arg3) { success(o, s, arg3); },
                 error = delegate(jqXHR xhr, JsString s, JsError arg3) { failed(arg3, s, xhr); }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using FoodApp.Client;
 using FoodApp.Controllers;
 
 namespace FoodApp.Common {
@@ -38,8 +39,7 @@ namespace FoodApp.Common {
                 Save();
             }
 
-            foreach (ngHistoryModel item in items)
-            {
+            foreach (ngHistoryModel item in items) {
                 ngUserModel user = UsersManager.Inst.GetUserByEmail(item.Email);
                 Debug.Assert(null != user);
                 item.UserId = user.Id;
@@ -53,7 +53,7 @@ namespace FoodApp.Common {
                     ngHistoryEntry entry = entries[i];
                     for (int j = i + 1; j < entries.Count; j++) {
                         ngHistoryEntry tmp = entries[j];
-                        if (ApiUtils.CompareFoodIds(entry.FoodId,tmp.FoodId) && ApiUtils.EqualDate(entry.Date,tmp.Date)) {
+                        if (ApiUtils.Equals(entry.FoodId, tmp.FoodId) && ApiUtils.EqualDate(entry.Date, tmp.Date)) {
                             dublicates.Add(tmp);
                         }
                     }
@@ -65,17 +65,32 @@ namespace FoodApp.Common {
                     }
                 }
             }
+
             Save();
         }
 
-        private ngHistoryModel GetHistoryModelByEmail(string email)
-        {
+        public void FixFoodIds() {
+            List<ngHistoryModel> items = GetItems();
+            List<ngFoodItem> allFoods = FoodManager.Inst.GetAllFoods();
+            foreach (ngHistoryModel ngHistoryModel in items) {
+                foreach (ngHistoryEntry entry in ngHistoryModel.Entries) {
+                    foreach (ngFoodItem food in allFoods) {
+                        if (ApiUtils.IsSeamsFoodIds(entry.FoodId, food.FoodId)) {
+                            entry.FoodId = food.FoodId;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            Save();
+        }
+
+        private ngHistoryModel GetHistoryModelByEmail(string email) {
             ngHistoryModel res = null;
             List<ngHistoryModel> items = GetItems();
-            foreach (ngHistoryModel item in items)
-            {
-                if (item.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
-                {
+            foreach (ngHistoryModel item in items) {
+                if (item.Email.Equals(email, StringComparison.OrdinalIgnoreCase)) {
                     res = item;
                     break;
                 }
@@ -101,7 +116,5 @@ namespace FoodApp.Common {
             }
             return res;
         }
-
-       
     }
 }

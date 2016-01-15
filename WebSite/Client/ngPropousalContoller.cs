@@ -52,10 +52,10 @@ namespace FoodApp.Client {
         
         
         public void refreshPropousalsClick() {
-        clientUtils.Inst.showLoading();
+        jsUtils.inst.showLoading();
 
             requestRefreshPropousals( delegate() {
-                clientUtils.Inst.hideLoading();
+                jsUtils.inst.hideLoading();
             });
         }
 
@@ -66,14 +66,14 @@ namespace FoodApp.Client {
 
 
         public void buyClick(int dayOfWeek) {
-            clientUtils.Inst.showLoading();
+            jsUtils.inst.showLoading();
             JsArray<ngHistoryEntry> ngFoodRates = ngItems[dayOfWeek];
 
             serviceHlp.inst.SendPost("json",
                 PropousalController.c_sGetPropousal + "/" + ngAppController.inst.ngUserId + "/" + dayOfWeek + "/", JSON.stringify(ngFoodRates),
                 delegate {
                     ngOrderController.inst.refreshOrders();
-                    clientUtils.Inst.hideLoading();
+                    jsUtils.inst.hideLoading();
                 }, onRequestFailed);
         }
     }

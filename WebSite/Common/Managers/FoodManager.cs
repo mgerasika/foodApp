@@ -69,7 +69,7 @@ namespace FoodApp.Common {
             ngFoodItem res = null;
             List<ngFoodItem> foods = GetFoods(dayOfWeek);
             foreach (ngFoodItem item in foods) {
-                if (ApiUtils.CompareFoodIds(item.FoodId,foodId)) {
+                if (ApiUtils.Equals(item.FoodId,foodId)) {
                     res = item;
                     break;
                 }
@@ -83,7 +83,7 @@ namespace FoodApp.Common {
             List<ngFoodItem> foods = GetAllFoods();
             foreach (ngFoodItem item in foods)
             {
-                if (ApiUtils.CompareFoodIds(item.FoodId,foodId))
+                if (ApiUtils.Equals(item.FoodId,foodId))
                 {
                     res = item;
                     break;

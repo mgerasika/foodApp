@@ -136,6 +136,7 @@ namespace FoodApp.Controllers {
             }
             ExcelParser.Inst.Init();
             UserSettingsManager.Inst.Init();
+            
 
             return View();
         }

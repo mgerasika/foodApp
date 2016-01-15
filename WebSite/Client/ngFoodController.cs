@@ -33,13 +33,13 @@ namespace FoodApp.Client {
         }
 
         public void buyClick(int day, string foodId, decimal value) {
-            clientUtils.Inst.showLoading();
+            jsUtils.inst.showLoading();
             serviceHlp.inst.SendPost("json",
                 FoodsController.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + foodId + "/" +
                 value + "/",
                 new JsObject(),
                 delegate {
-                    clientUtils.Inst.hideLoading();
+                    jsUtils.inst.hideLoading();
                     ngOrderController.inst.refreshOrders();
                 }, onRequestFailed);
         }
@@ -119,7 +119,7 @@ namespace FoodApp.Client {
 
             foreach (JsArray<ngFoodItem> dayItems in ngFoods) {
                 foreach (ngFoodItem item in dayItems) {
-                    if (ApiUtils.CompareFoodIds(item.FoodId,id)) {
+                    if (item.FoodId ==id) {
                         res = item;
                         break;
                     }
@@ -127,7 +127,9 @@ namespace FoodApp.Client {
                 if (null != res) {
                     break;
                 }
+            
             }
+           
             return res;
         }
 

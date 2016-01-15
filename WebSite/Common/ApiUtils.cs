@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Web;
 using FoodApp.Client;
 using FoodApp.Common;
+using SharpKit.JavaScript;
 
 namespace FoodApp.Controllers {
     public class ApiUtils {
@@ -28,7 +29,7 @@ namespace FoodApp.Controllers {
             if (null != HttpContext.Current.Session) {
                 res = HttpContext.Current.Session["userId"] as string;
             }
-            if (string.IsNullOrEmpty(res)) {
+            if (String.IsNullOrEmpty(res)) {
                 HttpRequest request = GetHttpRequest();
                 if (null != request) {
                     HttpCookie httpCookie = request.Cookies.Get("userId");
@@ -43,7 +44,7 @@ namespace FoodApp.Controllers {
         public static ngUserModel GetUser() {
             ngUserModel res = null;
             string id = GetSessionUserId();
-            if (!string.IsNullOrEmpty(id)) {
+            if (!String.IsNullOrEmpty(id)) {
                 ngUserModel userById = UsersManager.Inst.GetUserById(id);
                 Debug.Assert(null != userById);
                 res = userById;
@@ -244,12 +245,12 @@ namespace FoodApp.Controllers {
 
         internal static bool TryDecimalParse(string str, out decimal lPrice) {
             bool res = false;
-            if (!string.IsNullOrEmpty(str)) {
+            if (!String.IsNullOrEmpty(str)) {
                 str = str.Replace("грн.", "");
                 str = str.Replace("грн ", "");
                 str = str.Replace(",", ".");
 
-                res = decimal.TryParse(str, out lPrice);
+                res = Decimal.TryParse(str, out lPrice);
             }
             else {
                 lPrice = 0;
@@ -261,12 +262,20 @@ namespace FoodApp.Controllers {
             return dt1.Year.Equals(dt2.Year) && dt1.Month.Equals(dt2.Month) && dt1.Day.Equals(dt2.Day);
         }
 
+        public static bool Equals(string foodId1, string foodId2) {
+            bool res = foodId1.Equals(foodId2, StringComparison.OrdinalIgnoreCase);
+            return res;
 
-        internal static bool CompareFoodIds(string foodId1, string foodid2) {
+        }
+
+        public static bool IsSeamsFoodIds(string foodId1, string foodid2)
+        {
             bool res = false;
 
-            do {
-                if (foodId1.Equals(foodid2, StringComparison.OrdinalIgnoreCase)) {
+            do
+            {
+                if (foodId1.Equals(foodid2))
+                {
                     res = true;
                     break;
                 }
@@ -274,23 +283,28 @@ namespace FoodApp.Controllers {
                 int lenDiff = Math.Abs(foodId1.Length - foodid2.Length);
                 const double coef = 0.1;
                 const int compare = 3;
-                if (foodId1.Length*coef < lenDiff || foodid2.Length*coef < lenDiff) {
+                if (foodId1.Length * coef < lenDiff || foodid2.Length * coef < lenDiff)
+                {
                     break;
                 }
 
                 int equalsCount = 0;
                 int symbCount = Math.Min(foodId1.Length, foodId1.Length);
-                for (int i = 0; i < symbCount; i ++) {
-                    if (foodId1.Length > i + compare) {
+                for (int i = 0; i < symbCount; i++)
+                {
+                    if (foodId1.Length > i + compare)
+                    {
                         string tmp = foodId1.Substring(i, compare);
-                        if (foodid2.Contains(tmp)) {
+                        if (foodid2.Contains(tmp))
+                        {
                             equalsCount++;
                         }
                     }
                 }
 
                 int seamsDiff = Math.Abs(symbCount - equalsCount);
-                if (equalsCount*coef < seamsDiff) {
+                if (equalsCount * coef < seamsDiff)
+                {
                     break;
                 }
                 res = true;

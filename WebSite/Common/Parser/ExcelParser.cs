@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
+using FoodApp.Common;
 using FoodApp.Controllers;
 using Google.GData.Client;
 using Google.GData.Spreadsheets;
@@ -12,8 +13,7 @@ namespace GoogleAppsConsoleApplication
 {
     public class ExcelParser
     {
-       
-
+    
         private static readonly object _lockObj = new object();
         public static ExcelParser Inst = new ExcelParser();
         private OAuth2Parameters _parameters;
@@ -98,6 +98,8 @@ namespace GoogleAppsConsoleApplication
                     sb.Append("<h1>" + entry.Title.Text + "</h1>");
                     RenderWeek(entry);
 
+                    //fix food ids
+                    HistoryManager.Inst.FixFoodIds();
                     this.IsInit = true;
                 }
             }

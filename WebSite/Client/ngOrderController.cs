@@ -44,12 +44,12 @@ namespace FoodApp.Client {
                 foreach (ngOrderEntry item in ngOrderModels) {
                     ngFoodItem food = getFoodItem(item.FoodId);
                     if (null != food) {
-                        res += clientUtils.Inst.fixNumber(food.Price*item.Count);
-                        res = clientUtils.Inst.fixNumber(res);
+                        res += jsUtils.inst.fixNumber(food.Price*item.Count);
+                        res = jsUtils.inst.fixNumber(res);
                     }
                 }
             }
-            res = clientUtils.Inst.fixNumber(res);
+            res = jsUtils.inst.fixNumber(res);
             return res;
         }
 
@@ -62,11 +62,11 @@ namespace FoodApp.Client {
         }
 
         public void deleteOrder(int day, string row) {
-            clientUtils.Inst.showLoading();
+            jsUtils.inst.showLoading();
             serviceHlp.inst.SendDelete("json",
                 OrderController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + row + "/",
                 new JsObject(), delegate {
-                    clientUtils.Inst.hideLoading();
+                    jsUtils.inst.hideLoading();
                     refreshOrders();
                 }, onRequestFailed);
         }
@@ -95,7 +95,7 @@ namespace FoodApp.Client {
             ngOrderEntry res = null;
             JsArray<ngOrderEntry> orders = inst.getOrders(day);
             foreach (ngOrderEntry order in orders) {
-                if (ApiUtils.CompareFoodIds(order.FoodId,foodId)) {
+                if (order.FoodId==foodId) {
                     res = order;
                     break;
                 }

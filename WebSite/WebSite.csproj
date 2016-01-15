@@ -255,7 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Client\clientUtils.cs" />
+    <Compile Include="Client\jsUtils.cs" />
     <Compile Include="Client\ngFoodFilter.cs" />
     <Compile Include="Client\ngPropousalContoller.cs" />
     <Compile Include="Client\ngPropousalFilter.cs" />

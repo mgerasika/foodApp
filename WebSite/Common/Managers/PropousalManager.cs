@@ -57,7 +57,7 @@ namespace FoodApp.Common {
         private static bool HasFood(List<ngFoodItem> todayFoods, string foodId) {
             bool res = false;
             foreach (ngFoodItem food in todayFoods) {
-                if (ApiUtils.CompareFoodIds(food.FoodId,foodId)) {
+                if (ApiUtils.Equals(food.FoodId,foodId)) {
                     res = true;
                     break;
                 }

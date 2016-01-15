@@ -38,7 +38,7 @@ namespace FoodApp.Client
 
         protected void onRequestFailed(JsError jsError, JsString jsString, jqXHR arg3)
         {
-            clientUtils.Inst.hideLoading();
+            jsUtils.inst.hideLoading();
         }
     }
 }
