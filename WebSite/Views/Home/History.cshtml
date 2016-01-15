@@ -5,6 +5,7 @@
 
 @{
     string orders = ajs.field((ngHistoryController o) => o.ngHistoryItems);
+    string historyGroup = "historyGroup";
     string historyItem = "historyItem";
     string foodId = historyItem + "." + ajs.field((ngHistoryEntry o) => o.FoodId);
 }
@@ -15,13 +16,30 @@
 
     <div ng-controller="@ajs.getClass((ngHistoryController o) => o)">
 
-        <div ng-repeat="@historyItem in @orders">
+        <div ng-repeat="@historyGroup in @orders">
+            <table class="table" style="border: 0px;">
+                <tr >
+                    <td class="leftIcon"  style="border: 0px;"></td>
+                    <td style="border: 0px;">
+                        <div style="float: left;"> <h4>{{@historyGroup .@ajs.field((ngHistoryGroupEntry o) => o.DateStr)}}</h4>
+                        </div>
+
+                        <div style="float: right;">
+                            <button ng-click="@ajs.method((ngHistoryController o) => o.deleteHistoryClick(null)) (@historyGroup)" class="btn btn-success foodBtn">Видалити із історії</button>
 
 
-            <i>
-                {{@ajs.method((ngHistoryController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.FoodId)}}
-            </i><b>{{@historyItem .@ajs.field((ngHistoryEntry o) => o.Count)}}</b>
-            <u>{{@historyItem .@ajs.field((ngHistoryEntry o) => o.Date)}}</u>
-        </div>
+                        </div>
+                        <div style="clear: both; padding-left: 1em;">
+                            <ul style="clear: both;" ng-repeat="@historyItem in @historyGroup. @ajs.field((ngHistoryGroupEntry o) => o.Entries)">
+                                <li>
+                                    {{@ajs.method((ngHistoryController o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
+                                    <b>{{@historyItem .@ajs.field((ngHistoryEntry o) => o.Count)}}</b>
+                                </li>
+                            </ul>
+                        </div></td>
+
+                </tr>
+            </table>
+            </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 using angularjs;
 using FoodApp.Common;
+using FoodApp.Controllers;
 using FoodApp.Controllers.api;
 using SharpKit.jQuery;
 using SharpKit.JavaScript;
@@ -94,7 +95,7 @@ namespace FoodApp.Client {
             ngOrderEntry res = null;
             JsArray<ngOrderEntry> orders = inst.getOrders(day);
             foreach (ngOrderEntry order in orders) {
-                if (order.FoodId == foodId) {
+                if (ApiUtils.CompareFoodIds(order.FoodId,foodId)) {
                     res = order;
                     break;
                 }

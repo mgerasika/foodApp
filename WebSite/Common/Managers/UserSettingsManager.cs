@@ -31,7 +31,7 @@ namespace FoodApp.Common {
             ngHistoryModel history = HistoryManager.Inst.GetHistoryModelByUser(user);
             if (null != history) {
                 IDictionary<string, List<ngHistoryEntry>> groupFoods = history.GroupByFoodId();
-                IDictionary<string, List<ngHistoryEntry>> groupDates = history.GroupByDate();
+                List<ngHistoryGroupEntry> groupDates = history.GroupByDate();
                 int historyDaysCount = groupDates.Count;
                 foreach (KeyValuePair<string, List<ngHistoryEntry>> food in groupFoods) {
                     int foodEntriesCount = food.Value.Count;
@@ -63,14 +63,24 @@ namespace FoodApp.Common {
             return res;
         }
 
+        private bool _isInit = false;
+        private static object _lockObj = new object();
         internal void Init() {
-            foreach (ngUserModel user in UsersManager.Inst.GetUsers()) {
-                if (user.Email.Equals("mgerasika@gmail.com")) {
-                    int x;
+            if (!_isInit) {
+                lock (_lockObj) {
+                    if (!_isInit) {
+                        List<ngUserModel> ngUserModels = UsersManager.Inst.GetUsers();
+                        foreach (ngUserModel user in ngUserModels) {
+                            if (user.Email.Equals("mgerasika@gmail.com")) {
+                                int x;
+                            }
+                            ParseHistoryAndMakeRateByUser(user);
+                        }
+                        Inst.Save();
+                        _isInit = true;
+                    }
                 }
-                ParseHistoryAndMakeRateByUser(user);
             }
-            Inst.Save();
         }
     }
 }

@@ -188,17 +188,38 @@ FoodApp.Client.ngPropousalContoller.prototype.init = function (scope, http, loc,
     FoodApp.Client.ngControllerBase.prototype.init.call(this, scope, http, loc, filter);
     this.set_ngItems( []);
     FoodApp.Client.eventManager.inst.subscribe(FoodApp.Client.eventManager.settingsLoaded, $CreateAnonymousDelegate(this, function (n){
-        this.refreshPropousals();
+        this.requestRefreshPropousals(null);
     }));
 };
 FoodApp.Client.ngPropousalContoller.prototype.getFoodItem = function (id){
     var item = FoodApp.Client.ngFoodController.inst.findFoodById(id);
     return item;
 };
-FoodApp.Client.ngPropousalContoller.prototype.refreshPropousals = function (){
+FoodApp.Client.ngPropousalContoller.prototype.requestRefreshPropousals = function (handler){
     FoodApp.Client.serviceHlp.inst.SendGet("json", "api/propousal/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/", $CreateAnonymousDelegate(this, function (o, s, arg3){
         this.set_ngItems(o);
         this._scope.$apply();
+        if (null != handler){
+            handler();
+        }
+    }), $CreateDelegate(this, this.onRequestFailed));
+};
+FoodApp.Client.ngPropousalContoller.prototype.refreshPropousalsClick = function (){
+    FoodApp.Client.clientUtils.Inst.showLoading();
+    this.requestRefreshPropousals($CreateAnonymousDelegate(this, function (){
+        FoodApp.Client.clientUtils.Inst.hideLoading();
+    }));
+};
+FoodApp.Client.ngPropousalContoller.prototype.hasPropousal = function (dayOfWeek){
+    var ngFoodRates = this.get_ngItems()[dayOfWeek];
+    return ngFoodRates != null && ngFoodRates.length > 0;
+};
+FoodApp.Client.ngPropousalContoller.prototype.buyClick = function (dayOfWeek){
+    FoodApp.Client.clientUtils.Inst.showLoading();
+    var ngFoodRates = this.get_ngItems()[dayOfWeek];
+    FoodApp.Client.serviceHlp.inst.SendPost("json", "api/propousal/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + dayOfWeek + "/", JSON.stringify(ngFoodRates), $CreateAnonymousDelegate(this, function (){
+        FoodApp.Client.ngOrderController.inst.refreshOrders();
+        FoodApp.Client.clientUtils.Inst.hideLoading();
     }), $CreateDelegate(this, this.onRequestFailed));
 };
 $Inherit(FoodApp.Client.ngPropousalContoller, FoodApp.Client.ngControllerBase);
@@ -251,6 +272,11 @@ FoodApp.Client.ngHistoryController.prototype.refreshHistory = function (){
     FoodApp.Client.serviceHlp.inst.SendGet("json", "api/history/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/", $CreateAnonymousDelegate(this, function (o, s, arg3){
         this.set_ngHistoryItems(o);
         this._scope.$apply();
+    }), $CreateDelegate(this, this.onRequestFailed));
+};
+FoodApp.Client.ngHistoryController.prototype.deleteHistoryClick = function (group){
+    FoodApp.Client.serviceHlp.inst.SendPost("json", "api/history/delete/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/", JSON.stringify(group), $CreateAnonymousDelegate(this, function (){
+        this.refreshHistory();
     }), $CreateDelegate(this, this.onRequestFailed));
 };
 $Inherit(FoodApp.Client.ngHistoryController, FoodApp.Client.ngControllerBase);
@@ -430,12 +456,12 @@ FoodApp.Client.ngModelBase = function (){
 };
 if (typeof(FoodApp.Common) == "undefined")
     FoodApp.Common = {};
-FoodApp.Common.ngHistoryEntryByDate = function (){
-    this.Date = System.DateTime.MinValue;
+FoodApp.Common.ngHistoryGroupEntry = function (){
+    this.DateStr = null;
     this.Entries = null;
     this.Entries = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryEntry");
 };
-$Inherit(FoodApp.Common.ngHistoryEntryByDate, FoodApp.Client.ngModelBase);
+$Inherit(FoodApp.Common.ngHistoryGroupEntry, FoodApp.Client.ngModelBase);
 FoodApp.Common.ngMoneyModel = function (){
     this.UserId = null;
     this.Total = 0;
@@ -479,50 +505,78 @@ FoodApp.Common.ngHistoryModel.prototype.GetEntriesByDate = function (dt){
     }
     return res;
 };
-FoodApp.Common.ngHistoryModel.prototype.GroupByDate = function (){
-    var res = new System.Collections.Generic.Dictionary$2.ctor(System.String.ctor, System.Collections.Generic.List$1.ctor);
+FoodApp.Common.ngHistoryModel.prototype.GroupByDate = function (dayOfWeek){
+    var res = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryGroupEntry");
     var $it6 = this.Entries.GetEnumerator();
     while ($it6.MoveNext()){
         var entry = $it6.get_Current();
         var food = FoodApp.Common.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
-        if (null != food && !food.isContainer){
-            var dateTime = entry.Date.ToShortDateString();
-            if (!res.ContainsKey(dateTime)){
-                res.set_Item$$TKey(dateTime, new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryEntry"));
+        var ofWeek = entry.Date.get_DayOfWeek();
+        if (null != food && !food.isContainer && (ofWeek == dayOfWeek + 1)){
+            var key = entry.Date.ToShortDateString();
+            if (!this.HasGroupByDate(res, key)){
+                var newGroup = {};
+                newGroup.DateStr = key;
+                res.Add(newGroup);
             }
-            res.get_Item$$TKey(dateTime).Add(entry);
+            this.GetGroupByDate(res, key).Entries.Add(entry);
+        }
+    }
+    return res;
+};
+FoodApp.Common.ngHistoryModel.prototype.GroupByDate = function (){
+    var res = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryGroupEntry");
+    var $it7 = this.Entries.GetEnumerator();
+    while ($it7.MoveNext()){
+        var entry = $it7.get_Current();
+        var food = FoodApp.Common.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
+        if (null != food && !food.isContainer){
+            var key = entry.Date.ToShortDateString();
+            if (!this.HasGroupByDate(res, key)){
+                var newGroup = {};
+                newGroup.DateStr = key;
+                res.Add(newGroup);
+            }
+            this.GetGroupByDate(res, key).Entries.Add(entry);
+        }
+    }
+    return res;
+};
+FoodApp.Common.ngHistoryModel.prototype.HasGroupByDate = function (items, dateStr){
+    var res = false;
+    var $it8 = items.GetEnumerator();
+    while ($it8.MoveNext()){
+        var entry = $it8.get_Current();
+        if (entry.DateStr.Equals$$String$$StringComparison(dateStr, 5)){
+            res = true;
+            break;
+        }
+    }
+    return res;
+};
+FoodApp.Common.ngHistoryModel.prototype.GetGroupByDate = function (items, dateStr){
+    var res = null;
+    var $it9 = items.GetEnumerator();
+    while ($it9.MoveNext()){
+        var entry = $it9.get_Current();
+        if (entry.DateStr.Equals$$String$$StringComparison(dateStr, 5)){
+            res = entry;
+            break;
         }
     }
     return res;
 };
 FoodApp.Common.ngHistoryModel.prototype.GroupByFoodId = function (){
     var res = new System.Collections.Generic.Dictionary$2.ctor(System.String.ctor, System.Collections.Generic.List$1.ctor);
-    var $it7 = this.Entries.GetEnumerator();
-    while ($it7.MoveNext()){
-        var entry = $it7.get_Current();
+    var $it10 = this.Entries.GetEnumerator();
+    while ($it10.MoveNext()){
+        var entry = $it10.get_Current();
         var food = FoodApp.Common.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
         if (null != food && !food.isContainer){
             if (!res.ContainsKey(entry.FoodId)){
                 res.set_Item$$TKey(entry.FoodId, new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryEntry"));
             }
             res.get_Item$$TKey(entry.FoodId).Add(entry);
-        }
-    }
-    return res;
-};
-FoodApp.Common.ngHistoryModel.prototype.GroupByDate = function (dayOfWeek){
-    var res = new System.Collections.Generic.Dictionary$2.ctor(System.String.ctor, System.Collections.Generic.List$1.ctor);
-    var $it8 = this.Entries.GetEnumerator();
-    while ($it8.MoveNext()){
-        var entry = $it8.get_Current();
-        var food = FoodApp.Common.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
-        var ofWeek = entry.Date.get_DayOfWeek();
-        if (null != food && !food.isContainer && (ofWeek == dayOfWeek + 1)){
-            var dateTime = entry.Date.ToShortDateString();
-            if (!res.ContainsKey(dateTime)){
-                res.set_Item$$TKey(dateTime, new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryEntry"));
-            }
-            res.get_Item$$TKey(dateTime).Add(entry);
         }
     }
     return res;
@@ -550,10 +604,10 @@ FoodApp.Common.ngUsersSettingsModel = function (){
 };
 FoodApp.Common.ngUsersSettingsModel.prototype.GetFoodRateById = function (foodId){
     var res = null;
-    var $it9 = this.FoodRates.GetEnumerator();
-    while ($it9.MoveNext()){
-        var r = $it9.get_Current();
-        if (r.FoodId.Equals$$String(foodId)){
+    var $it11 = this.FoodRates.GetEnumerator();
+    while ($it11.MoveNext()){
+        var r = $it11.get_Current();
+        if (FoodApp.Controllers.ApiUtils.CompareFoodIds(r.FoodId, foodId)){
             res = r;
             break;
         }
@@ -571,9 +625,9 @@ FoodApp.Common.ngUsersSettingsModel.prototype.EnsureFoodRate = function (foodId)
 };
 FoodApp.Common.ngUsersSettingsModel.prototype.Fix = function (){
     var ratesThatNeedRemove = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngFoodRate");
-    var $it10 = this.FoodRates.GetEnumerator();
-    while ($it10.MoveNext()){
-        var foodRate = $it10.get_Current();
+    var $it12 = this.FoodRates.GetEnumerator();
+    while ($it12.MoveNext()){
+        var foodRate = $it12.get_Current();
         var food = FoodApp.Common.FoodManager.Inst.GetFoodById$$String(foodRate.FoodId);
         if (null == food){
             ratesThatNeedRemove.Add(foodRate);
@@ -582,9 +636,9 @@ FoodApp.Common.ngUsersSettingsModel.prototype.Fix = function (){
             ratesThatNeedRemove.Add(foodRate);
         }
     }
-    var $it11 = ratesThatNeedRemove.GetEnumerator();
-    while ($it11.MoveNext()){
-        var rateToRemove = $it11.get_Current();
+    var $it13 = ratesThatNeedRemove.GetEnumerator();
+    while ($it13.MoveNext()){
+        var rateToRemove = $it13.get_Current();
         this.FoodRates.Remove(rateToRemove);
     }
 };
@@ -705,9 +759,9 @@ FoodApp.Client.ngFoodController.prototype.change = function (){
 };
 FoodApp.Client.ngFoodController.prototype.findFoodById = function (id){
     var res = null;
-    for (var $i13 = 0,$t13 = this.get_ngFoods(),$l13 = $t13.length,dayItems = $t13[$i13]; $i13 < $l13; $i13++, dayItems = $t13[$i13]){
-        for (var $i14 = 0,$l14 = dayItems.length,item = dayItems[$i14]; $i14 < $l14; $i14++, item = dayItems[$i14]){
-            if (item.FoodId == id){
+    for (var $i15 = 0,$t15 = this.get_ngFoods(),$l15 = $t15.length,dayItems = $t15[$i15]; $i15 < $l15; $i15++, dayItems = $t15[$i15]){
+        for (var $i16 = 0,$l16 = dayItems.length,item = dayItems[$i16]; $i16 < $l16; $i16++, item = dayItems[$i16]){
+            if (FoodApp.Controllers.ApiUtils.CompareFoodIds(item.FoodId, id)){
                 res = item;
                 break;
             }
@@ -756,7 +810,7 @@ FoodApp.Client.ngOrderController.prototype.getTotalPrice = function (day){
     var res = 0;
     var ngOrderModels = this.get_ngOrderEntries()[day];
     if (ngOrderModels != null){
-        for (var $i15 = 0,$l15 = ngOrderModels.length,item = ngOrderModels[$i15]; $i15 < $l15; $i15++, item = ngOrderModels[$i15]){
+        for (var $i17 = 0,$l17 = ngOrderModels.length,item = ngOrderModels[$i17]; $i17 < $l17; $i17++, item = ngOrderModels[$i17]){
             var food = this.getFoodItem(item.FoodId);
             if (null != food){
                 res += FoodApp.Client.clientUtils.Inst.fixNumber(food.Price * item.Count);
@@ -790,7 +844,7 @@ FoodApp.Client.ngOrderController.prototype.refreshOrders = function (){
         while (this.get_ngOrderEntries().length > 0){
             this.get_ngOrderEntries().pop();
         }
-        for (var $i16 = 0,$l16 = tmp.length,obj = tmp[$i16]; $i16 < $l16; $i16++, obj = tmp[$i16]){
+        for (var $i18 = 0,$l18 = tmp.length,obj = tmp[$i18]; $i18 < $l18; $i18++, obj = tmp[$i18]){
             this.get_ngOrderEntries().push(obj);
         }
         FoodApp.Client.eventManager.inst.fire(FoodApp.Client.eventManager.orderListChanged, this.get_ngOrderEntries());
@@ -803,8 +857,8 @@ FoodApp.Client.ngOrderController.prototype.getOrders = function (day){
 FoodApp.Client.ngOrderController.prototype.getOrderByFoodId = function (day, foodId){
     var res = null;
     var orders = FoodApp.Client.ngOrderController.inst.getOrders(day);
-    for (var $i17 = 0,$l17 = orders.length,order = orders[$i17]; $i17 < $l17; $i17++, order = orders[$i17]){
-        if (order.FoodId == foodId){
+    for (var $i19 = 0,$l19 = orders.length,order = orders[$i19]; $i19 < $l19; $i19++, order = orders[$i19]){
+        if (FoodApp.Controllers.ApiUtils.CompareFoodIds(order.FoodId, foodId)){
             res = order;
             break;
         }

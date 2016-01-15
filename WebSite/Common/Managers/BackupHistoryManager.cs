@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Timers;
 using FoodApp.Client;
 
-namespace FoodApp.Common
-{
-    public class BackupHistoryManager
-    {
+namespace FoodApp.Common {
+    public class BackupHistoryManager {
         public static BackupHistoryManager Inst = new BackupHistoryManager();
         private readonly Timer _timer = new Timer();
+        private static object _lockObject = new object();
 
 
         private BackupHistoryManager() {
             _timer = new Timer();
-            _timer.Interval = 60*1000;
+            _timer.Interval = 120*1000;
             _timer.Elapsed += _timer_Elapsed;
             _timer.Start();
         }
@@ -21,11 +20,17 @@ namespace FoodApp.Common
         private void _timer_Elapsed(object sender, ElapsedEventArgs e) {
             //start sunday
             if (DateTime.Now.Hour == 12) {
-                DateTime dt = DateTime.Now;
-                if (!HistoryManager.Inst.HasAnyEntry(dt)) {
-                    int dayOfWeek = (int) dt.DayOfWeek - 1;
-                    CreateHistoryByDay(dayOfWeek);
+                lock (_lockObject) {
+                    CreateHistory();
                 }
+            }
+        }
+
+        public void CreateHistory() {
+            DateTime dt = DateTime.Now;
+            if (!HistoryManager.Inst.HasAnyEntry(dt)) {
+                int dayOfWeek = (int) dt.DayOfWeek - 1;
+                CreateHistoryByDay(dayOfWeek);
             }
         }
 

@@ -23,7 +23,7 @@ namespace FoodApp.Common {
                 if (groups.Count > 0) {
                     groups = groups.OrderByDescending(g => g.Count).ToList();
 
-                    int randomNumber = _random.Next(groups.Count-1);
+                    int randomNumber = _random.Next(groups.Count);
                     res = groups[randomNumber];
                 }
             }
@@ -32,11 +32,12 @@ namespace FoodApp.Common {
 
         private List<List<ngHistoryEntry>> FindPossibleMenus(int dayOfWeek, ngHistoryModel history) {
             List<List<ngHistoryEntry>> groups = new List<List<ngHistoryEntry>>();
-            IDictionary<string, List<ngHistoryEntry>> allHistoryByDate = history.GroupByDate(dayOfWeek);
+            List<ngHistoryGroupEntry> allHistoryByDate = history.GroupByDate(dayOfWeek);
             List<ngFoodItem> todayFoods = FoodManager.Inst.GetFoods(dayOfWeek);
-            foreach (KeyValuePair<string, List<ngHistoryEntry>> entry in allHistoryByDate) {
-                if (HasFoodsInMenu(entry.Value, todayFoods)) {
-                    groups.Add(entry.Value);
+            foreach (ngHistoryGroupEntry entry in allHistoryByDate)
+            {
+                if (HasFoodsInMenu(entry.Entries, todayFoods)) {
+                    groups.Add(entry.Entries);
                 }
             }
             return groups;
@@ -56,7 +57,7 @@ namespace FoodApp.Common {
         private static bool HasFood(List<ngFoodItem> todayFoods, string foodId) {
             bool res = false;
             foreach (ngFoodItem food in todayFoods) {
-                if (food.FoodId.Equals(foodId)) {
+                if (ApiUtils.CompareFoodIds(food.FoodId,foodId)) {
                     res = true;
                     break;
                 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using FoodApp.Client;
+using FoodApp.Controllers;
 using GoogleAppsConsoleApplication;
 
 namespace FoodApp.Common {
@@ -68,7 +69,7 @@ namespace FoodApp.Common {
             ngFoodItem res = null;
             List<ngFoodItem> foods = GetFoods(dayOfWeek);
             foreach (ngFoodItem item in foods) {
-                if (item.FoodId.Equals(foodId)) {
+                if (ApiUtils.CompareFoodIds(item.FoodId,foodId)) {
                     res = item;
                     break;
                 }
@@ -82,7 +83,7 @@ namespace FoodApp.Common {
             List<ngFoodItem> foods = GetAllFoods();
             foreach (ngFoodItem item in foods)
             {
-                if (item.FoodId.Equals(foodId))
+                if (ApiUtils.CompareFoodIds(item.FoodId,foodId))
                 {
                     res = item;
                     break;

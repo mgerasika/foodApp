@@ -5,12 +5,12 @@ using SharpKit.JavaScript;
 
 namespace FoodApp.Common {
     [JsType(JsMode.Json, Filename = WebApiResources._fileClientJs, Export = true)]
-    public class ngHistoryEntryByDate : ngModelBase
+    public class ngHistoryGroupEntry : ngModelBase
     {
-        public DateTime Date { get; set; }
+        public string DateStr { get; set; }
         public List<ngHistoryEntry> Entries { get; set; }
 
-        public ngHistoryEntryByDate() {
+        public ngHistoryGroupEntry() {
             this.Entries = new List<ngHistoryEntry>();
         }
     }

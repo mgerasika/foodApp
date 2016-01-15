@@ -120,6 +120,7 @@ namespace FoodApp.Controllers {
                                         }
                                     }
 
+
                                     ApiUtils.SetSessionUserId(userModel.Id);
                                     return RedirectToAction("Index");
                                 }

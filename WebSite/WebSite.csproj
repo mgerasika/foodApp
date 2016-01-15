@@ -274,7 +274,7 @@
     <Compile Include="Common\Managers\MoneyManager.cs" />
     <Compile Include="Common\Managers\OrderManager.cs" />
     <Compile Include="Common\Model\EMoneyOperation.cs" />
-    <Compile Include="Common\Model\ngHistoryEntryByDate.cs" />
+    <Compile Include="Common\Model\ngHistoryGroupEntry.cs" />
     <Compile Include="Common\Model\ngMoneyModel.cs" />
     <Compile Include="Common\Managers\UsersManager.cs" />
     <Compile Include="Common\Model\ngFoodRate.cs" />

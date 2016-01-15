@@ -9,7 +9,7 @@ namespace FoodApp.Controllers {
     public class ApiUtils {
         //public const string c_sExcelFileName = "mykhaylo_test";
         public const string c_sExcelFileName = "Меню на тиждень";
-        
+
 #if DEBUG
         public const string REDIRECT_URL = "http://localhost:15845/";
 #else
@@ -40,8 +40,7 @@ namespace FoodApp.Controllers {
             return res;
         }
 
-        public static ngUserModel GetUser()
-        {
+        public static ngUserModel GetUser() {
             ngUserModel res = null;
             string id = GetSessionUserId();
             if (!string.IsNullOrEmpty(id)) {
@@ -263,7 +262,40 @@ namespace FoodApp.Controllers {
         }
 
 
+        internal static bool CompareFoodIds(string foodId1, string foodid2) {
+            bool res = false;
 
-        
+            do {
+                if (foodId1.Equals(foodid2, StringComparison.OrdinalIgnoreCase)) {
+                    res = true;
+                    break;
+                }
+
+                int lenDiff = Math.Abs(foodId1.Length - foodid2.Length);
+                const double coef = 0.1;
+                const int compare = 3;
+                if (foodId1.Length*coef < lenDiff || foodid2.Length*coef < lenDiff) {
+                    break;
+                }
+
+                int equalsCount = 0;
+                int symbCount = Math.Min(foodId1.Length, foodId1.Length);
+                for (int i = 0; i < symbCount; i ++) {
+                    if (foodId1.Length > i + compare) {
+                        string tmp = foodId1.Substring(i, compare);
+                        if (foodid2.Contains(tmp)) {
+                            equalsCount++;
+                        }
+                    }
+                }
+
+                int seamsDiff = Math.Abs(symbCount - equalsCount);
+                if (equalsCount*coef < seamsDiff) {
+                    break;
+                }
+                res = true;
+            } while (false);
+            return res;
+        }
     }
 }

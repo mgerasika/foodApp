@@ -10,17 +10,21 @@
     string foodId = ngPropousal + "." + ajs.field((ngHistoryEntry o) => o.FoodId);
 }
 
-<div style="margin-left: 1.5em;">
-         <h3>Автоматичне замовлення обідів</h3>
-         <p>Гам-Гам дає можливість автоматичного замовлення обіду згідно ваших смаків.</p>
-         <p><span>Cьогодні пропонуємо скуштувати:</span><span ng-repeat="@ngPropousal in @ngPropousalItems| propousalFilter:{'day':@dayOfWeek}">
+<div style="margin-left: 1.5em;" ng-if="@ajs.method((ngPropousalContoller o) => o.hasPropousal(0)) (@dayOfWeek)">
+    <h3>Автоматичне замовлення обідів</h3>
+    <p>Гам-Гам дає можливість автоматичного замовлення обіду згідно ваших смаків.</p>
+
+    <p><span>Cьогодні пропонуємо скуштувати:</span><span ng-repeat="@ngPropousal in @ngPropousalItems| propousalFilter:{'day':@dayOfWeek}">
             <i>
                 {{@ajs.method((ngPropousalContoller o) => o.getFoodItem(null)) (@foodId).@ajs.field((ngFoodItem o) => o.Name)}}
             </i>
             <b>
                 {{@ngPropousal .@ajs.field((ngHistoryEntry o) => o.Count)}}
             </b>
+             
             &nbsp;
             &nbsp;
     </span></p>
+    <button class="btn btn-success foodBtn" style="padding: 0.3em;" ng-click="@ajs.method((ngPropousalContoller o) => o.refreshPropousalsClick()) ()">Інші пропозиції</button>
+    <button class="btn btn-success foodBtn" style="padding: 0.3em;" ng-click="@ajs.method((ngPropousalContoller o) => o.buyClick(0)) (@dayOfWeek)">Замовити</button>
 </div>

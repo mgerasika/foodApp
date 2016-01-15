@@ -26,17 +26,65 @@ namespace FoodApp.Common {
             return res;
         }
 
-        internal IDictionary<string, List<ngHistoryEntry>> GroupByDate()
+        internal List<ngHistoryGroupEntry> GroupByDate(int dayOfWeek)
         {
-            IDictionary<string, List<ngHistoryEntry>> res = new Dictionary<string, List<ngHistoryEntry>>();
+            List<ngHistoryGroupEntry> res = new List<ngHistoryGroupEntry>();
+            foreach (ngHistoryEntry entry in Entries)
+            {
+                ngFoodItem food = FoodManager.Inst.GetFoodById(entry.FoodId);
+                int ofWeek = (int)entry.Date.DayOfWeek;
+                if (null != food && !food.isContainer && (ofWeek == dayOfWeek + 1))
+                {
+                    string key = entry.Date.ToShortDateString();
+                    if (!HasGroupByDate(res, key))
+                    {
+                        ngHistoryGroupEntry newGroup = new ngHistoryGroupEntry();
+                        newGroup.DateStr = key;
+                        res.Add(newGroup);
+                    }
+                    GetGroupByDate(res, key).Entries.Add(entry);
+                }
+            }
+            return res;
+        }
+
+        internal List<ngHistoryGroupEntry> GroupByDate() {
+            List<ngHistoryGroupEntry> res = new List<ngHistoryGroupEntry>();
             foreach (ngHistoryEntry entry in Entries) {
                 ngFoodItem food = FoodManager.Inst.GetFoodById(entry.FoodId);
                 if (null != food && !food.isContainer) {
-                    string dateTime = entry.Date.ToShortDateString();
-                    if (!res.ContainsKey(dateTime)) {
-                        res[dateTime] = new List<ngHistoryEntry>();
+                    string key = entry.Date.ToShortDateString();
+                    if (!HasGroupByDate(res,key)) {
+                        ngHistoryGroupEntry newGroup = new ngHistoryGroupEntry();
+                        newGroup.DateStr = key;
+                        res.Add(newGroup);
                     }
-                    res[dateTime].Add(entry);
+                    GetGroupByDate(res,key).Entries.Add(entry);
+                }
+            }
+            return res;
+        }
+
+        private bool HasGroupByDate(List<ngHistoryGroupEntry> items, string dateStr) {
+            bool res = false;
+            foreach (ngHistoryGroupEntry entry in items) {
+                if (entry.DateStr.Equals(dateStr, StringComparison.OrdinalIgnoreCase)) {
+                    res = true;
+                    break;
+                }
+            }
+            return res;
+        }
+
+        private ngHistoryGroupEntry GetGroupByDate(List<ngHistoryGroupEntry> items, string dateStr)
+        {
+            ngHistoryGroupEntry res = null;
+            foreach (ngHistoryGroupEntry entry in items)
+            {
+                if (entry.DateStr.Equals(dateStr, StringComparison.OrdinalIgnoreCase))
+                {
+                    res = entry;
+                    break;
                 }
             }
             return res;
@@ -57,24 +105,6 @@ namespace FoodApp.Common {
             return res;
         }
 
-        internal IDictionary<string, List<ngHistoryEntry>> GroupByDate(int dayOfWeek)
-        {
-            IDictionary<string, List<ngHistoryEntry>> res = new Dictionary<string, List<ngHistoryEntry>>();
-            foreach (ngHistoryEntry entry in Entries)
-            {
-                ngFoodItem food = FoodManager.Inst.GetFoodById(entry.FoodId);
-                int ofWeek = (int)entry.Date.DayOfWeek;
-                if (null != food && !food.isContainer && (ofWeek == dayOfWeek+1))
-                {
-                    string dateTime = entry.Date.ToShortDateString();
-                    if (!res.ContainsKey(dateTime))
-                    {
-                        res[dateTime] = new List<ngHistoryEntry>();
-                    }
-                    res[dateTime].Add(entry);
-                }
-            }
-            return res;
-        }
+       
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using FoodApp.Client;
+using FoodApp.Controllers;
 using SharpKit.JavaScript;
 
 namespace FoodApp.Common
@@ -20,7 +21,7 @@ namespace FoodApp.Common
         public ngFoodRate GetFoodRateById(string foodId) {
             ngFoodRate res = null;
             foreach (ngFoodRate r in this.FoodRates) {
-                if (r.FoodId.Equals(foodId)) {
+                if (ApiUtils.CompareFoodIds(r.FoodId,foodId)) {
                     res = r;
                     break;
                 }

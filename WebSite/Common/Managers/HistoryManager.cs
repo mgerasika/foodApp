@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using FoodApp.Controllers;
 
-namespace FoodApp.Common
-{
-    public class HistoryManager : ManagerBase<ngHistoryModel>
-    {
+namespace FoodApp.Common {
+    public class HistoryManager : ManagerBase<ngHistoryModel> {
         public static HistoryManager Inst = new HistoryManager();
 
         protected override string FileName {
@@ -19,15 +18,69 @@ namespace FoodApp.Common
         public void CreateFake() {
         }
 
-        public void Fix()
-        {
-            foreach (ngHistoryModel item in GetItems())
+        public void Fix() {
+            //add user id
+            List<ngHistoryModel> items = GetItems();
+            foreach (ngHistoryModel item in items) {
+                ngUserModel user = UsersManager.Inst.GetUserByEmail(item.Email);
+                Debug.Assert(null != user);
+                item.UserId = user.Id;
+            }
+
+            ngHistoryModel mgerasikaModel = GetHistoryModelByEmail("mgerasika@gmail.com");
+            ngHistoryModel mherasikaDarwinsgrove = GetHistoryModelByEmail("mherasika@darwinsgrove.com");
+            if (null != mgerasikaModel && mherasikaDarwinsgrove != null) {
+                foreach (ngHistoryEntry entry in mgerasikaModel.Entries) {
+                    mherasikaDarwinsgrove.Entries.Add(entry);
+                }
+                mgerasikaModel.Entries.Clear();
+                items.Remove(mgerasikaModel);
+                Save();
+            }
+
+            foreach (ngHistoryModel item in items)
             {
                 ngUserModel user = UsersManager.Inst.GetUserByEmail(item.Email);
                 Debug.Assert(null != user);
                 item.UserId = user.Id;
             }
+
+            //fix dublicate
+            foreach (ngHistoryModel item in items) {
+                List<ngHistoryEntry> entries = item.Entries;
+                List<ngHistoryEntry> dublicates = new List<ngHistoryEntry>();
+                for (int i = 0; i < entries.Count; i++) {
+                    ngHistoryEntry entry = entries[i];
+                    for (int j = i + 1; j < entries.Count; j++) {
+                        ngHistoryEntry tmp = entries[j];
+                        if (ApiUtils.CompareFoodIds(entry.FoodId,tmp.FoodId) && ApiUtils.EqualDate(entry.Date,tmp.Date)) {
+                            dublicates.Add(tmp);
+                        }
+                    }
+                }
+
+                if (dublicates.Count > 0) {
+                    foreach (ngHistoryEntry dublicate in dublicates) {
+                        item.Entries.Remove(dublicate);
+                    }
+                }
+            }
             Save();
+        }
+
+        private ngHistoryModel GetHistoryModelByEmail(string email)
+        {
+            ngHistoryModel res = null;
+            List<ngHistoryModel> items = GetItems();
+            foreach (ngHistoryModel item in items)
+            {
+                if (item.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
+                {
+                    res = item;
+                    break;
+                }
+            }
+            return res;
         }
 
         internal ngHistoryModel GetHistoryModelByUser(ngUserModel user) {
@@ -39,7 +92,7 @@ namespace FoodApp.Common
             foreach (ngUserModel user in UsersManager.Inst.GetUsers()) {
                 ngHistoryModel model = GetHistoryModelByUser(user);
                 if (null != model) {
-                    var entries = model.GetEntriesByDate(dt);
+                    List<ngHistoryEntry> entries = model.GetEntriesByDate(dt);
                     if (entries.Count > 0) {
                         res = true;
                         break;
@@ -48,5 +101,7 @@ namespace FoodApp.Common
             }
             return res;
         }
+
+       
     }
 }
