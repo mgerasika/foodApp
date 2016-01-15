@@ -65,7 +65,7 @@ namespace FoodApp.Client {
         }
 
 
-        public void buyClick(int dayOfWeek) {
+        public void makePropousalClick(int dayOfWeek) {
             jsUtils.inst.showLoading();
             JsArray<ngHistoryEntry> ngFoodRates = ngItems[dayOfWeek];
 

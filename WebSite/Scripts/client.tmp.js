@@ -214,7 +214,7 @@ FoodApp.Client.ngPropousalContoller.prototype.hasPropousal = function (dayOfWeek
     var ngFoodRates = this.get_ngItems()[dayOfWeek];
     return ngFoodRates != null && ngFoodRates.length > 0;
 };
-FoodApp.Client.ngPropousalContoller.prototype.buyClick = function (dayOfWeek){
+FoodApp.Client.ngPropousalContoller.prototype.makePropousalClick = function (dayOfWeek){
     FoodApp.Client.jsUtils.inst.showLoading();
     var ngFoodRates = this.get_ngItems()[dayOfWeek];
     FoodApp.Client.serviceHlp.inst.SendPost("json", "api/propousal/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + dayOfWeek + "/", JSON.stringify(ngFoodRates), $CreateAnonymousDelegate(this, function (){
