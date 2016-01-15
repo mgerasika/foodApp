@@ -9,8 +9,12 @@ namespace FoodApp.Controllers {
     public class ApiUtils {
         //public const string c_sExcelFileName = "mykhaylo_test";
         public const string c_sExcelFileName = "Меню на тиждень";
-        //public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
+        
+#if DEBUG
         public const string REDIRECT_URL = "http://localhost:15845/";
+#else
+        public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
+#endif
 
         public const string CLIENT_ID = "668583993597.apps.googleusercontent.com";
         public const string CLIENT_SECRET = "70LRXGzVw-G1t5bzRmdUmcoj";
@@ -52,7 +56,9 @@ namespace FoodApp.Controllers {
             HttpContext.Current.Session["userId"] = val;
             HttpResponse response = GetHttpResponse();
             if (null != response) {
-                response.Cookies.Add(new HttpCookie("userId", val));
+                HttpCookie httpCookie = new HttpCookie("userId", val);
+                httpCookie.Expires = DateTime.MaxValue;
+                response.Cookies.Add(httpCookie);
             }
         }
 

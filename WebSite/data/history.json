@@ -1,7 +1,7 @@
 [
   {
     "Email": "okapij@darwinsgrove.com",
-    "UserId": "01258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "a49b83f6-ac66-4484-ac99-fc2e3bcb4151",
     "Entries": [
       {
         "FoodId": "_SalatyOseledec\"pishuboyu",
@@ -361,7 +361,7 @@
   },
   {
     "Email": "ikhariv@darwinsgrove.com",
-    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "3ca4058e-b2bd-43a2-a160-033a20e48754",
     "Entries": [
       {
         "FoodId": "_HarniryKartoplyapyure200h",
@@ -770,12 +770,30 @@
         "Date": "2016-01-13T12:50:45.4343456+02:00",
         "Count": 1.00,
         "FoodPrice": 3.50
+      },
+      {
+        "FoodId": "_HarniryHrechka",
+        "Date": "2016-01-14T12:00:41.8122327+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.00
+      },
+      {
+        "FoodId": "_StravyizkurKurkavhrybsousi",
+        "Date": "2016-01-14T12:00:41.8122327+02:00",
+        "Count": 1.00,
+        "FoodPrice": 29.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-14T12:00:41.813233+02:00",
+        "Count": 1.00,
+        "FoodPrice": 2.50
       }
     ]
   },
   {
     "Email": "apodanovskiy@darwinsgrove.com",
-    "UserId": "04258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "f4bde511-6fa2-4d2f-898d-bb77af1a6650",
     "Entries": [
       {
         "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
@@ -985,7 +1003,7 @@
   },
   {
     "Email": "haba.yura@darwinsgrove.com",
-    "UserId": "07258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "bd36018f-24ab-426c-8080-486f69cc4517",
     "Entries": [
       {
         "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
@@ -1220,12 +1238,36 @@
         "Date": "2016-01-13T12:50:45.441348+02:00",
         "Count": 1.00,
         "FoodPrice": 36.00
+      },
+      {
+        "FoodId": "_SalatyKapusta",
+        "Date": "2016-01-14T12:00:41.8142336+02:00",
+        "Count": 1.00,
+        "FoodPrice": 6.50
+      },
+      {
+        "FoodId": "_HarniryKartoplyaposelyans\"ky200h",
+        "Date": "2016-01-14T12:00:41.8152336+02:00",
+        "Count": 1.00,
+        "FoodPrice": 10.00
+      },
+      {
+        "FoodId": "_PershistravyBorщzelenyj250h",
+        "Date": "2016-01-14T12:00:41.8152336+02:00",
+        "Count": 1.00,
+        "FoodPrice": 12.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-14T12:00:41.8162336+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
       }
     ]
   },
   {
     "Email": "iplotytsia@darwinsgrove.com",
-    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "1d987961-9c70-49e1-ba12-1fc0bb591d72",
     "Entries": [
       {
         "FoodId": "_SalatySmakota",
@@ -1862,12 +1904,36 @@
         "Date": "2016-01-13T12:50:45.4443462+02:00",
         "Count": 2.00,
         "FoodPrice": 0.85
+      },
+      {
+        "FoodId": "_SalatyBuryachok",
+        "Date": "2016-01-14T12:00:41.8162336+02:00",
+        "Count": 1.00,
+        "FoodPrice": 5.50
+      },
+      {
+        "FoodId": "_PershistravyCHanaxy300h",
+        "Date": "2016-01-14T12:00:41.8172339+02:00",
+        "Count": 1.00,
+        "FoodPrice": 27.50
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynavidvarna",
+        "Date": "2016-01-14T12:00:41.8172339+02:00",
+        "Count": 1.50,
+        "FoodPrice": 35.00
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-14T12:00:41.8182342+02:00",
+        "Count": 2.00,
+        "FoodPrice": 2.50
       }
     ]
   },
   {
     "Email": "vzadorozhnyy@darwinsgrove.com",
-    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "dd47c35d-8c67-415a-9290-c9173c53f033",
     "Entries": [
       {
         "FoodId": "_Nalysnyky80hzmyasom",
@@ -2012,6 +2078,24 @@
         "Date": "2016-01-11T12:00:14.3218062+02:00",
         "Count": 1.00,
         "FoodPrice": 36.00
+      },
+      {
+        "FoodId": "_PershistravyCHanaxy300h",
+        "Date": "2016-01-14T12:00:41.8182342+02:00",
+        "Count": 1.00,
+        "FoodPrice": 27.50
+      },
+      {
+        "FoodId": "_Nalysnyky80hKontejneryna1vidpershastraboharnirtamyaso",
+        "Date": "2016-01-14T12:00:41.8192345+02:00",
+        "Count": 1.00,
+        "FoodPrice": 2.50
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Date": "2016-01-14T12:00:41.8202351+02:00",
+        "Count": 2.00,
+        "FoodPrice": 0.85
       }
     ]
   },
@@ -2977,7 +3061,7 @@
   },
   {
     "Email": "achulyk@darwinsgrove.com",
-    "UserId": "05258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "d0b104c2-6de2-4b7e-be93-8e8ce988d3d6",
     "Entries": [
       {
         "FoodId": "_SalatyDachnyj",
@@ -3145,7 +3229,7 @@
   },
   {
     "Email": "omartsinets@darwinsgrove.com",
-    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "f4d2ac14-acec-470f-ba65-37b91e794b5c",
     "Entries": [
       {
         "FoodId": "_SalatyPikantnyj",
@@ -3217,7 +3301,7 @@
   },
   {
     "Email": "amamchur@darwinsgrove.com",
-    "UserId": "06258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "4f18880e-af8f-4e32-900c-7d0766f280cb",
     "Entries": [
       {
         "FoodId": "_SalatyPikantnyj",
@@ -3344,12 +3428,18 @@
         "Date": "2015-12-01T12:00:01.061775+02:00",
         "Count": 1.00,
         "FoodPrice": 0.85
+      },
+      {
+        "FoodId": "_KompleksnyjobidYUshkahrybrysvidvarnyjstvinehretpechinkazcybuleyuxlib2kus",
+        "Date": "2016-01-14T12:00:41.813233+02:00",
+        "Count": 1.00,
+        "FoodPrice": 36.00
       }
     ]
   },
   {
     "Email": "vpabyrivskyy@darwinsgrove.com",
-    "UserId": "08258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "8d02f100-b7cc-42ec-9814-f9c01d9bf2ec",
     "Entries": [
       {
         "FoodId": "_SalatyOlivye",
@@ -3379,7 +3469,7 @@
   },
   {
     "Email": "aborovyi@darwinsgrove.com",
-    "UserId": "09258346-5281-4fd7-9234-d5eb994c534c",
+    "UserId": "181a27e5-b5bb-4ff7-a3b4-d5531d30ca17",
     "Entries": [
       {
         "FoodId": "_SalatyOlivye",

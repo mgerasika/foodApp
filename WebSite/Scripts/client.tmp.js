@@ -614,7 +614,7 @@ FoodApp.Client.ngFoodItem = function (){
     this.isGarnir = false;
     this.isMeatOrFish = false;
     this.isFirst = false;
-    this.isKvasoleva = false;
+    this.isKvasolevaOrChanachi = false;
 };
 $Inherit(FoodApp.Client.ngFoodItem, FoodApp.Client.ngModelBase);
 FoodApp.Client.ngFoodController = function (){
