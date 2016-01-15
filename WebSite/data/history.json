@@ -2343,7 +2343,6 @@
         "Count": 1.00,
         "FoodPrice": 3.50
       },
-     
       {
         "FoodId": "_SalatyKapusta",
         "Date": "2015-11-20T12:00:08.5601787+02:00",
@@ -2356,19 +2355,11 @@
         "Count": 1.00,
         "FoodPrice": 8.30
       },
-     
       {
         "FoodId": "_MyasoRybaKotletapoKyyivs\"ky80h",
         "Date": "2015-11-20T12:00:08.5621451+02:00",
         "Count": 1.00,
         "FoodPrice": 25.00
-      },
-      
-      {
-        "FoodId": "_MyasoRybaKovbaskasmazhena",
-        "Date": "2015-11-20T12:00:08.5738761+02:00",
-        "Count": 1.50,
-        "FoodPrice": 20.00
       },
       {
         "FoodId": "_KontejneryKontejnerydlya2stravharnirmyasosalat",
@@ -2707,12 +2698,6 @@
         "FoodPrice": 3.50
       },
       {
-        "FoodId": "_SalatyBuryachok",
-        "Date": "2015-11-20T12:00:08.5758254+02:00",
-        "Count": 1.00,
-        "FoodPrice": 5.50
-      },
-      {
         "FoodId": "_SalatyKapusta",
         "Date": "2015-11-20T12:00:08.5758254+02:00",
         "Count": 1.00,
@@ -2725,28 +2710,10 @@
         "FoodPrice": 8.30
       },
       {
-        "FoodId": "_HarniryHrechka150h",
-        "Date": "2015-11-20T12:00:08.5768044+02:00",
-        "Count": 1.00,
-        "FoodPrice": 7.50
-      },
-      {
         "FoodId": "_MyasoRybaKotletapoKyyivs\"ky80h",
         "Date": "2015-11-20T12:00:08.5768044+02:00",
         "Count": 1.00,
         "FoodPrice": 25.00
-      },
-      {
-        "FoodId": "_PershistravyBorщchervonyj250h",
-        "Date": "2015-11-20T12:00:08.5777809+02:00",
-        "Count": 1.00,
-        "FoodPrice": 9.90
-      },
-      {
-        "FoodId": "_MyasoRybaKovbaskasmazhena",
-        "Date": "2015-11-20T12:00:08.5777809+02:00",
-        "Count": 1.50,
-        "FoodPrice": 20.00
       },
       {
         "FoodId": "_KontejneryKontejnerydlya2stravharnirmyasosalat",
