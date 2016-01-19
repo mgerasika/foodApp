@@ -11,7 +11,7 @@
 }
 
 
-<h3>Історія замовлень</h3>
+<h3>Улюблені страви</h3>
 <div>
 
     <div ng-controller="@ajs.getClass((ngHistoryController o) => o)">
@@ -19,13 +19,13 @@
         <div ng-repeat="@historyGroup in @orders">
             <table class="table" style="border: 0px;">
                 <tr >
-                    <td class="leftIcon"  style="border: 0px;"></td>
+                    <td class="leftIcon" style="border: 0px;"></td>
                     <td style="border: 0px;">
                         <div style="float: left;"> <h4>{{@historyGroup .@ajs.field((ngHistoryGroupEntry o) => o.DateStr)}}</h4>
                         </div>
 
                         <div style="float: right;">
-                            <button ng-click="@ajs.method((ngHistoryController o) => o.deleteHistoryClick(null)) (@historyGroup)" class="btn btn-success foodBtn">Видалити із історії</button>
+                            <button ng-click="@ajs.method((ngHistoryController o) => o.deleteHistoryClick(null)) (@historyGroup)" class="btn btn-success foodBtn">Видалити із улюблених</button>
 
 
                         </div>
@@ -40,6 +40,7 @@
 
                 </tr>
             </table>
+           <hr/>
             </div>
     </div>
 </div>
