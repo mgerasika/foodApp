@@ -260,7 +260,6 @@
     <Compile Include="Client\ngPropousalContoller.cs" />
     <Compile Include="Client\ngPropousalFilter.cs" />
     <Compile Include="Client\ngHistoryController.cs" />
-    <Compile Include="Client\ngFavoriteController.cs" />
     <Compile Include="Client\eventManager.cs" />
     <Compile Include="Client\ngAppController.cs" />
     <Compile Include="Client\ngControllerBase.cs" />

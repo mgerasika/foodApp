@@ -280,42 +280,6 @@ FoodApp.Client.ngHistoryController.prototype.deleteHistoryClick = function (grou
     }), $CreateDelegate(this, this.onRequestFailed));
 };
 $Inherit(FoodApp.Client.ngHistoryController, FoodApp.Client.ngControllerBase);
-FoodApp.Client.ngFavoriteController = function (){
-    FoodApp.Client.ngControllerBase.call(this);
-};
-FoodApp.Client.ngFavoriteController.inst = new FoodApp.Client.ngFavoriteController();
-FoodApp.Client.ngFavoriteController.prototype.get_className = function (){
-    return "ngFavoriteController";
-};
-FoodApp.Client.ngFavoriteController.prototype.get_ngFavoriteItems = function (){
-    return this._scope["ngFavoriteItems"];
-};
-FoodApp.Client.ngFavoriteController.prototype.set_ngFavoriteItems = function (value){
-    this._scope["ngFavoriteItems"] = value;
-};
-FoodApp.Client.ngFavoriteController.prototype.init = function (scope, http, loc, filter){
-    FoodApp.Client.ngControllerBase.prototype.init.call(this, scope, http, loc, filter);
-    this.set_ngFavoriteItems( []);
-    FoodApp.Client.eventManager.inst.subscribe(FoodApp.Client.eventManager.settingsLoaded, $CreateAnonymousDelegate(this, function (n){
-        this.refreshFavorite();
-    }));
-};
-FoodApp.Client.ngFavoriteController.prototype.getFoodItem = function (id){
-    var item = FoodApp.Client.ngFoodController.inst.findFoodById(id);
-    return item;
-};
-FoodApp.Client.ngFavoriteController.prototype.refreshFavorite = function (){
-    FoodApp.Client.serviceHlp.inst.SendGet("json", "api/favorite/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/", $CreateAnonymousDelegate(this, function (o, s, arg3){
-        this.set_ngFavoriteItems(o);
-        this._scope.$apply();
-    }), $CreateDelegate(this, this.onRequestFailed));
-};
-FoodApp.Client.ngFavoriteController.prototype.rateChanged = function (rate, newRate){
-    rate.Rate = newRate;
-    FoodApp.Client.serviceHlp.inst.SendPost("json", "api/favorite/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + rate.FoodId + "/" + rate.Rate + "/", new Object(), $CreateAnonymousDelegate(this, function (){
-    }), $CreateDelegate(this, this.onRequestFailed));
-};
-$Inherit(FoodApp.Client.ngFavoriteController, FoodApp.Client.ngControllerBase);
 FoodApp.Client.eventManager = function (){
     this._dict = new Object();
 };

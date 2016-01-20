@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Manifest SkcVersion="5.5.0" DefinedSymbols="TRACE">
+  <SkcFile Filename="C:\Program Files (x86)\SharpKit\5\Compiler\skc5.exe" Modified="-8587501627658294931" />
+  <SourceFiles>
+    <ManifestFile Filename="angularController.cs" Modified="-8587544418924262937" />
+    <ManifestFile Filename="angularDirective.cs" Modified="-8587544719336115512" />
+    <ManifestFile Filename="angularHttp.cs" Modified="-8587544719335995505" />
+    <ManifestFile Filename="angularFilter.cs" Modified="-8587544695466990276" />
+    <ManifestFile Filename="Properties\angularjsResources.cs" Modified="-8587545353898300393" />
+    <ManifestFile Filename="angularModule.cs" Modified="-8587544715328386283" />
+    <ManifestFile Filename="angularLocation.cs" Modified="-8587544719335925501" />
+    <ManifestFile Filename="angular.cs" Modified="-8587544719336235519" />
+    <ManifestFile Filename="angularScope.cs" Modified="-8587538661618894606" />
+    <ManifestFile Filename="clientAppHelper.cs" Modified="-8587544707024521329" />
+    <ManifestFile Filename="icontrolBase.cs" Modified="-8587544719336585539" />
+    <ManifestFile Filename="Properties\AssemblyInfo.cs" Modified="-8587545353898640412" />
+    <ManifestFile Filename="ajs.cs" Modified="-8587544418924132929" />
+    <ManifestFile Filename="C:\Users\Mykhaylo Herasika\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cs" Modified="-8587501639310904083" />
+    <ManifestFile Filename="obj\Release\\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" Modified="-8587543816109973932" />
+    <ManifestFile Filename="obj\Release\\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" Modified="-8587543816109973932" />
+    <ManifestFile Filename="obj\Release\\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" Modified="-8587543816109953930" />
+  </SourceFiles>
+  <ContentFiles>
+    <ManifestFile Filename="Web.config" Modified="-8587545353899270448" />
+    <ManifestFile Filename="packages.config" Modified="-8587544718014579924" />
+  </ContentFiles>
+  <ReferencedFiles>
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" Modified="-8588598196774775808" />
+    <ManifestFile Filename="D:\Projects\FoodApp\trunk\packages\SharpKit.Html.5.4.9\lib\SharpKit.Html.dll" Modified="-8587561905198702577" />
+    <ManifestFile Filename="D:\Projects\FoodApp\trunk\packages\SharpKit.JavaScript.5.4.7\lib\SharpKit.JavaScript.dll" Modified="-8587561905233224551" />
+    <ManifestFile Filename="D:\Projects\FoodApp\trunk\packages\SharpKit.jQuery.5.4.9\lib\SharpKit.jQuery.dll" Modified="-8587561905167820810" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Core.dll" Modified="-8588598196754775808" />
+  </ReferencedFiles>
+  <NoneFiles>
+    <ManifestFile Filename="Web.Debug.config" Modified="-8587545353897720360" />
+    <ManifestFile Filename="Web.Release.config" Modified="-8587545353898230389" />
+  </NoneFiles>
+  <ExternalFiles />
+</Manifest>
