@@ -18,10 +18,6 @@
         "Rate": 0.16666666666666666
       },
       {
-        "FoodId": "_PershistravyKapusnyak",
-        "Rate": 0.16666666666666666
-      },
-      {
         "FoodId": "_SalatyPikantnyj",
         "Rate": 0.055555555555555552
       },
@@ -744,5 +740,10 @@
     "FoodRates": [],
     "Email": "adombr@darwinsgrove.com",
     "UserId": "13258346-5281-4fd7-9234-d5eb994c534c"
+  },
+  {
+    "FoodRates": [],
+    "Email": "unknown@gmail.com",
+    "UserId": "4ccfe9fe-e4c9-44eb-a169-3d265b543fe3"
   }
 ]

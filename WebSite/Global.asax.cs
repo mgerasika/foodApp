@@ -19,8 +19,6 @@ namespace FoodApp {
             BackupHistoryManager backupHistoryManager = BackupHistoryManager.Inst;
             ClearOrdersManager clearOrdersManage = ClearOrdersManager.Inst;
 
-            UsersManager.Inst.Fix();
-            UserSettingsManager.Inst.Fix();
             HistoryManager.Inst.Fix();
 
             /*

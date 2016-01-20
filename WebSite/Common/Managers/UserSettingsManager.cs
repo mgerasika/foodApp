@@ -15,14 +15,7 @@ namespace FoodApp.Common {
             return obj.UserId;
         }
 
-        public void Fix() {
-            foreach (ngUsersSettingsModel item in GetItems()) {
-                ngUserModel user = UsersManager.Inst.GetUserByEmail(item.Email);
-                Debug.Assert(null != user);
-                item.UserId = user.Id;
-            }
-            Save();
-        }
+        
 
         private void ParseHistoryAndMakeRateByUser(ngUserModel user) {
             ngUsersSettingsModel lSettings = Inst.EnsureUserSettings(user);

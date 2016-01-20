@@ -140,14 +140,14 @@
     "GoogleFirstName": null
   },
   {
-    "Column": 31,
-    "Email": "alta.romeo@gmail.com",
-    "Name": "Сергій А",
-    "Id": "3ccfe9fe-e4c9-44eb-a169-3d265b543fe3",
-    "Picture": null,
-    "GoogleName": null,
+    "Column": 35,
+    "Email": "unknown@gmail.com",
+    "Name": "Unknown",
+    "Id": "4ccfe9fe-e4c9-44eb-a169-3d265b543fe3",
+    "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+    "GoogleName": "Romeo Alta",
     "IsAdmin": false,
-    "GoogleFirstName": null
+    "GoogleFirstName": "Romeo"
   },
   {
     "Column": 16,

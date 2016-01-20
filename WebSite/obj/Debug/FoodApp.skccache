@@ -23,12 +23,12 @@
     <ManifestFile Filename="Common\Model\EMoneyOperation.cs" Modified="-8587518713077496409" />
     <ManifestFile Filename="Common\Model\ngHistoryGroupEntry.cs" Modified="-8587487534365972320" />
     <ManifestFile Filename="Common\Model\ngMoneyModel.cs" Modified="-8587518700288784936" />
-    <ManifestFile Filename="Common\Managers\UsersManager.cs" Modified="-8587489167166542076" />
+    <ManifestFile Filename="Common\Managers\UsersManager.cs" Modified="-8587483258918246769" />
     <ManifestFile Filename="Common\Model\ngFoodRate.cs" Modified="-8587539365905777511" />
     <ManifestFile Filename="Common\Model\ngHistoryEntry.cs" Modified="-8587500823065720390" />
     <ManifestFile Filename="Common\Managers\HistoryManager.cs" Modified="-8587487501678972982" />
     <ManifestFile Filename="Common\Model\ngHistoryModel.cs" Modified="-8587487534366050084" />
-    <ManifestFile Filename="Common\Managers\UserSettingsManager.cs" Modified="-8587487534365922454" />
+    <ManifestFile Filename="Common\Managers\UserSettingsManager.cs" Modified="-8587483258332159601" />
     <ManifestFile Filename="Common\Model\ngMoneyOrdersModel.cs" Modified="-8587518671380091454" />
     <ManifestFile Filename="Common\Model\ngOrderEntry.cs" Modified="-8587519471959853078" />
     <ManifestFile Filename="Common\Model\ngUsersSettingsModel.cs" Modified="-8587487513075943256" />
@@ -55,8 +55,8 @@
     <ManifestFile Filename="Controllers\api\FoodsController.cs" Modified="-8587518686027319227" />
     <ManifestFile Filename="Controllers\api\AppController.cs" Modified="-8587519481692999782" />
     <ManifestFile Filename="Controllers\api\OrderController.cs" Modified="-8587518686257592398" />
-    <ManifestFile Filename="Controllers\HomeController.cs" Modified="-8587487499737887437" />
-    <ManifestFile Filename="Global.asax.cs" Modified="-8587487666167527912" />
+    <ManifestFile Filename="Controllers\HomeController.cs" Modified="-8587483259319609032" />
+    <ManifestFile Filename="Global.asax.cs" Modified="-8587483258332109468" />
     <ManifestFile Filename="Properties\AssemblyInfo.cs" Modified="-8587551283787524972" />
     <ManifestFile Filename="C:\Users\Mykhaylo Herasika\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cs" Modified="-8587501639310904083" />
     <ManifestFile Filename="obj\Debug\\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" Modified="-8587551283787964997" />
@@ -103,7 +103,7 @@
     <ManifestFile Filename="fonts\fontawesome-webfont.woff" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.woff2" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\FontAwesome.otf" Modified="-8587619183314775808" />
-    <ManifestFile Filename="data\users.json" Modified="-8587487494566719741" />
+    <ManifestFile Filename="data\users.json" Modified="-8587483258918337000" />
     <ManifestFile Filename="data\userSettings.json" Modified="-8587487494359185206" />
     <ManifestFile Filename="data\money.json" Modified="-8587487675572325665" />
     <ManifestFile Filename="data\moneyLogs.json" Modified="-8587487675572215362" />
@@ -143,97 +143,97 @@
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Google.GData.Spreadsheets.2.2.0.0\lib\Google.GData.Spreadsheets.dll" Modified="-8587560184693223039" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\WebSite\lib\GoogleSearchAPI.dll" Modified="-8587548002075434313" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\log4net.2.0.3\lib\net40-full\log4net.dll" Modified="-8587560185491268684" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Microsoft.CSharp.dll" Modified="-8588598196774775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Microsoft.CSharp.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll" Modified="-8587560185493298801" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll" Modified="-8587560185493288800" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll" Modified="-8587560185493278799" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" Modified="-8587561905613926326" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" Modified="-8588598196774775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll" Modified="-8587561905743163718" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\SharpKit.Html.5.4.9\lib\SharpKit.Html.dll" Modified="-8587561905198702577" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\SharpKit.JavaScript.5.4.7\lib\SharpKit.JavaScript.dll" Modified="-8587561905233224551" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\SharpKit.jQuery.5.4.9\lib\SharpKit.jQuery.dll" Modified="-8587561905167820810" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.ComponentModel.DataAnnotations.dll" Modified="-8588598196774775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Configuration.dll" Modified="-8588598196774775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Core.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.DataSetExtensions.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.EnterpriseServices.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.Http.dll" Modified="-8588598196754775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.ComponentModel.DataAnnotations.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Configuration.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Core.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.DataSetExtensions.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.EnterpriseServices.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.Http.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll" Modified="-8587560185491898720" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll" Modified="-8587561905450376972" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll" Modified="-8587560185491888720" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.Http.WebRequest.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.ApplicationServices.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.DynamicData.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.Entity.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.Extensions.dll" Modified="-8588598196754775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.Http.WebRequest.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.ApplicationServices.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.DynamicData.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.Entity.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.Extensions.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll" Modified="-8587561905613176283" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll" Modified="-8587561905450036952" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll" Modified="-8587561905449906945" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll" Modified="-8587561905612956271" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll" Modified="-8587561905613586307" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.Services.dll" Modified="-8588598196754775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.Services.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll" Modified="-8587561905613156282" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll" Modified="-8587561905613126280" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll" Modified="-8587561905613116280" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.Linq.dll" Modified="-8588598196754775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.Linq.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll" Modified="-8587560185491158678" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Collections.Concurrent.dll" Modified="-8588598196774775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Collections.dll" Modified="-8588598196774775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ComponentModel.Annotations.dll" Modified="-8588598196774775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ComponentModel.dll" Modified="-8588598196774775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ComponentModel.EventBasedAsync.dll" Modified="-8588598196774775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Diagnostics.Contracts.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Diagnostics.Debug.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Diagnostics.Tools.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Diagnostics.Tracing.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Dynamic.Runtime.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Globalization.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.IO.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Linq.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Linq.Expressions.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Linq.Parallel.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Linq.Queryable.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Net.NetworkInformation.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Net.Primitives.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Net.Requests.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ObjectModel.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Emit.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Emit.ILGeneration.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Emit.Lightweight.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Extensions.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Primitives.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Resources.ResourceManager.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Extensions.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.InteropServices.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.InteropServices.WindowsRuntime.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Numerics.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Serialization.Json.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Serialization.Primitives.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Serialization.Xml.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Security.Principal.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.Duplex.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.Http.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.NetTcp.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.Primitives.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.Security.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Text.Encoding.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Text.Encoding.Extensions.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Text.RegularExpressions.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Threading.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Threading.Tasks.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Threading.Tasks.Parallel.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Xml.ReaderWriter.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Xml.XDocument.dll" Modified="-8588598196754775808" />
-    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Xml.XmlSerializer.dll" Modified="-8588598196754775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Collections.Concurrent.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Collections.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ComponentModel.Annotations.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ComponentModel.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ComponentModel.EventBasedAsync.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Diagnostics.Contracts.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Diagnostics.Debug.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Diagnostics.Tools.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Diagnostics.Tracing.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Dynamic.Runtime.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Globalization.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.IO.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Linq.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Linq.Expressions.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Linq.Parallel.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Linq.Queryable.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Net.NetworkInformation.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Net.Primitives.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Net.Requests.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ObjectModel.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Emit.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Emit.ILGeneration.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Emit.Lightweight.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Extensions.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Reflection.Primitives.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Resources.ResourceManager.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Extensions.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.InteropServices.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.InteropServices.WindowsRuntime.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Numerics.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Serialization.Json.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Serialization.Primitives.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Serialization.Xml.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Security.Principal.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.Duplex.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.Http.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.NetTcp.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.Primitives.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.ServiceModel.Security.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Text.Encoding.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Text.Encoding.Extensions.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Text.RegularExpressions.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Threading.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Threading.Tasks.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Threading.Tasks.Parallel.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Xml.ReaderWriter.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Xml.XDocument.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Xml.XmlSerializer.dll" Modified="-8588529847174775808" />
   </ReferencedFiles>
   <NoneFiles>
     <ManifestFile Filename="Properties\PublishProfiles\Default Settings.pubxml" Modified="-8587543809206609082" />

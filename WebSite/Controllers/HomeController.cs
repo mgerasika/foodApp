@@ -105,7 +105,7 @@ namespace FoodApp.Controllers {
                                     string email = Convert.ToString(data["email"]);
                                     ngUserModel userModel = UsersManager.Inst.GetUserByEmail(email);
                                     if (null == userModel) {
-                                        throw new UnauthorizedAccessException("You don't have permission to access");
+                                        userModel = UsersManager.Inst.GetUserByEmail("unknown@gmail.com");
                                     }
                                     if (string.IsNullOrEmpty(userModel.GoogleFirstName)) {
                                         userModel.Picture = Convert.ToString(data["picture"]);
