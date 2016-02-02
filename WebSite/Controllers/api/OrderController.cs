@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using System.Web.Http;
 using FoodApp.Client;
 using FoodApp.Common;
+using FoodApp.Common.api;
+using FoodApp.Common.Model;
+using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
-    public class OrderController : ApiController {
-        public const string c_sOrdersPrefix = "api/orders";
-
+    public class OrderController : ApiController,IOrderController {
         [HttpGet]
-        [Route(c_sOrdersPrefix + "/{userId}/")]
+        [Route(OrderUrl.c_sGetAllOrders)]
         public IList<IList<ngOrderEntry>> GetAllOrders(string userId) {
             ngUserModel user = UsersManager.Inst.GetUserById(userId);
             List<IList<ngOrderEntry>> res = new List<IList<ngOrderEntry>>();
@@ -21,7 +22,7 @@ namespace FoodApp.Controllers.api {
         }
 
         [HttpGet]
-        [Route(c_sOrdersPrefix + "/{userId}/{day}")]
+        [Route(OrderUrl.c_sGetOrders)]
         public IList<ngOrderEntry> GetOrders(string userId, int day) {
             ngUserModel user = UsersManager.Inst.GetUserById(userId);
             List<ngOrderEntry> items = OrderManager.Inst.GetOrders(user, day);
@@ -29,7 +30,7 @@ namespace FoodApp.Controllers.api {
         }
 
         [HttpDelete]
-        [Route(c_sOrdersPrefix + "/{userId}/{day}/{foodId}/")]
+        [Route(OrderUrl.c_sDeleteOrder)]
         public bool Delete(string userId, int day, string foodId) {
             ngUserModel user = UsersManager.Inst.GetUserById(userId);
             OrderManager.Inst.Delete(user, day, foodId);

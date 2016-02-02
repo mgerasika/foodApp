@@ -1,5 +1,7 @@
 using angularjs;
 using FoodApp.Common;
+using FoodApp.Common.Model;
+using FoodApp.Common.Url;
 using FoodApp.Controllers;
 using FoodApp.Controllers.api;
 using SharpKit.jQuery;
@@ -64,7 +66,7 @@ namespace FoodApp.Client {
         public void deleteOrder(int day, string row) {
             jsUtils.inst.showLoading();
             serviceHlp.inst.SendDelete("json",
-                OrderController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + row + "/",
+                OrderUrl.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + row + "/",
                 new JsObject(), delegate {
                     jsUtils.inst.hideLoading();
                     refreshOrders();
@@ -73,7 +75,7 @@ namespace FoodApp.Client {
 
         public void refreshOrders() {
             serviceHlp.inst.SendGet("json",
-                OrderController.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserId + "/",
+                OrderUrl.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserId + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
                     JsArray<JsArray<ngOrderEntry>> tmp = o.As<JsArray<JsArray<ngOrderEntry>>>();
                     while (ngOrderEntries.length > 0) {

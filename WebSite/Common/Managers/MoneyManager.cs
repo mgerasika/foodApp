@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using FoodApp.Common.Model;
 
 namespace FoodApp.Common {
     public class MoneyManager : ManagerBase<ngMoneyModel> {

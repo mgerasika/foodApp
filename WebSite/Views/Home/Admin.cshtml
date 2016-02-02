@@ -1,0 +1,155 @@
+﻿@using System.Web.Mvc.Html
+@using angularjs
+@using FoodApp.Client
+@using FoodApp.Controllers
+@inherits System.Web.Mvc.WebViewPage
+@{
+    Layout = "~/Views/Layout1.cshtml";
+    string imgUrl = ApiUtils.GetUser().Picture;
+    string googleName = ApiUtils.GetUser().GoogleName;
+    string name = ApiUtils.GetUser().Name;
+    bool isAdmin = true;// ApiUtils.GetUser().IsAdmin;
+}
+
+
+<input type="hidden" value="@ApiUtils.GetSessionUserId()" id="userId"/>
+
+
+<div>
+    <div class="navbar menubar" id="menu" style="position: fixed; top: 0px; width: 100%; z-index: 4;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </button>
+                <div style="">
+                    <a class="navbar-brand" style="color: white; font-size: 2.2em;" href="#">Гам-Гам</a><br/>
+                     @if (!string.IsNullOrEmpty(name))
+                    {
+                        <div style="color: white; white-space:  pre-line; word-wrap: break-word;">@name</div>
+                    }
+                </div>
+              
+            </div>
+            <div>
+                <nav class="collapse navbar-collapse" class="nav nav-tabs" role="tablist">
+
+
+                    @if (!string.IsNullOrEmpty(imgUrl)) {
+                        <div style="background-image: url('@imgUrl'); background-size: cover; float: left; height: 5em; width: 5em;"></div>
+                    }
+                    
+
+                    <ul id="tab" class="nav navbar-nav navbar-right navstyle">
+
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header0" class="page-scroll">Понеділок</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header1" class="page-scroll">Вівторок</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header2" class="page-scroll">Середа</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header3" class="page-scroll">Четвер</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header4" class="page-scroll">Пятниця</a>
+                        </li>
+                        
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#contact" class="page-scroll">Контакти</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="@ajs.getClass((ngAppController o) => o)" style="margin-top: 70px;">
+        <div ng-controller="@ajs.getClass((ngFoodController o) => o)" class="tab-content">
+
+            
+
+            <div id="header{{day.idx}}" role="tabpanel" class="tab-pane fade in" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
+                <div style="background-color: white; position: fixed; top: 70px; width: 100%; z-index: 4;">
+                    <div class="container">
+                        <div class="row bottomBorder" style="height: 100px;">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="alldesc">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
+                                        <p class="all-td">&nbsp;</p>
+                                        <h2>{{day.name}}</h2>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div>
+                 <div class="container">
+
+                    <div class="features" style="margin-top: 100px;">
+                        <div class="container">
+                            <div class="row">
+                                @{ Html.RenderPartial("AdminFoods", "day.idx"); }
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="contact" role="tabpanel" class="address tab-pane fade in">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="alldesc">
+                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px;">
+                                    <p class="all-td"></p>
+                                    <h2>Контакти</h2>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
+                                    <p>Email : mgerasika@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<script type="text/javascript">
+
+
+    window.addEventListener("load", function () {
+        var date = new Date();
+        var day = date.getDay() - 1;
+        if (day > 4) {
+            day = 0;
+        }
+        var id = '#tab a[href="#header' + day + '"]';
+        $(id).tab('show');
+        var active = $(id);
+        active.addClass('active');
+
+        $('#tab a').click(function (e) {
+            if (active != $(this)) {
+                active.removeClass('active');
+                e.preventDefault();
+                $(this).tab('show');
+            }
+        });
+    });
+
+</script>
+

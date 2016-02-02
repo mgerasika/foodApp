@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using FoodApp.Client;
+using FoodApp.Common.Model;
 using FoodApp.Controllers;
 
 namespace FoodApp.Common {

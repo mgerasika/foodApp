@@ -1,5 +1,6 @@
 using angularjs;
 using FoodApp.Common;
+using FoodApp.Common.Model;
 using SharpKit.JavaScript;
 
 namespace FoodApp.Client {

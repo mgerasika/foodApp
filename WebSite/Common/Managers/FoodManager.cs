@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using FoodApp.Client;
+using FoodApp.Common.Model;
 using FoodApp.Controllers;
 using GoogleAppsConsoleApplication;
 
@@ -113,6 +114,21 @@ namespace FoodApp.Common {
                     break;
                 }
             }
+            return res;
+        }
+
+        internal bool ChangePrice(ngUserModel user, int day, string foodId, decimal val)
+        {
+            bool res = true;
+            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
+            ExcelRow row = excelTable.GetRowByFoodId(foodId);
+            ExcelCell cell = row.EnsureCell(ColumnNames.Price);
+            decimal prevVal = cell.Value;
+            cell.Value = val;
+
+            //request update cell
+            res = false;
+
             return res;
         }
     }

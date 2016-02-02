@@ -13,7 +13,6 @@ namespace GoogleAppsConsoleApplication
 {
     public class ExcelParser
     {
-    
         private static readonly object _lockObj = new object();
         public static ExcelParser Inst = new ExcelParser();
         private OAuth2Parameters _parameters;

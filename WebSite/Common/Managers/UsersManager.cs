@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FoodApp.Common.Model;
 
 namespace FoodApp.Common {
     public class UsersManager : ManagerBase<ngUserModel> {

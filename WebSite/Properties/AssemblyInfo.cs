@@ -37,7 +37,8 @@ using SharpKit.JavaScript;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: JsMergedFile(Filename = WebApiResources._assemblyOutputPath, Sources = new[] {
-    angularjsResources.includeClientBeforeJs,
+    angularjsResources.includeBeforeResources,
+    CommonApiResources.includeClientJs,
     WebApiResources._assemblyClientPath,
-    angularjsResources.includeClientAfterJs
+    angularjsResources.includeAfterResources
 })]

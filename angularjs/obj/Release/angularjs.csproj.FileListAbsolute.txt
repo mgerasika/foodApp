@@ -1,7 +1,0 @@
-D:\Projects\FoodApp\trunk\angularjs\bin\angularjs.dll
-D:\Projects\FoodApp\trunk\angularjs\bin\angularjs.pdb
-D:\Projects\FoodApp\trunk\angularjs\bin\SharpKit.Html.dll
-D:\Projects\FoodApp\trunk\angularjs\bin\SharpKit.JavaScript.dll
-D:\Projects\FoodApp\trunk\angularjs\bin\SharpKit.jQuery.dll
-D:\Projects\FoodApp\trunk\angularjs\obj\Release\angularjs.dll
-D:\Projects\FoodApp\trunk\angularjs\obj\Release\angularjs.pdb

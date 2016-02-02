@@ -4,17 +4,20 @@ using System.Diagnostics;
 using System.Web;
 using FoodApp.Client;
 using FoodApp.Common;
+using FoodApp.Common.Model;
 using SharpKit.JavaScript;
 
 namespace FoodApp.Controllers {
     public class ApiUtils {
-        //public const string c_sExcelFileName = "mykhaylo_test";
-        public const string c_sExcelFileName = "Меню на тиждень";
+        //
+        
 
 #if DEBUG
         public const string REDIRECT_URL = "http://localhost:15845/";
+        public const string c_sExcelFileName = "mykhaylo_test";
 #else
         public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
+        public const string c_sExcelFileName = "Меню на тиждень";
 #endif
 
         public const string CLIENT_ID = "668583993597.apps.googleusercontent.com";
@@ -249,6 +252,8 @@ namespace FoodApp.Controllers {
                 str = str.Replace("грн.", "");
                 str = str.Replace("грн ", "");
                 str = str.Replace(",", ".");
+                str = str.Replace("-", ".");
+                str = str.Replace(" ", "");
 
                 res = Decimal.TryParse(str, out lPrice);
             }

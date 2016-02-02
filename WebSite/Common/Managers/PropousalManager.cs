@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FoodApp.Client;
+using FoodApp.Common.Model;
 using FoodApp.Controllers;
 using GoogleAppsConsoleApplication;
 

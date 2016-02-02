@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FoodApp.Client;
+using FoodApp.Common.Model;
 using FoodApp.Controllers;
 using GoogleAppsConsoleApplication;
 
@@ -35,16 +36,21 @@ namespace FoodApp.Common {
 
         public bool Buy(ngUserModel user, int day, string foodId, decimal val) {
 
+            bool res = true;
             ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
             ExcelRow row = excelTable.GetRowByFoodId(foodId);
             ExcelCell cell = row.EnsureCell(user.Column);
+            decimal prevVal = cell.Value;
             cell.Value = val;
 
             List<ngOrderEntry> oldOrders = GetOrders(user,day);
             List<ngOrderEntry> newOrders = ApiUtils.AddContainersToFood(user,day,oldOrders);
-            BatchCellUpdater.Update(user,day,newOrders);
+            if (!BatchCellUpdater.Update(user, day, newOrders)) {
+                cell.Value = prevVal;
+                res = false;
+            }
 
-            return true;
+            return res;
         }
 
         internal bool Delete(ngUserModel user, int day, string foodId) {
@@ -102,5 +108,7 @@ namespace FoodApp.Common {
             }
             return res;
         }
+
+        
     }
 }

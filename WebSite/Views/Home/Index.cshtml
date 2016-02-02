@@ -7,6 +7,7 @@
     Layout = "~/Views/Layout1.cshtml";
     string imgUrl = ApiUtils.GetUser().Picture;
     string googleName = ApiUtils.GetUser().GoogleName;
+    string name = ApiUtils.GetUser().Name;
     bool isAdmin = true;// ApiUtils.GetUser().IsAdmin;
 }
 
@@ -21,7 +22,14 @@
                 <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
                     <span class="glyphicon glyphicon-align-justify"></span>
                 </button>
-                <a class="navbar-brand logo" href="#">Гам-Гам</a>
+                <div style="">
+                    <a class="navbar-brand" style="color: white; font-size: 2.2em;" href="#">Гам-Гам</a><br/>
+                     @if (!string.IsNullOrEmpty(name))
+                    {
+                        <div style="color: white; white-space:  pre-line; word-wrap: break-word;">@name</div>
+                    }
+                </div>
+              
             </div>
             <div>
                 <nav class="collapse navbar-collapse" class="nav nav-tabs" role="tablist">
@@ -30,7 +38,7 @@
                     @if (!string.IsNullOrEmpty(imgUrl)) {
                         <div style="background-image: url('@imgUrl'); background-size: cover; float: left; height: 5em; width: 5em;"></div>
                     }
-                    <div class="navbar-header" style="float: left;display: none;">Привіт,@googleName</div>
+                    
 
                     <ul id="tab" class="nav navbar-nav navbar-right navstyle">
 

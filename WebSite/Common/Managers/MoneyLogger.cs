@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using FoodApp.Common.Model;
 
 namespace FoodApp.Common {
     public class MoneyLogger : ManagerBase<ngMoneyLoggerModel> {

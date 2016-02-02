@@ -5,6 +5,7 @@ using System.Net;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using FoodApp.Common;
+using FoodApp.Common.Model;
 using Google.GData.Client;
 using GoogleAppsConsoleApplication;
 
@@ -142,6 +143,11 @@ namespace FoodApp.Controllers {
         }
 
         public ActionResult Login() {
+            return View();
+        }
+
+        public ActionResult Admin()
+        {
             return View();
         }
 

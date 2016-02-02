@@ -1,5 +1,7 @@
 using angularjs;
 using FoodApp.Common;
+using FoodApp.Common.Model;
+using FoodApp.Common.Url;
 using FoodApp.Controllers.api;
 using SharpKit.Html;
 using SharpKit.jQuery;
@@ -37,7 +39,7 @@ namespace FoodApp.Client {
 
         private void requestRefreshPropousals(JsAction handler) {
             serviceHlp.inst.SendGet("json",
-                PropousalController.c_sGetPropousal + "/" + ngAppController.inst.ngUserId + "/",
+                PropousalUrl.c_sGetPropousal + "/" + ngAppController.inst.ngUserId + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
                     ngItems = o.As<JsArray<JsArray<ngHistoryEntry>>>();
                     _scope.apply();
@@ -70,7 +72,7 @@ namespace FoodApp.Client {
             JsArray<ngHistoryEntry> ngFoodRates = ngItems[dayOfWeek];
 
             serviceHlp.inst.SendPost("json",
-                PropousalController.c_sGetPropousal + "/" + ngAppController.inst.ngUserId + "/" + dayOfWeek + "/", JSON.stringify(ngFoodRates),
+                PropousalUrl.c_sGetPropousal + "/" + ngAppController.inst.ngUserId + "/" + dayOfWeek + "/", JSON.stringify(ngFoodRates),
                 delegate {
                     ngOrderController.inst.refreshOrders();
                     jsUtils.inst.hideLoading();

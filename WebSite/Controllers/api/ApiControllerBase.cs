@@ -2,6 +2,7 @@
 using System.Web.Http;
 using FoodApp.Client;
 using FoodApp.Common;
+using FoodApp.Common.Model;
 
 namespace FoodApp.Controllers.api
 {

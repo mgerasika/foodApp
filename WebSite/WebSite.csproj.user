@@ -3,6 +3,10 @@
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
     <NameOfLastUsedPublishProfile>Default Settings</NameOfLastUsedPublishProfile>
+    <WebStackScaffolding_LayoutPageFile>~/Views/Layout1.cshtml</WebStackScaffolding_LayoutPageFile>
+    <WebStackScaffolding_IsLayoutPageSelected>True</WebStackScaffolding_IsLayoutPageSelected>
+    <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
+    <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

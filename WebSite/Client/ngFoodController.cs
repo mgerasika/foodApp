@@ -1,5 +1,7 @@
 using angularjs;
 using FoodApp.Common;
+using FoodApp.Common.Model;
+using FoodApp.Common.Url;
 using FoodApp.Controllers;
 using FoodApp.Controllers.api;
 using SharpKit.Html;
@@ -35,7 +37,7 @@ namespace FoodApp.Client {
         public void buyClick(int day, string foodId, decimal value) {
             jsUtils.inst.showLoading();
             serviceHlp.inst.SendPost("json",
-                FoodsController.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + foodId + "/" +
+                FoodsUrl.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + foodId + "/" +
                 value + "/",
                 new JsObject(),
                 delegate {
@@ -97,7 +99,7 @@ namespace FoodApp.Client {
         }
 
         public void refreshFoods(JsAction complete) {
-            serviceHlp.inst.SendGet("json", FoodsController.c_sFoodsPrefix + "/",
+            serviceHlp.inst.SendGet("json", FoodsUrl.c_sFoodsPrefix + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
                     ngFoods = o.As<JsArray<JsArray<ngFoodItem>>>();
 
@@ -110,9 +112,7 @@ namespace FoodApp.Client {
                 }, onRequestFailed);
         }
 
-        public void change() {
-            refreshFoods(null);
-        }
+       
 
         internal ngFoodItem findFoodById(string id) {
             ngFoodItem res = null;
@@ -140,6 +140,17 @@ namespace FoodApp.Client {
                 res = order.Count;
             }
             return res;
+        }
+
+        public void changePrice(int day, ngFoodItem ngFoodItem) {
+            jsUtils.inst.showLoading();
+            serviceHlp.inst.SendPost("json",FoodsUrl.c_sChangePricePrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + ngFoodItem.FoodId + "/" +ngFoodItem.Price + "/",
+                new JsObject(),
+                delegate
+                {
+                    jsUtils.inst.hideLoading();
+                    refreshFoods( delegate() {});
+                }, onRequestFailed);
         }
     }
 }

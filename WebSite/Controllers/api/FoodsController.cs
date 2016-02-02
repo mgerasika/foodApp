@@ -2,13 +2,15 @@
 using System.Web.Http;
 using FoodApp.Client;
 using FoodApp.Common;
+using FoodApp.Common.api;
+using FoodApp.Common.Model;
+using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
-    public class FoodsController : ApiController {
-        public const string c_sFoodsPrefix = "api/foods";
-
+    public class FoodsController : ApiController, IFoodsController
+    {
         [HttpGet]
-        [Route(c_sFoodsPrefix + "/")]
+        [Route(FoodsUrl.c_sFoodsPrefix + "/")]
         public List<IList<ngFoodItem>> GetAllFoods() {
             List<IList<ngFoodItem>> allFoods = new List<IList<ngFoodItem>>();
             for (int i = 0; i < 5; ++i) {
@@ -20,17 +22,24 @@ namespace FoodApp.Controllers.api {
         }
 
         [HttpGet]
-        [Route(c_sFoodsPrefix + "/{userId}/{day}")]
+        [Route(FoodsUrl.c_sGetFoodsByDay)]
         public IList<ngFoodItem> GetFoodsByDay(string userId, int day) {
             List<ngFoodItem> items = FoodManager.Inst.GetFoods(day);
             return items;
         }
 
         [HttpPost]
-        [Route(c_sFoodsPrefix + "/{userId}/{day}/{foodId}/{val}/")]
+        [Route(FoodsUrl.c_sBuy)]
         public bool Buy(string userId, int day, string foodId, decimal val) {
             ngUserModel user = UsersManager.Inst.GetUserById(userId);
             return OrderManager.Inst.Buy(user, day, foodId, val);
+        }
+
+        [HttpPost]
+        [Route(FoodsUrl.c_sChangePrice)]
+        public bool ChangePrice(string userId, int day, string foodId, decimal val) {
+            ngUserModel user = UsersManager.Inst.GetUserById(userId);
+            return FoodManager.Inst.ChangePrice(user, day, foodId, val);
         }
     }
 }

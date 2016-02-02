@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using FoodApp.Client;
 using FoodApp.Common;
+using FoodApp.Common.Model;
 using Google.GData.Client;
 using Google.GData.Spreadsheets;
 using GoogleAppsConsoleApplication;
@@ -81,16 +82,19 @@ public class BatchCellUpdater {
         return res;
     }
 
-    public static void Update(ngUserModel user, int day, List<ngOrderEntry> orders) {
+    public static bool Update(ngUserModel user, int day, List<ngOrderEntry> orders) {
+        bool res = false;
         ExcelParser.Inst.RefreshAccessToken();
 
        
-        Dictionary<ngUserModel,List<ngOrderEntry>>  res = new Dictionary<ngUserModel, List<ngOrderEntry>>();
-        res.Add(user,orders);
-        Update(day,res);
+        Dictionary<ngUserModel,List<ngOrderEntry>>  items = new Dictionary<ngUserModel, List<ngOrderEntry>>();
+        items.Add(user,orders);
+        res = Update(day,items);
+        return res;
     }
 
-    public static void Update(int day, Dictionary<ngUserModel, List<ngOrderEntry>> orders) {
+    public static bool Update(int day, Dictionary<ngUserModel, List<ngOrderEntry>> orders) {
+        bool res = false;
         ExcelParser.Inst.RefreshAccessToken();
 
         ExcelTable table = ExcelParser.Inst.Doc.GetExcelTable(day);
@@ -103,6 +107,7 @@ public class BatchCellUpdater {
                 newCells.Add(cell);
             }
         }
-        RequestUpdateCells(newCells);
+        res = RequestUpdateCells(newCells);
+        return res;
     }
 }

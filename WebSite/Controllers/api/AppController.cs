@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Http;
 using FoodApp.Client;
 using FoodApp.Common;
+using FoodApp.Common.Model;
 using GoogleAppsConsoleApplication;
 
 namespace FoodApp.Controllers.api

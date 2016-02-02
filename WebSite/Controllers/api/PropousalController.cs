@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using FoodApp.Common;
+using FoodApp.Common.Model;
+using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
     public class PropousalController : ApiController {
-        public const string c_sGetPropousal = "api/propousal";
-
         [HttpGet]
-        [Route(c_sGetPropousal + "/{userId}/{dayOfWeek}/")]
+        [Route(PropousalUrl.c_sGetPropousalByDay)]
         public IList<ngHistoryEntry> GetPropousalByDay(string userId, int dayOfWeek) {
             ngUserModel user = UsersManager.Inst.GetUserById(userId);
             List<ngHistoryEntry> res = PropousalManager.Inst.MakePropousal(user, dayOfWeek);
@@ -15,7 +15,7 @@ namespace FoodApp.Controllers.api {
         }
 
         [HttpGet]
-        [Route(c_sGetPropousal + "/{userId}/")]
+        [Route(PropousalUrl.c_sGetPropousals)]
         public List<List<ngHistoryEntry>> GetPropousals(string userId) {
             List<List<ngHistoryEntry>> res = new List<List<ngHistoryEntry>>();
             for (int i = 0; i < 5; i++) {
@@ -28,7 +28,7 @@ namespace FoodApp.Controllers.api {
         }
 
         [HttpPost]
-        [Route(c_sGetPropousal + "/{userId}/{dayOfWeek}/")]
+        [Route(PropousalUrl.c_sBuy)]
         public bool Buy(string userId, int dayOfWeek, List<ngHistoryEntry> entry) {
             foreach (ngHistoryEntry obj in entry) {
                 ngUserModel user = UsersManager.Inst.GetUserById(userId);
