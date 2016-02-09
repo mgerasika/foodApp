@@ -4,10 +4,12 @@ using System.IO;
 using System.Net;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using FoodApp.Client;
 using FoodApp.Common;
+using FoodApp.Common.Managers;
 using FoodApp.Common.Model;
+using FoodApp.Common.Parser;
 using Google.GData.Client;
-using GoogleAppsConsoleApplication;
 
 namespace FoodApp.Controllers {
     public class HomeController : Controller {
@@ -84,6 +86,17 @@ namespace FoodApp.Controllers {
         }
          */
 
+            [Route("trace")]
+        public ViewResult Trace() {
+            return View();
+        }
+        [Route("error")]
+        public ViewResult Error()
+        {
+            return View();
+        }
+
+
         public ActionResult Index() {
             if (Request.QueryString["code"] != null && null == ApiUtils.GetUser()) {
                 OAuth2Parameters lParams = CreateParameters();
@@ -135,10 +148,11 @@ namespace FoodApp.Controllers {
             if (null == ApiUtils.GetUser()) {
                 return RedirectToAction("Login");
             }
-            ExcelParser.Inst.Init();
+            ExcelManager.Inst.Init();
             UserSettingsManager.Inst.Init();
-            
+            UsersManager.Inst.InitColumns();
 
+            ApiTraceManager.Inst.LogTrace("User on index page ");
             return View();
         }
 

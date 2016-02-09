@@ -4,7 +4,7 @@ using System.Timers;
 using FoodApp.Client;
 using FoodApp.Common.Model;
 
-namespace FoodApp.Common {
+namespace FoodApp.Common.Managers {
     public class BackupHistoryManager {
         public static BackupHistoryManager Inst = new BackupHistoryManager();
         private readonly Timer _timer = new Timer();

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FoodApp.Common {
+﻿namespace FoodApp.Common.Managers {
     public class EFoodCategories {
         public const string Salat = "Салати";
         public const string First = "Перші страви";

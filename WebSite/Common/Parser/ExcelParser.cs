@@ -1,20 +1,15 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-using System.Text.RegularExpressions;
-using FoodApp.Common;
-using FoodApp.Controllers;
+using FoodApp.Client;
+using FoodApp.Common.Managers;
 using Google.GData.Client;
 using Google.GData.Spreadsheets;
-using SharpKit.JavaScript;
 
-namespace GoogleAppsConsoleApplication
-{
+namespace FoodApp.Common.Parser {
     public class ExcelParser
     {
         private static readonly object _lockObj = new object();
-        public static ExcelParser Inst = new ExcelParser();
         private OAuth2Parameters _parameters;
         private SpreadsheetsService _SpreadsheetsService = null;
 
@@ -60,15 +55,21 @@ namespace GoogleAppsConsoleApplication
             }*/
 
 
-        public void RefreshAccessToken() {
+        public void RefreshAccessToken()
+        {
             OAuthUtil.RefreshAccessToken(_parameters);
         }
 
-        public string Init() {
+        public string Init()
+        {
             StringBuilder sb = new StringBuilder();
 
-            lock (_lockObj) {
-                if (null == Inst.SpreadsheetsService) {
+            lock (_lockObj)
+            {
+                if (null == SpreadsheetsService)
+                {
+
+                    ApiTraceManager.Inst.LogTrace("Init excel parser");
                     _parameters = new OAuth2Parameters();
                     _parameters.ClientId = ApiUtils.CLIENT_ID;
                     _parameters.ClientSecret = ApiUtils.CLIENT_SECRET;
@@ -82,13 +83,13 @@ namespace GoogleAppsConsoleApplication
 
                     GOAuth2RequestFactory requestFactory = new GOAuth2RequestFactory(null, "MySpreadsheetIntegration-v1",
                         _parameters);
-                    Inst.SpreadsheetsService = new SpreadsheetsService("MySpreadsheetIntegration-v1");
-                    Inst.SpreadsheetsService.RequestFactory = requestFactory;
+                    SpreadsheetsService = new SpreadsheetsService("MySpreadsheetIntegration-v1");
+                    SpreadsheetsService.RequestFactory = requestFactory;
                     sb.AppendFormat("<div>access code={0}</div>", _parameters.AccessCode);
                     sb.AppendFormat("<div>access token={0}</div>", _parameters.AccessToken);
                     sb.AppendFormat("<div>refresh token={0}</div>", _parameters.RefreshToken);
 
-                    SpreadsheetsService service = Inst.SpreadsheetsService;
+                    SpreadsheetsService service = SpreadsheetsService;
                     SpreadsheetQuery query = new SpreadsheetQuery();
                     SpreadsheetFeed feed = service.Query(query);
 
@@ -106,9 +107,11 @@ namespace GoogleAppsConsoleApplication
         }
 
 
-        private SpreadsheetEntry GetSpreadsheetEntry(SpreadsheetFeed feed) {
+        private SpreadsheetEntry GetSpreadsheetEntry(SpreadsheetFeed feed)
+        {
             SpreadsheetEntry res = new SpreadsheetEntry();
-            foreach (SpreadsheetEntry entry in feed.Entries) {
+            foreach (SpreadsheetEntry entry in feed.Entries)
+            {
                 if (entry.Title.Text.Equals(ApiUtils.c_sExcelFileName))
                 {
                     res = entry;
@@ -118,9 +121,10 @@ namespace GoogleAppsConsoleApplication
             return res;
         }
 
-       
 
-        private void RenderWeek(SpreadsheetEntry entry) {
+
+        private void RenderWeek(SpreadsheetEntry entry)
+        {
             Doc = new ExcelDoc(entry);
 
             Doc.Parse();

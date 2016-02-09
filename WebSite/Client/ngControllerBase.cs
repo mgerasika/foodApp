@@ -1,5 +1,6 @@
 using angularjs;
 using FoodApp.Common;
+using FoodApp.Properties;
 using SharpKit.jQuery;
 using SharpKit.JavaScript;
 

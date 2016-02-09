@@ -4,8 +4,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using FoodApp.Common.Model;
+using FoodApp.Model;
 
-namespace FoodApp.Common {
+namespace FoodApp.Common.Managers {
     public class MoneyLogger : ManagerBase<ngMoneyLoggerModel> {
         public static MoneyLogger Inst = new MoneyLogger();
 

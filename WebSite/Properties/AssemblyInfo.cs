@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using angularjs.Properties;
 using FoodApp.Common;
+using FoodApp.Properties;
 using SharpKit.JavaScript;
 
 // General Information about an assembly is controlled through the following 

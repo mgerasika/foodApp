@@ -1,0 +1,68 @@
+﻿@using angularjs
+@using FoodApp.Client
+@inherits System.Web.Mvc.WebViewPage
+@{
+    Layout = "~/Views/Layout1.cshtml";
+    string items = ajs.field((ngErrorController o) => o.ngErrorModel);
+    string item = "item";
+}
+
+    <style type="text/css">
+        .errorClass1 {
+
+        }
+        .errorClass2 {
+            background-color: #efefef;
+        }
+    </style>
+
+    
+    <h3 style="margin-left: 1em;">Errors</h3>
+
+    <div ng-controller="@ajs.getClass((ngErrorController o) => o)">
+
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <div style="float: right; margin-right: 20px;"><a ng-hide="@items. length == 0" ng-click="@ajs.method((ngErrorController o) => o.onDeleteAllClick()) ()">remove All</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="padding: 1em; margin: 0.5em;" ng-repeat="@item in @items" ng-cloak ng-class="{errorClass1:$even,errorClass2:$odd}">
+            <div style="float: right;"><a ng-click="@ajs.method((ngErrorController o) => o.onDeleteClick("")) (@item.@ajs.field((ngErrorModel o) => o.ID))">remove</a>
+            </div>
+                        <p>{{@item.@ajs.field((ngErrorModel o) => o.Error)}}</p>
+                        <p><a href="{{@item.@ajs.field((ngErrorModel o) => o.Url)}}">{{@item.@ajs.field((ngErrorModel o) => o.Url)}}</a></p>
+                        <p>{{@item.@ajs.field((ngErrorModel o) => o.Date)| date:'MM/dd/yyyy HH:mm:ss'}}</p>
+                        <p>{{@item.@ajs.field((ngErrorModel o) => o.UserName)}}</p>
+
+            <a style="cursor: pointer;" data-toggle="collapse"
+               data-target="#{{@item.@ajs.field((ngErrorModel o) => o.ID)}}_settingsCnt" aria-expanded="false">
+                stack trace
+            </a>
+
+            <div class="collapse" id="{{@item.@ajs.field((ngErrorModel o) => o.ID)}}_settingsCnt">
+                <div class="well">
+                    <p>{{@item.@ajs.field((ngErrorModel o) => o.StackTrace)}}</p>
+                </div>
+            </div>
+
+
+
+        </div>
+                </td>
+            </tr>
+        </table>
+
+        
+
+
+        
+
+
+        <p ng-show="@items. length == 0">
+            (no errors)
+        </p>
+    </div>

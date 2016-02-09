@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using FoodApp.Client;
 using FoodApp.Common.Model;
-using FoodApp.Controllers;
 
-namespace FoodApp.Common {
+namespace FoodApp.Common.Managers {
     public class HistoryManager : ManagerBase<ngHistoryModel> {
         public static HistoryManager Inst = new HistoryManager();
 

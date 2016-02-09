@@ -1,7 +1,9 @@
 using System;
+using FoodApp.Common.Model;
+using FoodApp.Properties;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Common.Model {
+namespace FoodApp.Model {
     [JsType(JsMode.Json, Filename = WebApiResources._fileClientJs, Export = true)]
     public class ngMoneyOrderModel : ngModelBase {
         public EMoneyOperation Operation { get; set; }

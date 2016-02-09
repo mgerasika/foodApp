@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using FoodApp.Client;
 using FoodApp.Common.Model;
-using FoodApp.Controllers;
-using GoogleAppsConsoleApplication;
 
-namespace FoodApp.Common {
+namespace FoodApp.Common.Managers {
     public class PropousalManager
     {
         public static PropousalManager Inst = new PropousalManager();

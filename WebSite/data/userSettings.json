@@ -62,6 +62,14 @@
         "Rate": 0.052631578947368418
       },
       {
+        "FoodId": "_SalatyOseledec\"pidshuboyu",
+        "Rate": 0.052631578947368418
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
+        "Rate": 0.052631578947368418
+      },
+      {
         "FoodId": "_PershistravyKapusnyak",
         "Rate": 0.15789473684210525
       },
@@ -71,14 +79,6 @@
       },
       {
         "FoodId": "_SalatyZamors\"kyj",
-        "Rate": 0.052631578947368418
-      },
-      {
-        "FoodId": "_SalatyOseledec\"pidshuboyu",
-        "Rate": 0.052631578947368418
-      },
-      {
-        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
         "Rate": 0.052631578947368418
       }
     ],
@@ -266,15 +266,15 @@
         "Rate": 0.125
       },
       {
-        "FoodId": "_SalatyZamors\"kyj",
-        "Rate": 0.125
-      },
-      {
         "FoodId": "_PershistravySupkremizpecheryc\"250h",
         "Rate": 0.125
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
+        "Rate": 0.125
+      },
+      {
+        "FoodId": "_SalatyZamors\"kyj",
         "Rate": 0.125
       }
     ],

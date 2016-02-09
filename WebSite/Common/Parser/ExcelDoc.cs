@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Google.GData.Spreadsheets;
 
-namespace GoogleAppsConsoleApplication
+namespace FoodApp.Common.Parser
 {
     public class ExcelDoc
     {
@@ -37,7 +37,7 @@ namespace GoogleAppsConsoleApplication
 
                 ExcelTable table = new ExcelTable(i,this, worksheetEntry);
                 table.Title = worksheetEntry.Title.Text;
-                ExcelParser.Inst.Doc.Tables.Add(table);
+                ExcelManager.Inst.Doc.Tables.Add(table);
                 table.Parse();
             }
         }

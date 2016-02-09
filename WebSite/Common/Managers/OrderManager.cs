@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using FoodApp.Client;
 using FoodApp.Common.Model;
-using FoodApp.Controllers;
-using GoogleAppsConsoleApplication;
+using FoodApp.Common.Parser;
 
-namespace FoodApp.Common {
+namespace FoodApp.Common.Managers {
     public class OrderManager {
         public static OrderManager Inst = new OrderManager();
 
@@ -16,7 +14,7 @@ namespace FoodApp.Common {
 
         public List<ngOrderEntry> GetOrders(ngUserModel user, int day) {
             List<ngOrderEntry> res = new List<ngOrderEntry>();
-            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
+            ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
             if (null != excelTable) {
                 List<ExcelRow> rows = excelTable.Rows;
                 foreach (ExcelRow row in rows) {
@@ -37,7 +35,7 @@ namespace FoodApp.Common {
         public bool Buy(ngUserModel user, int day, string foodId, decimal val) {
 
             bool res = true;
-            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
+            ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
             ExcelRow row = excelTable.GetRowByFoodId(foodId);
             ExcelCell cell = row.EnsureCell(user.Column);
             decimal prevVal = cell.Value;
@@ -54,7 +52,7 @@ namespace FoodApp.Common {
         }
 
         internal bool Delete(ngUserModel user, int day, string foodId) {
-            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
+            ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
             ExcelRow row = excelTable.GetRowByFoodId(foodId);
             ExcelCell cell = row.GetCell(user.Column);
             cell.Value = 0;

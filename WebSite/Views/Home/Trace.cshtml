@@ -1,0 +1,52 @@
+﻿@using angularjs
+@using FoodApp.Client
+@inherits System.Web.Mvc.WebViewPage
+@{
+    Layout = "~/Views/Layout1.cshtml";
+    string items = ajs.field((ngTraceController o) => o.ngTraceModel);
+    string item = "item";
+}
+
+
+    
+<style type="text/css">
+        .errorClass1 {
+
+        }
+        .errorClass2 {
+            background-color: #efefef;
+        }
+    </style>
+
+    
+    <h3 style="margin-left: 1em;">Traces (DB Version {{@ApiTraceManager.Inst.DbVersion}})</h3>
+
+    <div ng-controller="@ajs.getClass((ngTraceController o) => o)">
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <div style="float: right; margin-right: 20px;"><a ng-hide="@items. length == 0" ng-click="@ajs.method((ngTraceController o) => o.onDeleteAllClick()) ()">remove All</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="padding: 1em; margin: 0.5em;" ng-repeat="@item in @items" ng-cloak ng-class="{errorClass1:$even,errorClass2:$odd}">
+            <div style="float: right;"><a ng-click="@ajs.method((ngTraceController o) => o.onDeleteClick("")) (@item.@ajs.field((ngTraceModel o) => o.ID))">remove</a>
+            </div>
+                        <p>{{@item.@ajs.field((ngTraceModel o) => o.Message)}}</p>
+                        <p>{{@item.@ajs.field((ngTraceModel o) => o.Date)| date:'MM/dd/yyyy HH:mm:ss'}}</p>
+                        <p>{{@item.@ajs.field((ngTraceModel o) => o.UserName)}}</p>
+       
+
+        </div>
+                </td>
+            </tr>
+        </table>
+
+
+        <p ng-show="@items. length == 0">
+            (no traces)
+        </p>
+    </div>
+

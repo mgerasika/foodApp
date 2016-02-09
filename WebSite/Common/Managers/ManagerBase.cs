@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Web.Hosting;
-using System.Web.Script.Serialization;
-using FoodApp.Client;
 using FoodApp.Common.Model;
 using Newtonsoft.Json;
 
-namespace FoodApp.Common
+namespace FoodApp.Common.Managers
 {
     public abstract class ManagerBase<T> where T : ngModelBase
     {

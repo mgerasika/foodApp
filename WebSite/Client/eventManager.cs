@@ -1,4 +1,5 @@
 using FoodApp.Common;
+using FoodApp.Properties;
 using SharpKit.JavaScript;
 
 namespace FoodApp.Client

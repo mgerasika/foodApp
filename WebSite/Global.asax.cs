@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FoodApp.Client;
 using FoodApp.Common;
+using FoodApp.Common.Managers;
 
 namespace FoodApp {
     public class WebApiApplication : HttpApplication {
@@ -20,6 +22,7 @@ namespace FoodApp {
             ClearOrdersManager clearOrdersManage = ClearOrdersManager.Inst;
 
             HistoryManager.Inst.Fix();
+            ApiTraceManager.Inst.LogTrace("Application start");
 
             /*
             ngUserModel user = UsersManager.Inst.GetUserByEmail("mgerasika@gmail.com");

@@ -199,6 +199,8 @@
     <Content Include="css\font-awesome.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="gen\client.tmp.js" />
+    <Content Include="gen\output.js" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -256,7 +258,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Client\ApiErrorManager.cs" />
+    <Compile Include="Client\ApiResponse.cs" />
+    <Compile Include="Client\ApiTraceManager.cs" />
+    <Compile Include="Client\ErrorApiController.cs" />
     <Compile Include="Client\jsUtils.cs" />
+    <Compile Include="Client\ngErrorController.cs" />
+    <Compile Include="Client\ngErrorModel.cs" />
     <Compile Include="Client\ngFoodFilter.cs" />
     <Compile Include="Client\ngHistoryModel.cs" />
     <Compile Include="Client\ngPropousalContoller.cs" />
@@ -266,8 +274,11 @@
     <Compile Include="Client\ngAppController.cs" />
     <Compile Include="Client\ngControllerBase.cs" />
     <Compile Include="Client\ngOrderFilter.cs" />
+    <Compile Include="Client\ngTraceController.cs" />
+    <Compile Include="Client\ngTraceModel.cs" />
     <Compile Include="Client\ngUsersSettingsModel.cs" />
     <Compile Include="Client\serviceHlp.cs" />
+    <Compile Include="Client\TraceApiController.cs" />
     <Compile Include="Common\Managers\BackupHistoryManager.cs" />
     <Compile Include="Common\Managers\ClearOrdersManager.cs" />
     <Compile Include="Common\Managers\PropousalManager.cs" />
@@ -281,16 +292,17 @@
     <Compile Include="Common\Parser\BatchCellUpdater.cs" />
     <Compile Include="Common\Parser\ColumnNames.cs" />
     <Compile Include="Common\Parser\ExcelCell.cs" />
+    <Compile Include="Common\Parser\ExcelParser.cs" />
     <Compile Include="Common\Parser\ExcelRow.cs" />
     <Compile Include="Common\Parser\ExcelTable.cs" />
     <Compile Include="Common\Parser\ExcelDoc.cs" />
-    <Compile Include="Common\Parser\ExcelParser.cs" />
+    <Compile Include="Common\Parser\ExcelManager.cs" />
     <Compile Include="Common\Managers\FoodManager.cs" />
     <Compile Include="Common\Managers\ManagerBase.cs" />
     <Compile Include="Client\ngFoodController.cs" />
     <Compile Include="Client\ngOrderController.cs" />
     <Compile Include="Common\Parser\LoginTool.cs" />
-    <Compile Include="Common\WebApiResources.cs" />
+    <Compile Include="Properties\WebApiResources.cs" />
     <Compile Include="Common\ApiUtils.cs" />
     <Compile Include="Controllers\api\ApiControllerBase.cs" />
     <Compile Include="Controllers\api\PropousalController.cs" />
@@ -321,6 +333,8 @@
     <Content Include="Views\Home\Propousal.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Home\AdminFoods.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\Trace.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -330,6 +344,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="logs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\angularjs\angularjs.csproj">

@@ -3,7 +3,7 @@ using System.Web;
 using Google.GData.Client;
 using Google.GData.Spreadsheets;
 
-namespace GoogleAppsConsoleApplication
+namespace FoodApp.Common.Parser
 {
     public class LoginTool
     {

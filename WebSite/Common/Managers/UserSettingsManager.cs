@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using FoodApp.Client;
 using FoodApp.Common.Model;
 
-namespace FoodApp.Common {
+namespace FoodApp.Common.Managers {
     public class UserSettingsManager : ManagerBase<ngUsersSettingsModel> {
         public static UserSettingsManager Inst = new UserSettingsManager();
 

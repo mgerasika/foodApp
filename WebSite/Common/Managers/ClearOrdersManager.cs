@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Timers;
 using FoodApp.Client;
 using FoodApp.Common.Model;
+using FoodApp.Common.Parser;
 
-namespace FoodApp.Common {
+namespace FoodApp.Common.Managers {
     public class ClearOrdersManager {
         public static ClearOrdersManager Inst = new ClearOrdersManager();
         private readonly Timer _timer = new Timer();

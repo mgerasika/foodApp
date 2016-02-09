@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web;
-using FoodApp.Client;
-using FoodApp.Common;
+using FoodApp.Common.Managers;
 using FoodApp.Common.Model;
-using SharpKit.JavaScript;
 
-namespace FoodApp.Controllers {
+namespace FoodApp.Common {
     public class ApiUtils {
         //
         

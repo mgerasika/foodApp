@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web.Http;
+using FoodApp.Client;
 using FoodApp.Common;
+using FoodApp.Common.Managers;
 using FoodApp.Common.Model;
 using FoodApp.Common.Url;
 

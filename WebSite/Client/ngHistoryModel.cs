@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
+using FoodApp.Common;
+using FoodApp.Common.Managers;
+using FoodApp.Common.Model;
 using FoodApp.Controllers;
+using FoodApp.Properties;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Common.Model {
+namespace FoodApp.Client {
     [JsType(JsMode.Json, Filename = WebApiResources._fileClientJs, Export = true)]
     public class ngHistoryModel : ngModelBase {
         public ngHistoryModel() {

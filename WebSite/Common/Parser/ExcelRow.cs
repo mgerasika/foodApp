@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using FoodApp.Common;
-using FoodApp.Controllers;
+using FoodApp.Common.Managers;
 using Google.GData.Spreadsheets;
 
-namespace GoogleAppsConsoleApplication {
+namespace FoodApp.Common.Parser {
     public class ExcelRow {
         private readonly List<CellEntry> _entry;
         private readonly ExcelTable _table;

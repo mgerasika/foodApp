@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Google.GData.Spreadsheets;
 
-namespace GoogleAppsConsoleApplication
+namespace FoodApp.Common.Parser
 {
     public class ExcelTable
     {
@@ -48,7 +48,7 @@ namespace GoogleAppsConsoleApplication
             Title = _entry.Title.Text;
 
             CellQuery cellQuery = new CellQuery(_entry.CellFeedLink);
-            CellFeed cellFeed = ExcelParser.Inst.SpreadsheetsService.Query(cellQuery);
+            CellFeed cellFeed = ExcelManager.Inst.SpreadsheetsService.Query(cellQuery);
             _cellFeed = cellFeed;
 
             Dictionary<uint, List<CellEntry>> groupRows = new Dictionary<uint, List<CellEntry>>();

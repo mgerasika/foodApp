@@ -4,6 +4,7 @@ using FoodApp.Common.Model;
 using FoodApp.Common.Url;
 using FoodApp.Controllers;
 using FoodApp.Controllers.api;
+using FoodApp.Properties;
 using SharpKit.jQuery;
 using SharpKit.JavaScript;
 

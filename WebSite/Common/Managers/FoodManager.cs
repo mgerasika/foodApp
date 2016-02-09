@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using FoodApp.Client;
 using FoodApp.Common.Model;
-using FoodApp.Controllers;
-using GoogleAppsConsoleApplication;
+using FoodApp.Common.Parser;
 
-namespace FoodApp.Common {
+namespace FoodApp.Common.Managers {
     public class FoodManager {
         public static FoodManager Inst = new FoodManager();
 
         public List<ngFoodItem> GetFoods(int day) {
             List<ngFoodItem> res = new List<ngFoodItem>();
-            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
+            ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
             List<ExcelRow> rows = excelTable.Rows;
             foreach (ExcelRow row in rows) {
                 if (row.HasPrice && !string.IsNullOrEmpty(row.Name)) {
@@ -120,7 +118,7 @@ namespace FoodApp.Common {
         internal bool ChangePrice(ngUserModel user, int day, string foodId, decimal val)
         {
             bool res = true;
-            ExcelTable excelTable = ExcelParser.Inst.Doc.GetExcelTable(day);
+            ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
             ExcelRow row = excelTable.GetRowByFoodId(foodId);
             ExcelCell cell = row.EnsureCell(ColumnNames.Price);
             decimal prevVal = cell.Value;

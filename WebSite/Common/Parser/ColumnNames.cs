@@ -1,4 +1,4 @@
-namespace GoogleAppsConsoleApplication
+namespace FoodApp.Common.Parser
 {
     public static class ColumnNames
     {

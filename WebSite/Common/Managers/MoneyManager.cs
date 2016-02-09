@@ -1,8 +1,9 @@
 using System;
 using System.Diagnostics;
 using FoodApp.Common.Model;
+using FoodApp.Model;
 
-namespace FoodApp.Common {
+namespace FoodApp.Common.Managers {
     public class MoneyManager : ManagerBase<ngMoneyModel> {
         public static MoneyManager Inst = new MoneyManager();
         private static readonly object _lockObject = new object();
