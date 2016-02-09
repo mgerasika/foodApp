@@ -8,6 +8,8 @@ namespace FoodApp.Common.Managers {
     public class UsersManager : ManagerBase<ngUserModel> {
         public static UsersManager Inst = new UsersManager();
 
+        private bool isInit;
+
         protected override string FileName {
             get { return "users.json"; }
         }
@@ -68,26 +70,34 @@ namespace FoodApp.Common.Managers {
             return res;
         }
 
-        public void InitColumns() {
-            ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(0);
-            ExcelRow usersRow = null;
-            foreach (ExcelRow row in excelTable.Rows) {
-                if (row.Name != null && row.Name.ToLower().Contains("страви")) {
-                    usersRow = row;
-                    break;
+        public void Init() {
+            if (!isInit) {
+                lock (_lockObj) {
+                    if (!isInit) {
+                        ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(0);
+                        ExcelRow usersRow = null;
+                        foreach (ExcelRow row in excelTable.Rows) {
+                            if (row.Name != null && row.Name.ToLower().Contains("страви")) {
+                                usersRow = row;
+                                break;
+                            }
+                        }
+
+                        foreach (ExcelCell cell in usersRow.Cells) {
+                            uint column = cell.Column;
+                            string text = cell.GetEntry().Value;
+
+                            ngUserModel user = GetUserBySpreadSheetName(text);
+                            if (null != user) {
+                                user.Column = column;
+                            }
+                        }
+                        Save();
+
+                        isInit = true;
+                    }
                 }
             }
-
-            foreach (ExcelCell cell in usersRow.Cells) {
-                uint column = cell.Column;
-                string text = cell.GetEntry().Value;
-
-                ngUserModel user = GetUserBySpreadSheetName(text);
-                if (null != user) {
-                    user.Column = column;
-                }
-            }
-            Save();
         }
 
         private ngUserModel GetUserBySpreadSheetName(string spreadSheetVal) {

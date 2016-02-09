@@ -150,7 +150,7 @@ namespace FoodApp.Controllers {
             }
             ExcelManager.Inst.Init();
             UserSettingsManager.Inst.Init();
-            UsersManager.Inst.InitColumns();
+            UsersManager.Inst.Init();
 
             ApiTraceManager.Inst.LogTrace("User on index page ");
             return View();
