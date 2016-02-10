@@ -69,6 +69,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Url\FoodsUrl.cs" />
     <Compile Include="Url\HistoryUrl.cs" />
+    <Compile Include="Url\JsApiBase.cs" />
+    <Compile Include="Url\jsCommonUtils.cs" />
+    <Compile Include="Url\JsFoodApi.cs" />
+    <Compile Include="Url\JsHandler.cs" />
     <Compile Include="Url\OrderUrl.cs" />
     <Compile Include="Url\PropousalUrl.cs" />
   </ItemGroup>

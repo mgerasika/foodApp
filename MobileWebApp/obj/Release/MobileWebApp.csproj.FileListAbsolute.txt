@@ -42,3 +42,10 @@ D:\Projects\git\gam-gam\MobileWebApp\bin\System.Web.WebPages.Razor.xml
 D:\Projects\git\gam-gam\MobileWebApp\obj\Release\MobileWebApp.csprojResolveAssemblyReference.cache
 D:\Projects\git\gam-gam\MobileWebApp\obj\Release\MobileWebApp.dll
 D:\Projects\git\gam-gam\MobileWebApp\obj\Release\MobileWebApp.pdb
+D:\Projects\git\gam-gam\MobileWebApp\bin\SharpKit.Html.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\SharpKit.JavaScript.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\SharpKit.jQuery.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\angularjs.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\FoodApp.Common.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\angularjs.pdb
+D:\Projects\git\gam-gam\MobileWebApp\bin\FoodApp.Common.pdb

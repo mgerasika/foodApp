@@ -14,6 +14,8 @@ D:\Projects\git\gam-gam\MobileWebApp\bin\roslyn\VBCSCompiler.exe.config
 D:\Projects\git\gam-gam\MobileWebApp\bin\MobileWebApp.dll.config
 D:\Projects\git\gam-gam\MobileWebApp\bin\MobileWebApp.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\MobileWebApp.pdb
+D:\Projects\git\gam-gam\MobileWebApp\bin\angularjs.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\FoodApp.Common.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.AI.Agent.Intercept.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.AI.DependencyCollector.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -23,11 +25,16 @@ D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.AI.WindowsServer.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.ApplicationInsights.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\SharpKit.Html.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\SharpKit.JavaScript.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\SharpKit.jQuery.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\System.Web.Helpers.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\System.Web.Razor.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\System.Web.WebPages.Deployment.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\System.Web.WebPages.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\System.Web.WebPages.Razor.dll
+D:\Projects\git\gam-gam\MobileWebApp\bin\angularjs.pdb
+D:\Projects\git\gam-gam\MobileWebApp\bin\FoodApp.Common.pdb
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.AI.DependencyCollector.xml
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.AI.Web.xml

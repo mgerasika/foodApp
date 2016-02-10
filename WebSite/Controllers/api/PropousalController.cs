@@ -6,7 +6,8 @@ using FoodApp.Common.Model;
 using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
-    public class PropousalController : ApiController {
+    public class PropousalController : ApiControllerBase
+    {
         [HttpGet]
         [Route(PropousalUrl.c_sGetPropousalByDay)]
         public IList<ngHistoryEntry> GetPropousalByDay(string userId, int dayOfWeek) {

@@ -5,7 +5,7 @@
     <ManifestFile Filename="CommonUtils.cs" Modified="-8587471971659596478" />
     <ManifestFile Filename="api\IFoodsController.cs" Modified="-8587471980769577497" />
     <ManifestFile Filename="api\IOrderController.cs" Modified="-8587471983432127412" />
-    <ManifestFile Filename="Common\CommonApiResources.cs" Modified="-8587471971296698199" />
+    <ManifestFile Filename="Common\CommonApiResources.cs" Modified="-8587465875526813291" />
     <ManifestFile Filename="Model\ngFoodItem.cs" Modified="-8587471981100797542" />
     <ManifestFile Filename="Model\ngFoodRate.cs" Modified="-8587471981100953513" />
     <ManifestFile Filename="Model\ngHistoryEntry.cs" Modified="-8587471981100953513" />
@@ -14,10 +14,14 @@
     <ManifestFile Filename="Model\ngOrderEntry.cs" Modified="-8587471980847706725" />
     <ManifestFile Filename="Model\ngUserModel.cs" Modified="-8587471980847706725" />
     <ManifestFile Filename="Properties\AssemblyInfo.cs" Modified="-8587471984789454692" />
-    <ManifestFile Filename="Url\FoodsUrl.cs" Modified="-8587471984453786699" />
-    <ManifestFile Filename="Url\HistoryUrl.cs" Modified="-8587471984453766856" />
-    <ManifestFile Filename="Url\OrderUrl.cs" Modified="-8587471984453745135" />
-    <ManifestFile Filename="Url\PropousalUrl.cs" Modified="-8587471984453724793" />
+    <ManifestFile Filename="Url\FoodsUrl.cs" Modified="-8587465869098858832" />
+    <ManifestFile Filename="Url\HistoryUrl.cs" Modified="-8587465892468232374" />
+    <ManifestFile Filename="Url\JsApiBase.cs" Modified="-8587465858592913377" />
+    <ManifestFile Filename="Url\jsCommonUtils.cs" Modified="-8587465893799380344" />
+    <ManifestFile Filename="Url\JsFoodApi.cs" Modified="-8587465164967195641" />
+    <ManifestFile Filename="Url\JsHandler.cs" Modified="-8587465892954278267" />
+    <ManifestFile Filename="Url\OrderUrl.cs" Modified="-8587465892468432424" />
+    <ManifestFile Filename="Url\PropousalUrl.cs" Modified="-8587465892468602213" />
     <ManifestFile Filename="C:\Users\Mykhaylo Herasika\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cs" Modified="-8587501639310904083" />
     <ManifestFile Filename="obj\Debug\\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" Modified="-8587471984789003639" />
     <ManifestFile Filename="obj\Debug\\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" Modified="-8587471984789003639" />

@@ -1,25 +1,22 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="StudyLogApiApp">
 <head>
-    <meta charset="utf-8" />
-
-    <!--
-        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
-        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
-    -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-    <title>BlankCordovaApp</title>
-
-    <!-- BlankCordovaApp references -->
-    <link href="css/index.css" rel="stylesheet" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <title>Гам-Гам</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href="css/index.css" rel="stylesheet"/>
 </head>
 <body>
-    <p>Hello, your application is ready!</p>
-
-    <!-- Cordova reference, this is added to your app when it's built. -->
-    <script src="cordova.js"></script>
-    <script src="scripts/platformOverrides.js"></script>
-
-    <script src="scripts/index.js"></script>
+<p>Гам-Гам</p>
+<!-- Cordova reference, this is added to your app when it's built. -->
+<script src="cordova.js"></script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/angular.min.js"></script>
+<script src="scripts/platformOverrides.js"></script>
+<script src="scripts/gen.js"></script>
+<script src="scripts/index.js"></script>
 </body>
 </html>

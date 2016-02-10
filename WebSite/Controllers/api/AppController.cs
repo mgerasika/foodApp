@@ -11,7 +11,7 @@ using FoodApp.Common.Model;
 
 namespace FoodApp.Controllers.api
 {
-    public class FoodAppController : System.Web.Http.ApiController
+    public class FoodAppController : ApiControllerBase
     {
         [HttpPost]
         [Route("foodApp/login")]

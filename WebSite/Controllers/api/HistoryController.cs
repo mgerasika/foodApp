@@ -9,7 +9,8 @@ using FoodApp.Common.Model;
 using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
-    public class HistoryController : ApiController {
+    public class HistoryController : ApiControllerBase
+    {
         [HttpGet]
         [Route(HistoryUrl.c_sGetHistory)]
         public List<ngHistoryGroupEntry> GetHistory(string userId) {

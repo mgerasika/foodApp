@@ -8,7 +8,7 @@ using FoodApp.Common.Model;
 using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
-    public class OrderController : ApiController,IOrderController {
+    public class OrderController : ApiControllerBase, IOrderController {
         [HttpGet]
         [Route(OrderUrl.c_sGetAllOrders)]
         public IList<IList<ngOrderEntry>> GetAllOrders(string userId) {

@@ -8,7 +8,7 @@ using FoodApp.Common.Model;
 using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
-    public class FoodsController : ApiController, IFoodsController
+    public class FoodsController : ApiControllerBase, IFoodsController
     {
         [HttpGet]
         [Route(FoodsUrl.c_sFoodsPrefix + "/")]

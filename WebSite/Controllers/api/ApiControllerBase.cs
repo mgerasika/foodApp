@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using FoodApp.Client;
 using FoodApp.Common;
 using FoodApp.Common.Managers;
@@ -7,37 +8,8 @@ using FoodApp.Common.Model;
 
 namespace FoodApp.Controllers.api
 {
-    public abstract class ApiControllerBase<T> : System.Web.Http.ApiController where T : ngModelBase
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public abstract class ApiControllerBase : System.Web.Http.ApiController 
     {
-        protected abstract ManagerBase<T> GetManager();
-
-        
-
-        /*
-        [HttpGet]
-        public T Get(string id)
-        {
-            T item = GetManager().GetItem(id);
-            return item;
-        }
-
-        [HttpPost]
-        public void Post([FromBody] T value)
-        {
-            GetManager().AddItem(value);
-        }
-
-        [HttpPut]
-        public void Put(string id, [FromBody] T value)
-        {
-            GetManager().EditItem(id, value);
-        }
-
-        [HttpDelete]
-        public void Delete(string id)
-        {
-            GetManager().Delete(id);
-        }
-         * */
     }
 }

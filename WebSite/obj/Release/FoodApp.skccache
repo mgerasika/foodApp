@@ -2,7 +2,7 @@
 <Manifest SkcVersion="5.5.0" DefinedSymbols="TRACE">
   <SkcFile Filename="C:\Program Files (x86)\SharpKit\5\Compiler\skc5.exe" Modified="-8587501627658294931" />
   <SourceFiles>
-    <ManifestFile Filename="App_Start\WebApiConfig.cs" Modified="-8587487534365551471" />
+    <ManifestFile Filename="App_Start\WebApiConfig.cs" Modified="-8587465174331621554" />
     <ManifestFile Filename="Client\ApiErrorManager.cs" Modified="-8587468759382411496" />
     <ManifestFile Filename="Client\ApiResponse.cs" Modified="-8587469143515124520" />
     <ManifestFile Filename="Client\ApiTraceManager.cs" Modified="-8587468759382491496" />
@@ -48,13 +48,13 @@
     <ManifestFile Filename="Client\ngOrderController.cs" Modified="-8587468759382331496" />
     <ManifestFile Filename="Common\Parser\LoginTool.cs" Modified="-8587468759383091221" />
     <ManifestFile Filename="Properties\WebApiResources.cs" Modified="-8587468759382961499" />
-    <ManifestFile Filename="Common\ApiUtils.cs" Modified="-8587468759383041277" />
-    <ManifestFile Filename="Controllers\api\ApiControllerBase.cs" Modified="-8587468759382811496" />
-    <ManifestFile Filename="Controllers\api\PropousalController.cs" Modified="-8587468759382611495" />
-    <ManifestFile Filename="Controllers\api\HistoryController.cs" Modified="-8587468759382691494" />
-    <ManifestFile Filename="Controllers\api\FoodsController.cs" Modified="-8587468759382721262" />
-    <ManifestFile Filename="Controllers\api\AppController.cs" Modified="-8587468759382931497" />
-    <ManifestFile Filename="Controllers\api\OrderController.cs" Modified="-8587468759382671489" />
+    <ManifestFile Filename="Common\ApiUtils.cs" Modified="-8587465124423359650" />
+    <ManifestFile Filename="Controllers\api\ApiControllerBase.cs" Modified="-8587465165954034146" />
+    <ManifestFile Filename="Controllers\api\PropousalController.cs" Modified="-8587465165954813830" />
+    <ManifestFile Filename="Controllers\api\HistoryController.cs" Modified="-8587465165954514127" />
+    <ManifestFile Filename="Controllers\api\FoodsController.cs" Modified="-8587465165954353836" />
+    <ManifestFile Filename="Controllers\api\AppController.cs" Modified="-8587465165954183839" />
+    <ManifestFile Filename="Controllers\api\OrderController.cs" Modified="-8587465165954674139" />
     <ManifestFile Filename="Controllers\HomeController.cs" Modified="-8587465980967687697" />
     <ManifestFile Filename="Model\EMoneyOperation.cs" Modified="-8587468759383021226" />
     <ManifestFile Filename="Global.asax.cs" Modified="-8587468759382861476" />
@@ -72,8 +72,8 @@
     <ManifestFile Filename="css\font-awesome.min.css" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.svg" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\glyphicons-halflings-regular.svg" Modified="-8587619183314775808" />
-    <ManifestFile Filename="gen\client.tmp.js" Modified="-8587466892265740039" />
-    <ManifestFile Filename="gen\output.js" Modified="-8587466892265660388" />
+    <ManifestFile Filename="gen\client.tmp.js" Modified="-8587465174276721311" />
+    <ManifestFile Filename="gen\output.js" Modified="-8587465099716662805" />
     <ManifestFile Filename="Global.asax" Modified="-8587551283827087235" />
     <ManifestFile Filename="fonts\glyphicons-halflings-regular.woff2" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\glyphicons-halflings-regular.woff" Modified="-8587619183314775808" />
@@ -103,14 +103,14 @@
     <ManifestFile Filename="lib\GoogleSearchAPI.dll" Modified="-8587548002075434313" />
     <ManifestFile Filename="Model\Scripts\bootstrap.js" Modified="-8587551283786504914" />
     <ManifestFile Filename="Model\Scripts\bootstrap.min.js" Modified="-8587551283786204896" />
-    <ManifestFile Filename="data\history.json" Modified="-8587466042621649991" />
+    <ManifestFile Filename="data\history.json" Modified="-8587465947831356487" />
     <ManifestFile Filename="fonts\fontawesome-webfont.eot" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.ttf" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.woff" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.woff2" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\FontAwesome.otf" Modified="-8587619183314775808" />
-    <ManifestFile Filename="data\users.json" Modified="-8587466042241212937" />
-    <ManifestFile Filename="data\userSettings.json" Modified="-8587466042566470035" />
+    <ManifestFile Filename="data\users.json" Modified="-8587466769192407558" />
+    <ManifestFile Filename="data\userSettings.json" Modified="-8587466768381882476" />
     <ManifestFile Filename="data\money.json" Modified="-8587487675572325665" />
     <ManifestFile Filename="data\moneyLogs.json" Modified="-8587487675572215362" />
     <ManifestFile Filename="Model\Scripts\jquery-2.1.4.js" Modified="-8587551283784334789" />
@@ -122,8 +122,8 @@
     <ManifestFile Filename="Model\Scripts\output.js" Modified="-8587471979218840403" />
     <ManifestFile Filename="css\style.css" Modified="-8587535179851913906" />
     <ManifestFile Filename="tab.html" Modified="-8587536681454835700" />
-    <ManifestFile Filename="Web.config" Modified="-8587471983104449399" />
-    <ManifestFile Filename="packages.config" Modified="-8587542925045522821" />
+    <ManifestFile Filename="Web.config" Modified="-8587465175775451029" />
+    <ManifestFile Filename="packages.config" Modified="-8587465175778130795" />
     <ManifestFile Filename="Model\Scripts\jquery-2.1.4.min.map" Modified="-8587551283783864763" />
     <ManifestFile Filename="Views\Home\Index.cshtml" Modified="-8587468759382091391" />
     <ManifestFile Filename="Views\Home\Orders.cshtml" Modified="-8587471983560586120" />
@@ -139,8 +139,8 @@
     <ManifestFile Filename="Views\Home\Trace.cshtml" Modified="-8587469142152887316" />
   </ContentFiles>
   <ReferencedFiles>
-    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587469138599423860" />
-    <ManifestFile Filename="D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\FoodApp.Common.dll" Modified="-8587469138599473861" />
+    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587465095891547015" />
+    <ManifestFile Filename="D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\FoodApp.Common.dll" Modified="-8587465095892267011" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Google.Apis.Auth.1.9.2\lib\net40\Google.Apis.Auth.dll" Modified="-8587542925179040458" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Google.Apis.Auth.1.9.2\lib\net40\Google.Apis.Auth.PlatformServices.dll" Modified="-8587542925179020457" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Google.Apis.Core.1.9.3\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll" Modified="-8587560185491568702" />
@@ -179,11 +179,13 @@
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll" Modified="-8587560185491888720" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.Http.WebRequest.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.ApplicationServices.dll" Modified="-8588529847174775808" />
+    <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll" Modified="-8587465175793011026" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.DynamicData.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.Entity.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.Extensions.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll" Modified="-8587561905613176283" />
+    <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll" Modified="-8587465175784370740" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll" Modified="-8587561905450036952" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll" Modified="-8587561905449906945" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll" Modified="-8587561905612956271" />
@@ -255,7 +257,7 @@
   </NoneFiles>
   <ExternalFiles>
     <ManifestFile Filename="..\..\angularjs\gen\clientBefore.tmp.js" Modified="-8587471942374400995" />
-    <ManifestFile Filename="..\FoodApp.Common\Scripts\client.tmp.js" Modified="-8587471978309361033" />
+    <ManifestFile Filename="..\FoodApp.Common\Scripts\client.tmp.js" Modified="-8587465100649915262" />
     <ManifestFile Filename="..\..\angularjs\gen\clientAfter.tmp.js" Modified="-8587471948082779814" />
   </ExternalFiles>
 </Manifest>

@@ -769,7 +769,7 @@ FoodApp.Client.ngFoodController.prototype.getOrderCount = function (day, foodId)
 };
 FoodApp.Client.ngFoodController.prototype.changePrice = function (day, ngFoodItem){
     FoodApp.Client.jsUtils.inst.showLoading();
-    FoodApp.Client.serviceHlp.inst.SendPost("json", "api/foods/changeprice/" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + day + "/" + ngFoodItem.FoodId + "/" + ngFoodItem.Price + "/", new Object(), $CreateAnonymousDelegate(this, function (){
+    FoodApp.Client.serviceHlp.inst.SendPost("json", "api/foods/changeprice//" + FoodApp.Client.ngAppController.inst.get_ngUserId() + "/" + day + "/" + ngFoodItem.FoodId + "/" + ngFoodItem.Price + "/", new Object(), $CreateAnonymousDelegate(this, function (){
         FoodApp.Client.jsUtils.inst.hideLoading();
         this.refreshFoods($CreateAnonymousDelegate(this, function (){
         }));

@@ -1,5 +1,9 @@
+using SharpKit.JavaScript;
+
 namespace FoodApp.Common.Url {
-    public class OrderUrl {
+    [JsType(JsMode.Prototype, Filename = CommonApiResources._fileClientJs, Export = true)]
+    public class OrderUrl : UrlBase
+    {
         public const string c_sOrdersPrefix = "api/orders";
         public const string c_sGetAllOrders = c_sOrdersPrefix + "/{userId}/";
         public const string c_sGetOrders = c_sOrdersPrefix + "/{userId}/{day}";

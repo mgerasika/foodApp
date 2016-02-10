@@ -1,6 +1,10 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using angularjs.Properties;
+using FoodApp.Common;
+using FoodApp.Common.Url;
+using SharpKit.JavaScript;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -33,3 +37,9 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: JsMergedFile(Filename = MobileApiResources._assemblyOutputPath, Sources = new[] {
+    angularjsResources.includeBeforeResources,
+    CommonApiResources.includeClientJs,
+    angularjsResources.includeAfterResources,
+    MobileApiResources._assemblyClientTmpPath
+})]
