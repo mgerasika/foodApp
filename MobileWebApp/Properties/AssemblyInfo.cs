@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using angularjs.Properties;
 using FoodApp.Common;
-using FoodApp.Common.Url;
+using MobileWebApp.Common;
 using SharpKit.JavaScript;
 
 // General Information about an assembly is controlled through the following 
@@ -40,6 +40,6 @@ using SharpKit.JavaScript;
 [assembly: JsMergedFile(Filename = MobileApiResources._assemblyOutputPath, Sources = new[] {
     angularjsResources.includeBeforeResources,
     CommonApiResources.includeClientJs,
-    angularjsResources.includeAfterResources,
-    MobileApiResources._assemblyClientTmpPath
+    MobileApiResources._assemblyClientTmpPath,
+    angularjsResources.includeAfterResources
 })]

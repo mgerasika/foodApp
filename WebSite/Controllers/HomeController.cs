@@ -7,7 +7,6 @@ using System.Web.Script.Serialization;
 using FoodApp.Client;
 using FoodApp.Common;
 using FoodApp.Common.Managers;
-using FoodApp.Common.Model;
 using FoodApp.Common.Parser;
 using Google.GData.Client;
 
@@ -98,7 +97,7 @@ namespace FoodApp.Controllers {
 
 
         public ActionResult Index() {
-            if (Request.QueryString["code"] != null && null == ApiUtils.GetUser()) {
+            if (Request.QueryString["code"] != null && null == ApiUtils.GetLoggedInUser()) {
                 OAuth2Parameters lParams = CreateParameters();
                 lParams.AccessType = "offline";
                 lParams.AccessCode = HttpContext.Request.QueryString["code"];
@@ -127,7 +126,8 @@ namespace FoodApp.Controllers {
                                         userModel.GoogleFirstName = Convert.ToString(data["given_name"]);
                                         UsersManager.Inst.Save();
                                     }
-                                    if (email.Contains("mgerasika") || email.Contains("mherasika") ) {
+                                    if (email.Contains("mgerasika") || email.Contains("mherasika") || email.Contains("omartsinets"))
+                                    {
                                         if (!userModel.IsAdmin) {
                                             userModel.IsAdmin = true;
                                             UsersManager.Inst.Save();
@@ -145,10 +145,11 @@ namespace FoodApp.Controllers {
                 catch (Exception ex) {
                 }
             }
-            if (null == ApiUtils.GetUser()) {
+            if (null == ApiUtils.GetLoggedInUser()) {
                 return RedirectToAction("Login");
             }
             ExcelManager.Inst.Init();
+            HistoryManager.Inst.FixFoodIdsForLoogedUser();
             UserSettingsManager.Inst.Init();
             UsersManager.Inst.Init();
 

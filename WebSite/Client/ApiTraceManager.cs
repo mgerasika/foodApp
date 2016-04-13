@@ -4,7 +4,6 @@ using System.IO;
 using System.Web.Hosting;
 using System.Web.Script.Serialization;
 using FoodApp.Common;
-using FoodApp.Common.Model;
 using FoodApp.Controllers;
 
 namespace FoodApp.Client {
@@ -26,7 +25,7 @@ namespace FoodApp.Client {
                 ngTraceModel lTrace = new ngTraceModel();
                 lTrace.Date = DateTime.Now;
                 lTrace.Message = trace;
-                ngUserModel ngUserModel = ApiUtils.GetUser();
+                ngUserModel ngUserModel = ApiUtils.GetLoggedInUser();
                 lTrace.UserName = ngUserModel != null ? ngUserModel.Name : "";
                 List<ngTraceModel> lTraces = GetTraces();
                 lTraces.Add(lTrace);

@@ -248,6 +248,18 @@
     <Content Include="data\userSettings.json" />
     <Content Include="data\money.json" />
     <Content Include="data\moneyLogs.json" />
+    <Content Include="Model\Scripts\bootstrap.min.js.map">
+      <DependentUpon>bootstrap.js</DependentUpon>
+    </Content>
+    <Content Include="Model\Scripts\jquery-2.1.4.min.js.map">
+      <DependentUpon>jquery-2.1.4.js</DependentUpon>
+    </Content>
+    <Content Include="Model\Scripts\jquery.validate.min.js.map">
+      <DependentUpon>jquery.validate.js</DependentUpon>
+    </Content>
+    <Content Include="Model\Scripts\jquery.validate.unobtrusive.min.js.map">
+      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Model\Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Model\Scripts\jquery-2.1.4.js" />
@@ -269,28 +281,28 @@
     <Compile Include="Client\ApiErrorManager.cs" />
     <Compile Include="Client\ApiResponse.cs" />
     <Compile Include="Client\ApiTraceManager.cs" />
+    <Compile Include="Client\ngAddMoneyModel.cs" />
+    <Compile Include="Client\ngMoneyClientEntry.cs" />
+    <Compile Include="Client\ngMoneyController.cs" />
     <Compile Include="Client\ErrorApiController.cs" />
-    <Compile Include="Client\jsUtils.cs" />
     <Compile Include="Client\ngErrorController.cs" />
     <Compile Include="Client\ngErrorModel.cs" />
-    <Compile Include="Client\ngFoodFilter.cs" />
     <Compile Include="Client\ngHistoryModel.cs" />
     <Compile Include="Client\ngPropousalContoller.cs" />
     <Compile Include="Client\ngPropousalFilter.cs" />
     <Compile Include="Client\ngHistoryController.cs" />
-    <Compile Include="Client\eventManager.cs" />
     <Compile Include="Client\ngAppController.cs" />
     <Compile Include="Client\ngControllerBase.cs" />
     <Compile Include="Client\ngOrderFilter.cs" />
+    <Compile Include="Client\ngToolsController.cs" />
     <Compile Include="Client\ngTraceController.cs" />
     <Compile Include="Client\ngTraceModel.cs" />
     <Compile Include="Client\ngUsersSettingsModel.cs" />
-    <Compile Include="Client\serviceHlp.cs" />
+    <Compile Include="Client\Program.cs" />
     <Compile Include="Client\TraceApiController.cs" />
     <Compile Include="Common\Managers\BackupHistoryManager.cs" />
     <Compile Include="Common\Managers\ClearOrdersManager.cs" />
     <Compile Include="Common\Managers\PropousalManager.cs" />
-    <Compile Include="Common\Managers\EFoodCategories.cs" />
     <Compile Include="Common\Managers\MoneyLogger.cs" />
     <Compile Include="Common\Managers\MoneyManager.cs" />
     <Compile Include="Common\Managers\OrderManager.cs" />
@@ -310,6 +322,9 @@
     <Compile Include="Client\ngFoodController.cs" />
     <Compile Include="Client\ngOrderController.cs" />
     <Compile Include="Common\Parser\LoginTool.cs" />
+    <Compile Include="Controllers\api\MoneyController.cs" />
+    <Compile Include="Controllers\api\ToolsController.cs" />
+    <Compile Include="ngOrderFilter.cs" />
     <Compile Include="Properties\WebApiResources.cs" />
     <Compile Include="Common\ApiUtils.cs" />
     <Compile Include="Controllers\api\ApiControllerBase.cs" />
@@ -343,6 +358,7 @@
     <Content Include="Views\Home\AdminFoods.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\Trace.cshtml" />
+    <Content Include="Views\Home\Money.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

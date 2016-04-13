@@ -9,6 +9,7 @@ namespace FoodApp.Common.Parser
         public List<ExcelRow> Rows = new List<ExcelRow>();
         private ExcelDoc _doc;
         private CellFeed _cellFeed;
+        private SpreadsheetsService _service;
 
 
         public CellFeed GetCellFeed() {
@@ -19,10 +20,11 @@ namespace FoodApp.Common.Parser
             return _doc;
         }
 
-        public ExcelTable(int day,ExcelDoc doc, WorksheetEntry entry) {
+        public ExcelTable(int day,ExcelDoc doc, WorksheetEntry entry,SpreadsheetsService service) {
             _entry = entry;
             _doc = doc;
             DayOfWeek = day;
+            _service = service;
         }
 
         public string Title { get; set; }
@@ -48,7 +50,7 @@ namespace FoodApp.Common.Parser
             Title = _entry.Title.Text;
 
             CellQuery cellQuery = new CellQuery(_entry.CellFeedLink);
-            CellFeed cellFeed = ExcelManager.Inst.SpreadsheetsService.Query(cellQuery);
+            CellFeed cellFeed = _service.Query(cellQuery);
             _cellFeed = cellFeed;
 
             Dictionary<uint, List<CellEntry>> groupRows = new Dictionary<uint, List<CellEntry>>();

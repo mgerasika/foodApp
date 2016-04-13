@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using FoodApp.Common.Model;
 
-namespace FoodApp.Common.api {
+namespace FoodApp.Common {
     public interface  IFoodsController {
         List<IList<ngFoodItem>> GetAllFoods();
 

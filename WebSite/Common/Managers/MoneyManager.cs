@@ -1,23 +1,11 @@
 using System;
 using System.Diagnostics;
-using FoodApp.Common.Model;
 using FoodApp.Model;
 
 namespace FoodApp.Common.Managers {
     public class MoneyManager : ManagerBase<ngMoneyModel> {
         public static MoneyManager Inst = new MoneyManager();
         private static readonly object _lockObject = new object();
-
-        private MoneyManager() {
-        }
-
-        protected override string FileName {
-            get { return "money.json"; }
-        }
-
-        protected override string GetId(ngMoneyModel obj) {
-            return obj.UserId;
-        }
 
 
         public ngMoneyModel EnsureMoneyModel(ngUserModel user) {
@@ -40,18 +28,6 @@ namespace FoodApp.Common.Managers {
                 ngMoneyOrderModel moneyOrder = GetMoneyOrderModel(user, order);
                 if (moneyOrder != null && moneyOrder.Operation == EMoneyOperation.Buy) {
                     res = true;
-                }
-            }
-            return res;
-        }
-
-        protected ngMoneyOrderModel GetMoneyOrderModel(ngUserModel user, string id) {
-            ngMoneyModel moneyModel = EnsureMoneyModel(user);
-            ngMoneyOrderModel res = null;
-            foreach (ngMoneyOrderModel ngMoneyOrderModel in moneyModel.MoneyOrders) {
-                if (ngMoneyOrderModel.Id.Equals(id)) {
-                    res = ngMoneyOrderModel;
-                    break;
                 }
             }
             return res;
@@ -103,6 +79,8 @@ namespace FoodApp.Common.Managers {
                     ngMoneyOrderModel moneyOrder = GetMoneyOrderModel(user, orderId);
                     moneyOrder.Operation = EMoneyOperation.Refund;
                     moneyModel.Total += moneyOrder.Value;
+
+                    moneyModel.DeleteOrder(moneyOrder);
                     Save();
 
                     MoneyLogger.Inst.CreateRefundLog(user, moneyOrder.Value, orderId);
@@ -119,6 +97,51 @@ namespace FoodApp.Common.Managers {
 
                 MoneyLogger.Inst.CreateAddMoneyLog(user, total);
             }
+        }
+
+        public void Remove(ngUserModel user, decimal total) {
+            lock (_lockObject) {
+                ngMoneyModel moneyModel = EnsureMoneyModel(user);
+                Debug.Assert(null != moneyModel);
+                moneyModel.Total -= total;
+                Save();
+
+                MoneyLogger.Inst.CreateRemoveMoneyLog(user, total);
+            }
+        }
+
+        internal decimal GetMoney(ngUserModel user) {
+            decimal res = 0;
+
+            lock (_lockObject) {
+                ngMoneyModel moneyModel = EnsureMoneyModel(user);
+                Debug.Assert(null != moneyModel);
+                res = moneyModel.Total;
+            }
+            return res;
+        }
+
+        private MoneyManager() {
+        }
+
+        protected override string FileName {
+            get { return "money.json"; }
+        }
+
+        protected override string GetId(ngMoneyModel obj) {
+            return obj.UserId;
+        }
+
+        protected ngMoneyOrderModel GetMoneyOrderModel(ngUserModel user, string id) {
+            ngMoneyModel moneyModel = EnsureMoneyModel(user);
+            ngMoneyOrderModel res = null;
+            foreach (ngMoneyOrderModel ngMoneyOrderModel in moneyModel.MoneyOrders) {
+                if (ngMoneyOrderModel.Id.Equals(id)) {
+                    res = ngMoneyOrderModel;
+                    break;
+                }
+            }
+            return res;
         }
     }
 }

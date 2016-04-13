@@ -7,3 +7,5 @@ D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\SharpKit.jQueryUI.dll
 D:\Projects\git\gam-gam\FoodApp.Common\obj\Release\FoodApp.Common.dll
 D:\Projects\git\gam-gam\FoodApp.Common\obj\Release\FoodApp.Common.pdb
 D:\Projects\git\gam-gam\FoodApp.Common\obj\Release\FoodApp.Common.csprojResolveAssemblyReference.cache
+D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\angularjs.dll
+D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\angularjs.pdb

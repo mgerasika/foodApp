@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FoodApp.Common.Model;
 using FoodApp.Common.Parser;
 
 namespace FoodApp.Common.Managers {

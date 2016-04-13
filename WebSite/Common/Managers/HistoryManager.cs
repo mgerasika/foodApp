@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using FoodApp.Client;
-using FoodApp.Common.Model;
 
 namespace FoodApp.Common.Managers {
     public class HistoryManager : ManagerBase<ngHistoryModel> {
@@ -69,18 +68,17 @@ namespace FoodApp.Common.Managers {
             Save();
         }
 
-        public void FixFoodIds() {
-            List<ngHistoryModel> items = GetItems();
+        public void FixFoodIdsForLoogedUser() {
+            ngUserModel user = ApiUtils.GetLoggedInUser();
             List<ngFoodItem> allFoods = FoodManager.Inst.GetAllFoods();
-            foreach (ngHistoryModel ngHistoryModel in items) {
-                foreach (ngHistoryEntry entry in ngHistoryModel.Entries) {
+            ngHistoryModel historyModelByUser = GetHistoryModelByUser(user);
+            foreach (ngHistoryEntry entry in historyModelByUser.Entries) {
                     foreach (ngFoodItem food in allFoods) {
                         if (ApiUtils.IsSeamsFoodIds(entry.FoodId, food.FoodId)) {
                             entry.FoodId = food.FoodId;
                             break;
                         }
                     }
-                }
             }
 
             Save();

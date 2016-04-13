@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using FoodApp.Common.Model;
 using FoodApp.Model;
 
 namespace FoodApp.Common.Managers {
@@ -72,6 +71,18 @@ namespace FoodApp.Common.Managers {
             WriteLogAndSendEmail(user,loggerModel);
         }
 
+        public void CreateRemoveMoneyLog(ngUserModel user, decimal total)
+        {
+            ngMoneyLoggerModel loggerModel = new ngMoneyLoggerModel();
+            loggerModel.OrderId = "id -> remove money";
+            loggerModel.Operation = EMoneyOperation.RemoveMoneyFromBank;
+            loggerModel.UserId = user.Id;
+            loggerModel.Value = total;
+            loggerModel.DateTime = DateTime.Now;
+
+            WriteLogAndSendEmail(user, loggerModel);
+        }
+
         private void WriteLogAndSendEmail(ngUserModel user,ngMoneyLoggerModel loggerModel) {
             Debug.Assert(!string.IsNullOrEmpty(loggerModel.OrderId));
             AddItemAndSave(loggerModel);
@@ -82,7 +93,7 @@ namespace FoodApp.Common.Managers {
 
         private void SendEmail(ngUserModel user, string operationName, decimal val, string msg) {
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587) {Credentials = new NetworkCredential("gamgamlviv@gmail.com", "nikita1984"), EnableSsl = true};
-            string subject = string.Format("{0}", user.Email);
+            string subject = string.Format("{0} {1}", user.Email,DateTime.Now);
 
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("Операція: {0}\n", operationName);

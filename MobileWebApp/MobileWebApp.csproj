@@ -24,6 +24,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -137,13 +139,19 @@
     <Content Include="www\css\bootstrap-theme.min.css" />
     <Content Include="www\css\bootstrap.min.css" />
     <Content Include="www\css\index.css" />
+    <Content Include="www\images\loading.gif" />
     <Content Include="www\index.cshtml" />
     <Content Include="www\scripts\angular.min.js" />
     <Content Include="www\scripts\bootstrap.min.js" />
     <Content Include="www\scripts\gen.js" />
     <Content Include="www\scripts\index.js" />
     <Content Include="www\scripts\jquery.min.js" />
+    <Content Include="www\scripts\jquery.mobile-1.4.5.min.js" />
+    <Content Include="www\scripts\jquery.touchSwipe.min.js" />
     <Content Include="www\scripts\platformOverrides.js" />
+    <Content Include="scripts\ai.0.15.0-build58334.min.js.map">
+      <DependentUpon>ai.0.15.0-build58334.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -157,12 +165,17 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\client\ngMobileAppController.cs" />
+    <Compile Include="Common\client\ngMobileControllerBase.cs" />
+    <Compile Include="Common\client\ngMobileFoodController.cs" />
+    <Compile Include="Common\client\ngMobileOrderController.cs" />
     <Compile Include="Common\Program.cs" />
     <Compile Include="Common\MobileApiResources.cs" />
+    <Compile Include="Common\client\ngOrderFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="www\images\" />
+    <Folder Include="www\lib\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\angularjs\angularjs.csproj">
@@ -207,6 +220,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="$(SolutionDir)\packages\SharpKit.5.4.9\tools\SharpKit.Build.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

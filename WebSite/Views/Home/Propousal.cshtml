@@ -1,7 +1,6 @@
 ﻿@using angularjs
 @using FoodApp.Client
 @using FoodApp.Common
-@using FoodApp.Common.Model
 @inherits System.Web.Mvc.WebViewPage
 
 @{
@@ -9,6 +8,8 @@
     string ngPropousalItems = ajs.field((ngPropousalContoller o) => o.ngItems);
     string ngPropousal = "ngPropousal";
     string foodId = ngPropousal + "." + ajs.field((ngHistoryEntry o) => o.FoodId);
+
+    string canRefund = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.canRefund);
 }
 
 <div style="margin-left: 1.5em;" ng-if="@ajs.method((ngPropousalContoller o) => o.hasPropousal(0)) (@dayOfWeek)">
@@ -26,6 +27,6 @@
             &nbsp;
             &nbsp;
     </span></p>
-    <button class="btn btn-success foodBtn" style="padding: 0.3em;" ng-click="@ajs.method((ngPropousalContoller o) => o.refreshPropousalsClick()) ()">Інші пропозиції</button>
-    <button class="btn btn-success foodBtn" style="padding: 0.3em;" ng-click="@ajs.method((ngPropousalContoller o) => o.makePropousalClick(0)) (@dayOfWeek)">Замовити</button>
+    <button ng-disabled="@canRefund" class="btn btn-success foodBtn" style="padding: 0.3em;" ng-click="@ajs.method((ngPropousalContoller o) => o.refreshPropousalsClick()) ()">Інші пропозиції</button>
+    <button ng-disabled="@canRefund" class="btn btn-success foodBtn" style="padding: 0.3em;" ng-click="@ajs.method((ngPropousalContoller o) => o.makePropousalClick(0)) (@dayOfWeek)">Замовити</button>
 </div>

@@ -12,6 +12,7 @@ using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FoodApp.Client;
 
 namespace FoodApp
 {
@@ -20,8 +21,7 @@ namespace FoodApp
         public Task HandleAsync(ExceptionHandlerContext context,
             CancellationToken cancellationToken)
         {
-            Debug.Assert(false);
-
+            ApiErrorManager.Inst.LogError(context.Exception);
             return Task.FromResult<object>(context.Exception);
         }
     }

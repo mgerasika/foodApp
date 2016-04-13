@@ -1,7 +1,5 @@
 using angularjs;
 using FoodApp.Common;
-using FoodApp.Common.Model;
-using FoodApp.Common.Url;
 using FoodApp.Controllers.api;
 using FoodApp.Properties;
 using SharpKit.Html;
@@ -41,7 +39,7 @@ namespace FoodApp.Client {
         }
 
         public void refreshHistory() {
-            serviceHlp.inst.SendGet("json",
+            ajaxHlp.inst.SendGet("json",
                 HistoryUrl.c_sHistoryPrefix + "/" + ngAppController.inst.ngUserId + "/",
                 delegate(object o, JsString s, jqXHR arg3) {
                     ngHistoryItems = o.As<JsArray<ngHistoryGroupEntry>>();
@@ -52,7 +50,7 @@ namespace FoodApp.Client {
 
 
         public void deleteHistoryClick(ngHistoryGroupEntry group) {
-            serviceHlp.inst.SendPost("json",
+            ajaxHlp.inst.SendPost("json",
                 HistoryUrl.c_sDeleteHistoryPrefix + "/" + ngAppController.inst.ngUserId + "/",JSON.stringify(group),
                 delegate { refreshHistory(); }, onRequestFailed);
         }

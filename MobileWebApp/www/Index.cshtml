@@ -1,4 +1,6 @@
 ﻿@using angularjs
+@using FoodApp.Common
+@using MobileWebApp.Common.client
 <!DOCTYPE html>
 <html ng-app="@angularUtils.c_sModuleName">
 <head>
@@ -8,18 +10,182 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link href="css/index.css" rel="stylesheet"/>
-</head>
-<body>
-<p>Гам-Гам</p>
+
+
+</head>@{
+    string dayOfWeek = "day.idx";
+    string categories = ajs.field((ngMobileFoodController o) => o.ngCategories);
+    string foods = ajs.field((ngMobileFoodController o) => o.ngFoods);
+    string food = "food";
+    string foodId = food + "." + ajs.field((ngFoodItem o) => o.FoodId);
+    string price = food + "." + ajs.field((ngFoodItem o) => o.Price);
+    string isByWeight = food + "." + ajs.field((ngFoodItem o) => o.IsByWeightItem);
+
+        string orders = ajs.field((ngMobileOrderController o) => o.ngOrderEntries);
+        string orderItem = "orderItem";
+        string orderFoodId = orderItem + "." + ajs.field((ngOrderEntry o) => o.FoodId);
+        string orderIsByWeight = ajs.method((ngMobileOrderController o) => o.getFoodItem(orderFoodId)) + "(" + orderFoodId + ")." + ajs.field((ngFoodItem o) => o.IsByWeightItem);
+}
+<body animation="slide-left-right-ios7">
+    <div class="loadingDiv" id="loadingDiv"></div>
 
 <!-- Cordova reference, this is added to your app when it's built. -->
 <script src="cordova.js"></script>
 <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.touchSwipe.min.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
 <script src="scripts/angular.min.js"></script>
 <script src="scripts/platformOverrides.js"></script>
 <script src="scripts/gen.js"></script>
-<script src="scripts/index.js"></script>
 
+
+<input type="hidden" value="47258346-5281-4fd7-9234-d5eb994c534c" id="userId"/>
+<div ng-controller="@ajs.getClass((ngMobileAppController o) => o)">
+    <div ng-controller="@ajs.getClass((ngMobileOrderController o) => o)">
+        <div ng-controller="@ajs.getClass((ngMobileFoodController o) => o)">
+
+
+            <div class="col-md-4">
+                <!--Carousel-->
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-wrap="false">
+                    <ol class="carousel-indicators grey">
+                        <li data-target="#myCarousel" data-slide-to="{{day.idx}}"  ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div  class="item" day="{{day.idx}}" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
+                            <div class="fixed" style="color: #cb5750; position: fixed; background-color: white; z-index: 1; width: 100%;">
+                                <h2>{{day.name}}</h2>
+
+                            </div>
+                            <div style="display: block; padding-top: 5em;">
+                                <div>
+                                    <div style="width: 100%;" ng-show="@orders [@dayOfWeek] .length>0">
+                                        <p>
+                                            Ціна замовлення: <i>
+                                                {{@ajs.method((ngMobileOrderController o) => o.getTotalPrice(0)) (@dayOfWeek) }}грн
+                                            </i>
+                                        </p>
+                                        <div ng-repeat="@orderItem in @orders | orderFilter:{'day':@dayOfWeek}" style="float: left; margin-right: 1em; padding: 0.3em; padding-left: 0px;">
+                                            <div id="{{@orderItem .@ajs.field((ngOrderEntry o) => o.FoodId)}}">
+                                                <div style="background-color: #cb5750; float: left; margin-right: 0.3em; opacity: 0.3; width: 0.5em;">&nbsp;</div>
+                                                <div style="float: left;">{{@ajs.method((ngMobileOrderController o) => o.getFoodItem(null)) (@orderFoodId).@ajs.field((ngFoodItem o) => o.Name)}}</div>
+                                                <div style="float: left;">&nbsp;{{@ajs.method((ngMobileOrderController o) => o.formatCount(null)) (@orderItem)}}</div>
+                                                <div style="float: left;" ng-show="@orderIsByWeight"> гр</div>
+                                                <div style="float: left;" ng-show="!@orderIsByWeight"> шт</div>
+                                                <div class="glyphicon glyphicon-remove" style="color: #cb5750; cursor: pointer; float: left; font-weight: normal; line-height: 1.35em; opacity: 0.3;" ng-click="@ajs.method((ngMobileOrderController o) => o.deleteOrder(0, null)) (@dayOfWeek,@orderItem .@ajs.field((ngOrderEntry o) => o.FoodId))">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div style="clear: both;">
+                                            <i>(Контейнери уже враховано)</i>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div ng-show="@foods. length>0" class="featurebox" ng-repeat="category in @categories">
+                                    <div style="margin-left: 1.5em;">
+                                        <h3>{{category}}</h3>
+                                    </div>
+                                    <div ng-repeat="@food in @foods | foodFilter:{'category':category,'day':@dayOfWeek}" class="foodItem" ng-class="{true:'orderedFoodItem'}[@ajs.method((ngMobileFoodController o) => o.hasOrder(0, null)) (@dayOfWeek,@foodId)]">
+                                        <div style="margin: 0.5em; padding: 1em; padding-left: 0em; padding-right: 0em;">
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td class="leftIcon"></td>
+                                                    <td style="padding-left: 0.5em;">
+                                                        <p class="">{{@food .@ajs.field((ngFoodItem o) => o.Name)}}</p>
+                                                        <div>
+                                                            <div style="color: #cb5750; float: left; font-size: 1.5em;">
+                                                                {{@price}}
+                                                            </div>
+
+                                                            <div style="float: right;" class="btn-group" role="group" ng-show="@isByWeight" style="float: right;">
+                                                                <button ng-class="{1:'foodButtonIsOrdered'}[@ajs.method((ngMobileFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngMobileFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,1)" class="btn btn-success foodBtn">100г</button>
+                                                                <button ng-class="{1.5:'foodButtonIsOrdered'}[@ajs.method((ngMobileFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngMobileFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,1.5)" class="btn btn-success foodBtn">150г</button>
+                                                                <button ng-class="{2:'foodButtonIsOrdered'}[@ajs.method((ngMobileFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngMobileFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,2)" class="btn btn-success foodBtn">200г</button>
+                                                            </div>
+                                                            <div style="float: right;" class="btn-group" role="group" ng-hide="@isByWeight">
+                                                                <button ng-class="{1:'foodButtonIsOrdered'}[@ajs.method((ngMobileFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngMobileFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,1)" class="btn btn-success foodBtn">1</button>
+                                                                <button ng-class="{2:'foodButtonIsOrdered'}[@ajs.method((ngMobileFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngMobileFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,2)" class="btn btn-success foodBtn">2</button>
+                                                                <button ng-class="{3:'foodButtonIsOrdered'}[@ajs.method((ngMobileFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngMobileFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,3)" class="btn btn-success foodBtn">3</button>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <div style="clear: both;"></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div style="position: absolute; left: -999px; top: -999px;">
+                        <a id="leftLnk" class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a id="rightLnk" class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+         
+          
+
+
+        </div>
+    </div>
+</div>
+
+<script src="scripts/index.js"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    //Enable swiping...
+    $("#myCarousel").swipe({
+        //Generic swipe handler for all directions
+        swipeLeft: function (event, direction, distance, duration, fingerCount) {
+            $("#rightLnk").click();
+        },
+        swipeRight: function () {
+            $("#leftLnk").click();
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+        threshold: 0
+    });
+
+    $('#myCarousel').each(function () {
+        $(this).carousel({
+            interval: false
+        });
+
+        var date = new Date();
+        var day = date.getDay() - 1;
+        if (day > 4) {
+            day = 0;
+        }
+        var headerId = '#myCarousel li[data-slide-to="' + day + '"]';
+        var headerEl = $(headerId);
+        headerEl.addClass('active');
+
+        var itemId = '#myCarousel div[day="' + day + '"]';
+        var itemEl = $(itemId);
+        itemEl.addClass('active');
+    });
+});
+    </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 using System;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Common.Model
+namespace FoodApp.Common
 {
     [JsType(JsMode.Json, Filename = CommonApiResources._fileClientJs, Export = true)]
     public class ngHistoryEntry : ngModelBase

@@ -1,9 +1,48 @@
 ﻿@using System.Web.Mvc.Html
+@using angularjs
+@using FoodApp.Client
+@using FoodApp.Common
 @inherits System.Web.Mvc.WebViewPage
 
 
 @{
-    Html.RenderPartial("History");
+    bool isAdmin = ApiUtils.GetLoggedInUser().IsAdmin;
+    string value = ajs.field((ngMoneyController o) => o.ngAddMoneyModel) + "." + ajs.field((ngAddMoneyModel o) => o.value);
+    string total = ajs.field((ngMoneyController o) => o.ngAddMoneyModel) + "." + ajs.field((ngAddMoneyModel o) => o.total);
+    string users = ajs.field((ngMoneyController o) => o.ngUsers);
+    string user = "user";
+    string userName = user + "." + ajs.field((ngUserModel o) => o.Name);
+    string userId = user + "." + ajs.field((ngUserModel o) => o.Id);
+}
+
+
+<h3>Поповнити рахунок</h3>
+<div>
+    <p> На рахунку
+    <select ng-model="@userId" ng-change="@ajs.method((ngMoneyController o) => o.checkMoneyClick(null)) (@userId)">
+        <option ng-repeat="@user in @users" value="{{@userId}}">{{@userName}}</option>
+    </select>
+    <span> зараз є {{@total}} грн.</span></p>
+
+
+    <p> Ви можете <a  style="cursor: pointer;" ng-click="@ajs.method((ngMoneyController o) => o.addMoneyClick(null, 0)) (@userId,@value)">поповнити</a> або
+        <a style="cursor: pointer;"  ng-click="@ajs.method((ngMoneyController o) => o.removeMoneyClick(null, 0)) (@userId,@value)">повернути</a>
+        <input ng-model="@value" type="number" value="100"/> грн 
+
+
+
+    </p>
+
+    <p>
+        Також ви можете 
+        <a  style="cursor: pointer;" ng-click="@ajs.method((ngToolsController o) => o.clearTodayOrdersClick()) ()">стерти</a>
+        усі сьогоднішні замовлення. 
+    </p>
+
+</div>
+
+
+@{
 }
 
 

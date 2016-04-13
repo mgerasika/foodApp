@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Web.Hosting;
-using FoodApp.Common.Model;
 using Newtonsoft.Json;
 
 namespace FoodApp.Common.Managers

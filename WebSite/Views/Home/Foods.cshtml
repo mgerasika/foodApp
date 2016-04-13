@@ -1,7 +1,7 @@
 ﻿@using System.Data.Odbc
 @using angularjs
 @using FoodApp.Client
-@using FoodApp.Common.Model
+@using FoodApp.Common
 @inherits System.Web.Mvc.WebViewPage
 
 @{
@@ -13,9 +13,12 @@
     string isByWeight = food + "." + ajs.field((ngFoodItem o) => o.IsByWeightItem);
     string price = food + "." + ajs.field((ngFoodItem o) => o.Price);
 
-
     string prefix = ajs.method((ngFoodController o) => o.getPrefix(0)) + "(" + price + ")";
     string sufix = ajs.method((ngFoodController o) => o.getSuffix(0)) + "(" + price + ")";
+
+    string canRefund = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.canRefund);
+    string name = food + "." + ajs.field((ngFoodItem o) => o.Name);
+    string description = food + "." + ajs.field((ngFoodItem o) => o.Description);
 }
 
 
@@ -26,26 +29,28 @@
         </div>
         <div ng-repeat="@food in @foods | foodFilter:{'category':category,'day':@dayOfWeek}" class="foodItem" ng-class="{true:'orderedFoodItem'}[@ajs.method((ngFoodController o) => o.hasOrder(0, null)) (@dayOfWeek,@foodId)]">
             <div style="margin: 0.5em; padding: 1em; padding-right: 0em; padding-left: 0em;">
-                <table style="width: 100%; ">
+                <table style="width: 100%;">
                     <tr>
                         <td class="leftIcon"></td>
                         <td style="padding-left: 0.5em;">
-                            <p class="">{{@food .@ajs.field((ngFoodItem o) => o.Name)}}</p>
-                            <div>
+                            <p class="">{{@name}}</p>
+                            <i style="word-wrap: break-word; font-size: 0.9em; display: block; float: left; max-width: 15em;" ng-show="@description">({{@description}})</i>
+                            
+                            
+                            <div style="clear: both; padding-top: 0.5em;">
                                 <div style="color: #cb5750; float: left; font-size: 1.5em;">
-
                                     {{@price}}
                                 </div>
 
-                                <div style="float: right;" class="btn-group" role="group" ng-show="@isByWeight" style="float: right;">
-                                     <button ng-class="{1:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,1)" class="btn btn-success foodBtn">100г</button>
-                                    <button ng-class="{1.5:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,1.5)" class="btn btn-success foodBtn">150г</button>
-                                     <button ng-class="{2:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,2)" class="btn btn-success foodBtn">200г</button>
+                                <div  style="float: right;" class="btn-group" role="group" ng-show="@isByWeight" style="float: right;">
+                                     <button ng-disabled="@canRefund" ng-class="{1:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,1)" class="btn btn-success foodBtn">100г</button>
+                                     <button ng-disabled="@canRefund" ng-class="{1.5:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,1.5)" class="btn btn-success foodBtn">150г</button>
+                                     <button ng-disabled="@canRefund" ng-class="{2:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,2)" class="btn btn-success foodBtn">200г</button>
                                </div>
                                 <div style="float: right;" class="btn-group" role="group" ng-hide="@isByWeight">
-                                    <button ng-class="{1:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,1)" class="btn btn-success foodBtn">1</button>
-                                    <button ng-class="{2:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,2)" class="btn btn-success foodBtn">2</button>
-                                    <button ng-class="{3:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,3)" class="btn btn-success foodBtn">3</button>
+                                    <button ng-disabled="@canRefund" ng-class="{1:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,1)" class="btn btn-success foodBtn">1</button>
+                                    <button ng-disabled="@canRefund" ng-class="{2:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,2)" class="btn btn-success foodBtn">2</button>
+                                    <button ng-disabled="@canRefund" ng-class="{3:'foodButtonIsOrdered'}[@ajs.method((ngFoodController o) => o.getOrderCount(0, null)) (@dayOfWeek,@foodId)]" ng-click="@ajs.method((ngFoodController o) => o.buyClick(0, null, 0)) (@dayOfWeek,@foodId,3)" class="btn btn-success foodBtn">3</button>
                                 </div>
                             </div>
 
@@ -62,19 +67,7 @@
 
 
 
-<style type="text/css">
-    .leftIcon {
-        background-color: #cb5750; opacity: 0.3; width: 0.5em;
-    }
-     .orderedFoodItem .leftIcon{
-         background-color: #cb5750;
-         opacity: 1;
-     }
-     .foodButtonIsOrdered {
-         background-color: #cb5750!important;
-         cursor: none;
-     }
-</style>
+
 
 
 <div ng-show="@foods. length>0" style="display: none;"> 

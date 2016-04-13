@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using FoodApp.Common.Model;
 using Google.GData.Client;
 using Google.GData.Spreadsheets;
 
@@ -18,17 +17,17 @@ namespace FoodApp.Common.Parser {
                 Dictionary<string, CellEntry> cellEntries = CreateEntryCellsMap(ExcelManager.Inst.SpreadsheetsService,
                     cellFeed, cells);
                 CellFeed batchRequest = new CellFeed(cellQuery.Uri, ExcelManager.Inst.SpreadsheetsService);
+                
                 foreach (ExcelCell cell in cells) {
                     CellEntry batchEntry = cellEntries[cell.GetBatchID()];
                     string inputValue = "";
-                    if (cell.Value > 0) {
-                        inputValue = cell.Value.ToString().Replace(".", ",");
+                    if (cell.EditTmpValue > 0) {
+                        inputValue = cell.EditTmpValue.ToString().Replace(".", ",");
                     }
                     batchEntry.InputValue = inputValue;
                     batchEntry.BatchData = new GDataBatchEntryData(cell.GetBatchID(), GDataBatchOperationType.update);
                     batchRequest.Entries.Add(batchEntry);
                 }
-
                 // Submit the update
                 CellFeed batchResponse =
                     (CellFeed) ExcelManager.Inst.SpreadsheetsService.Batch(batchRequest, new Uri(cellFeed.Batch));
@@ -44,6 +43,7 @@ namespace FoodApp.Common.Parser {
                     else {
                         ExcelCell cell = ExcelRow.GetCellByBatchId(cells, batchId);
                         Debug.Assert(null != cell);
+                        cell.Value = cell.EditTmpValue;
                         cell.SetEntry(entry);
                     }
                 }
@@ -83,8 +83,6 @@ namespace FoodApp.Common.Parser {
         public static bool Update(ngUserModel user, int day, List<ngOrderEntry> orders) {
             bool res = false;
             ExcelManager.Inst.RefreshAccessToken();
-
-       
             Dictionary<ngUserModel,List<ngOrderEntry>>  items = new Dictionary<ngUserModel, List<ngOrderEntry>>();
             items.Add(user,orders);
             res = Update(day,items);
@@ -101,7 +99,7 @@ namespace FoodApp.Common.Parser {
                 foreach (ngOrderEntry order in keyValuePair.Value) {
                     ExcelRow row = table.GetRowByFoodId(order.FoodId);
                     ExcelCell cell = row.EnsureCell(keyValuePair.Key.Column);
-                    cell.Value = order.Count;
+                    cell.EditTmpValue = order.Count;
                     newCells.Add(cell);
                 }
             }

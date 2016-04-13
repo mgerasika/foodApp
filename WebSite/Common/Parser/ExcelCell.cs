@@ -22,6 +22,7 @@ namespace FoodApp.Common.Parser {
         public uint Column { get; set; }
         public uint Row { get; set; }
         public decimal Value { get; set; }
+        public decimal EditTmpValue { get; set; }
 
         public string GetBatchID() {
             return string.Format("R{0}C{1}", Row, Column);

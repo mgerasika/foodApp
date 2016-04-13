@@ -11,7 +11,6 @@ D:\Projects\git\gam-gam\MobileWebApp\bin\roslyn\System.Reflection.Metadata.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\roslyn\vbc.exe
 D:\Projects\git\gam-gam\MobileWebApp\bin\roslyn\VBCSCompiler.exe
 D:\Projects\git\gam-gam\MobileWebApp\bin\roslyn\VBCSCompiler.exe.config
-D:\Projects\git\gam-gam\MobileWebApp\bin\MobileWebApp.dll.config
 D:\Projects\git\gam-gam\MobileWebApp\bin\MobileWebApp.dll
 D:\Projects\git\gam-gam\MobileWebApp\bin\MobileWebApp.pdb
 D:\Projects\git\gam-gam\MobileWebApp\bin\Microsoft.AI.Agent.Intercept.dll

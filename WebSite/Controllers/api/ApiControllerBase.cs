@@ -4,7 +4,6 @@ using System.Web.Http.Cors;
 using FoodApp.Client;
 using FoodApp.Common;
 using FoodApp.Common.Managers;
-using FoodApp.Common.Model;
 
 namespace FoodApp.Controllers.api
 {

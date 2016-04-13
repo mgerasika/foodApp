@@ -55,10 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonUtils.cs" />
+    <Compile Include="api\IMoneyController.cs" />
+    <Compile Include="Common\CommonUtils.cs" />
     <Compile Include="api\IFoodsController.cs" />
     <Compile Include="api\IOrderController.cs" />
     <Compile Include="Common\CommonApiResources.cs" />
+    <Compile Include="Common\CategoryNames.cs" />
+    <Compile Include="Common\jsUtils.cs" />
+    <Compile Include="Common\eventManager.cs" />
     <Compile Include="Model\ngFoodItem.cs" />
     <Compile Include="Model\ngFoodRate.cs" />
     <Compile Include="Model\ngHistoryEntry.cs" />
@@ -66,18 +70,31 @@
     <Compile Include="Model\ngModelBase.cs" />
     <Compile Include="Model\ngOrderEntry.cs" />
     <Compile Include="Model\ngUserModel.cs" />
+    <Compile Include="ngFoodFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\ajaxHlp.cs" />
     <Compile Include="Url\FoodsUrl.cs" />
     <Compile Include="Url\HistoryUrl.cs" />
     <Compile Include="Url\JsApiBase.cs" />
     <Compile Include="Url\jsCommonUtils.cs" />
     <Compile Include="Url\JsFoodApi.cs" />
     <Compile Include="Url\JsHandler.cs" />
+    <Compile Include="Url\JsMoneyApi.cs" />
+    <Compile Include="Url\JsOrderApi.cs" />
+    <Compile Include="Url\JsService.cs" />
+    <Compile Include="Url\MoneyUrl.cs" />
     <Compile Include="Url\OrderUrl.cs" />
     <Compile Include="Url\PropousalUrl.cs" />
+    <Compile Include="Url\ToolsUrl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\angularjs\angularjs.csproj">
+      <Project>{e298e94b-876f-48ad-bb51-e8accb30a6f0}</Project>
+      <Name>angularjs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

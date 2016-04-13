@@ -1,6 +1,6 @@
 using SharpKit.JavaScript;
 
-namespace FoodApp.Common.Model {
+namespace FoodApp.Common {
     [JsType(JsMode.Json, Filename = CommonApiResources._fileClientJs, Export = true)]
     public class ngFoodItem : ngModelBase {
         public string Name { get; set; }
@@ -17,5 +17,9 @@ namespace FoodApp.Common.Model {
         public bool isMeatOrFish { get; set; }
         public bool isFirst { get; set; }
         public bool isKvasolevaOrChanachi { get; set; }
+
+        public override string ToString() {
+            return this.FoodId;
+        }
     }
 }

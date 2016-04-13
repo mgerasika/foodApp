@@ -1,13 +1,7 @@
 using angularjs;
 using FoodApp.Common;
-using FoodApp.Common.Managers;
-using FoodApp.Common.Model;
-using FoodApp.Common.Url;
-using FoodApp.Controllers;
-using FoodApp.Controllers.api;
 using FoodApp.Properties;
 using SharpKit.Html;
-using SharpKit.jQuery;
 using SharpKit.JavaScript;
 
 namespace FoodApp.Client {
@@ -38,15 +32,18 @@ namespace FoodApp.Client {
 
         public void buyClick(int day, string foodId, decimal value) {
             jsUtils.inst.showLoading();
-            serviceHlp.inst.SendPost("json",
-                FoodsUrl.c_sFoodsPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + foodId + "/" +
-                value + "/",
-                new JsObject(),
-                delegate {
-                    jsUtils.inst.hideLoading();
-                    ngOrderController.inst.refreshOrders();
-                }, onRequestFailed);
+
+            JsService.Inst.FoodApi.Buy( day, foodId, value, delegate(bool res) {
+                jsUtils.inst.hideLoading();
+                ngOrderController.inst.refreshOrders();
+
+                if (!res) {
+                    showErrorPopup();
+                }
+            });
         }
+
+       
 
         public bool hasOrder(int day, string foodId) {
             bool res = false;
@@ -62,12 +59,12 @@ namespace FoodApp.Client {
             base.init(scope, http, loc, filter);
             ngFoods = new JsArray<JsArray<ngFoodItem>>();
             ngCategories = new JsArray<string>();
-            ngCategories.push(EFoodCategories.Salat);
-            ngCategories.push(EFoodCategories.First);
-            ngCategories.push(EFoodCategories.Garnir);
-            ngCategories.push(EFoodCategories.MeatOrFish);
-            ngCategories.push(EFoodCategories.ComplexDinner);
-            ngCategories.push(EFoodCategories.Breat);
+            ngCategories.push(CategoryNames.Salat);
+            ngCategories.push(CategoryNames.First);
+            ngCategories.push(CategoryNames.Garnir);
+            ngCategories.push(CategoryNames.MeatOrFish);
+            ngCategories.push(CategoryNames.ComplexDinner);
+            ngCategories.push(CategoryNames.Breat);
 
             //eventManager.inst.subscribe(eventManager.dayOfWeekChanged, delegate(int n) { refresh(null); });
             //eventManager.inst.subscribe(eventManager.userIdChanged, delegate(int n) { refresh(null); });
@@ -101,27 +98,23 @@ namespace FoodApp.Client {
         }
 
         public void refreshFoods(JsAction complete) {
-            serviceHlp.inst.SendGet("json", FoodsUrl.c_sFoodsPrefix + "/",
-                delegate(object o, JsString s, jqXHR arg3) {
-                    ngFoods = o.As<JsArray<JsArray<ngFoodItem>>>();
+            JsService.Inst.FoodApi.GetAllFoods(delegate(JsArray<JsArray<ngFoodItem>> data) {
+                ngFoods = data;
+                _scope.apply();
 
-
-                    _scope.apply();
-
-                    if (null != complete) {
-                        complete();
-                    }
-                }, onRequestFailed);
+                if (null != complete) {
+                    complete();
+                }
+            });
         }
 
-       
 
         internal ngFoodItem findFoodById(string id) {
             ngFoodItem res = null;
 
             foreach (JsArray<ngFoodItem> dayItems in ngFoods) {
                 foreach (ngFoodItem item in dayItems) {
-                    if (item.FoodId ==id) {
+                    if (item.FoodId == id) {
                         res = item;
                         break;
                     }
@@ -129,9 +122,8 @@ namespace FoodApp.Client {
                 if (null != res) {
                     break;
                 }
-            
             }
-           
+
             return res;
         }
 
@@ -146,13 +138,10 @@ namespace FoodApp.Client {
 
         public void changePrice(int day, ngFoodItem ngFoodItem) {
             jsUtils.inst.showLoading();
-            serviceHlp.inst.SendPost("json",FoodsUrl.c_sChangePricePrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + ngFoodItem.FoodId + "/" +ngFoodItem.Price + "/",
-                new JsObject(),
-                delegate
-                {
-                    jsUtils.inst.hideLoading();
-                    refreshFoods( delegate() {});
-                }, onRequestFailed);
+            JsService.Inst.FoodApi.ChangePrice( day, ngFoodItem.FoodId, ngFoodItem.Price, delegate {
+                jsUtils.inst.hideLoading();
+                refreshFoods(delegate { });
+            });
         }
     }
 }

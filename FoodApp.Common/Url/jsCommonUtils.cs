@@ -1,7 +1,7 @@
 ﻿using SharpKit.Html;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Common.Url {
+namespace FoodApp.Common {
     [JsType(JsMode.Prototype, Filename = CommonApiResources._fileClientJs)]
     public class jsCommonUtils
     {

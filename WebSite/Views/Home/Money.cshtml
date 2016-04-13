@@ -1,0 +1,29 @@
+﻿@using angularjs
+@using FoodApp.Client
+@using FoodApp.Common
+@inherits System.Web.Mvc.WebViewPage
+
+@{
+    string orders = ajs.field((ngOrderController o) => o.ngOrderEntries);
+    string orderItem = "orderItem";
+    string foodId = orderItem + "." + ajs.field((ngOrderEntry o) => o.FoodId);
+    string isByWeight = ajs.method((ngOrderController o) => o.getFoodItem(foodId)) + "("+foodId+")." + ajs.field((ngFoodItem o) => o.IsByWeightItem);
+    string canBuy = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.canBuy);
+    string canRefund = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.canRefund);
+    string hasOrders = ajs.method((ngMoneyController o) => o.hasOrders()) + "()"; 
+    string total = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.total);
+}
+
+
+
+<div style="float: right;">
+    <p>На Рахунку {{@total}} грн</p>
+    <span ng-show="@hasOrders || @canRefund">
+    <button ng-show="@canBuy" class="btn btn-success foodBtn" 
+        ng-click="@ajs.method((ngMoneyController o) => o.buyMoneyClick()) ()">Оплатити</button>
+    <button ng-show="@canRefund" class="btn btn-success foodBtn" 
+        ng-click="@ajs.method((ngMoneyController o) => o.refundMoneyClick()) ()">Відмінити</button>
+        <span ng-show="@canRefund"><i><span class="glyphicon glyphicon-info-sign"></span>(відміна дозволить редагувати замовлення)</i></span>
+    <p ng-show="!@canRefund && !@canBuy">Недостатньо на рахунку</p>
+    </span>
+</div>

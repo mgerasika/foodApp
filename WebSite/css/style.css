@@ -184,6 +184,9 @@
     margin-right: 0px !important;
 }
 
+li.active {
+    background-color: #33a29d !important;
+}
 
 /*------------------------------------------/
 /-----------------Banner--------------------/
@@ -742,4 +745,17 @@ figure.effect-Beauty:hover p {
 
 .bottomBorder {
      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+     min-height: 100px;
+}
+
+.leftIcon {
+        background-color: #cb5750; opacity: 0.3; width: 0.5em;
+    }
+.orderedFoodItem .leftIcon{
+    background-color: #cb5750;
+    opacity: 1;
+}
+.foodButtonIsOrdered {
+    background-color: #cb5750!important;
+    cursor: none;
 }

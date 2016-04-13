@@ -1,5 +1,5 @@
 using System;
-using FoodApp.Common.Model;
+using FoodApp.Common;
 using FoodApp.Properties;
 using SharpKit.JavaScript;
 

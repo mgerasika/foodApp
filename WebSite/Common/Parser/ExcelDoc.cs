@@ -7,9 +7,11 @@ namespace FoodApp.Common.Parser
     {
         private readonly SpreadsheetEntry _entry;
         public List<ExcelTable> Tables = new List<ExcelTable>();
+        private SpreadsheetsService _service;
 
-        public ExcelDoc(SpreadsheetEntry entry) {
+        public ExcelDoc(SpreadsheetEntry entry,SpreadsheetsService service) {
             _entry = entry;
+            _service = service;
         }
 
 
@@ -35,9 +37,9 @@ namespace FoodApp.Common.Parser
             for (int i = 0; i < 5; ++i) {
                 WorksheetEntry worksheetEntry = GetWorksheetEntry(_entry, i);
 
-                ExcelTable table = new ExcelTable(i,this, worksheetEntry);
+                ExcelTable table = new ExcelTable(i,this, worksheetEntry,_service);
                 table.Title = worksheetEntry.Title.Text;
-                ExcelManager.Inst.Doc.Tables.Add(table);
+                this.Tables.Add(table);
                 table.Parse();
             }
         }

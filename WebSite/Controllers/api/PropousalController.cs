@@ -2,8 +2,6 @@
 using System.Web.Http;
 using FoodApp.Common;
 using FoodApp.Common.Managers;
-using FoodApp.Common.Model;
-using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
     public class PropousalController : ApiControllerBase

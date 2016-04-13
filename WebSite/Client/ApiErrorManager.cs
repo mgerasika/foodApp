@@ -29,7 +29,7 @@ namespace FoodApp.Client {
                     if (!string.IsNullOrEmpty(exception.StackTrace)) {
                         error.StackTrace = exception.StackTrace;
                     }
-                    error.UserName = ApiUtils.GetUser().Name;
+                    error.UserName = ApiUtils.GetLoggedInUser().Name;
                     try {
                         if (HttpContext.Current != null && HttpContext.Current.Request != null) {
                             error.Url = HttpContext.Current.Request.Url.ToString();

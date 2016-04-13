@@ -1,6 +1,6 @@
 using SharpKit.JavaScript;
 
-namespace FoodApp.Common.Model {
+namespace FoodApp.Common {
     [JsType(JsMode.Json, Filename = CommonApiResources._fileClientJs, Export = true)]
     public class ngUserModel : ngModelBase {
         public uint Column { get; set; }

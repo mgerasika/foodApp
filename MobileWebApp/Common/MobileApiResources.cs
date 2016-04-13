@@ -1,4 +1,4 @@
-﻿namespace FoodApp.Common.Url {
+﻿namespace MobileWebApp.Common {
     public class MobileApiResources
     {
         public const string _assemblyOutputPath = "www/scripts/gen.js";

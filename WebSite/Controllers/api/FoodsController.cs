@@ -1,17 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
-using FoodApp.Client;
 using FoodApp.Common;
-using FoodApp.Common.api;
 using FoodApp.Common.Managers;
-using FoodApp.Common.Model;
-using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
-    public class FoodsController : ApiControllerBase, IFoodsController
-    {
+    public class FoodsController : ApiControllerBase, IFoodsController {
         [HttpGet]
-        [Route(FoodsUrl.c_sFoodsPrefix + "/")]
+        [Route(FoodsUrl.c_sAllFoods)]
         public List<IList<ngFoodItem>> GetAllFoods() {
             List<IList<ngFoodItem>> allFoods = new List<IList<ngFoodItem>>();
             for (int i = 0; i < 5; ++i) {

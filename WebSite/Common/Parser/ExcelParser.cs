@@ -96,10 +96,9 @@ namespace FoodApp.Common.Parser {
                     SpreadsheetEntry entry = GetSpreadsheetEntry(feed);
                     Debug.Assert(null != entry);
                     sb.Append("<h1>" + entry.Title.Text + "</h1>");
-                    RenderWeek(entry);
+                    RenderWeek(entry,service);
 
-                    //fix food ids
-                    HistoryManager.Inst.FixFoodIds();
+                   
                     this.IsInit = true;
                 }
             }
@@ -123,9 +122,9 @@ namespace FoodApp.Common.Parser {
 
 
 
-        private void RenderWeek(SpreadsheetEntry entry)
+        private void RenderWeek(SpreadsheetEntry entry,SpreadsheetsService service)
         {
-            Doc = new ExcelDoc(entry);
+            Doc = new ExcelDoc(entry,service);
 
             Doc.Parse();
         }

@@ -1,20 +1,68 @@
 [
   {
     "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "Total": 200.0,
+    "Total": 100.0000,
     "MoneyOrders": [
       {
-        "Operation": 1,
-        "Id": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2015/12/10",
-        "DateTime": "2015-12-10T11:31:26.2703745+02:00",
-        "Value": 10.0
+        "Operation": 2,
+        "Id": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/3/3",
+        "DateTime": "2016-03-03T14:24:04.7794731+02:00",
+        "Value": 153.8000
       },
       {
-        "Operation": 1,
-        "Id": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2015/12/30",
-        "DateTime": "2015-12-30T06:50:15.2649632+02:00",
-        "Value": 10.0
+        "Operation": 2,
+        "Id": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/3/3",
+        "DateTime": "2016-03-03T14:26:25.3277267+02:00",
+        "Value": 43.1500
+      },
+      {
+        "Operation": 2,
+        "Id": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/3/9",
+        "DateTime": "2016-03-09T15:07:15.9516296+02:00",
+        "Value": 36.4000
+      },
+      {
+        "Operation": 2,
+        "Id": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/3/9",
+        "DateTime": "2016-03-09T15:08:05.908075+02:00",
+        "Value": 153.8000
+      },
+      {
+        "Operation": 3,
+        "Id": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+        "DateTime": "2016-04-12T16:47:02.8191998+03:00",
+        "Value": 8.00
       }
     ]
+  },
+  {
+    "UserId": "01258346-5281-4fd7-9234-d5eb994c534c",
+    "Total": 5.0,
+    "MoneyOrders": []
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "Total": 0.0,
+    "MoneyOrders": []
+  },
+  {
+    "UserId": "04258346-5281-4fd7-9234-d5eb994c534c",
+    "Total": 0.0,
+    "MoneyOrders": []
+  },
+  {
+    "UserId": "12258346-5281-4fd7-9234-d5eb994c534c",
+    "Total": 0.0,
+    "MoneyOrders": []
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "Total": 0.0,
+    "MoneyOrders": []
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "Total": 0.0,
+    "MoneyOrders": []
   }
 ]

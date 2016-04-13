@@ -2,14 +2,13 @@
 @using angularjs
 @using FoodApp.Client
 @using FoodApp.Common
-@using FoodApp.Controllers
 @inherits System.Web.Mvc.WebViewPage
 @{
     Layout = "~/Views/Layout1.cshtml";
-    string imgUrl = ApiUtils.GetUser().Picture;
-    string googleName = ApiUtils.GetUser().GoogleName;
-    string name = ApiUtils.GetUser().Name;
-    bool isAdmin = true;// ApiUtils.GetUser().IsAdmin;
+    string imgUrl = ApiUtils.GetLoggedInUser().Picture;
+    string googleName = ApiUtils.GetLoggedInUser().GoogleName;
+    string name = ApiUtils.GetLoggedInUser().Name;
+    bool isAdmin = ApiUtils.GetLoggedInUser().IsAdmin;
 }
 
 
@@ -18,19 +17,18 @@
 
 <div>
     <div class="navbar menubar" id="menu" style="position: fixed; top: 0px; width: 100%; z-index: 4;">
-        <div class="container">
+        <div class="container" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
                     <span class="glyphicon glyphicon-align-justify"></span>
                 </button>
                 <div style="">
                     <a class="navbar-brand" style="color: white; font-size: 2.2em;" href="#">Гам-Гам</a><br/>
-                     @if (!string.IsNullOrEmpty(name))
-                    {
-                        <div style="color: white; white-space:  pre-line; word-wrap: break-word;">@name</div>
+                    @if (!string.IsNullOrEmpty(name)) {
+                        <div style="color: white; white-space: pre-line; word-wrap: break-word;">@name</div>
                     }
                 </div>
-              
+
             </div>
             <div>
                 <nav class="collapse navbar-collapse" class="nav nav-tabs" role="tablist">
@@ -39,24 +37,24 @@
                     @if (!string.IsNullOrEmpty(imgUrl)) {
                         <div style="background-image: url('@imgUrl'); background-size: cover; float: left; height: 5em; width: 5em;"></div>
                     }
-                    
+
 
                     <ul id="tab" class="nav navbar-nav navbar-right navstyle">
 
                         <li>
-                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header0" class="page-scroll">Понеділок</a>
+                            <a day="0" aria-controls="home" role="tab" data-toggle="tab" href="#header0" class="page-scroll">Понеділок</a>
                         </li>
                         <li>
-                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header1" class="page-scroll">Вівторок</a>
+                            <a day="1" aria-controls="home" role="tab" data-toggle="tab" href="#header1" class="page-scroll">Вівторок</a>
                         </li>
                         <li>
-                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header2" class="page-scroll">Середа</a>
+                            <a day="2" aria-controls="home" role="tab" data-toggle="tab" href="#header2" class="page-scroll">Середа</a>
                         </li>
                         <li>
-                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header3" class="page-scroll">Четвер</a>
+                            <a day="3" aria-controls="home" role="tab" data-toggle="tab" href="#header3" class="page-scroll">Четвер</a>
                         </li>
                         <li>
-                            <a aria-controls="home" role="tab" data-toggle="tab" href="#header4" class="page-scroll">Пятниця</a>
+                            <a day="4" aria-controls="home" role="tab" data-toggle="tab" href="#header4" class="page-scroll">Пятниця</a>
                         </li>
                         <li style="display: none;">
                             <a aria-controls="home" role="tab" data-toggle="tab" href="#_FavoriteHeader" class="page-scroll">Favorite</a>
@@ -64,11 +62,11 @@
                         <li style="display: none;">
                             <a aria-controls="home" role="tab" data-toggle="tab" href="#_HistoryHeader" class="page-scroll">History</a>
                         </li>
-                           @if (isAdmin) {
-                               <li >
-                                   <a aria-controls="home" role="tab" data-toggle="tab" href="#settings" class="page-scroll">{{@isAdmin}}Налаштування</a>
-                               </li>
-                           }
+                        @if (isAdmin) {
+                            <li >
+                                <a aria-controls="home" role="tab" data-toggle="tab" href="#settings" class="page-scroll">{{@isAdmin}}Налаштування</a>
+                            </li>
+                        }
                         <li>
                             <a aria-controls="home" role="tab" data-toggle="tab" href="#contact" class="page-scroll">Контакти</a>
                         </li>
@@ -82,101 +80,113 @@
 
 <div ng-controller="@ajs.getClass((ngAppController o) => o)" style="margin-top: 70px;">
     <div ng-controller="@ajs.getClass((ngOrderController o) => o)">
+        <div ng-controller="@ajs.getClass((ngToolsController o) => o)">
         <div ng-controller="@ajs.getClass((ngPropousalContoller o) => o)">
-        <div ng-controller="@ajs.getClass((ngFoodController o) => o)" class="tab-content">
+            <div ng-controller="@ajs.getClass((ngMoneyController o) => o)">
+                <div ng-controller="@ajs.getClass((ngFoodController o) => o)" class="tab-content">
 
-            
+                       <div id="error" style="position: absolute; display: none; left: 25%; top: 1%; z-index: 10; width: 50%;" class="alert alert-danger fade in">
+                            <a href="#" class="close" onclick="this.parent.style.display = 'none'">&times;</a>
+                            <strong>Cталась помилка!</strong>.
+                        </div>
 
-            <div id="header{{day.idx}}" role="tabpanel" class="tab-pane fade in" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
-                <div style="background-color: white; position: fixed; top: 70px; width: 100%; z-index: 4;">
-                    <div class="container">
-                        <div class="row bottomBorder" style="height: 100px;">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="alldesc">
-                                    <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
-                                        <p class="all-td">&nbsp;</p>
-                                        <h2>{{day.name}}</h2>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
-                                        <p class="desc">
-                                            
-                                            @{ Html.RenderPartial("Orders", "day.idx"); }
-                                        </p>
+
+                    <div id="header{{day.idx}}" role="tabpanel" class="tab-pane fade in" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
+                        <div style="background-color: white; position: fixed; top: 70px; width: 100%; z-index: 4;">
+                            <div class="container">
+                                <div class="row bottomBorder">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="alldesc">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
+                                                <p class="all-td">&nbsp;</p>
+                                                <h2>{{day.name}}</h2>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
+                                                <p class="desc">
+
+                                                    <div style="float: left; width: 75%;"> @{ Html.RenderPartial("Orders", "day.idx"); }&nbsp;</div>
+                                                    <div style="float: left; width: 25%;"> @{ Html.RenderPartial("Money"); }&nbsp;</div>
+
+
+
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="container">
+                        <div class="container">
 
-                    <div class="features" style="margin-top: 100px;">
+                            <div class="features" style="margin-top: 100px;">
+                                <div class="container">
+                                    <div class="row">
+                                        @{ Html.RenderPartial("Propousal", "day.idx"); }
+                                        @{ Html.RenderPartial("Foods", "day.idx"); }
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (isAdmin) {
+                        <div id="settings" role="tabpanel" class="tab-pane fade in">
+                            <div style="background-color: white; position: fixed; top: 70px; width: 100%; z-index: 4;">
+                                <div class="container">
+                                    <div class="row bottomBorder">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="alldesc">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
+                                                    <p class="all-td">&nbsp;</p>
+                                                    <h2>Налаштування</h2>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
+                                                    <p class="desc">
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+
+                                <div class="features" style="margin-top: 100px;">
+                                    <div class="container">
+                                        <div class="row">
+                                            @{ Html.RenderPartial("Settings"); }
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    <div id="contact" role="tabpanel" class="address tab-pane fade in">
                         <div class="container">
                             <div class="row">
-                                @{ Html.RenderPartial("Propousal", "day.idx"); }
-                                @{ Html.RenderPartial("Foods", "day.idx"); }
-                            </div>
-                        </div>
-                        <div style="clear: both;"></div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <div id="settings" role="tabpanel" class="tab-pane fade in">
-                <div style="background-color: white; position: fixed; top: 70px; width: 100%; z-index: 4;">
-                    <div class="container">
-                        <div class="row bottomBorder" style="height: 100px;">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="alldesc">
-                                    <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
-                                        <p class="all-td">&nbsp;</p>
-                                        <h2>Налаштування</h2>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
-                                        <p class="desc">
-                                        </p>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="alldesc">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px;">
+                                            <p class="all-td"></p>
+                                            <h2>Контакти</h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
+                                            <p>Email : mgerasika@gmail.com</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="container">
-
-                    <div class="features" style="margin-top: 100px;">
-                        <div class="container">
-                            <div class="row">
-                                @{ Html.RenderPartial("Settings"); }
-                            </div>
-                        </div>
-                        <div style="clear: both;"></div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div id="contact" role="tabpanel" class="address tab-pane fade in">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="alldesc">
-                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px;">
-                                    <p class="all-td"></p>
-                                    <h2>Контакти</h2>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
-                                    <p>Email : mgerasika@gmail.com</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                      </div>
                 </div>
             </div>
         </div>
-    </div></div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -188,19 +198,23 @@
         if (day > 4) {
             day = 0;
         }
+        onTabChanged(day);
         var id = '#tab a[href="#header' + day + '"]';
         $(id).tab('show');
         var active = $(id);
         active.addClass('active');
 
         $('#tab a').click(function(e) {
-            if (active != $(this)) {
+            if (active != $(this) && $(this).attr("day") != undefined) {
                 active.removeClass('active');
                 e.preventDefault();
                 $(this).tab('show');
+                if ($(this).attr("day") != undefined){
+                    onTabChanged($(this).attr("day"));
+                }
             }
         });
     });
 
+    
 </script>
-

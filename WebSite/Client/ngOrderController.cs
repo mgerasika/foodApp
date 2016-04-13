@@ -1,9 +1,5 @@
 using angularjs;
 using FoodApp.Common;
-using FoodApp.Common.Model;
-using FoodApp.Common.Url;
-using FoodApp.Controllers;
-using FoodApp.Controllers.api;
 using FoodApp.Properties;
 using SharpKit.jQuery;
 using SharpKit.JavaScript;
@@ -64,30 +60,35 @@ namespace FoodApp.Client {
             eventManager.inst.subscribe(eventManager.orderCompleted, delegate(int n) { refreshOrders(); });
         }
 
-        public void deleteOrder(int day, string row) {
+        public void deleteOrder(int day, string foodId) {
             jsUtils.inst.showLoading();
-            serviceHlp.inst.SendDelete("json",
-                OrderUrl.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserId + "/" + day + "/" + row + "/",
-                new JsObject(), delegate {
-                    jsUtils.inst.hideLoading();
-                    refreshOrders();
-                }, onRequestFailed);
+
+            JsService.Inst.OrderApi.DeleteOrder( day, foodId, delegate(bool res) {
+                jsUtils.inst.hideLoading();
+                refreshOrders();
+
+                if (!res) {
+                    showErrorPopup();
+                }
+            });
         }
 
         public void refreshOrders() {
-            serviceHlp.inst.SendGet("json",
-                OrderUrl.c_sOrdersPrefix + "/" + ngAppController.inst.ngUserId + "/",
-                delegate(object o, JsString s, jqXHR arg3) {
-                    JsArray<JsArray<ngOrderEntry>> tmp = o.As<JsArray<JsArray<ngOrderEntry>>>();
-                    while (ngOrderEntries.length > 0) {
-                        ngOrderEntries.pop();
-                    }
-                    foreach (JsArray<ngOrderEntry> obj in tmp) {
-                        ngOrderEntries.push(obj);
-                    }
-                    eventManager.inst.fire(eventManager.orderListChanged,ngOrderEntries);
-                    _scope.apply();
-                }, onRequestFailed);
+
+            JsService.Inst.OrderApi.GetOrders( delegate(JsArray<JsArray<ngOrderEntry>> data) {
+                JsArray<JsArray<ngOrderEntry>> tmp = data;
+                while (ngOrderEntries.length > 0)
+                {
+                    ngOrderEntries.pop();
+                }
+                foreach (JsArray<ngOrderEntry> obj in tmp)
+                {
+                    ngOrderEntries.push(obj);
+                }
+                eventManager.inst.fire(eventManager.orderListChanged, ngOrderEntries);
+                _scope.apply();
+            });
+          
         }
 
         public JsArray<ngOrderEntry> getOrders(int day) {
@@ -98,7 +99,7 @@ namespace FoodApp.Client {
             ngOrderEntry res = null;
             JsArray<ngOrderEntry> orders = inst.getOrders(day);
             foreach (ngOrderEntry order in orders) {
-                if (order.FoodId==foodId) {
+                if (order.FoodId == foodId) {
                     res = order;
                     break;
                 }

@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web;
 using FoodApp.Common.Managers;
-using FoodApp.Common.Model;
 
 namespace FoodApp.Common {
     public class ApiUtils {
-        //
-        
-
 #if DEBUG
         public const string REDIRECT_URL = "http://localhost:15845/";
         public const string c_sExcelFileName = "mykhaylo_test";
+        //public const string c_sExcelFileName = "Меню на тиждень";
 #else
         public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
         public const string c_sExcelFileName = "Меню на тиждень";
@@ -27,10 +24,10 @@ namespace FoodApp.Common {
 
         public static string GetSessionUserId() {
             string res = null;
-            if (null != HttpContext.Current.Session) {
+            if (null != HttpContext.Current && null != HttpContext.Current.Session) {
                 res = HttpContext.Current.Session["userId"] as string;
             }
-            if (String.IsNullOrEmpty(res)) {
+            if (string.IsNullOrEmpty(res)) {
                 HttpRequest request = GetHttpRequest();
                 if (null != request) {
                     HttpCookie httpCookie = request.Cookies.Get("userId");
@@ -42,10 +39,10 @@ namespace FoodApp.Common {
             return res;
         }
 
-        public static ngUserModel GetUser() {
+        public static ngUserModel GetLoggedInUser() {
             ngUserModel res = null;
             string id = GetSessionUserId();
-            if (!String.IsNullOrEmpty(id)) {
+            if (!string.IsNullOrEmpty(id)) {
                 ngUserModel userById = UsersManager.Inst.GetUserById(id);
                 Debug.Assert(null != userById);
                 res = userById;
@@ -184,28 +181,33 @@ namespace FoodApp.Common {
         }
 
         public static List<ngOrderEntry> AddContainersToFood(ngUserModel user, int day, List<ngOrderEntry> orders) {
-            List<ngOrderEntry> res = new List<ngOrderEntry>();
+            List<ngOrderEntry> filteredOrders = RemoveContainers(orders, day);
 
-            List<ngFoodItem> foods = OrderManager.Inst.GetOrderedFoods(user, day);
             int smallContainersCount = 0;
             int bigContainersCount = 0;
 
             int meathOrFish = 0;
             int garnirOrSalat = 0;
-            foreach (ngFoodItem food in foods) {
-                if (food.isFirst) {
-                    smallContainersCount++;
-                    if (food.isKvasolevaOrChanachi) {
+            foreach (ngOrderEntry order in orders) {
+                if (order.Count > 0) {
+                    ngFoodItem food = FoodManager.Inst.GetFoodById(day, order.FoodId);
+                    Debug.Assert(null != food);
+
+                    if (food.isFirst) {
                         smallContainersCount++;
+                        if (food.isKvasolevaOrChanachi) {
+                            smallContainersCount++;
+                        }
+                    }
+                    else if (food.isMeatOrFish) {
+                        meathOrFish++;
+                    }
+                    else if (food.isSalat || food.isGarnir) {
+                        garnirOrSalat++;
                     }
                 }
-                else if (food.isMeatOrFish) {
-                    meathOrFish++;
-                }
-                else if (food.isSalat || food.isGarnir) {
-                    garnirOrSalat++;
-                }
             }
+           
             if ((garnirOrSalat == 1 && meathOrFish == 0) || (garnirOrSalat == 0 && meathOrFish == 1)) {
                 smallContainersCount++;
             }
@@ -216,13 +218,8 @@ namespace FoodApp.Common {
                 }
             }
 
-            // remove containers
-            foreach (ngOrderEntry order in orders) {
-                ngFoodItem ngFoodItem = FoodManager.Inst.GetFoodById(day, order.FoodId);
-                if (!ngFoodItem.isContainer) {
-                    res.Add(order);
-                }
-            }
+            List<ngOrderEntry> res = new List<ngOrderEntry>();
+            res.AddRange(filteredOrders);
 
             //update small containers cout
             ngFoodItem foodSmallContainer = FoodManager.Inst.GetSmallContainer(day);
@@ -243,17 +240,29 @@ namespace FoodApp.Common {
             return res;
         }
 
+        private static List<ngOrderEntry> RemoveContainers(List<ngOrderEntry> orders, int day) {
+            List<ngOrderEntry> res = new List<ngOrderEntry>();
+            // remove containers
+            foreach (ngOrderEntry order in orders) {
+                ngFoodItem ngFoodItem = FoodManager.Inst.GetFoodById(day, order.FoodId);
+                if (!ngFoodItem.isContainer) {
+                    res.Add(order);
+                }
+            }
+            return res;
+        }
+
 
         internal static bool TryDecimalParse(string str, out decimal lPrice) {
             bool res = false;
-            if (!String.IsNullOrEmpty(str)) {
+            if (!string.IsNullOrEmpty(str)) {
                 str = str.Replace("грн.", "");
                 str = str.Replace("грн ", "");
                 str = str.Replace(",", ".");
                 str = str.Replace("-", ".");
                 str = str.Replace(" ", "");
 
-                res = Decimal.TryParse(str, out lPrice);
+                res = decimal.TryParse(str, out lPrice);
             }
             else {
                 lPrice = 0;
@@ -268,17 +277,13 @@ namespace FoodApp.Common {
         public static bool Equals(string foodId1, string foodId2) {
             bool res = foodId1.Equals(foodId2, StringComparison.OrdinalIgnoreCase);
             return res;
-
         }
 
-        public static bool IsSeamsFoodIds(string foodId1, string foodid2)
-        {
+        public static bool IsSeamsFoodIds(string foodId1, string foodid2) {
             bool res = false;
 
-            do
-            {
-                if (foodId1.Equals(foodid2))
-                {
+            do {
+                if (foodId1.Equals(foodid2)) {
                     res = true;
                     break;
                 }
@@ -286,28 +291,23 @@ namespace FoodApp.Common {
                 int lenDiff = Math.Abs(foodId1.Length - foodid2.Length);
                 const double coef = 0.1;
                 const int compare = 3;
-                if (foodId1.Length * coef < lenDiff || foodid2.Length * coef < lenDiff)
-                {
+                if (foodId1.Length*coef < lenDiff || foodid2.Length*coef < lenDiff) {
                     break;
                 }
 
                 int equalsCount = 0;
                 int symbCount = Math.Min(foodId1.Length, foodId1.Length);
-                for (int i = 0; i < symbCount; i++)
-                {
-                    if (foodId1.Length > i + compare)
-                    {
+                for (int i = 0; i < symbCount; i++) {
+                    if (foodId1.Length > i + compare) {
                         string tmp = foodId1.Substring(i, compare);
-                        if (foodid2.Contains(tmp))
-                        {
+                        if (foodid2.Contains(tmp)) {
                             equalsCount++;
                         }
                     }
                 }
 
                 int seamsDiff = Math.Abs(symbCount - equalsCount);
-                if (equalsCount * coef < seamsDiff)
-                {
+                if (equalsCount*coef < seamsDiff) {
                     break;
                 }
                 res = true;

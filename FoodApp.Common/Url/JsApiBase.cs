@@ -2,7 +2,7 @@ using SharpKit.Html;
 using SharpKit.jQuery;
 using SharpKit.JavaScript;
 
-namespace FoodApp.Common.Url {
+namespace FoodApp.Common {
     [JsType(JsMode.Prototype, Filename = CommonApiResources._fileClientJs)]
     public abstract class JsApiBase {
         protected string _userId;
@@ -10,6 +10,10 @@ namespace FoodApp.Common.Url {
         public JsApiBase(string serverUrl,string userId) {
             _serverUrl = serverUrl;
             _userId = userId;
+        }
+
+        public string getUserId() {
+            return _userId;
         }
 
         public object Deserealize(object obj) {
@@ -62,5 +66,41 @@ namespace FoodApp.Common.Url {
                 }
             });
         }
+
+        protected void SendPost<T>( JsString url, object data, JsHandler<T> handler)
+        {
+            SendInternal("post",  url, data, handler);
+        }
+
+        protected void SendDelete<T>(JsString url, JsHandler<T> handler)
+        {
+            SendInternal("delete", url, null, handler);
+        }
+
+        private void SendInternal<T>(string httpMethod,  JsString url, object data, JsHandler<T> handler)
+        {
+            string serverUrl = _serverUrl;
+            url = jsCommonUtils.inst.appendQueryToUrl(serverUrl + url, "time=" + new JsDate().getTime());
+
+            JsObject headers = new JsObject();
+            AjaxSettings ajaxSettings = new AjaxSettings
+            {
+                type = httpMethod,
+                dataType = "json",
+                data = data,
+                url = url,
+                headers = headers,
+                success = delegate (object o, JsString s, jqXHR arg3) { handler(o.As<T>()); },
+                error = delegate (jqXHR xhr, JsString s, JsError arg3) {
+                    HtmlContext.alert(arg3);
+                }
+            };
+           
+
+            jQuery.ajax(
+                ajaxSettings);
+        }
+
+       
     }
 }

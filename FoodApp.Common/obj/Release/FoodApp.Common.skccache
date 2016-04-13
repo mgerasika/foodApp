@@ -2,26 +2,37 @@
 <Manifest SkcVersion="5.5.0" DefinedSymbols="TRACE">
   <SkcFile Filename="C:\Program Files (x86)\SharpKit\5\Compiler\skc5.exe" Modified="-8587501627658294931" />
   <SourceFiles>
-    <ManifestFile Filename="CommonUtils.cs" Modified="-8587471971659596478" />
-    <ManifestFile Filename="api\IFoodsController.cs" Modified="-8587471980769577497" />
-    <ManifestFile Filename="api\IOrderController.cs" Modified="-8587471983432127412" />
-    <ManifestFile Filename="Common\CommonApiResources.cs" Modified="-8587465875526813291" />
-    <ManifestFile Filename="Model\ngFoodItem.cs" Modified="-8587471981100797542" />
-    <ManifestFile Filename="Model\ngFoodRate.cs" Modified="-8587471981100953513" />
-    <ManifestFile Filename="Model\ngHistoryEntry.cs" Modified="-8587471981100953513" />
-    <ManifestFile Filename="Model\ngHistoryGroupEntry.cs" Modified="-8587471981100797542" />
-    <ManifestFile Filename="Model\ngModelBase.cs" Modified="-8587471982700236145" />
-    <ManifestFile Filename="Model\ngOrderEntry.cs" Modified="-8587471980847706725" />
-    <ManifestFile Filename="Model\ngUserModel.cs" Modified="-8587471980847706725" />
+    <ManifestFile Filename="api\IMoneyController.cs" Modified="-8587446139217311482" />
+    <ManifestFile Filename="Common\CommonUtils.cs" Modified="-8587471971659596478" />
+    <ManifestFile Filename="api\IFoodsController.cs" Modified="-8587446139171029977" />
+    <ManifestFile Filename="api\IOrderController.cs" Modified="-8587465043243849539" />
+    <ManifestFile Filename="Common\CommonApiResources.cs" Modified="-8587465043200443079" />
+    <ManifestFile Filename="Common\CategoryNames.cs" Modified="-8587446141724171625" />
+    <ManifestFile Filename="Common\jsUtils.cs" Modified="-8587465075575496119" />
+    <ManifestFile Filename="Common\eventManager.cs" Modified="-8587446042290372654" />
+    <ManifestFile Filename="Model\ngFoodItem.cs" Modified="-8587411394479651688" />
+    <ManifestFile Filename="Model\ngFoodRate.cs" Modified="-8587465043243809673" />
+    <ManifestFile Filename="Model\ngHistoryEntry.cs" Modified="-8587465043243799712" />
+    <ManifestFile Filename="Model\ngHistoryGroupEntry.cs" Modified="-8587465043243779692" />
+    <ManifestFile Filename="Model\ngModelBase.cs" Modified="-8587465043243749429" />
+    <ManifestFile Filename="Model\ngOrderEntry.cs" Modified="-8587465043243739714" />
+    <ManifestFile Filename="Model\ngUserModel.cs" Modified="-8587465043243719691" />
+    <ManifestFile Filename="ngFoodFilter.cs" Modified="-8587465043200323399" />
     <ManifestFile Filename="Properties\AssemblyInfo.cs" Modified="-8587471984789454692" />
-    <ManifestFile Filename="Url\FoodsUrl.cs" Modified="-8587465869098858832" />
-    <ManifestFile Filename="Url\HistoryUrl.cs" Modified="-8587465892468232374" />
-    <ManifestFile Filename="Url\JsApiBase.cs" Modified="-8587465100669295229" />
-    <ManifestFile Filename="Url\jsCommonUtils.cs" Modified="-8587465893799380344" />
-    <ManifestFile Filename="Url\JsFoodApi.cs" Modified="-8587465164967195641" />
-    <ManifestFile Filename="Url\JsHandler.cs" Modified="-8587465892954278267" />
-    <ManifestFile Filename="Url\OrderUrl.cs" Modified="-8587465892468432424" />
-    <ManifestFile Filename="Url\PropousalUrl.cs" Modified="-8587465892468602213" />
+    <ManifestFile Filename="Common\ajaxHlp.cs" Modified="-8587465040230019304" />
+    <ManifestFile Filename="Url\FoodsUrl.cs" Modified="-8587410829252272557" />
+    <ManifestFile Filename="Url\HistoryUrl.cs" Modified="-8587465043243669681" />
+    <ManifestFile Filename="Url\JsApiBase.cs" Modified="-8587411461933704742" />
+    <ManifestFile Filename="Url\jsCommonUtils.cs" Modified="-8587465043243539695" />
+    <ManifestFile Filename="Url\JsFoodApi.cs" Modified="-8587446122843880939" />
+    <ManifestFile Filename="Url\JsHandler.cs" Modified="-8587465043243509807" />
+    <ManifestFile Filename="Url\JsMoneyApi.cs" Modified="-8587411448016716983" />
+    <ManifestFile Filename="Url\JsOrderApi.cs" Modified="-8587447848214686881" />
+    <ManifestFile Filename="Url\JsService.cs" Modified="-8587446122844170685" />
+    <ManifestFile Filename="Url\MoneyUrl.cs" Modified="-8587411451056010255" />
+    <ManifestFile Filename="Url\OrderUrl.cs" Modified="-8587464341043834812" />
+    <ManifestFile Filename="Url\PropousalUrl.cs" Modified="-8587465043243569706" />
+    <ManifestFile Filename="Url\ToolsUrl.cs" Modified="-8587410829311643579" />
     <ManifestFile Filename="C:\Users\Mykhaylo Herasika\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cs" Modified="-8587501639310904083" />
     <ManifestFile Filename="obj\Release\\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" Modified="-8587469138642225673" />
     <ManifestFile Filename="obj\Release\\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" Modified="-8587469138642225673" />
@@ -29,6 +40,7 @@
   </SourceFiles>
   <ContentFiles />
   <ReferencedFiles>
+    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587411415065269254" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Microsoft.CSharp.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\SharpKit.Html.5.4.9\lib\SharpKit.Html.dll" Modified="-8587561905198702577" />

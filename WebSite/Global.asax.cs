@@ -24,6 +24,10 @@ namespace FoodApp {
             HistoryManager.Inst.Fix();
             ApiTraceManager.Inst.LogTrace("Application start");
 
+            CultureInfo info = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = info;
+            Thread.CurrentThread.CurrentUICulture = info;
+
             /*
             ngUserModel user = UsersManager.Inst.GetUserByEmail("mgerasika@gmail.com");
             string orderId = OrderManager.Inst.GetOrderId(user,3);

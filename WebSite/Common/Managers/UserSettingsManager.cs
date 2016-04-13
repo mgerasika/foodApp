@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using FoodApp.Client;
-using FoodApp.Common.Model;
 
 namespace FoodApp.Common.Managers {
     public class UserSettingsManager : ManagerBase<ngUsersSettingsModel> {

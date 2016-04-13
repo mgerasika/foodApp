@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Timers;
 using FoodApp.Client;
-using FoodApp.Common.Model;
 using FoodApp.Common.Parser;
 
 namespace FoodApp.Common.Managers {
@@ -21,23 +20,27 @@ namespace FoodApp.Common.Managers {
             //start sunday
             if (DateTime.Now.Hour == 16)
             {
-                DateTime dt = DateTime.Now;
-                int dayOfWeek = (int) dt.DayOfWeek - 1;
-                if (OrderManager.Inst.HasOrders(dayOfWeek)) {
-                    Dictionary<ngUserModel, List<ngOrderEntry>> res = new Dictionary<ngUserModel, List<ngOrderEntry>>();
-                    List<ngUserModel> users = UsersManager.Inst.GetUniqueUsers();
-                    foreach (ngUserModel user in users) {
-                        List<ngOrderEntry> orders = OrderManager.Inst.GetOrders(user, dayOfWeek);
-                        if (orders.Count > 0) {
-                            res.Add(user, orders);
-                            foreach (ngOrderEntry order in orders) {
-                                order.Count = 0;
-                            }
+                ClearTodayOrders();
+            }
+        }
+
+        public void ClearTodayOrders() {
+            DateTime dt = DateTime.Now;
+            int dayOfWeek = (int) dt.DayOfWeek - 1;
+            if (OrderManager.Inst.HasOrders(dayOfWeek)) {
+                Dictionary<ngUserModel, List<ngOrderEntry>> res = new Dictionary<ngUserModel, List<ngOrderEntry>>();
+                List<ngUserModel> users = UsersManager.Inst.GetUniqueUsers();
+                foreach (ngUserModel user in users) {
+                    List<ngOrderEntry> orders = OrderManager.Inst.GetOrders(user, dayOfWeek);
+                    if (orders.Count > 0) {
+                        res.Add(user, orders);
+                        foreach (ngOrderEntry order in orders) {
+                            order.Count = 0;
                         }
                     }
-
-                    BatchCellUpdater.Update(dayOfWeek, res);
                 }
+
+                BatchCellUpdater.Update(dayOfWeek, res);
             }
         }
 

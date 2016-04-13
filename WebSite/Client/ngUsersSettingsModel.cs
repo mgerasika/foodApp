@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using FoodApp.Common;
 using FoodApp.Common.Managers;
-using FoodApp.Common.Model;
 using FoodApp.Properties;
 using SharpKit.JavaScript;
 

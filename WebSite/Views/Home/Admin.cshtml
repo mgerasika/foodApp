@@ -6,9 +6,9 @@
 @inherits System.Web.Mvc.WebViewPage
 @{
     Layout = "~/Views/Layout1.cshtml";
-    string imgUrl = ApiUtils.GetUser().Picture;
-    string googleName = ApiUtils.GetUser().GoogleName;
-    string name = ApiUtils.GetUser().Name;
+    string imgUrl = ApiUtils.GetLoggedInUser().Picture;
+    string googleName = ApiUtils.GetLoggedInUser().GoogleName;
+    string name = ApiUtils.GetLoggedInUser().Name;
     bool isAdmin = true;// ApiUtils.GetUser().IsAdmin;
 }
 
@@ -78,7 +78,7 @@
             <div id="header{{day.idx}}" role="tabpanel" class="tab-pane fade in" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
                 <div style="background-color: white; position: fixed; top: 70px; width: 100%; z-index: 4;">
                     <div class="container">
-                        <div class="row bottomBorder" style="height: 100px;">
+                        <div class="row bottomBorder" style="">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="alldesc">
                                     <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">

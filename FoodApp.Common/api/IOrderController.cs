@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using FoodApp.Common.Model;
-using FoodApp.Common.Url;
 
-namespace FoodApp.Common.api {
+namespace FoodApp.Common {
     public interface IOrderController {
         IList<IList<ngOrderEntry>> GetAllOrders(string userId);
 

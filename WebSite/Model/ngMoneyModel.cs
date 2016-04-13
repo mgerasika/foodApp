@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using FoodApp.Common.Model;
+using FoodApp.Common;
 using FoodApp.Properties;
 using SharpKit.JavaScript;
 
@@ -12,6 +12,11 @@ namespace FoodApp.Model {
 
         public string UserId { get; set; }
         public decimal Total { get; set; }
+
         public List<ngMoneyOrderModel> MoneyOrders { get; set; }
+
+        internal void DeleteOrder(ngMoneyOrderModel moneyOrder) {
+            MoneyOrders.Remove(moneyOrder);
+        }
     }
 }

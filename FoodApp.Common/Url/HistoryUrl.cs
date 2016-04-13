@@ -1,6 +1,6 @@
 ﻿using SharpKit.JavaScript;
 
-namespace FoodApp.Common.Url {
+namespace FoodApp.Common {
     [JsType(JsMode.Prototype, Filename = CommonApiResources._fileClientJs, Export = true)]
     public class HistoryUrl : UrlBase
     {

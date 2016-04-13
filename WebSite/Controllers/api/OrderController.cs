@@ -2,10 +2,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using FoodApp.Client;
 using FoodApp.Common;
-using FoodApp.Common.api;
 using FoodApp.Common.Managers;
-using FoodApp.Common.Model;
-using FoodApp.Common.Url;
 
 namespace FoodApp.Controllers.api {
     public class OrderController : ApiControllerBase, IOrderController {
@@ -23,7 +20,7 @@ namespace FoodApp.Controllers.api {
         }
 
         [HttpGet]
-        [Route(OrderUrl.c_sGetOrders)]
+        [Route(OrderUrl.c_sGetOrdersByDay)]
         public IList<ngOrderEntry> GetOrders(string userId, int day) {
             ngUserModel user = UsersManager.Inst.GetUserById(userId);
             List<ngOrderEntry> items = OrderManager.Inst.GetOrders(user, day);

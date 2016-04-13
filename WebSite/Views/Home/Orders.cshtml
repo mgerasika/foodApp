@@ -1,7 +1,6 @@
 ﻿@using angularjs
 @using FoodApp.Client
 @using FoodApp.Common
-@using FoodApp.Common.Model
 @inherits System.Web.Mvc.WebViewPage
 
 @{
@@ -10,11 +9,17 @@
     string orderItem = "orderItem";
     string foodId = orderItem + "." + ajs.field((ngOrderEntry o) => o.FoodId);
     string isByWeight = ajs.method((ngOrderController o) => o.getFoodItem(foodId)) + "("+foodId+")." + ajs.field((ngFoodItem o) => o.IsByWeightItem);
+    string canRefund = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.canRefund);
 }
 
+<style type="text/css">
+    button[disabled='disabled'] {
+        opacity: 0.3;
+    }
+</style>
 
 
-<div style="width: 100%;" ng-show="@orders [@dayOfWeek] .length>0">
+<div style="float: left;" ng-show="@orders [@dayOfWeek] .length>0">
     <p>
     Ціна замовлення: <i>
         {{@ajs.method((ngOrderController o) => o.getTotalPrice(0)) (@dayOfWeek) }}грн
@@ -27,8 +32,9 @@
             <div style="float: left;">&nbsp;{{@ajs.method((ngOrderController o) => o.formatCount(null)) (@orderItem)}}</div>
             <div style="float: left;" ng-show="@isByWeight"> гр</div>
             <div style="float: left;" ng-show="!@isByWeight"> шт</div>
-            <div class="glyphicon glyphicon-remove" style="color: #cb5750; cursor: pointer; float: left; font-weight: normal; line-height: 1.35em; opacity: 0.3;" ng-click="@ajs.method((ngOrderController o) => o.deleteOrder(0, null)) (@dayOfWeek,@orderItem .@ajs.field((ngOrderEntry o) => o.FoodId))">
-            </div>
+            <button ng-disabled="@canRefund" class="glyphicon glyphicon-remove" 
+                style="margin-top: -0.2em;color: #cb5750; cursor: pointer; float: left; font-weight: normal; line-height: 1.35em; " ng-click="@ajs.method((ngOrderController o) => o.deleteOrder(0, null)) (@dayOfWeek,@orderItem .@ajs.field((ngOrderEntry o) => o.FoodId))">
+            </button>
         </div>
 
     </div>

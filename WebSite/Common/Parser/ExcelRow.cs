@@ -105,6 +105,15 @@ namespace FoodApp.Common.Parser {
                         break;
                     }
                 }
+                else if (element.Column.Equals(ColumnNames.Description))
+                {
+                    string val = element.Value;
+                    if (!string.IsNullOrEmpty(val) && val.ToLower().Contains("складники"))
+                    {
+                        hasCaption = true;
+                        break;
+                    }
+                }
             }
 
             if (hasCaption) {
@@ -156,7 +165,7 @@ namespace FoodApp.Common.Parser {
 
 
             if (OriginalCategory != null && Name != null && OriginalCategory.Contains("Налисники") &&
-                !Name.Contains("Контейнери")) {
+                !IsContainer(Name)) {
                 Name = OriginalCategory + " " + Name;
             }
         }
@@ -164,34 +173,39 @@ namespace FoodApp.Common.Parser {
         public static string GetNewCategory(string category, string name) {
             string res = category;
             if (category.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
-                res = EFoodCategories.Salat;
+                res = CategoryNames.Salat;
             }
 
             else if (category.Equals("Гарніри", StringComparison.OrdinalIgnoreCase)) {
-                res = EFoodCategories.Garnir;
+                res = CategoryNames.Garnir;
             }
 
             else if (category.Equals("Перші страви", StringComparison.OrdinalIgnoreCase)) {
-                res = EFoodCategories.First;
+                res = CategoryNames.First;
             }
-            else if (name != null && name.Contains("Контейнери")) {
-                res = EFoodCategories.PlactisContainer;
+            else if (IsContainer(name))
+            {
+                res = CategoryNames.PlactisContainer;
             }
-            else if (name != null && name.Contains("батон")) {
-                res = EFoodCategories.Breat;
+            else if (name != null && name.ToLower().Contains("батон")) {
+                res = CategoryNames.Breat;
             }
-            else if (category.Contains("Комплексний")) {
-                res = EFoodCategories.ComplexDinner;
+            else if (category.ToLower().Contains("комплексний")) {
+                res = CategoryNames.ComplexDinner;
             }
-            else if (name != null && name.Contains("Налисники")) {
-                res = EFoodCategories.Garnir;
+            else if (name != null && name.ToLower().Contains("налисники")) {
+                res = CategoryNames.Garnir;
             }
 
             else {
-                res = EFoodCategories.MeatOrFish;
+                res = CategoryNames.MeatOrFish;
             }
 
             return res;
+        }
+
+        private static bool IsContainer(string name) {
+            return name != null && (name.ToLower().Contains("контейнери") || name.ToLower().Contains("контейнер"));
         }
 
         internal void MergeEntry(CellEntry newEntry) {
@@ -211,7 +225,7 @@ namespace FoodApp.Common.Parser {
 
         public bool IsByWeightItem() {
             bool res = false;
-            if (Category.Equals(EFoodCategories.Salat, StringComparison.OrdinalIgnoreCase)) {
+            if (Category.Equals(CategoryNames.Salat, StringComparison.OrdinalIgnoreCase)) {
                 res = true;
             }
             if (Name.Contains("Стегна кур.запечені") ||
@@ -234,7 +248,7 @@ namespace FoodApp.Common.Parser {
 
         public bool IsFirst() {
             bool res = false;
-            if (Category.Equals(EFoodCategories.First)) {
+            if (Category.Equals(CategoryNames.First)) {
                 res = true;
             }
             return res;
@@ -242,7 +256,7 @@ namespace FoodApp.Common.Parser {
 
         public bool IsMeatOrFish() {
             bool res = false;
-            if (Category.Equals(EFoodCategories.MeatOrFish)) {
+            if (Category.Equals(CategoryNames.MeatOrFish)) {
                 res = true;
             }
             return res;
@@ -250,7 +264,7 @@ namespace FoodApp.Common.Parser {
 
         public bool IsSalat() {
             bool res = false;
-            if (Category.Equals(EFoodCategories.Salat)) {
+            if (Category.Equals(CategoryNames.Salat)) {
                 res = true;
             }
             return res;
@@ -258,27 +272,24 @@ namespace FoodApp.Common.Parser {
 
         public bool IsGarnir() {
             bool res = false;
-            if (Category.Equals(EFoodCategories.Garnir)) {
+            if (Category.Equals(CategoryNames.Garnir)) {
                 res = true;
             }
             return res;
         }
 
         public bool IsKvasolevaOrChanachi() {
-            return Name.Contains(EFoodCategories.Kvasoleva) || Name.Contains(EFoodCategories.Chanachi);
+            return Name.Contains("Зупа фасол") || Name.Contains("Чанахи");
         }
 
         public bool IsContainer() {
-            bool res = false;
-            if (Name.Contains(EFoodCategories.PlactisContainer)) {
-                res = true;
-            }
+            bool res = IsContainer(this.Name);
             return res;
         }
 
         public bool IsSmallContainer() {
             bool res = false;
-            if (Name.Contains(EFoodCategories.PlactisContainer) && Name.Contains("1")) {
+            if (IsContainer(this.Name)&& Name.Contains("1")) {
                 res = true;
             }
             return res;
@@ -286,7 +297,8 @@ namespace FoodApp.Common.Parser {
 
         public bool IsBigContainer() {
             bool res = false;
-            if (Name.Contains(EFoodCategories.PlactisContainer) && Name.Contains("2")) {
+            if (IsContainer(this.Name) && Name.Contains("2"))
+            {
                 res = true;
             }
             return res;
