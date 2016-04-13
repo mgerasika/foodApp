@@ -24,11 +24,11 @@
     <ManifestFile Filename="Url\HistoryUrl.cs" Modified="-8587465043243669681" />
     <ManifestFile Filename="Url\JsApiBase.cs" Modified="-8587411461933704742" />
     <ManifestFile Filename="Url\jsCommonUtils.cs" Modified="-8587465043243539695" />
-    <ManifestFile Filename="Url\JsFoodApi.cs" Modified="-8587446122843880939" />
+    <ManifestFile Filename="Url\JsFoodApi.cs" Modified="-8587410760216640708" />
     <ManifestFile Filename="Url\JsHandler.cs" Modified="-8587465043243509807" />
     <ManifestFile Filename="Url\JsMoneyApi.cs" Modified="-8587411448016716983" />
-    <ManifestFile Filename="Url\JsOrderApi.cs" Modified="-8587447848214686881" />
-    <ManifestFile Filename="Url\JsService.cs" Modified="-8587446122844170685" />
+    <ManifestFile Filename="Url\JsOrderApi.cs" Modified="-8587410760216680610" />
+    <ManifestFile Filename="Url\JsService.cs" Modified="-8587410826352273720" />
     <ManifestFile Filename="Url\MoneyUrl.cs" Modified="-8587411451056010255" />
     <ManifestFile Filename="Url\OrderUrl.cs" Modified="-8587464341043834812" />
     <ManifestFile Filename="Url\PropousalUrl.cs" Modified="-8587465043243569706" />
@@ -40,7 +40,7 @@
   </SourceFiles>
   <ContentFiles />
   <ReferencedFiles>
-    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587411415065269254" />
+    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587410637078047300" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Microsoft.CSharp.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\SharpKit.Html.5.4.9\lib\SharpKit.Html.dll" Modified="-8587561905198702577" />

@@ -25,8 +25,8 @@
     <span> зараз є {{@total}} грн.</span></p>
 
 
-    <p> Ви можете <a  style="cursor: pointer;" ng-click="@ajs.method((ngMoneyController o) => o.addMoneyClick(null, 0)) (@userId,@value)">поповнити</a> або
-        <a style="cursor: pointer;"  ng-click="@ajs.method((ngMoneyController o) => o.removeMoneyClick(null, 0)) (@userId,@value)">повернути</a>
+    <p> Ви можете <a  style="cursor: pointer;" ng-click="@ajs.method((ngMoneyController o) => o.addMoneyClick(null, 0)) (@userId,@value)">дати</a> або
+        <a style="cursor: pointer;"  ng-click="@ajs.method((ngMoneyController o) => o.removeMoneyClick(null, 0)) (@userId,@value)">забрати</a>
         <input ng-model="@value" type="number" value="100"/> грн 
 
 
@@ -34,10 +34,11 @@
     </p>
 
     <p>
-        Також ви можете 
-        <a  style="cursor: pointer;" ng-click="@ajs.method((ngToolsController o) => o.clearTodayOrdersClick()) ()">стерти</a>
-        усі сьогоднішні замовлення. 
+        Також ви можете
+        <a style="cursor: pointer;" ng-click="@ajs.method((ngToolsController o) => o.clearTodayOrdersClick()) ()">стерти</a>
+        усі сьогоднішні замовлення.
     </p>
+    <p><i><span class="glyphicon glyphicon-info-sign"></span>(Замовлення автоматично стираються о 14.00)</i></p>
 
 </div>
 

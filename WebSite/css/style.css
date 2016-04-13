@@ -184,9 +184,7 @@
     margin-right: 0px !important;
 }
 
-li.active {
-    background-color: #33a29d !important;
-}
+li.active { background-color: #33a29d !important; }
 
 /*------------------------------------------/
 /-----------------Banner--------------------/
@@ -727,35 +725,38 @@ figure.effect-Beauty:hover p {
 .foodItem:hover { }
 
 .loadingDiv {
-    position: fixed;
-    z-index: 100;
+    background-color: transparent;
     background-image: url("../images/loading.gif");
-    width: 120px;
+    display: none;
     height: 128px;
     left: 48%;
-    top: 48%;
-    background-color: transparent;
     margin: 0px;
     padding: 0px;
-    display: none;
-}
-.foodBtn {
-    padding: 0.2em 0.4em!important;
+    position: fixed;
+    top: 48%;
+    width: 120px;
+    z-index: 100;
 }
 
+.foodBtn { padding: 0.2em 0.4em !important; }
+
 .bottomBorder {
-     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-     min-height: 100px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    min-height: 100px;
 }
 
 .leftIcon {
-        background-color: #cb5750; opacity: 0.3; width: 0.5em;
-    }
-.orderedFoodItem .leftIcon{
+    background-color: #cb5750;
+    opacity: 0.3;
+    width: 0.5em;
+}
+
+.orderedFoodItem .leftIcon {
     background-color: #cb5750;
     opacity: 1;
 }
+
 .foodButtonIsOrdered {
-    background-color: #cb5750!important;
+    background-color: #cb5750 !important;
     cursor: none;
 }

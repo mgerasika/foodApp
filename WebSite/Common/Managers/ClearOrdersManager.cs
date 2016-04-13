@@ -18,7 +18,7 @@ namespace FoodApp.Common.Managers {
 
         private void _timer_Elapsed(object sender, ElapsedEventArgs e) {
             //start sunday
-            if (DateTime.Now.Hour == 16)
+            if (DateTime.Now.Hour == 14)
             {
                 ClearTodayOrders();
             }

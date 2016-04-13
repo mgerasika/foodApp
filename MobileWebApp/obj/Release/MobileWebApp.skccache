@@ -5,7 +5,7 @@
     <ManifestFile Filename="Common\client\ngMobileAppController.cs" Modified="-8587464972925638468" />
     <ManifestFile Filename="Common\client\ngMobileControllerBase.cs" Modified="-8587464972925658464" />
     <ManifestFile Filename="Common\client\ngMobileFoodController.cs" Modified="-8587446149154525568" />
-    <ManifestFile Filename="Common\client\ngMobileOrderController.cs" Modified="-8587464334177991997" />
+    <ManifestFile Filename="Common\client\ngMobileOrderController.cs" Modified="-8587410679860548074" />
     <ManifestFile Filename="Common\Program.cs" Modified="-8587464972925718450" />
     <ManifestFile Filename="Common\MobileApiResources.cs" Modified="-8587464972925778219" />
     <ManifestFile Filename="Common\client\ngOrderFilter.cs" Modified="-8587464972244829434" />
@@ -20,12 +20,12 @@
     <ManifestFile Filename="ApplicationInsights.config" Modified="-8587471258976524798" />
     <ManifestFile Filename="www\css\bootstrap-theme.min.css" Modified="-8587465106317269194" />
     <ManifestFile Filename="www\css\bootstrap.min.css" Modified="-8587465106521394448" />
-    <ManifestFile Filename="www\css\index.css" Modified="-8587464969020607804" />
+    <ManifestFile Filename="www\css\index.css" Modified="-8587410646490654829" />
     <ManifestFile Filename="www\images\loading.gif" Modified="-8587465014307400582" />
     <ManifestFile Filename="www\index.cshtml" Modified="-8587464957538949959" />
     <ManifestFile Filename="www\scripts\angular.min.js" Modified="-8587465107513913877" />
     <ManifestFile Filename="www\scripts\bootstrap.min.js" Modified="-8587465106989412682" />
-    <ManifestFile Filename="www\scripts\gen.js" Modified="-8587411380339469964" />
+    <ManifestFile Filename="www\scripts\gen.js" Modified="-8587410679765003919" />
     <ManifestFile Filename="www\scripts\index.js" Modified="-8587465135300820648" />
     <ManifestFile Filename="www\scripts\jquery.min.js" Modified="-8587465107122977462" />
     <ManifestFile Filename="www\scripts\jquery.mobile-1.4.5.min.js" Modified="-8587465004326858223" />
@@ -37,8 +37,8 @@
     <ManifestFile Filename="Web.config" Modified="-8587471258693752090" />
   </ContentFiles>
   <ReferencedFiles>
-    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587411415065269254" />
-    <ManifestFile Filename="D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\FoodApp.Common.dll" Modified="-8587411380424071053" />
+    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587410637078047300" />
+    <ManifestFile Filename="D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\FoodApp.Common.dll" Modified="-8587410637069013756" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll" Modified="-8587471259000475347" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll" Modified="-8587471258997145120" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll" Modified="-8587471258993295340" />
@@ -93,7 +93,7 @@
   </NoneFiles>
   <ExternalFiles>
     <ManifestFile Filename="..\..\angularjs\gen\clientBefore.tmp.js" Modified="-8587471942374400995" />
-    <ManifestFile Filename="..\FoodApp.Common\Scripts\client.tmp.js" Modified="-8587411394462494815" />
+    <ManifestFile Filename="..\FoodApp.Common\Scripts\client.tmp.js" Modified="-8587410823532819065" />
     <ManifestFile Filename="..\..\angularjs\gen\clientAfter.tmp.js" Modified="-8587471948082779814" />
   </ExternalFiles>
 </Manifest>

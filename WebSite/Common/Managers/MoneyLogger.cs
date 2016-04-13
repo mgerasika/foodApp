@@ -92,7 +92,6 @@ namespace FoodApp.Common.Managers {
 
 
         private void SendEmail(ngUserModel user, string operationName, decimal val, string msg) {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587) {Credentials = new NetworkCredential("gamgamlviv@gmail.com", "nikita1984"), EnableSsl = true};
             string subject = string.Format("{0} {1}", user.Email,DateTime.Now);
 
             StringBuilder sb = new StringBuilder();
@@ -103,8 +102,7 @@ namespace FoodApp.Common.Managers {
             sb.AppendFormat("Залишок: {0} грн\n", model.Total);
             sb.AppendFormat("\ngamgamlviv@gmail.com");
 
-            client.Send("gamgamlviv@gmail.com", "gamgamlviv@gmail.com", subject, sb.ToString());
-            client.Send("gamgamlviv@gmail.com", user.Email, subject, sb.ToString());
+            ApiUtils.SendEmail(user,subject,sb.ToString());
         }
     }
 }

@@ -894,16 +894,30 @@ FoodApp.Common.JsOrderApi.prototype.DeleteOrder = function (day, foodId, handler
     }));
 };
 $Inherit(FoodApp.Common.JsOrderApi, FoodApp.Common.JsApiBase);
+FoodApp.Common.JsToolsApi = function (serverUrl, userId){
+    FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
+};
+FoodApp.Common.JsToolsApi.prototype.ClearTodayOrders = function (handler){
+    var url = FoodApp.Common.ToolsUrl.Inst.GetClearTodayOrdersUrl();
+    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
+        if (null != handler){
+            handler(args);
+        }
+    }));
+};
+$Inherit(FoodApp.Common.JsToolsApi, FoodApp.Common.JsApiBase);
 FoodApp.Common.JsService = function (){
     this.FoodApi = null;
     this.OrderApi = null;
     this.MoneyApi = null;
+    this.ToolsApi = null;
 };
 FoodApp.Common.JsService.Inst = new FoodApp.Common.JsService();
 FoodApp.Common.JsService.prototype.Init = function (serverUrl, userId){
     this.FoodApi = new FoodApp.Common.JsFoodApi(serverUrl, userId);
     this.OrderApi = new FoodApp.Common.JsOrderApi(serverUrl, userId);
     this.MoneyApi = new FoodApp.Common.JsMoneyApi(serverUrl, userId);
+    this.ToolsApi = new FoodApp.Common.JsToolsApi(serverUrl, userId);
 };
 FoodApp.Common.MoneyUrl = function (){
     FoodApp.Common.UrlBase.call(this);
@@ -975,6 +989,17 @@ FoodApp.Common.PropousalUrl.c_sGetPropousal = "api/propousal";
 FoodApp.Common.PropousalUrl.c_sGetPropousalByDay = "api/propousal/{userId}/{dayOfWeek}/";
 FoodApp.Common.PropousalUrl.c_sGetPropousals = "api/propousal/{userId}/";
 FoodApp.Common.PropousalUrl.c_sBuy = "api/propousal/{userId}/{dayOfWeek}/";
+FoodApp.Common.ToolsUrl = function (){
+    FoodApp.Common.UrlBase.call(this);
+};
+FoodApp.Common.ToolsUrl.c_sFoodsPrefix = "api/tools";
+FoodApp.Common.ToolsUrl.c_sClearTodayOrders = "api/tools/clearTodayOrders/";
+FoodApp.Common.ToolsUrl.Inst = new FoodApp.Common.ToolsUrl();
+FoodApp.Common.ToolsUrl.prototype.GetClearTodayOrdersUrl = function (){
+    var res = this.FormatUrl("api/tools/clearTodayOrders/");
+    return res;
+};
+$Inherit(FoodApp.Common.ToolsUrl, FoodApp.Common.UrlBase);
 
 
 if (typeof(MobileWebApp) == "undefined")
@@ -1184,9 +1209,11 @@ MobileWebApp.Common.client.ngMobileOrderController.prototype.init = function (sc
 };
 MobileWebApp.Common.client.ngMobileOrderController.prototype.deleteOrder = function (day, foodId){
     FoodApp.Common.jsUtils.inst.showLoading();
-    FoodApp.Common.JsService.Inst.OrderApi.DeleteOrder(day, foodId, $CreateAnonymousDelegate(this, function (s){
+    FoodApp.Common.JsService.Inst.OrderApi.DeleteOrder(day, foodId, $CreateAnonymousDelegate(this, function (res){
         FoodApp.Common.jsUtils.inst.hideLoading();
         this.refreshOrders();
+        if (!res){
+        }
     }));
 };
 MobileWebApp.Common.client.ngMobileOrderController.prototype.refreshOrders = function (){

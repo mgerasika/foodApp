@@ -73,6 +73,7 @@ D:\Projects\git\gam-gam\WebSite\bin\FoodApp.dll.config
 D:\Projects\git\gam-gam\WebSite\bin\FoodApp.dll
 D:\Projects\git\gam-gam\WebSite\bin\FoodApp.pdb
 D:\Projects\git\gam-gam\WebSite\bin\angularjs.dll
+D:\Projects\git\gam-gam\WebSite\bin\FoodApp.Common.dll
 D:\Projects\git\gam-gam\WebSite\bin\Google.Apis.Auth.dll
 D:\Projects\git\gam-gam\WebSite\bin\Google.Apis.Auth.PlatformServices.dll
 D:\Projects\git\gam-gam\WebSite\bin\Google.Apis.Core.dll
@@ -97,7 +98,9 @@ D:\Projects\git\gam-gam\WebSite\bin\SharpKit.jQuery.dll
 D:\Projects\git\gam-gam\WebSite\bin\System.Net.Http.Extensions.dll
 D:\Projects\git\gam-gam\WebSite\bin\System.Net.Http.Formatting.dll
 D:\Projects\git\gam-gam\WebSite\bin\System.Net.Http.Primitives.dll
+D:\Projects\git\gam-gam\WebSite\bin\System.Web.Cors.dll
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.Helpers.dll
+D:\Projects\git\gam-gam\WebSite\bin\System.Web.Http.Cors.dll
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.Http.dll
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.Http.WebHost.dll
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.Mvc.dll
@@ -107,6 +110,7 @@ D:\Projects\git\gam-gam\WebSite\bin\System.Web.WebPages.dll
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.WebPages.Razor.dll
 D:\Projects\git\gam-gam\WebSite\bin\Zlib.Portable.dll
 D:\Projects\git\gam-gam\WebSite\bin\angularjs.pdb
+D:\Projects\git\gam-gam\WebSite\bin\FoodApp.Common.pdb
 D:\Projects\git\gam-gam\WebSite\bin\Google.Apis.pdb
 D:\Projects\git\gam-gam\WebSite\bin\Google.Apis.xml
 D:\Projects\git\gam-gam\WebSite\bin\Google.Apis.Auth.pdb
@@ -129,6 +133,7 @@ D:\Projects\git\gam-gam\WebSite\bin\System.Net.Http.Formatting.xml
 D:\Projects\git\gam-gam\WebSite\bin\System.Net.Http.Primitives.xml
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.Helpers.xml
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.Http.xml
+D:\Projects\git\gam-gam\WebSite\bin\System.Web.Http.Cors.xml
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.Http.WebHost.xml
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.Mvc.xml
 D:\Projects\git\gam-gam\WebSite\bin\System.Web.Razor.xml
@@ -140,8 +145,3 @@ D:\Projects\git\gam-gam\WebSite\obj\Release\WebSite.csproj.App.config
 D:\Projects\git\gam-gam\WebSite\obj\Release\WebSite.csprojResolveAssemblyReference.cache
 D:\Projects\git\gam-gam\WebSite\obj\Release\FoodApp.dll
 D:\Projects\git\gam-gam\WebSite\obj\Release\FoodApp.pdb
-D:\Projects\git\gam-gam\WebSite\bin\FoodApp.Common.dll
-D:\Projects\git\gam-gam\WebSite\bin\FoodApp.Common.pdb
-D:\Projects\git\gam-gam\WebSite\bin\System.Web.Cors.dll
-D:\Projects\git\gam-gam\WebSite\bin\System.Web.Http.Cors.dll
-D:\Projects\git\gam-gam\WebSite\bin\System.Web.Http.Cors.xml

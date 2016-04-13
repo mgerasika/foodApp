@@ -1,37 +1,42 @@
-﻿.foodBtn {
-    padding: 0.2em 0.4em!important;
-}
+﻿.foodBtn { padding: 0.2em 0.4em !important; }
+
 .leftIcon {
-        background-color: #cb5750; opacity: 0.3; width: 0.5em;
-    }
-     .orderedFoodItem .leftIcon{
-         background-color: #cb5750;
-         opacity: 1;
-     }
-     .foodButtonIsOrdered {
-         background-image: none;
-         background-color: #cb5750!important;
-         cursor: none;
-     }
-     .loadingDiv {
-    position: fixed;
-    z-index: 100;
+    background-color: #cb5750;
+    opacity: 0.3;
+    width: 0.5em;
+}
+
+.orderedFoodItem .leftIcon {
+    background-color: #cb5750;
+    opacity: 1;
+}
+
+.foodButtonIsOrdered {
+    background-color: #cb5750 !important;
+    background-image: none;
+    cursor: none;
+}
+
+.loadingDiv {
+    background-color: transparent;
     background-image: url("../images/loading.gif");
-    width: 120px;
+    display: none;
     height: 128px;
     left: 48%;
-    top: 48%;
-    background-color: transparent;
     margin: 0px;
     padding: 0px;
-    display: none;
+    position: fixed;
+    top: 48%;
+    width: 120px;
+    z-index: 100;
 }
-.fixed{
-    position:fixed;
-    top:0px;
-    left:0px;
-    width:100%;
+
+.fixed {
+    -webkit-backface-visibility: hidden; /*Most Important*/
+    background: red;
     height: 5em;
-    background:red;
-    -webkit-backface-visibility:hidden; /*Most Important*/
+    left: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
 }

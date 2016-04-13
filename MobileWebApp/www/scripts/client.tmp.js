@@ -251,9 +251,11 @@ MobileWebApp.Common.client.ngMobileOrderController.prototype.init = function (sc
 };
 MobileWebApp.Common.client.ngMobileOrderController.prototype.deleteOrder = function (day, foodId){
     FoodApp.Common.jsUtils.inst.showLoading();
-    FoodApp.Common.JsService.Inst.OrderApi.DeleteOrder(day, foodId, $CreateAnonymousDelegate(this, function (s){
+    FoodApp.Common.JsService.Inst.OrderApi.DeleteOrder(day, foodId, $CreateAnonymousDelegate(this, function (res){
         FoodApp.Common.jsUtils.inst.hideLoading();
         this.refreshOrders();
+        if (!res){
+        }
     }));
 };
 MobileWebApp.Common.client.ngMobileOrderController.prototype.refreshOrders = function (){

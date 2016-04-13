@@ -8,8 +8,13 @@ namespace FoodApp.Common.Managers {
         public static FoodManager Inst = new FoodManager();
 
         public List<ngFoodItem> GetFoods(int day) {
-            List<ngFoodItem> res = new List<ngFoodItem>();
             ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
+            List<ngFoodItem> res = GetFoodsInternal(excelTable);
+            return res;
+        }
+
+        public List<ngFoodItem> GetFoodsInternal(ExcelTable excelTable) {
+            List<ngFoodItem> res = new List<ngFoodItem>();
             List<ExcelRow> rows = excelTable.Rows;
             foreach (ExcelRow row in rows) {
                 if (row.HasPrice && !string.IsNullOrEmpty(row.Name)) {

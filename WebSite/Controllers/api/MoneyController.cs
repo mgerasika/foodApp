@@ -62,7 +62,7 @@ namespace FoodApp.Controllers.api {
             List<ngUserModel> res = new List<ngUserModel>();
             List<ngUserModel> users = UsersManager.Inst.GetUsers();
             foreach (ngUserModel user in users) {
-                if (user.Email.Contains("studylog")) {
+                if (user.Email.Contains("darwin")) {
                     res.Add(user);
                 }
             }

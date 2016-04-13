@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using FoodApp.Common.Managers;
 
@@ -27,7 +29,7 @@ namespace FoodApp.Common {
             if (null != HttpContext.Current && null != HttpContext.Current.Session) {
                 res = HttpContext.Current.Session["userId"] as string;
             }
-            if (string.IsNullOrEmpty(res)) {
+            if (String.IsNullOrEmpty(res)) {
                 HttpRequest request = GetHttpRequest();
                 if (null != request) {
                     HttpCookie httpCookie = request.Cookies.Get("userId");
@@ -42,7 +44,7 @@ namespace FoodApp.Common {
         public static ngUserModel GetLoggedInUser() {
             ngUserModel res = null;
             string id = GetSessionUserId();
-            if (!string.IsNullOrEmpty(id)) {
+            if (!String.IsNullOrEmpty(id)) {
                 ngUserModel userById = UsersManager.Inst.GetUserById(id);
                 Debug.Assert(null != userById);
                 res = userById;
@@ -255,14 +257,14 @@ namespace FoodApp.Common {
 
         internal static bool TryDecimalParse(string str, out decimal lPrice) {
             bool res = false;
-            if (!string.IsNullOrEmpty(str)) {
+            if (!String.IsNullOrEmpty(str)) {
                 str = str.Replace("грн.", "");
                 str = str.Replace("грн ", "");
                 str = str.Replace(",", ".");
                 str = str.Replace("-", ".");
                 str = str.Replace(" ", "");
 
-                res = decimal.TryParse(str, out lPrice);
+                res = Decimal.TryParse(str, out lPrice);
             }
             else {
                 lPrice = 0;
@@ -313,6 +315,24 @@ namespace FoodApp.Common {
                 res = true;
             } while (false);
             return res;
+        }
+
+        public static ngFoodItem GetFoodById(List<ngFoodItem> items, string foodId) {
+            ngFoodItem res = null;
+            foreach (ngFoodItem item in items) {
+                if (item.FoodId.Equals(foodId)) {
+                    res = item;
+                    break;
+                }
+            }
+            return res;
+        }
+
+        public static void SendEmail(ngUserModel user, string subject,string msg)
+        {
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587) { Credentials = new NetworkCredential("gamgamlviv@gmail.com", "nikita1984"), EnableSsl = true };
+            client.Send("gamgamlviv@gmail.com", "gamgamlviv@gmail.com", subject, msg);
+            client.Send("gamgamlviv@gmail.com", user.Email, subject, msg);
         }
     }
 }

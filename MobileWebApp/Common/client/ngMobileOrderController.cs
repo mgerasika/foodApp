@@ -61,9 +61,12 @@ namespace MobileWebApp.Common.client {
         public void deleteOrder(int day, string foodId) {
             jsUtils.inst.showLoading();
 
-            JsService.Inst.OrderApi.DeleteOrder( day, foodId, delegate(string s) {
+            JsService.Inst.OrderApi.DeleteOrder( day, foodId, delegate(bool res) {
                 jsUtils.inst.hideLoading();
                 refreshOrders();
+                if (!res) {
+                    
+                }
             });
 
         }

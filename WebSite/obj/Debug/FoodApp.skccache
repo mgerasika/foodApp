@@ -26,9 +26,9 @@
     <ManifestFile Filename="Client\Program.cs" Modified="-8587410828413239686" />
     <ManifestFile Filename="Client\TraceApiController.cs" Modified="-8587469143515144798" />
     <ManifestFile Filename="Common\Managers\BackupHistoryManager.cs" Modified="-8587465043243229641" />
-    <ManifestFile Filename="Common\Managers\ClearOrdersManager.cs" Modified="-8587410828502131736" />
+    <ManifestFile Filename="Common\Managers\ClearOrdersManager.cs" Modified="-8587410648702682719" />
     <ManifestFile Filename="Common\Managers\PropousalManager.cs" Modified="-8587465043243059671" />
-    <ManifestFile Filename="Common\Managers\MoneyLogger.cs" Modified="-8587411435688499306" />
+    <ManifestFile Filename="Common\Managers\MoneyLogger.cs" Modified="-8587410658187505854" />
     <ManifestFile Filename="Common\Managers\MoneyManager.cs" Modified="-8587410712620014257" />
     <ManifestFile Filename="Common\Managers\OrderManager.cs" Modified="-8587410780301586995" />
     <ManifestFile Filename="Common\Managers\UsersManager.cs" Modified="-8587465043242999671" />
@@ -41,17 +41,17 @@
     <ManifestFile Filename="Common\Parser\ExcelRow.cs" Modified="-8587411384286639968" />
     <ManifestFile Filename="Common\Parser\ExcelTable.cs" Modified="-8587410800926372541" />
     <ManifestFile Filename="Common\Parser\ExcelDoc.cs" Modified="-8587410800926662088" />
-    <ManifestFile Filename="Common\Parser\ExcelManager.cs" Modified="-8587410717150211800" />
-    <ManifestFile Filename="Common\Managers\FoodManager.cs" Modified="-8587411392294294136" />
+    <ManifestFile Filename="Common\Parser\ExcelManager.cs" Modified="-8587410650120307063" />
+    <ManifestFile Filename="Common\Managers\FoodManager.cs" Modified="-8587410668346316552" />
     <ManifestFile Filename="Common\Managers\ManagerBase.cs" Modified="-8587465043243139302" />
     <ManifestFile Filename="Client\ngFoodController.cs" Modified="-8587410760216510436" />
     <ManifestFile Filename="Client\ngOrderController.cs" Modified="-8587410760216440718" />
     <ManifestFile Filename="Common\Parser\LoginTool.cs" Modified="-8587468759383091221" />
-    <ManifestFile Filename="Controllers\api\MoneyController.cs" Modified="-8587410712739916337" />
+    <ManifestFile Filename="Controllers\api\MoneyController.cs" Modified="-8587410701712321392" />
     <ManifestFile Filename="Controllers\api\ToolsController.cs" Modified="-8587410823941082500" />
     <ManifestFile Filename="ngOrderFilter.cs" Modified="-8587464972348904053" />
     <ManifestFile Filename="Properties\WebApiResources.cs" Modified="-8587468759382961499" />
-    <ManifestFile Filename="Common\ApiUtils.cs" Modified="-8587410771829880306" />
+    <ManifestFile Filename="Common\ApiUtils.cs" Modified="-8587410658239866094" />
     <ManifestFile Filename="Controllers\api\ApiControllerBase.cs" Modified="-8587465043242949700" />
     <ManifestFile Filename="Controllers\api\PropousalController.cs" Modified="-8587465043242849739" />
     <ManifestFile Filename="Controllers\api\HistoryController.cs" Modified="-8587465043242899704" />
@@ -106,14 +106,14 @@
     <ManifestFile Filename="lib\GoogleSearchAPI.dll" Modified="-8587548002075434313" />
     <ManifestFile Filename="Model\Scripts\bootstrap.js" Modified="-8587551283786504914" />
     <ManifestFile Filename="Model\Scripts\bootstrap.min.js" Modified="-8587446130619310919" />
-    <ManifestFile Filename="data\history.json" Modified="-8587410714004948475" />
+    <ManifestFile Filename="data\history.json" Modified="-8587410653533851373" />
     <ManifestFile Filename="fonts\fontawesome-webfont.eot" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.ttf" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.woff" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.woff2" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\FontAwesome.otf" Modified="-8587619183314775808" />
-    <ManifestFile Filename="data\users.json" Modified="-8587410716786159456" />
-    <ManifestFile Filename="data\userSettings.json" Modified="-8587410716786209749" />
+    <ManifestFile Filename="data\users.json" Modified="-8587410653436841874" />
+    <ManifestFile Filename="data\userSettings.json" Modified="-8587410653436891734" />
     <ManifestFile Filename="data\money.json" Modified="-8587410816203610826" />
     <ManifestFile Filename="data\moneyLogs.json" Modified="-8587410816203280766" />
     <ManifestFile Filename="Model\Scripts\bootstrap.min.js.map" Modified="-8587446130617649561" />
@@ -136,7 +136,7 @@
     <ManifestFile Filename="Views\Home\Orders.cshtml" Modified="-8587411429028733462" />
     <ManifestFile Filename="Views\Home\Foods.cshtml" Modified="-8587410715709356737" />
     <ManifestFile Filename="Views\Home\Login.cshtml" Modified="-8587483256924410100" />
-    <ManifestFile Filename="Views\Home\Settings.cshtml" Modified="-8587410798187355166" />
+    <ManifestFile Filename="Views\Home\Settings.cshtml" Modified="-8587410648546520892" />
     <ManifestFile Filename="Views\Layout1.cshtml" Modified="-8587471942890679750" />
     <ManifestFile Filename="Views\Home\History.cshtml" Modified="-8587465043202573031" />
     <ManifestFile Filename="Views\Home\Propousal.cshtml" Modified="-8587411498946103309" />
