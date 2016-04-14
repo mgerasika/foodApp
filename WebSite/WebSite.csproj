@@ -232,22 +232,19 @@
     <Content Include="js\jquery.easings.min.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.mixitup.js" />
+    <Content Include="js\jquery.mobile-1.4.5.min.js" />
     <Content Include="js\jquery.quovolver.js" />
     <Content Include="js\jquery.sticky.js" />
+    <Content Include="js\jquery.touchSwipe.min.js" />
     <Content Include="js\jquery.waypoints.min.js" />
     <Content Include="lib\GoogleSearchAPI.dll" />
     <Content Include="Model\Scripts\bootstrap.js" />
     <Content Include="Model\Scripts\bootstrap.min.js" />
-    <Content Include="data\history.json" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="data\users.json" />
-    <Content Include="data\userSettings.json" />
-    <Content Include="data\money.json" />
-    <Content Include="data\moneyLogs.json" />
     <Content Include="Model\Scripts\bootstrap.min.js.map">
       <DependentUpon>bootstrap.js</DependentUpon>
     </Content>
@@ -324,6 +321,7 @@
     <Compile Include="Common\Parser\LoginTool.cs" />
     <Compile Include="Controllers\api\MoneyController.cs" />
     <Compile Include="Controllers\api\ToolsController.cs" />
+    <Compile Include="Controllers\api\UsersController.cs" />
     <Compile Include="ngOrderFilter.cs" />
     <Compile Include="Properties\WebApiResources.cs" />
     <Compile Include="Common\ApiUtils.cs" />
@@ -359,6 +357,7 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\Trace.cshtml" />
     <Content Include="Views\Home\Money.cshtml" />
+    <Content Include="Views\Home\MIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -368,7 +367,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="logs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\angularjs\angularjs.csproj">

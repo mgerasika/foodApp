@@ -154,8 +154,14 @@ namespace FoodApp.Client {
         }
 
         private void requestGetUsers(JsAction complete) {
-            JsService.Inst.MoneyApi.GetUsers(delegate(JsArray<ngUserModel> res) {
-                ngUsers = res;
+            JsService.Inst.UsersApi.GetUsers(delegate(JsArray<ngUserModel> res) {
+                JsArray<ngUserModel> tmp = new JsArray<ngUserModel>();
+                foreach (ngUserModel user in res) {
+                    if (-1 != user.Email.As<JsString>().indexOf("darwins")) {
+                        tmp.Add(user);
+                    }
+                }
+                ngUsers = tmp;
 
                 if (null != complete) {
                     complete();

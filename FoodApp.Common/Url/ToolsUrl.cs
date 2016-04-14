@@ -14,6 +14,10 @@ namespace FoodApp.Common {
             return res;
         }
 
+        private ToolsUrl() {
+            
+        }
+
        
     }
 }

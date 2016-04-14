@@ -50,7 +50,7 @@ namespace FoodApp.Common.Parser {
 
         private ExcelManager() {
             _timer = new Timer();
-            _timer.Interval = 1*30*1000; //every 30 minutes
+            _timer.Interval = 5*60*1000; //every 30 minutes
             _timer.Elapsed += _timer_Elapsed;
             _timer.Start();
         }

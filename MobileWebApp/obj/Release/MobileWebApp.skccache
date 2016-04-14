@@ -22,7 +22,7 @@
     <ManifestFile Filename="www\css\bootstrap.min.css" Modified="-8587465106521394448" />
     <ManifestFile Filename="www\css\index.css" Modified="-8587410646490654829" />
     <ManifestFile Filename="www\images\loading.gif" Modified="-8587465014307400582" />
-    <ManifestFile Filename="www\index.cshtml" Modified="-8587464957538949959" />
+    <ManifestFile Filename="www\index.cshtml" Modified="-8587410607115800843" />
     <ManifestFile Filename="www\scripts\angular.min.js" Modified="-8587465107513913877" />
     <ManifestFile Filename="www\scripts\bootstrap.min.js" Modified="-8587465106989412682" />
     <ManifestFile Filename="www\scripts\gen.js" Modified="-8587410679765003919" />
@@ -37,8 +37,8 @@
     <ManifestFile Filename="Web.config" Modified="-8587471258693752090" />
   </ContentFiles>
   <ReferencedFiles>
-    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587410637078047300" />
-    <ManifestFile Filename="D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\FoodApp.Common.dll" Modified="-8587410637069013756" />
+    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587410574760110059" />
+    <ManifestFile Filename="D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\FoodApp.Common.dll" Modified="-8587410574751756495" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll" Modified="-8587471259000475347" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll" Modified="-8587471258997145120" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll" Modified="-8587471258993295340" />

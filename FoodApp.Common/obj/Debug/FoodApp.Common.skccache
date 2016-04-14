@@ -3,6 +3,8 @@
   <SkcFile Filename="C:\Program Files (x86)\SharpKit\5\Compiler\skc5.exe" Modified="-8587501627658294931" />
   <SourceFiles>
     <ManifestFile Filename="api\IMoneyController.cs" Modified="-8587446139217311482" />
+    <ManifestFile Filename="api\JsToolsApi.cs" Modified="-8587409965242882966" />
+    <ManifestFile Filename="api\JsUsersApi.cs" Modified="-8587409964332950758" />
     <ManifestFile Filename="Common\CommonUtils.cs" Modified="-8587471971659596478" />
     <ManifestFile Filename="api\IFoodsController.cs" Modified="-8587446139171029977" />
     <ManifestFile Filename="api\IOrderController.cs" Modified="-8587465043243849539" />
@@ -22,17 +24,18 @@
     <ManifestFile Filename="Common\ajaxHlp.cs" Modified="-8587465040230019304" />
     <ManifestFile Filename="Url\FoodsUrl.cs" Modified="-8587410829252272557" />
     <ManifestFile Filename="Url\HistoryUrl.cs" Modified="-8587465043243669681" />
-    <ManifestFile Filename="Url\JsApiBase.cs" Modified="-8587411461933704742" />
-    <ManifestFile Filename="Url\jsCommonUtils.cs" Modified="-8587465043243539695" />
-    <ManifestFile Filename="Url\JsFoodApi.cs" Modified="-8587410760216640708" />
+    <ManifestFile Filename="api\JsApiBase.cs" Modified="-8587411461933704742" />
+    <ManifestFile Filename="api\jsCommonUtils.cs" Modified="-8587465043243539695" />
+    <ManifestFile Filename="api\JsFoodApi.cs" Modified="-8587410760216640708" />
     <ManifestFile Filename="Url\JsHandler.cs" Modified="-8587465043243509807" />
-    <ManifestFile Filename="Url\JsMoneyApi.cs" Modified="-8587411448016716983" />
-    <ManifestFile Filename="Url\JsOrderApi.cs" Modified="-8587410760216680610" />
-    <ManifestFile Filename="Url\JsService.cs" Modified="-8587410826352273720" />
-    <ManifestFile Filename="Url\MoneyUrl.cs" Modified="-8587411451056010255" />
+    <ManifestFile Filename="api\JsMoneyApi.cs" Modified="-8587409963899401213" />
+    <ManifestFile Filename="api\JsOrderApi.cs" Modified="-8587409963848779659" />
+    <ManifestFile Filename="api\JsService.cs" Modified="-8587409963988076726" />
+    <ManifestFile Filename="Url\MoneyUrl.cs" Modified="-8587409963848579985" />
     <ManifestFile Filename="Url\OrderUrl.cs" Modified="-8587464341043834812" />
     <ManifestFile Filename="Url\PropousalUrl.cs" Modified="-8587465043243569706" />
-    <ManifestFile Filename="Url\ToolsUrl.cs" Modified="-8587410829311643579" />
+    <ManifestFile Filename="Url\ToolsUrl.cs" Modified="-8587409963848920080" />
+    <ManifestFile Filename="Url\UsersUrl.cs" Modified="-8587409963848639718" />
     <ManifestFile Filename="C:\Users\Mykhaylo Herasika\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cs" Modified="-8587501639310904083" />
     <ManifestFile Filename="obj\Debug\\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" Modified="-8587471984789003639" />
     <ManifestFile Filename="obj\Debug\\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" Modified="-8587471984789003639" />

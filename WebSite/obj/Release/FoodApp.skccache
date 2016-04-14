@@ -41,7 +41,7 @@
     <ManifestFile Filename="Common\Parser\ExcelRow.cs" Modified="-8587411384286639968" />
     <ManifestFile Filename="Common\Parser\ExcelTable.cs" Modified="-8587410800926372541" />
     <ManifestFile Filename="Common\Parser\ExcelDoc.cs" Modified="-8587410800926662088" />
-    <ManifestFile Filename="Common\Parser\ExcelManager.cs" Modified="-8587410637083087960" />
+    <ManifestFile Filename="Common\Parser\ExcelManager.cs" Modified="-8587410619000681093" />
     <ManifestFile Filename="Common\Managers\FoodManager.cs" Modified="-8587410668346316552" />
     <ManifestFile Filename="Common\Managers\ManagerBase.cs" Modified="-8587465043243139302" />
     <ManifestFile Filename="Client\ngFoodController.cs" Modified="-8587410760216510436" />
@@ -58,7 +58,7 @@
     <ManifestFile Filename="Controllers\api\FoodsController.cs" Modified="-8587410828502071489" />
     <ManifestFile Filename="Controllers\api\AppController.cs" Modified="-8587465043242929700" />
     <ManifestFile Filename="Controllers\api\OrderController.cs" Modified="-8587464341412367701" />
-    <ManifestFile Filename="Controllers\HomeController.cs" Modified="-8587410798187544861" />
+    <ManifestFile Filename="Controllers\HomeController.cs" Modified="-8587410575811721788" />
     <ManifestFile Filename="Model\EMoneyOperation.cs" Modified="-8587411465858083721" />
     <ManifestFile Filename="Global.asax.cs" Modified="-8587411451484190313" />
     <ManifestFile Filename="Model\ngMoneyModel.cs" Modified="-8587411507185959141" />
@@ -98,24 +98,21 @@
     <ManifestFile Filename="js\app.js" Modified="-8587536620518970368" />
     <ManifestFile Filename="js\jquery.countTo.js" Modified="-8587619183314775808" />
     <ManifestFile Filename="js\jquery.easings.min.js" Modified="-8587619183314775808" />
-    <ManifestFile Filename="js\jquery.min.js" Modified="-8587619183314775808" />
+    <ManifestFile Filename="js\jquery.min.js" Modified="-8587410593608416181" />
     <ManifestFile Filename="js\jquery.mixitup.js" Modified="-8587619183314775808" />
+    <ManifestFile Filename="js\jquery.mobile-1.4.5.min.js" Modified="-8587410593608136186" />
     <ManifestFile Filename="js\jquery.quovolver.js" Modified="-8587619183314775808" />
     <ManifestFile Filename="js\jquery.sticky.js" Modified="-8587619183314775808" />
+    <ManifestFile Filename="js\jquery.touchSwipe.min.js" Modified="-8587410593624607689" />
     <ManifestFile Filename="js\jquery.waypoints.min.js" Modified="-8587619183314775808" />
     <ManifestFile Filename="lib\GoogleSearchAPI.dll" Modified="-8587548002075434313" />
     <ManifestFile Filename="Model\Scripts\bootstrap.js" Modified="-8587551283786504914" />
     <ManifestFile Filename="Model\Scripts\bootstrap.min.js" Modified="-8587446130619310919" />
-    <ManifestFile Filename="data\history.json" Modified="-8587410641243381007" />
     <ManifestFile Filename="fonts\fontawesome-webfont.eot" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.ttf" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.woff" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\fontawesome-webfont.woff2" Modified="-8587619183314775808" />
     <ManifestFile Filename="fonts\FontAwesome.otf" Modified="-8587619183314775808" />
-    <ManifestFile Filename="data\users.json" Modified="-8587410641774028377" />
-    <ManifestFile Filename="data\userSettings.json" Modified="-8587410641774058667" />
-    <ManifestFile Filename="data\money.json" Modified="-8587410816203610826" />
-    <ManifestFile Filename="data\moneyLogs.json" Modified="-8587410816203280766" />
     <ManifestFile Filename="Model\Scripts\bootstrap.min.js.map" Modified="-8587446130617649561" />
     <ManifestFile Filename="Model\Scripts\jquery-2.1.4.min.js.map" Modified="-8587446130609749530" />
     <ManifestFile Filename="Model\Scripts\jquery.validate.min.js.map" Modified="-8587446130607269488" />
@@ -127,17 +124,17 @@
     <ManifestFile Filename="Model\Scripts\jquery.validate.unobtrusive.js" Modified="-8587551283780324560" />
     <ManifestFile Filename="Model\Scripts\jquery.validate.unobtrusive.min.js" Modified="-8587446130606820779" />
     <ManifestFile Filename="Model\Scripts\output.js" Modified="-8587471979218840403" />
-    <ManifestFile Filename="css\style.css" Modified="-8587410646490584537" />
+    <ManifestFile Filename="css\style.css" Modified="-8587410577891415312" />
     <ManifestFile Filename="tab.html" Modified="-8587536681454835700" />
     <ManifestFile Filename="Web.config" Modified="-8587411451570529228" />
     <ManifestFile Filename="packages.config" Modified="-8587465175778130795" />
     <ManifestFile Filename="Model\Scripts\jquery-2.1.4.min.map" Modified="-8587551283783864763" />
     <ManifestFile Filename="Views\Home\Index.cshtml" Modified="-8587410756651231941" />
     <ManifestFile Filename="Views\Home\Orders.cshtml" Modified="-8587411429028733462" />
-    <ManifestFile Filename="Views\Home\Foods.cshtml" Modified="-8587410641258468426" />
+    <ManifestFile Filename="Views\Home\Foods.cshtml" Modified="-8587410598820382286" />
     <ManifestFile Filename="Views\Home\Login.cshtml" Modified="-8587483256924410100" />
     <ManifestFile Filename="Views\Home\Settings.cshtml" Modified="-8587410648546520892" />
-    <ManifestFile Filename="Views\Layout1.cshtml" Modified="-8587471942890679750" />
+    <ManifestFile Filename="Views\Layout1.cshtml" Modified="-8587410590728927198" />
     <ManifestFile Filename="Views\Home\History.cshtml" Modified="-8587465043202573031" />
     <ManifestFile Filename="Views\Home\Propousal.cshtml" Modified="-8587411498946103309" />
     <ManifestFile Filename="Views\Home\Admin.cshtml" Modified="-8587410798187284901" />
@@ -145,10 +142,11 @@
     <ManifestFile Filename="Views\Home\Error.cshtml" Modified="-8587469142153177232" />
     <ManifestFile Filename="Views\Home\Trace.cshtml" Modified="-8587469142152887316" />
     <ManifestFile Filename="Views\Home\Money.cshtml" Modified="-8587411381230137556" />
+    <ManifestFile Filename="Views\Home\MIndex.cshtml" Modified="-8587410576455757558" />
   </ContentFiles>
   <ReferencedFiles>
-    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587410637078047300" />
-    <ManifestFile Filename="D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\FoodApp.Common.dll" Modified="-8587410637069013756" />
+    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587410574760110059" />
+    <ManifestFile Filename="D:\Projects\git\gam-gam\FoodApp.Common\bin\Release\FoodApp.Common.dll" Modified="-8587410574751756495" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Google.Apis.Auth.1.9.2\lib\net40\Google.Apis.Auth.dll" Modified="-8587542925179040458" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Google.Apis.Auth.1.9.2\lib\net40\Google.Apis.Auth.PlatformServices.dll" Modified="-8587542925179020457" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\Google.Apis.Core.1.9.3\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll" Modified="-8587560185491568702" />

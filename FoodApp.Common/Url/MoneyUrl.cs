@@ -4,7 +4,6 @@ namespace FoodApp.Common {
     [JsType(JsMode.Prototype, Filename = CommonApiResources._fileClientJs, Export = true)]
     public class MoneyUrl : UrlBase {
         private const string c_sMoneyPrefix = "api/money/";
-        public const string c_sGetUsers = c_sMoneyPrefix + "users/";
         public const string c_sGetMoney = c_sMoneyPrefix + "getMoney/{userId}/";
         public const string c_sAddMoney = c_sMoneyPrefix + "addMoney/{userId}/{val}/";
         public const string c_sRemoveMoney = c_sMoneyPrefix + "removeMoney/{userId}/{val}/";
@@ -36,11 +35,7 @@ namespace FoodApp.Common {
             return res;
         }
 
-        public string GetUsers()
-        {
-            string res = FormatUrl(c_sGetUsers);
-            return res;
-        }
+        
 
         public string GetCanBuyUrl(string userId, int day) {
             string res = FormatUrl(c_sCanBuy, userId, day.As<string>());

@@ -40,7 +40,7 @@
   </SourceFiles>
   <ContentFiles />
   <ReferencedFiles>
-    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587410637078047300" />
+    <ManifestFile Filename="D:\Projects\git\angularjs\bin\angularjs.dll" Modified="-8587410574760110059" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Microsoft.CSharp.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" Modified="-8588529847174775808" />
     <ManifestFile Filename="D:\Projects\git\gam-gam\packages\SharpKit.Html.5.4.9\lib\SharpKit.Html.dll" Modified="-8587561905198702577" />

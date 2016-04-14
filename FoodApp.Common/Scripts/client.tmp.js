@@ -48,6 +48,109 @@ if (typeof(FoodApp) == "undefined")
     var FoodApp = {};
 if (typeof(FoodApp.Common) == "undefined")
     FoodApp.Common = {};
+FoodApp.Common.JsApiBase = function (serverUrl, userId){
+    this._userId = null;
+    this._serverUrl = null;
+    this._serverUrl = serverUrl;
+    this._userId = userId;
+};
+FoodApp.Common.JsApiBase.prototype.getUserId = function (){
+    return this._userId;
+};
+FoodApp.Common.JsApiBase.prototype.Deserealize = function (obj){
+    var res = obj;
+    if (FoodApp.Common.jsCommonUtils.inst.IsArray(obj)){
+        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+    }
+    else {
+        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+    }
+    return res;
+};
+FoodApp.Common.JsApiBase.prototype.GetPrefixFromArray = function (args){
+    var prefix = null;
+    for (var $i2 = 0,$l2 = args.length,arg = args[$i2]; $i2 < $l2; $i2++, arg = args[$i2]){
+        prefix = this.GetPrefixFromObject(arg);
+    }
+    return prefix;
+};
+FoodApp.Common.JsApiBase.prototype.GetPrefixFromObject = function (arg){
+    var prefix = null;
+    for (var prop in arg){
+        if (FoodApp.Common.jsCommonUtils.inst.HasPrefix(prop)){
+            prefix = FoodApp.Common.jsCommonUtils.inst.GetPrefix(prop);
+            break;
+        }
+    }
+    return prefix;
+};
+FoodApp.Common.JsApiBase.prototype.SendGet = function (url, handler, args){
+    var serverUrl = this._serverUrl;
+    url = FoodApp.Common.jsCommonUtils.inst.appendQueryToUrl(serverUrl + url, "time=" + new Date().getTime());
+    var headers = new Object();
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: url,
+        async: true,
+        headers: headers,
+        success: $CreateAnonymousDelegate(this, function (o, s, arg3){
+            handler(o);
+        }),
+        error: $CreateAnonymousDelegate(this, function (xhr, s, arg3){
+            alert(arg3);
+        })
+    });
+};
+FoodApp.Common.JsApiBase.prototype.SendPost = function (url, data, handler){
+    this.SendInternal("post", url, data, handler);
+};
+FoodApp.Common.JsApiBase.prototype.SendDelete = function (url, handler){
+    this.SendInternal("delete", url, null, handler);
+};
+FoodApp.Common.JsApiBase.prototype.SendInternal = function (httpMethod, url, data, handler){
+    var serverUrl = this._serverUrl;
+    url = FoodApp.Common.jsCommonUtils.inst.appendQueryToUrl(serverUrl + url, "time=" + new Date().getTime());
+    var headers = new Object();
+    var ajaxSettings = {
+        type: httpMethod,
+        dataType: "json",
+        data: data,
+        url: url,
+        headers: headers,
+        success: $CreateAnonymousDelegate(this, function (o, s, arg3){
+            handler(o);
+        }),
+        error: $CreateAnonymousDelegate(this, function (xhr, s, arg3){
+            alert(arg3);
+        })
+    };
+    $.ajax(ajaxSettings);
+};
+FoodApp.Common.JsToolsApi = function (serverUrl, userId){
+    FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
+};
+FoodApp.Common.JsToolsApi.prototype.ClearTodayOrders = function (handler){
+    var url = FoodApp.Common.ToolsUrl.Inst.GetClearTodayOrdersUrl();
+    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
+        if (null != handler){
+            handler(args);
+        }
+    }));
+};
+$Inherit(FoodApp.Common.JsToolsApi, FoodApp.Common.JsApiBase);
+FoodApp.Common.JsUsersApi = function (serverUrl, userId){
+    FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
+};
+FoodApp.Common.JsUsersApi.prototype.GetUsers = function (handler){
+    var url = FoodApp.Common.UsersUrl.Inst.GetUsers();
+    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
+        if (null != handler){
+            handler(args);
+        }
+    }));
+};
+$Inherit(FoodApp.Common.JsUsersApi, FoodApp.Common.JsApiBase);
 FoodApp.Common.jsUtils = function (){
 };
 FoodApp.Common.jsUtils.inst = new FoodApp.Common.jsUtils();
@@ -84,7 +187,7 @@ FoodApp.Common.jsUtils.prototype.isEmpty = function (str){
 };
 FoodApp.Common.jsUtils.prototype.Contains = function (ngCategories, p){
     var res = false;
-    for (var $i2 = 0,$l2 = ngCategories.length,str = ngCategories[$i2]; $i2 < $l2; $i2++, str = ngCategories[$i2]){
+    for (var $i3 = 0,$l3 = ngCategories.length,str = ngCategories[$i3]; $i3 < $l3; $i3++, str = ngCategories[$i3]){
         if (str == p){
             res = true;
             break;
@@ -118,7 +221,7 @@ FoodApp.Common.eventManager.prototype.subscribe = function (eventName, action){
 };
 FoodApp.Common.eventManager.prototype.fire = function (name, arg){
     var array = this.GetHandlersByName(name);
-    for (var $i3 = 0,$l3 = array.length,obj = array[$i3]; $i3 < $l3; $i3++, obj = array[$i3]){
+    for (var $i4 = 0,$l4 = array.length,obj = array[$i4]; $i4 < $l4; $i4++, obj = array[$i4]){
         var action = obj;
         action(arg);
     }
@@ -199,7 +302,7 @@ FoodApp.Common.ngFoodFilter.prototype.filter = function (obj, arg){
     var allFoods = obj;
     var items = allFoods[day];
     if (null != items){
-        for (var $i4 = 0,$l4 = items.length,item = items[$i4]; $i4 < $l4; $i4++, item = items[$i4]){
+        for (var $i5 = 0,$l5 = items.length,item = items[$i5]; $i5 < $l5; $i5++, item = items[$i5]){
             if ((item.Category == category) && !item.isContainer){
                 res.push(item);
             }
@@ -322,85 +425,6 @@ FoodApp.Common.HistoryUrl.c_sGetHistory = "api/history/{userId}/";
 FoodApp.Common.HistoryUrl.c_sDeleteHistoryPrefix = "api/history/delete";
 FoodApp.Common.HistoryUrl.c_sDeleteHistory = "api/history/delete/{userId}/";
 $Inherit(FoodApp.Common.HistoryUrl, FoodApp.Common.UrlBase);
-FoodApp.Common.JsApiBase = function (serverUrl, userId){
-    this._userId = null;
-    this._serverUrl = null;
-    this._serverUrl = serverUrl;
-    this._userId = userId;
-};
-FoodApp.Common.JsApiBase.prototype.getUserId = function (){
-    return this._userId;
-};
-FoodApp.Common.JsApiBase.prototype.Deserealize = function (obj){
-    var res = obj;
-    if (FoodApp.Common.jsCommonUtils.inst.IsArray(obj)){
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
-    }
-    else {
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
-    }
-    return res;
-};
-FoodApp.Common.JsApiBase.prototype.GetPrefixFromArray = function (args){
-    var prefix = null;
-    for (var $i5 = 0,$l5 = args.length,arg = args[$i5]; $i5 < $l5; $i5++, arg = args[$i5]){
-        prefix = this.GetPrefixFromObject(arg);
-    }
-    return prefix;
-};
-FoodApp.Common.JsApiBase.prototype.GetPrefixFromObject = function (arg){
-    var prefix = null;
-    for (var prop in arg){
-        if (FoodApp.Common.jsCommonUtils.inst.HasPrefix(prop)){
-            prefix = FoodApp.Common.jsCommonUtils.inst.GetPrefix(prop);
-            break;
-        }
-    }
-    return prefix;
-};
-FoodApp.Common.JsApiBase.prototype.SendGet = function (url, handler, args){
-    var serverUrl = this._serverUrl;
-    url = FoodApp.Common.jsCommonUtils.inst.appendQueryToUrl(serverUrl + url, "time=" + new Date().getTime());
-    var headers = new Object();
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: url,
-        async: true,
-        headers: headers,
-        success: $CreateAnonymousDelegate(this, function (o, s, arg3){
-            handler(o);
-        }),
-        error: $CreateAnonymousDelegate(this, function (xhr, s, arg3){
-            alert(arg3);
-        })
-    });
-};
-FoodApp.Common.JsApiBase.prototype.SendPost = function (url, data, handler){
-    this.SendInternal("post", url, data, handler);
-};
-FoodApp.Common.JsApiBase.prototype.SendDelete = function (url, handler){
-    this.SendInternal("delete", url, null, handler);
-};
-FoodApp.Common.JsApiBase.prototype.SendInternal = function (httpMethod, url, data, handler){
-    var serverUrl = this._serverUrl;
-    url = FoodApp.Common.jsCommonUtils.inst.appendQueryToUrl(serverUrl + url, "time=" + new Date().getTime());
-    var headers = new Object();
-    var ajaxSettings = {
-        type: httpMethod,
-        dataType: "json",
-        data: data,
-        url: url,
-        headers: headers,
-        success: $CreateAnonymousDelegate(this, function (o, s, arg3){
-            handler(o);
-        }),
-        error: $CreateAnonymousDelegate(this, function (xhr, s, arg3){
-            alert(arg3);
-        })
-    };
-    $.ajax(ajaxSettings);
-};
 FoodApp.Common.jsCommonUtils = function (){
     this._location = null;
 };
@@ -610,14 +634,6 @@ FoodApp.Common.JsMoneyApi.prototype.GetMoney = function (userId, handler){
         }
     }));
 };
-FoodApp.Common.JsMoneyApi.prototype.GetUsers = function (handler){
-    var url = FoodApp.Common.MoneyUrl.Inst.GetUsers();
-    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
-        if (null != handler){
-            handler(args);
-        }
-    }));
-};
 FoodApp.Common.JsMoneyApi.prototype.CanBuy = function (day, handler){
     var url = FoodApp.Common.MoneyUrl.Inst.GetCanBuyUrl(this._userId, day);
     this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
@@ -667,23 +683,12 @@ FoodApp.Common.JsOrderApi.prototype.DeleteOrder = function (day, foodId, handler
     }));
 };
 $Inherit(FoodApp.Common.JsOrderApi, FoodApp.Common.JsApiBase);
-FoodApp.Common.JsToolsApi = function (serverUrl, userId){
-    FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
-};
-FoodApp.Common.JsToolsApi.prototype.ClearTodayOrders = function (handler){
-    var url = FoodApp.Common.ToolsUrl.Inst.GetClearTodayOrdersUrl();
-    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
-        if (null != handler){
-            handler(args);
-        }
-    }));
-};
-$Inherit(FoodApp.Common.JsToolsApi, FoodApp.Common.JsApiBase);
 FoodApp.Common.JsService = function (){
     this.FoodApi = null;
     this.OrderApi = null;
     this.MoneyApi = null;
     this.ToolsApi = null;
+    this.UsersApi = null;
 };
 FoodApp.Common.JsService.Inst = new FoodApp.Common.JsService();
 FoodApp.Common.JsService.prototype.Init = function (serverUrl, userId){
@@ -691,12 +696,12 @@ FoodApp.Common.JsService.prototype.Init = function (serverUrl, userId){
     this.OrderApi = new FoodApp.Common.JsOrderApi(serverUrl, userId);
     this.MoneyApi = new FoodApp.Common.JsMoneyApi(serverUrl, userId);
     this.ToolsApi = new FoodApp.Common.JsToolsApi(serverUrl, userId);
+    this.UsersApi = new FoodApp.Common.JsUsersApi(serverUrl, userId);
 };
 FoodApp.Common.MoneyUrl = function (){
     FoodApp.Common.UrlBase.call(this);
 };
 FoodApp.Common.MoneyUrl.c_sMoneyPrefix = "api/money/";
-FoodApp.Common.MoneyUrl.c_sGetUsers = "api/money/users/";
 FoodApp.Common.MoneyUrl.c_sGetMoney = "api/money/getMoney/{userId}/";
 FoodApp.Common.MoneyUrl.c_sAddMoney = "api/money/addMoney/{userId}/{val}/";
 FoodApp.Common.MoneyUrl.c_sRemoveMoney = "api/money/removeMoney/{userId}/{val}/";
@@ -719,10 +724,6 @@ FoodApp.Common.MoneyUrl.prototype.GetRemoveMoneyUrl = function (userId, val){
 };
 FoodApp.Common.MoneyUrl.prototype.GetMoneyUrl = function (userId){
     var res = this.FormatUrl("api/money/getMoney/{userId}/", userId);
-    return res;
-};
-FoodApp.Common.MoneyUrl.prototype.GetUsers = function (){
-    var res = this.FormatUrl("api/money/users/");
     return res;
 };
 FoodApp.Common.MoneyUrl.prototype.GetCanBuyUrl = function (userId, day){
@@ -773,4 +774,15 @@ FoodApp.Common.ToolsUrl.prototype.GetClearTodayOrdersUrl = function (){
     return res;
 };
 $Inherit(FoodApp.Common.ToolsUrl, FoodApp.Common.UrlBase);
+FoodApp.Common.UsersUrl = function (){
+    FoodApp.Common.UrlBase.call(this);
+};
+FoodApp.Common.UsersUrl.c_sUsersPrefix = "api/users/";
+FoodApp.Common.UsersUrl.c_sGetUsers = "api/users/users/";
+FoodApp.Common.UsersUrl.Inst = new FoodApp.Common.UsersUrl();
+FoodApp.Common.UsersUrl.prototype.GetUsers = function (){
+    var res = this.FormatUrl("api/users/users/");
+    return res;
+};
+$Inherit(FoodApp.Common.UsersUrl, FoodApp.Common.UrlBase);
 

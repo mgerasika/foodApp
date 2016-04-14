@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="api\IMoneyController.cs" />
+    <Compile Include="api\JsToolsApi.cs" />
+    <Compile Include="api\JsUsersApi.cs" />
     <Compile Include="Common\CommonUtils.cs" />
     <Compile Include="api\IFoodsController.cs" />
     <Compile Include="api\IOrderController.cs" />
@@ -75,17 +77,18 @@
     <Compile Include="Common\ajaxHlp.cs" />
     <Compile Include="Url\FoodsUrl.cs" />
     <Compile Include="Url\HistoryUrl.cs" />
-    <Compile Include="Url\JsApiBase.cs" />
-    <Compile Include="Url\jsCommonUtils.cs" />
-    <Compile Include="Url\JsFoodApi.cs" />
+    <Compile Include="api\JsApiBase.cs" />
+    <Compile Include="api\jsCommonUtils.cs" />
+    <Compile Include="api\JsFoodApi.cs" />
     <Compile Include="Url\JsHandler.cs" />
-    <Compile Include="Url\JsMoneyApi.cs" />
-    <Compile Include="Url\JsOrderApi.cs" />
-    <Compile Include="Url\JsService.cs" />
+    <Compile Include="api\JsMoneyApi.cs" />
+    <Compile Include="api\JsOrderApi.cs" />
+    <Compile Include="api\JsService.cs" />
     <Compile Include="Url\MoneyUrl.cs" />
     <Compile Include="Url\OrderUrl.cs" />
     <Compile Include="Url\PropousalUrl.cs" />
     <Compile Include="Url\ToolsUrl.cs" />
+    <Compile Include="Url\UsersUrl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

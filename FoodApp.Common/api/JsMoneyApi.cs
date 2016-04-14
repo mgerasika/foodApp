@@ -3,6 +3,8 @@ using SharpKit.JavaScript;
 namespace FoodApp.Common {
     [JsType(JsMode.Prototype, Filename = CommonApiResources._fileClientJs)]
     public class JsMoneyApi : JsApiBase {
+
+
         public void Buy(int day, JsHandler<bool> handler) {
             string url = MoneyUrl.Inst.GetBuyUrl(_userId, day);
             SendGet(url, delegate(bool args) {
@@ -49,17 +51,7 @@ namespace FoodApp.Common {
             });
         }
 
-        public void GetUsers(JsHandler<JsArray<ngUserModel>> handler)
-        {
-            string url = MoneyUrl.Inst.GetUsers();
-            SendGet(url, delegate(JsArray<ngUserModel> args)
-            {
-                if (null != handler)
-                {
-                    handler(args);
-                }
-            });
-        }
+       
 
         public void CanBuy(int day, JsHandler<bool> handler) {
             string url = MoneyUrl.Inst.GetCanBuyUrl(_userId, day);

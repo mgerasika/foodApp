@@ -85,18 +85,24 @@ namespace FoodApp.Controllers {
         }
          */
 
-            [Route("trace")]
+        [Route("trace")]
         public ViewResult Trace() {
             return View();
         }
+
         [Route("error")]
-        public ViewResult Error()
-        {
+        public ViewResult Error() {
+            return View();
+        }
+
+        public ActionResult MIndex() {
             return View();
         }
 
 
         public ActionResult Index() {
+            bool isMobile = Request.Browser.IsMobileDevice;
+
             if (Request.QueryString["code"] != null && null == ApiUtils.GetLoggedInUser()) {
                 OAuth2Parameters lParams = CreateParameters();
                 lParams.AccessType = "offline";
@@ -126,8 +132,7 @@ namespace FoodApp.Controllers {
                                         userModel.GoogleFirstName = Convert.ToString(data["given_name"]);
                                         UsersManager.Inst.Save();
                                     }
-                                    if (email.Contains("mgerasika") || email.Contains("mherasika") || email.Contains("omartsinets"))
-                                    {
+                                    if (email.Contains("mgerasika") || email.Contains("mherasika") || email.Contains("omartsinets")) {
                                         if (!userModel.IsAdmin) {
                                             userModel.IsAdmin = true;
                                             UsersManager.Inst.Save();
@@ -136,7 +141,7 @@ namespace FoodApp.Controllers {
 
 
                                     ApiUtils.SetSessionUserId(userModel.Id);
-                                    return RedirectToAction("Index");
+                                    return isMobile ? RedirectToAction("MIndex") : RedirectToAction("Index");
                                 }
                             }
                         }
@@ -154,15 +159,15 @@ namespace FoodApp.Controllers {
             UsersManager.Inst.Init();
 
             ApiTraceManager.Inst.LogTrace("User on index page ");
-            return View();
+
+            return isMobile ? View("MIndex") : View();
         }
 
         public ActionResult Login() {
             return View();
         }
 
-        public ActionResult Admin()
-        {
+        public ActionResult Admin() {
             return View();
         }
 

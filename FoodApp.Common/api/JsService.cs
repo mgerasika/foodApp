@@ -7,6 +7,7 @@ namespace FoodApp.Common {
         public JsOrderApi OrderApi { get; set; }
         public JsMoneyApi MoneyApi { get; set; }
         public JsToolsApi ToolsApi { get; set; }
+        public JsUsersApi UsersApi { get; set; }
 
         public static JsService Inst = new JsService();
 
@@ -15,6 +16,7 @@ namespace FoodApp.Common {
             OrderApi = new JsOrderApi(serverUrl,userId);
             MoneyApi = new JsMoneyApi(serverUrl,userId);
             ToolsApi = new JsToolsApi(serverUrl, userId);
+            UsersApi = new JsUsersApi(serverUrl, userId);
         }
     }
 }
