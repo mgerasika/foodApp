@@ -13,5 +13,6 @@ namespace FoodApp.Common {
         public bool IsAdmin { get; set; }
 
         public string GoogleFirstName { get; set; }
+        public bool IsReviewer { get; set; }
     }
 }

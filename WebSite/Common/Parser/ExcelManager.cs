@@ -99,7 +99,7 @@ namespace FoodApp.Common.Parser {
                     ngFoodItem newItem = ApiUtils.GetFoodById(newFoodList, prevItem.FoodId);
                     if (null == newItem) {
                         hasChanges = true;
-                        sb.AppendFormat("Видалено або перейменовано '{0}'\n", prevItem.Name);
+                        sb.AppendFormat("Видалено '{0}'\n", prevItem.Name);
                     }
                     else {
                         if (newItem.Name != null && !newItem.Name.Equals(prevItem.Name)) {
@@ -121,7 +121,7 @@ namespace FoodApp.Common.Parser {
                     ngFoodItem prevItem = ApiUtils.GetFoodById(prevFoodsList, newItem.FoodId);
                     if (null == prevItem) {
                         hasChanges = true;
-                        sb.AppendFormat("Додано або перейменовано'{0}'\n", newItem.Name);
+                        sb.AppendFormat("Додано '{0}'\n", newItem.Name);
                     }
                 }
             }

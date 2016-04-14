@@ -21,7 +21,7 @@ namespace FoodApp.Controllers.api {
 
         [HttpGet]
         [Route(OrderUrl.c_sGetOrdersByDay)]
-        public IList<ngOrderEntry> GetOrders(string userId, int day) {
+        public IList<ngOrderEntry> GetOrdersByDay(string userId, int day) {
             ngUserModel user = UsersManager.Inst.GetUserById(userId);
             List<ngOrderEntry> items = OrderManager.Inst.GetOrders(user, day);
             return items;

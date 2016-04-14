@@ -20,10 +20,10 @@ namespace FoodApp.Common {
             object res = obj;
 
             if (jsCommonUtils.inst.IsArray(obj)) {
-                jsCommonUtils.inst.Assert(null != res);
+                jsCommonUtils.inst.assert(null != res);
             }
             else {
-                jsCommonUtils.inst.Assert(null != res);
+                jsCommonUtils.inst.assert(null != res);
             }
 
             return res;

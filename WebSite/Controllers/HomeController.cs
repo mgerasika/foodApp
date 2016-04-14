@@ -99,8 +99,15 @@ namespace FoodApp.Controllers {
             return View();
         }
 
+        [Route("Review")]
+        public ActionResult Review() {
+            return View();
+        }
+
 
         public ActionResult Index() {
+            ActionResult viewResult = null;
+
             bool isMobile = Request.Browser.IsMobileDevice;
 
             if (Request.QueryString["code"] != null && null == ApiUtils.GetLoggedInUser()) {
@@ -124,7 +131,15 @@ namespace FoodApp.Controllers {
                                     string email = Convert.ToString(data["email"]);
                                     ngUserModel userModel = UsersManager.Inst.GetUserByEmail(email);
                                     if (null == userModel) {
-                                        userModel = UsersManager.Inst.GetUserByEmail("unknown@gmail.com");
+                                        //create new user.
+                                        //userModel = UsersManager.Inst.GetUserByEmail("unknown@gmail.com");
+                                        ngUserModel tmp = new ngUserModel();
+                                        tmp.Email = email;
+                                        tmp.IsAdmin = false;
+                                        tmp.IsReviewer = true;
+                                        tmp.Id = Guid.NewGuid().ToString();
+                                        UsersManager.Inst.AddItemAndSave(tmp);
+                                        userModel = tmp;
                                     }
                                     if (string.IsNullOrEmpty(userModel.GoogleFirstName)) {
                                         userModel.Picture = Convert.ToString(data["picture"]);
@@ -138,10 +153,14 @@ namespace FoodApp.Controllers {
                                             UsersManager.Inst.Save();
                                         }
                                     }
-
-
                                     ApiUtils.SetSessionUserId(userModel.Id);
-                                    return isMobile ? RedirectToAction("MIndex") : RedirectToAction("Index");
+
+                                    if (userModel.IsReviewer) {
+                                        viewResult = RedirectToAction("Review");
+                                    }
+                                    else {
+                                        viewResult = isMobile ? RedirectToAction("MIndex") : RedirectToAction("Index");
+                                    }
                                 }
                             }
                         }
@@ -150,17 +169,26 @@ namespace FoodApp.Controllers {
                 catch (Exception ex) {
                 }
             }
-            if (null == ApiUtils.GetLoggedInUser()) {
-                return RedirectToAction("Login");
+            if (null == viewResult) {
+                if (null == ApiUtils.GetLoggedInUser()) {
+                    viewResult = RedirectToAction("Login");
+                }
+                else {
+                    ExcelManager.Inst.Init();
+                    HistoryManager.Inst.FixFoodIdsForLoogedUser();
+                    UserSettingsManager.Inst.Init();
+                    UsersManager.Inst.Init();
+                    ApiTraceManager.Inst.LogTrace("User on index page ");
+
+                    if (ApiUtils.GetLoggedInUser().IsReviewer) {
+                        viewResult = View("Review");
+                    }
+                    else {
+                        viewResult = isMobile ? View("MIndex") : View();
+                    }
+                }
             }
-            ExcelManager.Inst.Init();
-            HistoryManager.Inst.FixFoodIdsForLoogedUser();
-            UserSettingsManager.Inst.Init();
-            UsersManager.Inst.Init();
-
-            ApiTraceManager.Inst.LogTrace("User on index page ");
-
-            return isMobile ? View("MIndex") : View();
+            return viewResult;
         }
 
         public ActionResult Login() {

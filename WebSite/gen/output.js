@@ -304,6 +304,109 @@ if (typeof(FoodApp) == "undefined")
     var FoodApp = {};
 if (typeof(FoodApp.Common) == "undefined")
     FoodApp.Common = {};
+FoodApp.Common.JsApiBase = function (serverUrl, userId){
+    this._userId = null;
+    this._serverUrl = null;
+    this._serverUrl = serverUrl;
+    this._userId = userId;
+};
+FoodApp.Common.JsApiBase.prototype.getUserId = function (){
+    return this._userId;
+};
+FoodApp.Common.JsApiBase.prototype.Deserealize = function (obj){
+    var res = obj;
+    if (FoodApp.Common.jsCommonUtils.inst.IsArray(obj)){
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
+    }
+    else {
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
+    }
+    return res;
+};
+FoodApp.Common.JsApiBase.prototype.GetPrefixFromArray = function (args){
+    var prefix = null;
+    for (var $i2 = 0,$l2 = args.length,arg = args[$i2]; $i2 < $l2; $i2++, arg = args[$i2]){
+        prefix = this.GetPrefixFromObject(arg);
+    }
+    return prefix;
+};
+FoodApp.Common.JsApiBase.prototype.GetPrefixFromObject = function (arg){
+    var prefix = null;
+    for (var prop in arg){
+        if (FoodApp.Common.jsCommonUtils.inst.HasPrefix(prop)){
+            prefix = FoodApp.Common.jsCommonUtils.inst.GetPrefix(prop);
+            break;
+        }
+    }
+    return prefix;
+};
+FoodApp.Common.JsApiBase.prototype.SendGet = function (url, handler, args){
+    var serverUrl = this._serverUrl;
+    url = FoodApp.Common.jsCommonUtils.inst.appendQueryToUrl(serverUrl + url, "time=" + new Date().getTime());
+    var headers = new Object();
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: url,
+        async: true,
+        headers: headers,
+        success: $CreateAnonymousDelegate(this, function (o, s, arg3){
+            handler(o);
+        }),
+        error: $CreateAnonymousDelegate(this, function (xhr, s, arg3){
+            alert(arg3);
+        })
+    });
+};
+FoodApp.Common.JsApiBase.prototype.SendPost = function (url, data, handler){
+    this.SendInternal("post", url, data, handler);
+};
+FoodApp.Common.JsApiBase.prototype.SendDelete = function (url, handler){
+    this.SendInternal("delete", url, null, handler);
+};
+FoodApp.Common.JsApiBase.prototype.SendInternal = function (httpMethod, url, data, handler){
+    var serverUrl = this._serverUrl;
+    url = FoodApp.Common.jsCommonUtils.inst.appendQueryToUrl(serverUrl + url, "time=" + new Date().getTime());
+    var headers = new Object();
+    var ajaxSettings = {
+        type: httpMethod,
+        dataType: "json",
+        data: data,
+        url: url,
+        headers: headers,
+        success: $CreateAnonymousDelegate(this, function (o, s, arg3){
+            handler(o);
+        }),
+        error: $CreateAnonymousDelegate(this, function (xhr, s, arg3){
+            alert(arg3);
+        })
+    };
+    $.ajax(ajaxSettings);
+};
+FoodApp.Common.JsToolsApi = function (serverUrl, userId){
+    FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
+};
+FoodApp.Common.JsToolsApi.prototype.ClearTodayOrders = function (handler){
+    var url = FoodApp.Common.ToolsUrl.Inst.GetClearTodayOrdersUrl();
+    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
+        if (null != handler){
+            handler(args);
+        }
+    }));
+};
+$Inherit(FoodApp.Common.JsToolsApi, FoodApp.Common.JsApiBase);
+FoodApp.Common.JsUsersApi = function (serverUrl, userId){
+    FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
+};
+FoodApp.Common.JsUsersApi.prototype.GetUsers = function (handler){
+    var url = FoodApp.Common.UsersUrl.Inst.GetUsers();
+    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
+        if (null != handler){
+            handler(args);
+        }
+    }));
+};
+$Inherit(FoodApp.Common.JsUsersApi, FoodApp.Common.JsApiBase);
 FoodApp.Common.jsUtils = function (){
 };
 FoodApp.Common.jsUtils.inst = new FoodApp.Common.jsUtils();
@@ -340,7 +443,7 @@ FoodApp.Common.jsUtils.prototype.isEmpty = function (str){
 };
 FoodApp.Common.jsUtils.prototype.Contains = function (ngCategories, p){
     var res = false;
-    for (var $i2 = 0,$l2 = ngCategories.length,str = ngCategories[$i2]; $i2 < $l2; $i2++, str = ngCategories[$i2]){
+    for (var $i3 = 0,$l3 = ngCategories.length,str = ngCategories[$i3]; $i3 < $l3; $i3++, str = ngCategories[$i3]){
         if (str == p){
             res = true;
             break;
@@ -352,6 +455,11 @@ FoodApp.Common.jsUtils.prototype.fixNumber = function (p){
     var jsNumber = parseFloat(p);
     var tmp = jsNumber.toPrecision(5);
     return parseFloat(tmp);
+};
+FoodApp.Common.jsUtils.prototype.addRange = function (source, target){
+    for (var $i4 = 0,$l4 = target.length,other = target[$i4]; $i4 < $l4; $i4++, other = target[$i4]){
+        source.push(other);
+    }
 };
 FoodApp.Common.eventManager = function (){
     this._dict = new Object();
@@ -374,7 +482,7 @@ FoodApp.Common.eventManager.prototype.subscribe = function (eventName, action){
 };
 FoodApp.Common.eventManager.prototype.fire = function (name, arg){
     var array = this.GetHandlersByName(name);
-    for (var $i3 = 0,$l3 = array.length,obj = array[$i3]; $i3 < $l3; $i3++, obj = array[$i3]){
+    for (var $i5 = 0,$l5 = array.length,obj = array[$i5]; $i5 < $l5; $i5++, obj = array[$i5]){
         var action = obj;
         action(arg);
     }
@@ -387,7 +495,7 @@ FoodApp.Common.ngFoodItem = function (){
     this.Category = null;
     this.Price = 0;
     this.FoodId = null;
-    this.IsByWeightItem = false;
+    this.isByWeightItem = false;
     this.isContainer = false;
     this.isSmallContainer = false;
     this.isBigContainer = false;
@@ -434,6 +542,7 @@ FoodApp.Common.ngUserModel = function (){
     this.GoogleName = null;
     this.IsAdmin = false;
     this.GoogleFirstName = null;
+    this.IsReviewer = false;
 };
 $Inherit(FoodApp.Common.ngUserModel, FoodApp.Common.ngModelBase);
 FoodApp.Common.ngFoodFilter = function (){
@@ -455,7 +564,7 @@ FoodApp.Common.ngFoodFilter.prototype.filter = function (obj, arg){
     var allFoods = obj;
     var items = allFoods[day];
     if (null != items){
-        for (var $i4 = 0,$l4 = items.length,item = items[$i4]; $i4 < $l4; $i4++, item = items[$i4]){
+        for (var $i6 = 0,$l6 = items.length,item = items[$i6]; $i6 < $l6; $i6++, item = items[$i6]){
             if ((item.Category == category) && !item.isContainer){
                 res.push(item);
             }
@@ -578,85 +687,6 @@ FoodApp.Common.HistoryUrl.c_sGetHistory = "api/history/{userId}/";
 FoodApp.Common.HistoryUrl.c_sDeleteHistoryPrefix = "api/history/delete";
 FoodApp.Common.HistoryUrl.c_sDeleteHistory = "api/history/delete/{userId}/";
 $Inherit(FoodApp.Common.HistoryUrl, FoodApp.Common.UrlBase);
-FoodApp.Common.JsApiBase = function (serverUrl, userId){
-    this._userId = null;
-    this._serverUrl = null;
-    this._serverUrl = serverUrl;
-    this._userId = userId;
-};
-FoodApp.Common.JsApiBase.prototype.getUserId = function (){
-    return this._userId;
-};
-FoodApp.Common.JsApiBase.prototype.Deserealize = function (obj){
-    var res = obj;
-    if (FoodApp.Common.jsCommonUtils.inst.IsArray(obj)){
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
-    }
-    else {
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
-    }
-    return res;
-};
-FoodApp.Common.JsApiBase.prototype.GetPrefixFromArray = function (args){
-    var prefix = null;
-    for (var $i5 = 0,$l5 = args.length,arg = args[$i5]; $i5 < $l5; $i5++, arg = args[$i5]){
-        prefix = this.GetPrefixFromObject(arg);
-    }
-    return prefix;
-};
-FoodApp.Common.JsApiBase.prototype.GetPrefixFromObject = function (arg){
-    var prefix = null;
-    for (var prop in arg){
-        if (FoodApp.Common.jsCommonUtils.inst.HasPrefix(prop)){
-            prefix = FoodApp.Common.jsCommonUtils.inst.GetPrefix(prop);
-            break;
-        }
-    }
-    return prefix;
-};
-FoodApp.Common.JsApiBase.prototype.SendGet = function (url, handler, args){
-    var serverUrl = this._serverUrl;
-    url = FoodApp.Common.jsCommonUtils.inst.appendQueryToUrl(serverUrl + url, "time=" + new Date().getTime());
-    var headers = new Object();
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: url,
-        async: true,
-        headers: headers,
-        success: $CreateAnonymousDelegate(this, function (o, s, arg3){
-            handler(o);
-        }),
-        error: $CreateAnonymousDelegate(this, function (xhr, s, arg3){
-            alert(arg3);
-        })
-    });
-};
-FoodApp.Common.JsApiBase.prototype.SendPost = function (url, data, handler){
-    this.SendInternal("post", url, data, handler);
-};
-FoodApp.Common.JsApiBase.prototype.SendDelete = function (url, handler){
-    this.SendInternal("delete", url, null, handler);
-};
-FoodApp.Common.JsApiBase.prototype.SendInternal = function (httpMethod, url, data, handler){
-    var serverUrl = this._serverUrl;
-    url = FoodApp.Common.jsCommonUtils.inst.appendQueryToUrl(serverUrl + url, "time=" + new Date().getTime());
-    var headers = new Object();
-    var ajaxSettings = {
-        type: httpMethod,
-        dataType: "json",
-        data: data,
-        url: url,
-        headers: headers,
-        success: $CreateAnonymousDelegate(this, function (o, s, arg3){
-            handler(o);
-        }),
-        error: $CreateAnonymousDelegate(this, function (xhr, s, arg3){
-            alert(arg3);
-        })
-    };
-    $.ajax(ajaxSettings);
-};
 FoodApp.Common.jsCommonUtils = function (){
     this._location = null;
 };
@@ -665,10 +695,10 @@ FoodApp.Common.jsCommonUtils.prototype.Equals = function (prefix, prefix2){
     var res = prefix.toLowerCase() == prefix2.toLowerCase();
     return res;
 };
-FoodApp.Common.jsCommonUtils.prototype.Assert = function (p1){
-    this.Assert(p1, "");
+FoodApp.Common.jsCommonUtils.prototype.assert = function (p1){
+    this.assert(p1, "");
 };
-FoodApp.Common.jsCommonUtils.prototype.Assert = function (p1, msg){
+FoodApp.Common.jsCommonUtils.prototype.assert = function (p1, msg){
     if (!p1){
         if (msg == null){
             msg = "";
@@ -732,7 +762,7 @@ FoodApp.Common.jsCommonUtils.prototype.toBool = function (jsString){
 };
 FoodApp.Common.jsCommonUtils.prototype.contains = function (prefixes, prefix){
     var res = false;
-    for (var $i6 = 0,$l6 = prefixes.length,pr = prefixes[$i6]; $i6 < $l6; $i6++, pr = prefixes[$i6]){
+    for (var $i7 = 0,$l7 = prefixes.length,pr = prefixes[$i7]; $i7 < $l7; $i7++, pr = prefixes[$i7]){
         if (pr == prefix){
             res = true;
             break;
@@ -749,7 +779,7 @@ FoodApp.Common.jsCommonUtils.prototype.getQueryParam = function (jsString, p){
         if (args.length == 0){
             args.push(tmp);
         }
-        for (var $i7 = 0,$l7 = args.length,arg = args[$i7]; $i7 < $l7; $i7++, arg = args[$i7]){
+        for (var $i8 = 0,$l8 = args.length,arg = args[$i8]; $i8 < $l8; $i8++, arg = args[$i8]){
             var keyVal = arg.split("=");
             if (keyVal.length == 2){
                 if (keyVal[0] == p){
@@ -775,7 +805,7 @@ FoodApp.Common.jsCommonUtils.prototype.getPrefix = function (tmp){
 };
 FoodApp.Common.jsCommonUtils.prototype.removeFromArray = function (items, obj){
     var tmpArray =  [];
-    for (var $i8 = 0,$l8 = items.length,tmp = items[$i8]; $i8 < $l8; $i8++, tmp = items[$i8]){
+    for (var $i9 = 0,$l9 = items.length,tmp = items[$i9]; $i9 < $l9; $i9++, tmp = items[$i9]){
         if (tmp != obj){
             tmpArray.push(tmp);
         }
@@ -783,18 +813,18 @@ FoodApp.Common.jsCommonUtils.prototype.removeFromArray = function (items, obj){
     while (items.length > 0){
         items.pop();
     }
-    for (var $i9 = 0,$l9 = tmpArray.length,tmp = tmpArray[$i9]; $i9 < $l9; $i9++, tmp = tmpArray[$i9]){
+    for (var $i10 = 0,$l10 = tmpArray.length,tmp = tmpArray[$i10]; $i10 < $l10; $i10++, tmp = tmpArray[$i10]){
         items.push(tmp);
     }
 };
 FoodApp.Common.JsFoodApi = function (serverUrl, userId){
     FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
 };
-FoodApp.Common.JsFoodApi.prototype.GetFoods = function (day, handler){
-    var url = FoodApp.Common.FoodsUrl.Inst.GetFoodsByDayUrl(this._userId, day);
+FoodApp.Common.JsFoodApi.prototype.GetFoodsByDay = function (userId, day, handler){
+    var url = FoodApp.Common.FoodsUrl.Inst.GetFoodsByDayUrl(userId, day);
     this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -804,7 +834,7 @@ FoodApp.Common.JsFoodApi.prototype.GetAllFoods = function (handler){
     var url = FoodApp.Common.FoodsUrl.Inst.GetAllFoodsUrl(this._userId);
     this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -814,7 +844,7 @@ FoodApp.Common.JsFoodApi.prototype.Buy = function (day, foodId, value, handler){
     var url = FoodApp.Common.FoodsUrl.Inst.GetBuyUrl(this._userId, day, foodId, value);
     this.SendPost(url, new Object(), $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -824,7 +854,7 @@ FoodApp.Common.JsFoodApi.prototype.ChangePrice = function (day, foodId, value, h
     var url = FoodApp.Common.FoodsUrl.Inst.GetChangePriceUrl(this._userId, day, foodId, value);
     this.SendPost(url, new Object(), $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -866,14 +896,6 @@ FoodApp.Common.JsMoneyApi.prototype.GetMoney = function (userId, handler){
         }
     }));
 };
-FoodApp.Common.JsMoneyApi.prototype.GetUsers = function (handler){
-    var url = FoodApp.Common.MoneyUrl.Inst.GetUsers();
-    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
-        if (null != handler){
-            handler(args);
-        }
-    }));
-};
 FoodApp.Common.JsMoneyApi.prototype.CanBuy = function (day, handler){
     var url = FoodApp.Common.MoneyUrl.Inst.GetCanBuyUrl(this._userId, day);
     this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
@@ -902,11 +924,21 @@ $Inherit(FoodApp.Common.JsMoneyApi, FoodApp.Common.JsApiBase);
 FoodApp.Common.JsOrderApi = function (serverUrl, userId){
     FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
 };
-FoodApp.Common.JsOrderApi.prototype.GetOrders = function (handler){
-    var url = FoodApp.Common.OrderUrl.Inst.GetAllOrdersUrl(this._userId);
+FoodApp.Common.JsOrderApi.prototype.GetAllOrders = function (userId, handler){
+    var url = FoodApp.Common.OrderUrl.Inst.GetAllOrdersUrl(userId);
     this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
+        if (null != handler){
+            handler(res);
+        }
+    }));
+};
+FoodApp.Common.JsOrderApi.prototype.GetOrdersByDay = function (userId, day, handler){
+    var url = FoodApp.Common.OrderUrl.Inst.GetOrdersByDayUrl(userId, day);
+    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
+        var res = this.Deserealize(args);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -916,30 +948,19 @@ FoodApp.Common.JsOrderApi.prototype.DeleteOrder = function (day, foodId, handler
     var url = FoodApp.Common.OrderUrl.Inst.GetDeleteOrderUrl(this._userId, day, foodId);
     this.SendDelete(url, $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
     }));
 };
 $Inherit(FoodApp.Common.JsOrderApi, FoodApp.Common.JsApiBase);
-FoodApp.Common.JsToolsApi = function (serverUrl, userId){
-    FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
-};
-FoodApp.Common.JsToolsApi.prototype.ClearTodayOrders = function (handler){
-    var url = FoodApp.Common.ToolsUrl.Inst.GetClearTodayOrdersUrl();
-    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
-        if (null != handler){
-            handler(args);
-        }
-    }));
-};
-$Inherit(FoodApp.Common.JsToolsApi, FoodApp.Common.JsApiBase);
 FoodApp.Common.JsService = function (){
     this.FoodApi = null;
     this.OrderApi = null;
     this.MoneyApi = null;
     this.ToolsApi = null;
+    this.UsersApi = null;
 };
 FoodApp.Common.JsService.Inst = new FoodApp.Common.JsService();
 FoodApp.Common.JsService.prototype.Init = function (serverUrl, userId){
@@ -947,12 +968,12 @@ FoodApp.Common.JsService.prototype.Init = function (serverUrl, userId){
     this.OrderApi = new FoodApp.Common.JsOrderApi(serverUrl, userId);
     this.MoneyApi = new FoodApp.Common.JsMoneyApi(serverUrl, userId);
     this.ToolsApi = new FoodApp.Common.JsToolsApi(serverUrl, userId);
+    this.UsersApi = new FoodApp.Common.JsUsersApi(serverUrl, userId);
 };
 FoodApp.Common.MoneyUrl = function (){
     FoodApp.Common.UrlBase.call(this);
 };
 FoodApp.Common.MoneyUrl.c_sMoneyPrefix = "api/money/";
-FoodApp.Common.MoneyUrl.c_sGetUsers = "api/money/users/";
 FoodApp.Common.MoneyUrl.c_sGetMoney = "api/money/getMoney/{userId}/";
 FoodApp.Common.MoneyUrl.c_sAddMoney = "api/money/addMoney/{userId}/{val}/";
 FoodApp.Common.MoneyUrl.c_sRemoveMoney = "api/money/removeMoney/{userId}/{val}/";
@@ -975,10 +996,6 @@ FoodApp.Common.MoneyUrl.prototype.GetRemoveMoneyUrl = function (userId, val){
 };
 FoodApp.Common.MoneyUrl.prototype.GetMoneyUrl = function (userId){
     var res = this.FormatUrl("api/money/getMoney/{userId}/", userId);
-    return res;
-};
-FoodApp.Common.MoneyUrl.prototype.GetUsers = function (){
-    var res = this.FormatUrl("api/money/users/");
     return res;
 };
 FoodApp.Common.MoneyUrl.prototype.GetCanBuyUrl = function (userId, day){
@@ -1029,6 +1046,17 @@ FoodApp.Common.ToolsUrl.prototype.GetClearTodayOrdersUrl = function (){
     return res;
 };
 $Inherit(FoodApp.Common.ToolsUrl, FoodApp.Common.UrlBase);
+FoodApp.Common.UsersUrl = function (){
+    FoodApp.Common.UrlBase.call(this);
+};
+FoodApp.Common.UsersUrl.c_sUsersPrefix = "api/users/";
+FoodApp.Common.UsersUrl.c_sGetUsers = "api/users/users/";
+FoodApp.Common.UsersUrl.Inst = new FoodApp.Common.UsersUrl();
+FoodApp.Common.UsersUrl.prototype.GetUsers = function (){
+    var res = this.FormatUrl("api/users/users/");
+    return res;
+};
+$Inherit(FoodApp.Common.UsersUrl, FoodApp.Common.UrlBase);
 
 
 if (typeof(FoodApp) == "undefined")
@@ -1056,6 +1084,204 @@ FoodApp.Client.ngControllerBase.prototype.onRequestFailed = function (jsError, j
     FoodApp.Common.jsUtils.inst.hideLoading();
 };
 $Inherit(FoodApp.Client.ngControllerBase, angularjs.angularController);
+FoodApp.Client.ngReviewController = function (){
+    FoodApp.Client.ngControllerBase.call(this);
+};
+FoodApp.Client.ngReviewController.inst = new FoodApp.Client.ngReviewController();
+FoodApp.Client.ngReviewController.prototype.get_className = function (){
+    return "ngReviewController";
+};
+FoodApp.Client.ngReviewController.prototype.get_namespace = function (){
+    return "FoodApp.Client";
+};
+FoodApp.Client.ngReviewController.prototype.get_ngReviewModel = function (){
+    return this._scope["ngReviewModel"];
+};
+FoodApp.Client.ngReviewController.prototype.set_ngReviewModel = function (value){
+    this._scope["ngReviewModel"] = value;
+};
+FoodApp.Client.ngReviewController.prototype.get_ngIsInit = function (){
+    return this._scope["ngIsInit"];
+};
+FoodApp.Client.ngReviewController.prototype.set_ngIsInit = function (value){
+    this._scope["ngIsInit"] = value;
+};
+FoodApp.Client.ngReviewController.prototype.get_ngFoods = function (){
+    return this._scope["ngFoods"];
+};
+FoodApp.Client.ngReviewController.prototype.set_ngFoods = function (value){
+    this._scope["ngFoods"] = value;
+};
+FoodApp.Client.ngReviewController.prototype.get_ngTotalOrders = function (){
+    return this._scope["ngTotalOrders"];
+};
+FoodApp.Client.ngReviewController.prototype.set_ngTotalOrders = function (value){
+    this._scope["ngTotalOrders"] = value;
+};
+FoodApp.Client.ngReviewController.prototype.init = function (scope, http, loc, filter){
+    FoodApp.Client.ngControllerBase.prototype.init.call(this, scope, http, loc, filter);
+    this.set_ngReviewModel( []);
+    this.set_ngFoods( []);
+    this.set_ngTotalOrders( []);
+    FoodApp.Common.eventManager.inst.subscribe(FoodApp.Common.eventManager.dayChanged, $CreateAnonymousDelegate(this, function (n){
+        this.requestGetFoods();
+    }));
+};
+FoodApp.Client.ngReviewController.prototype.findFoodById = function (id){
+    var res = null;
+    for (var $i2 = 0,$t2 = this.get_ngFoods(),$l2 = $t2.length,item = $t2[$i2]; $i2 < $l2; $i2++, item = $t2[$i2]){
+        if (item.FoodId == id){
+            res = item;
+            break;
+        }
+    }
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.getFoodItem_ReviewCtrl = function (id){
+    var item = this.findFoodById(id);
+    return item;
+};
+FoodApp.Client.ngReviewController.prototype.formatCount_ReviewCtrl = function (order){
+    var res = order.Count + "";
+    var food = this.getFoodItem_ReviewCtrl(order.FoodId);
+    if (food.isByWeightItem){
+        res = parseInt((order.Count * 100), 10) + "";
+    }
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.requestGetFoods = function (){
+    FoodApp.Common.JsService.Inst.FoodApi.GetFoodsByDay(FoodApp.Common.JsService.Inst.FoodApi.getUserId(), FoodApp.Client.ngAppController.inst.get_ngDayOfWeek(), $CreateAnonymousDelegate(this, function (data){
+        this.set_ngFoods(data);
+        this.requestGetUsers();
+    }));
+};
+FoodApp.Client.ngReviewController.prototype.requestGetUsers = function (){
+    FoodApp.Common.JsService.Inst.UsersApi.GetUsers($CreateAnonymousDelegate(this, function (users){
+        var tmp =  [];
+        for (var $i3 = 0,$l3 = users.length,ngUser = users[$i3]; $i3 < $l3; $i3++, ngUser = users[$i3]){
+            if (-1 != ngUser.Email.indexOf("darwins")){
+                tmp.push(ngUser);
+            }
+        }
+        if (tmp.length > 0){
+            this.requestGetOrders(tmp);
+        }
+    }));
+};
+FoodApp.Client.ngReviewController.prototype.requestGetOrders = function (tmp){
+    this.getOrdersRecursive(tmp,  [], $CreateAnonymousDelegate(this, function (result){
+        this.set_ngIsInit(true);
+        this.set_ngTotalOrders(this.createTotalOrders(result));
+        this.set_ngReviewModel(result);
+        this._scope.$apply();
+    }));
+};
+FoodApp.Client.ngReviewController.prototype.createTotalOrders = function (items){
+    var res =  [];
+    for (var $i4 = 0,$l4 = items.length,reviewModel = items[$i4]; $i4 < $l4; $i4++, reviewModel = items[$i4]){
+        for (var $i5 = 0,$t5 = reviewModel.orders,$l5 = $t5.length,order = $t5[$i5]; $i5 < $l5; $i5++, order = $t5[$i5]){
+            var foodItem = this.findFoodById(order.FoodId);
+            FoodApp.Common.jsCommonUtils.inst.assert(null != foodItem);
+            if (!this.conainsFoodId(res, order.FoodId)){
+                var totalOrder = {};
+                totalOrder.FoodId = order.FoodId;
+                if (foodItem.isByWeightItem){
+                    totalOrder.Count = 1;
+                }
+                else {
+                    totalOrder.Count = order.Count;
+                }
+                res.push(totalOrder);
+            }
+            else {
+                var totalOrder = this.getOrderByFoodId(res, order.FoodId);
+                if (foodItem.isByWeightItem){
+                    totalOrder.Count += 1;
+                }
+                else {
+                    totalOrder.Count += order.Count;
+                }
+            }
+        }
+    }
+    res = this.groupByCategory(res);
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.groupByCategory = function (items){
+    var res =  [];
+    var salats =  [];
+    var first =  [];
+    var garnirs =  [];
+    var others =  [];
+    for (var $i6 = 0,$l6 = items.length,item = items[$i6]; $i6 < $l6; $i6++, item = items[$i6]){
+        var food = this.findFoodById(item.FoodId);
+        if (food.isSalat){
+            salats.push(item);
+        }
+        else if (food.isFirst){
+            first.push(item);
+        }
+        else if (food.isGarnir){
+            garnirs.push(item);
+        }
+        else {
+            others.push(item);
+        }
+    }
+    FoodApp.Common.jsUtils.inst.addRange(res, salats);
+    FoodApp.Common.jsUtils.inst.addRange(res, first);
+    FoodApp.Common.jsUtils.inst.addRange(res, garnirs);
+    FoodApp.Common.jsUtils.inst.addRange(res, others);
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.conainsFoodId = function (items, foodId){
+    var res = false;
+    for (var $i7 = 0,$l7 = items.length,item = items[$i7]; $i7 < $l7; $i7++, item = items[$i7]){
+        if (item.FoodId == foodId){
+            res = true;
+            break;
+        }
+    }
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.getOrderByFoodId = function (items, foodId){
+    var res = null;
+    for (var $i8 = 0,$l8 = items.length,item = items[$i8]; $i8 < $l8; $i8++, item = items[$i8]){
+        if (item.FoodId == foodId){
+            res = item;
+            break;
+        }
+    }
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.getOrdersRecursive = function (users, res, complete){
+    if (users.length > 0){
+        var ngUser = users.pop();
+        FoodApp.Common.JsService.Inst.OrderApi.GetOrdersByDay(ngUser.Id, FoodApp.Client.ngAppController.inst.get_ngDayOfWeek(), $CreateAnonymousDelegate(this, function (data){
+            if (data.length > 0){
+                var model = {};
+                model.user = ngUser;
+                model.orders = this.removeContainersFromOrders(data);
+                res.push(model);
+            }
+            this.getOrdersRecursive(users, res, complete);
+        }));
+    }
+    else {
+        complete(res);
+    }
+};
+FoodApp.Client.ngReviewController.prototype.removeContainersFromOrders = function (data){
+    var res =  [];
+    for (var $i9 = 0,$l9 = data.length,entry = data[$i9]; $i9 < $l9; $i9++, entry = data[$i9]){
+        var foodItem = this.findFoodById(entry.FoodId);
+        if (!(foodItem.isContainer || foodItem.isBigContainer || foodItem.isSmallContainer)){
+            res.push(entry);
+        }
+    }
+    return res;
+};
+$Inherit(FoodApp.Client.ngReviewController, FoodApp.Client.ngControllerBase);
 FoodApp.Client.ngMoneyController = function (){
     FoodApp.Client.ngControllerBase.call(this);
 };
@@ -1181,8 +1407,14 @@ FoodApp.Client.ngMoneyController.prototype.requestCanBuy = function (day, comple
     }));
 };
 FoodApp.Client.ngMoneyController.prototype.requestGetUsers = function (complete){
-    FoodApp.Common.JsService.Inst.MoneyApi.GetUsers($CreateAnonymousDelegate(this, function (res){
-        this.set_ngUsers(res);
+    FoodApp.Common.JsService.Inst.UsersApi.GetUsers($CreateAnonymousDelegate(this, function (res){
+        var tmp =  [];
+        for (var $i10 = 0,$l10 = res.length,user = res[$i10]; $i10 < $l10; $i10++, user = res[$i10]){
+            if (-1 != user.Email.indexOf("darwins")){
+                tmp.push(user);
+            }
+        }
+        this.set_ngUsers(tmp);
         if (null != complete){
             complete();
         }
@@ -1279,9 +1511,9 @@ FoodApp.Client.ngHistoryModel = function (){
 };
 FoodApp.Client.ngHistoryModel.prototype.GetEntriesByDate = function (dt){
     var res = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryEntry");
-    var $it1 = this.Entries.GetEnumerator();
-    while ($it1.MoveNext()){
-        var entry = $it1.get_Current();
+    var $it10 = this.Entries.GetEnumerator();
+    while ($it10.MoveNext()){
+        var entry = $it10.get_Current();
         if (FoodApp.Common.ApiUtils.EqualDate(entry.Date, dt)){
             res.Add(entry);
         }
@@ -1290,9 +1522,9 @@ FoodApp.Client.ngHistoryModel.prototype.GetEntriesByDate = function (dt){
 };
 FoodApp.Client.ngHistoryModel.prototype.GroupByDate = function (dayOfWeek){
     var res = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryGroupEntry");
-    var $it2 = this.Entries.GetEnumerator();
-    while ($it2.MoveNext()){
-        var entry = $it2.get_Current();
+    var $it11 = this.Entries.GetEnumerator();
+    while ($it11.MoveNext()){
+        var entry = $it11.get_Current();
         var food = FoodApp.Common.Managers.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
         var ofWeek = entry.Date.get_DayOfWeek();
         if (null != food && !food.isContainer && (ofWeek == dayOfWeek + 1)){
@@ -1309,9 +1541,12 @@ FoodApp.Client.ngHistoryModel.prototype.GroupByDate = function (dayOfWeek){
 };
 FoodApp.Client.ngHistoryModel.prototype.GroupByDate = function (){
     var res = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryGroupEntry");
-    var $it3 = this.Entries.GetEnumerator();
-    while ($it3.MoveNext()){
-        var entry = $it3.get_Current();
+    this.Entries = System.Linq.Enumerable.ToList$1("FoodApp.Common.ngHistoryEntry", System.Linq.Enumerable.OrderByDescending$2$$IEnumerable$1$$Func$2("FoodApp.Common.ngHistoryEntry", System.DateTime.ctor, this.Entries, $CreateAnonymousDelegate(this, function (o){
+        return o.Date;
+    })));
+    var $it12 = this.Entries.GetEnumerator();
+    while ($it12.MoveNext()){
+        var entry = $it12.get_Current();
         var food = FoodApp.Common.Managers.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
         if (null != food && !food.isContainer){
             var key = entry.Date.ToShortDateString();
@@ -1327,9 +1562,9 @@ FoodApp.Client.ngHistoryModel.prototype.GroupByDate = function (){
 };
 FoodApp.Client.ngHistoryModel.prototype.HasGroupByDate = function (items, dateStr){
     var res = false;
-    var $it4 = items.GetEnumerator();
-    while ($it4.MoveNext()){
-        var entry = $it4.get_Current();
+    var $it13 = items.GetEnumerator();
+    while ($it13.MoveNext()){
+        var entry = $it13.get_Current();
         if (entry.DateStr.Equals$$String$$StringComparison(dateStr, 5)){
             res = true;
             break;
@@ -1339,9 +1574,9 @@ FoodApp.Client.ngHistoryModel.prototype.HasGroupByDate = function (items, dateSt
 };
 FoodApp.Client.ngHistoryModel.prototype.GetGroupByDate = function (items, dateStr){
     var res = null;
-    var $it5 = items.GetEnumerator();
-    while ($it5.MoveNext()){
-        var entry = $it5.get_Current();
+    var $it14 = items.GetEnumerator();
+    while ($it14.MoveNext()){
+        var entry = $it14.get_Current();
         if (entry.DateStr.Equals$$String$$StringComparison(dateStr, 5)){
             res = entry;
             break;
@@ -1351,9 +1586,9 @@ FoodApp.Client.ngHistoryModel.prototype.GetGroupByDate = function (items, dateSt
 };
 FoodApp.Client.ngHistoryModel.prototype.GroupByFoodId = function (){
     var res = new System.Collections.Generic.Dictionary$2.ctor(System.String.ctor, System.Collections.Generic.List$1.ctor);
-    var $it6 = this.Entries.GetEnumerator();
-    while ($it6.MoveNext()){
-        var entry = $it6.get_Current();
+    var $it15 = this.Entries.GetEnumerator();
+    while ($it15.MoveNext()){
+        var entry = $it15.get_Current();
         var food = FoodApp.Common.Managers.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
         if (null != food && !food.isContainer){
             if (!res.ContainsKey(entry.FoodId)){
@@ -1529,7 +1764,7 @@ FoodApp.Client.ngOrderFilter.prototype.filter = function (obj, arg){
     var allOrders = obj;
     var tmp = allOrders[day];
     if (tmp != null && tmp.length > 0){
-        for (var $i8 = 0,$l8 = tmp.length,order = tmp[$i8]; $i8 < $l8; $i8++, order = tmp[$i8]){
+        for (var $i17 = 0,$l17 = tmp.length,order = tmp[$i17]; $i17 < $l17; $i17++, order = tmp[$i17]){
             var foodItem = FoodApp.Client.ngFoodController.inst.findFoodById(order.FoodId);
             if (null != foodItem && !foodItem.isContainer){
                 res.push(order);
@@ -1618,9 +1853,9 @@ FoodApp.Client.ngUsersSettingsModel = function (){
 };
 FoodApp.Client.ngUsersSettingsModel.prototype.GetFoodRateById = function (foodId){
     var res = null;
-    var $it8 = this.FoodRates.GetEnumerator();
-    while ($it8.MoveNext()){
-        var r = $it8.get_Current();
+    var $it17 = this.FoodRates.GetEnumerator();
+    while ($it17.MoveNext()){
+        var r = $it17.get_Current();
         if (FoodApp.Common.CommonUtils.Equals$$String$$String(r.FoodId, foodId)){
             res = r;
             break;
@@ -1639,9 +1874,9 @@ FoodApp.Client.ngUsersSettingsModel.prototype.EnsureFoodRate = function (foodId)
 };
 FoodApp.Client.ngUsersSettingsModel.prototype.Fix = function (){
     var ratesThatNeedRemove = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngFoodRate");
-    var $it9 = this.FoodRates.GetEnumerator();
-    while ($it9.MoveNext()){
-        var foodRate = $it9.get_Current();
+    var $it18 = this.FoodRates.GetEnumerator();
+    while ($it18.MoveNext()){
+        var foodRate = $it18.get_Current();
         var food = FoodApp.Common.Managers.FoodManager.Inst.GetFoodById$$String(foodRate.FoodId);
         if (null == food){
             ratesThatNeedRemove.Add(foodRate);
@@ -1650,9 +1885,9 @@ FoodApp.Client.ngUsersSettingsModel.prototype.Fix = function (){
             ratesThatNeedRemove.Add(foodRate);
         }
     }
-    var $it10 = ratesThatNeedRemove.GetEnumerator();
-    while ($it10.MoveNext()){
-        var rateToRemove = $it10.get_Current();
+    var $it19 = ratesThatNeedRemove.GetEnumerator();
+    while ($it19.MoveNext()){
+        var rateToRemove = $it19.get_Current();
         this.FoodRates.Remove(rateToRemove);
     }
 };
@@ -1748,8 +1983,8 @@ FoodApp.Client.ngFoodController.prototype.refreshFoods = function (complete){
 };
 FoodApp.Client.ngFoodController.prototype.findFoodById = function (id){
     var res = null;
-    for (var $i12 = 0,$t12 = this.get_ngFoods(),$l12 = $t12.length,dayItems = $t12[$i12]; $i12 < $l12; $i12++, dayItems = $t12[$i12]){
-        for (var $i13 = 0,$l13 = dayItems.length,item = dayItems[$i13]; $i13 < $l13; $i13++, item = dayItems[$i13]){
+    for (var $i21 = 0,$t21 = this.get_ngFoods(),$l21 = $t21.length,dayItems = $t21[$i21]; $i21 < $l21; $i21++, dayItems = $t21[$i21]){
+        for (var $i22 = 0,$l22 = dayItems.length,item = dayItems[$i22]; $i22 < $l22; $i22++, item = dayItems[$i22]){
             if (item.FoodId == id){
                 res = item;
                 break;
@@ -1798,7 +2033,7 @@ FoodApp.Client.ngOrderController.prototype.getFoodItem = function (id){
 FoodApp.Client.ngOrderController.prototype.formatCount = function (order){
     var res = order.Count + "";
     var food = this.getFoodItem(order.FoodId);
-    if (food.IsByWeightItem){
+    if (food.isByWeightItem){
         res = parseInt((order.Count * 100), 10) + "";
     }
     return res;
@@ -1807,7 +2042,7 @@ FoodApp.Client.ngOrderController.prototype.getTotalPrice = function (day){
     var res = 0;
     var ngOrderModels = this.get_ngOrderEntries()[day];
     if (ngOrderModels != null){
-        for (var $i14 = 0,$l14 = ngOrderModels.length,item = ngOrderModels[$i14]; $i14 < $l14; $i14++, item = ngOrderModels[$i14]){
+        for (var $i23 = 0,$l23 = ngOrderModels.length,item = ngOrderModels[$i23]; $i23 < $l23; $i23++, item = ngOrderModels[$i23]){
             var food = this.getFoodItem(item.FoodId);
             if (null != food){
                 res += FoodApp.Common.jsUtils.inst.fixNumber(food.Price * item.Count);
@@ -1839,12 +2074,12 @@ FoodApp.Client.ngOrderController.prototype.deleteOrder = function (day, foodId){
     }));
 };
 FoodApp.Client.ngOrderController.prototype.refreshOrders = function (){
-    FoodApp.Common.JsService.Inst.OrderApi.GetOrders($CreateAnonymousDelegate(this, function (data){
+    FoodApp.Common.JsService.Inst.OrderApi.GetAllOrders(FoodApp.Common.JsService.Inst.OrderApi.getUserId(), $CreateAnonymousDelegate(this, function (data){
         var tmp = data;
         while (this.get_ngOrderEntries().length > 0){
             this.get_ngOrderEntries().pop();
         }
-        for (var $i15 = 0,$l15 = tmp.length,obj = tmp[$i15]; $i15 < $l15; $i15++, obj = tmp[$i15]){
+        for (var $i24 = 0,$l24 = tmp.length,obj = tmp[$i24]; $i24 < $l24; $i24++, obj = tmp[$i24]){
             this.get_ngOrderEntries().push(obj);
         }
         FoodApp.Common.eventManager.inst.fire(FoodApp.Common.eventManager.orderListChanged, this.get_ngOrderEntries());
@@ -1857,7 +2092,7 @@ FoodApp.Client.ngOrderController.prototype.getOrders = function (day){
 FoodApp.Client.ngOrderController.prototype.getOrderByFoodId = function (day, foodId){
     var res = null;
     var orders = FoodApp.Client.ngOrderController.inst.getOrders(day);
-    for (var $i16 = 0,$l16 = orders.length,order = orders[$i16]; $i16 < $l16; $i16++, order = orders[$i16]){
+    for (var $i25 = 0,$l25 = orders.length,order = orders[$i25]; $i25 < $l25; $i25++, order = orders[$i25]){
         if (order.FoodId == foodId){
             res = order;
             break;
@@ -1884,7 +2119,7 @@ FoodApp.ngOrderFilter.prototype.filter = function (obj, arg){
     var allOrders = obj;
     var tmp = allOrders[day];
     if (tmp != null && tmp.length > 0){
-        for (var $i17 = 0,$l17 = tmp.length,order = tmp[$i17]; $i17 < $l17; $i17++, order = tmp[$i17]){
+        for (var $i26 = 0,$l26 = tmp.length,order = tmp[$i26]; $i26 < $l26; $i26++, order = tmp[$i26]){
             var foodItem = FoodApp.Client.ngFoodController.inst.findFoodById(order.FoodId);
             if (null != foodItem && !foodItem.isContainer){
                 res.push(order);

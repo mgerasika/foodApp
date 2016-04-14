@@ -7,18 +7,19 @@
     string orders = ajs.field((ngOrderController o) => o.ngOrderEntries);
     string orderItem = "orderItem";
     string foodId = orderItem + "." + ajs.field((ngOrderEntry o) => o.FoodId);
-    string isByWeight = ajs.method((ngOrderController o) => o.getFoodItem(foodId)) + "("+foodId+")." + ajs.field((ngFoodItem o) => o.IsByWeightItem);
+    string isByWeight = ajs.method((ngOrderController o) => o.getFoodItem(foodId)) + "("+foodId+")." + ajs.field((ngFoodItem o) => o.isByWeightItem);
     string canBuy = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.canBuy);
     string canRefund = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.canRefund);
     string hasOrders = ajs.method((ngMoneyController o) => o.hasOrders()) + "()"; 
     string total = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.total);
+    string dayOfWeek = ajs.field((ngAppController o) => o.ngDayOfWeek);
 }
 
 
 
 <div style="float: right;">
     <p>На Рахунку {{@total}} грн</p>
-    <span ng-show="@hasOrders || @canRefund">
+    <span ng-show="(@hasOrders || @canRefund) && (@dayOfWeek != 4)">
     <button ng-show="@canBuy" class="btn btn-success foodBtn" 
         ng-click="@ajs.method((ngMoneyController o) => o.buyMoneyClick()) ()">Оплатити</button>
     <button ng-show="@canRefund" class="btn btn-success foodBtn" 

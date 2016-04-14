@@ -1,0 +1,69 @@
+﻿@using System.Web.Mvc.Html
+@using angularjs
+@using FoodApp.Client
+@using FoodApp.Common
+@inherits System.Web.Mvc.WebViewPage
+@{
+    string reviews = ajs.field((ngReviewController o) => o.ngReviewModel);
+    string review = "review";
+    string reviewUserName = review + "." + ajs.field((ngReviewModel o) => o.user) + "." + ajs.field((ngUserModel o) => o.Name);
+    string orders = review + "." + ajs.field((ngReviewModel o) => o.orders);
+    string order = "order";
+    string order_count = order +  "." + ajs.field((ngOrderEntry o) => o.Count);
+    string order_foodId = order + "." + ajs.field((ngOrderEntry o) => o.FoodId);
+    string isByWeight = ajs.method((ngReviewController o) => o.getFoodItem_ReviewCtrl(order_foodId)) + "(" + order_foodId + ")." + ajs.field((ngFoodItem o) => o.isByWeightItem);
+
+
+    string totals = ajs.field((ngReviewController o) => o.ngTotalOrders);
+    string isInit = ajs.field((ngReviewController o) => o.ngIsInit);
+    string total = "total";
+
+    string total_food_id = total + "." + ajs.field((ngOrderEntry o) => o.FoodId);
+    string total_food_count = total + "." + ajs.field((ngOrderEntry o) => o.Count);
+}
+
+<style type="text/css">
+*[ng-cloak] {
+    visibility: hidden;
+}
+</style>
+
+<div ng-controller="@ajs.getClass((ngReviewController o) => o)"  class="tab-content" ng-cloak>
+        <div ng-show="@reviews .length>0" ng-repeat="@review in @reviews">
+            <h4>{{@reviewUserName}}</h4>
+
+
+            <div ng-repeat="@order in @orders" style="padding: 0.4em 0em;" ng-cloak>
+                <div style="float: left; font-weight: bold;">&nbsp;-&nbsp;</div>
+                <div style="float: left; width: 80%;" ng-cloak>
+                    {{@ajs.method((ngReviewController o) => o.getFoodItem_ReviewCtrl(null)) (@order_foodId).@ajs.field((ngFoodItem o) => o.Name)}}
+                </div>
+                <div style="float: right;">
+                    <span>&nbsp;{{@ajs.method((ngReviewController o) => o.formatCount_ReviewCtrl(null)) (@order)}}</span>
+                    <span ng-show="@isByWeight"> гр</span>
+                    <span  ng-show="!@isByWeight"> шт</span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+
+        <div ng-show="@isInit && @reviews .length==0" ng-cloak>
+            <p><i>(Немає замовлень)</i></p>
+        </div>
+
+        <span ng-show="@isInit && @totals .length>0">
+        <hr/>
+        <h3  style="color: #cb5750;font-weight: bold; font-size: 22px;">Підсумок</h3>
+        <div ng-repeat="@total in @totals" style="padding: 0.4em 0em;" ng-cloak>
+            <div style="float: left; font-weight: bold;">&nbsp;-&nbsp;</div>
+            <div style="float: left; width: 80%;" ng-cloak>
+                {{@ajs.method((ngReviewController o) => o.getFoodItem_ReviewCtrl(null)) (@total_food_id).@ajs.field((ngFoodItem o) => o.Name)}}
+                                   
+            </div>
+            <div style="float: right;"> {{@total_food_count}}</div>
+            <div style="clear: both;"></div>
+        </div>
+            </span>
+    </div>
+                    
+

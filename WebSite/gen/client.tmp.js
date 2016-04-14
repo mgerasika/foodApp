@@ -98,6 +98,204 @@ FoodApp.Client.ngControllerBase.prototype.onRequestFailed = function (jsError, j
     FoodApp.Common.jsUtils.inst.hideLoading();
 };
 $Inherit(FoodApp.Client.ngControllerBase, angularjs.angularController);
+FoodApp.Client.ngReviewController = function (){
+    FoodApp.Client.ngControllerBase.call(this);
+};
+FoodApp.Client.ngReviewController.inst = new FoodApp.Client.ngReviewController();
+FoodApp.Client.ngReviewController.prototype.get_className = function (){
+    return "ngReviewController";
+};
+FoodApp.Client.ngReviewController.prototype.get_namespace = function (){
+    return "FoodApp.Client";
+};
+FoodApp.Client.ngReviewController.prototype.get_ngReviewModel = function (){
+    return this._scope["ngReviewModel"];
+};
+FoodApp.Client.ngReviewController.prototype.set_ngReviewModel = function (value){
+    this._scope["ngReviewModel"] = value;
+};
+FoodApp.Client.ngReviewController.prototype.get_ngIsInit = function (){
+    return this._scope["ngIsInit"];
+};
+FoodApp.Client.ngReviewController.prototype.set_ngIsInit = function (value){
+    this._scope["ngIsInit"] = value;
+};
+FoodApp.Client.ngReviewController.prototype.get_ngFoods = function (){
+    return this._scope["ngFoods"];
+};
+FoodApp.Client.ngReviewController.prototype.set_ngFoods = function (value){
+    this._scope["ngFoods"] = value;
+};
+FoodApp.Client.ngReviewController.prototype.get_ngTotalOrders = function (){
+    return this._scope["ngTotalOrders"];
+};
+FoodApp.Client.ngReviewController.prototype.set_ngTotalOrders = function (value){
+    this._scope["ngTotalOrders"] = value;
+};
+FoodApp.Client.ngReviewController.prototype.init = function (scope, http, loc, filter){
+    FoodApp.Client.ngControllerBase.prototype.init.call(this, scope, http, loc, filter);
+    this.set_ngReviewModel( []);
+    this.set_ngFoods( []);
+    this.set_ngTotalOrders( []);
+    FoodApp.Common.eventManager.inst.subscribe(FoodApp.Common.eventManager.dayChanged, $CreateAnonymousDelegate(this, function (n){
+        this.requestGetFoods();
+    }));
+};
+FoodApp.Client.ngReviewController.prototype.findFoodById = function (id){
+    var res = null;
+    for (var $i2 = 0,$t2 = this.get_ngFoods(),$l2 = $t2.length,item = $t2[$i2]; $i2 < $l2; $i2++, item = $t2[$i2]){
+        if (item.FoodId == id){
+            res = item;
+            break;
+        }
+    }
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.getFoodItem_ReviewCtrl = function (id){
+    var item = this.findFoodById(id);
+    return item;
+};
+FoodApp.Client.ngReviewController.prototype.formatCount_ReviewCtrl = function (order){
+    var res = order.Count + "";
+    var food = this.getFoodItem_ReviewCtrl(order.FoodId);
+    if (food.isByWeightItem){
+        res = parseInt((order.Count * 100), 10) + "";
+    }
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.requestGetFoods = function (){
+    FoodApp.Common.JsService.Inst.FoodApi.GetFoodsByDay(FoodApp.Common.JsService.Inst.FoodApi.getUserId(), FoodApp.Client.ngAppController.inst.get_ngDayOfWeek(), $CreateAnonymousDelegate(this, function (data){
+        this.set_ngFoods(data);
+        this.requestGetUsers();
+    }));
+};
+FoodApp.Client.ngReviewController.prototype.requestGetUsers = function (){
+    FoodApp.Common.JsService.Inst.UsersApi.GetUsers($CreateAnonymousDelegate(this, function (users){
+        var tmp =  [];
+        for (var $i3 = 0,$l3 = users.length,ngUser = users[$i3]; $i3 < $l3; $i3++, ngUser = users[$i3]){
+            if (-1 != ngUser.Email.indexOf("darwins")){
+                tmp.push(ngUser);
+            }
+        }
+        if (tmp.length > 0){
+            this.requestGetOrders(tmp);
+        }
+    }));
+};
+FoodApp.Client.ngReviewController.prototype.requestGetOrders = function (tmp){
+    this.getOrdersRecursive(tmp,  [], $CreateAnonymousDelegate(this, function (result){
+        this.set_ngIsInit(true);
+        this.set_ngTotalOrders(this.createTotalOrders(result));
+        this.set_ngReviewModel(result);
+        this._scope.$apply();
+    }));
+};
+FoodApp.Client.ngReviewController.prototype.createTotalOrders = function (items){
+    var res =  [];
+    for (var $i4 = 0,$l4 = items.length,reviewModel = items[$i4]; $i4 < $l4; $i4++, reviewModel = items[$i4]){
+        for (var $i5 = 0,$t5 = reviewModel.orders,$l5 = $t5.length,order = $t5[$i5]; $i5 < $l5; $i5++, order = $t5[$i5]){
+            var foodItem = this.findFoodById(order.FoodId);
+            FoodApp.Common.jsCommonUtils.inst.assert(null != foodItem);
+            if (!this.conainsFoodId(res, order.FoodId)){
+                var totalOrder = {};
+                totalOrder.FoodId = order.FoodId;
+                if (foodItem.isByWeightItem){
+                    totalOrder.Count = 1;
+                }
+                else {
+                    totalOrder.Count = order.Count;
+                }
+                res.push(totalOrder);
+            }
+            else {
+                var totalOrder = this.getOrderByFoodId(res, order.FoodId);
+                if (foodItem.isByWeightItem){
+                    totalOrder.Count += 1;
+                }
+                else {
+                    totalOrder.Count += order.Count;
+                }
+            }
+        }
+    }
+    res = this.groupByCategory(res);
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.groupByCategory = function (items){
+    var res =  [];
+    var salats =  [];
+    var first =  [];
+    var garnirs =  [];
+    var others =  [];
+    for (var $i6 = 0,$l6 = items.length,item = items[$i6]; $i6 < $l6; $i6++, item = items[$i6]){
+        var food = this.findFoodById(item.FoodId);
+        if (food.isSalat){
+            salats.push(item);
+        }
+        else if (food.isFirst){
+            first.push(item);
+        }
+        else if (food.isGarnir){
+            garnirs.push(item);
+        }
+        else {
+            others.push(item);
+        }
+    }
+    FoodApp.Common.jsUtils.inst.addRange(res, salats);
+    FoodApp.Common.jsUtils.inst.addRange(res, first);
+    FoodApp.Common.jsUtils.inst.addRange(res, garnirs);
+    FoodApp.Common.jsUtils.inst.addRange(res, others);
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.conainsFoodId = function (items, foodId){
+    var res = false;
+    for (var $i7 = 0,$l7 = items.length,item = items[$i7]; $i7 < $l7; $i7++, item = items[$i7]){
+        if (item.FoodId == foodId){
+            res = true;
+            break;
+        }
+    }
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.getOrderByFoodId = function (items, foodId){
+    var res = null;
+    for (var $i8 = 0,$l8 = items.length,item = items[$i8]; $i8 < $l8; $i8++, item = items[$i8]){
+        if (item.FoodId == foodId){
+            res = item;
+            break;
+        }
+    }
+    return res;
+};
+FoodApp.Client.ngReviewController.prototype.getOrdersRecursive = function (users, res, complete){
+    if (users.length > 0){
+        var ngUser = users.pop();
+        FoodApp.Common.JsService.Inst.OrderApi.GetOrdersByDay(ngUser.Id, FoodApp.Client.ngAppController.inst.get_ngDayOfWeek(), $CreateAnonymousDelegate(this, function (data){
+            if (data.length > 0){
+                var model = {};
+                model.user = ngUser;
+                model.orders = this.removeContainersFromOrders(data);
+                res.push(model);
+            }
+            this.getOrdersRecursive(users, res, complete);
+        }));
+    }
+    else {
+        complete(res);
+    }
+};
+FoodApp.Client.ngReviewController.prototype.removeContainersFromOrders = function (data){
+    var res =  [];
+    for (var $i9 = 0,$l9 = data.length,entry = data[$i9]; $i9 < $l9; $i9++, entry = data[$i9]){
+        var foodItem = this.findFoodById(entry.FoodId);
+        if (!(foodItem.isContainer || foodItem.isBigContainer || foodItem.isSmallContainer)){
+            res.push(entry);
+        }
+    }
+    return res;
+};
+$Inherit(FoodApp.Client.ngReviewController, FoodApp.Client.ngControllerBase);
 FoodApp.Client.ngMoneyController = function (){
     FoodApp.Client.ngControllerBase.call(this);
 };
@@ -223,8 +421,14 @@ FoodApp.Client.ngMoneyController.prototype.requestCanBuy = function (day, comple
     }));
 };
 FoodApp.Client.ngMoneyController.prototype.requestGetUsers = function (complete){
-    FoodApp.Common.JsService.Inst.MoneyApi.GetUsers($CreateAnonymousDelegate(this, function (res){
-        this.set_ngUsers(res);
+    FoodApp.Common.JsService.Inst.UsersApi.GetUsers($CreateAnonymousDelegate(this, function (res){
+        var tmp =  [];
+        for (var $i10 = 0,$l10 = res.length,user = res[$i10]; $i10 < $l10; $i10++, user = res[$i10]){
+            if (-1 != user.Email.indexOf("darwins")){
+                tmp.push(user);
+            }
+        }
+        this.set_ngUsers(tmp);
         if (null != complete){
             complete();
         }
@@ -321,9 +525,9 @@ FoodApp.Client.ngHistoryModel = function (){
 };
 FoodApp.Client.ngHistoryModel.prototype.GetEntriesByDate = function (dt){
     var res = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryEntry");
-    var $it1 = this.Entries.GetEnumerator();
-    while ($it1.MoveNext()){
-        var entry = $it1.get_Current();
+    var $it10 = this.Entries.GetEnumerator();
+    while ($it10.MoveNext()){
+        var entry = $it10.get_Current();
         if (FoodApp.Common.ApiUtils.EqualDate(entry.Date, dt)){
             res.Add(entry);
         }
@@ -332,9 +536,9 @@ FoodApp.Client.ngHistoryModel.prototype.GetEntriesByDate = function (dt){
 };
 FoodApp.Client.ngHistoryModel.prototype.GroupByDate = function (dayOfWeek){
     var res = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryGroupEntry");
-    var $it2 = this.Entries.GetEnumerator();
-    while ($it2.MoveNext()){
-        var entry = $it2.get_Current();
+    var $it11 = this.Entries.GetEnumerator();
+    while ($it11.MoveNext()){
+        var entry = $it11.get_Current();
         var food = FoodApp.Common.Managers.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
         var ofWeek = entry.Date.get_DayOfWeek();
         if (null != food && !food.isContainer && (ofWeek == dayOfWeek + 1)){
@@ -351,9 +555,12 @@ FoodApp.Client.ngHistoryModel.prototype.GroupByDate = function (dayOfWeek){
 };
 FoodApp.Client.ngHistoryModel.prototype.GroupByDate = function (){
     var res = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngHistoryGroupEntry");
-    var $it3 = this.Entries.GetEnumerator();
-    while ($it3.MoveNext()){
-        var entry = $it3.get_Current();
+    this.Entries = System.Linq.Enumerable.ToList$1("FoodApp.Common.ngHistoryEntry", System.Linq.Enumerable.OrderByDescending$2$$IEnumerable$1$$Func$2("FoodApp.Common.ngHistoryEntry", System.DateTime.ctor, this.Entries, $CreateAnonymousDelegate(this, function (o){
+        return o.Date;
+    })));
+    var $it12 = this.Entries.GetEnumerator();
+    while ($it12.MoveNext()){
+        var entry = $it12.get_Current();
         var food = FoodApp.Common.Managers.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
         if (null != food && !food.isContainer){
             var key = entry.Date.ToShortDateString();
@@ -369,9 +576,9 @@ FoodApp.Client.ngHistoryModel.prototype.GroupByDate = function (){
 };
 FoodApp.Client.ngHistoryModel.prototype.HasGroupByDate = function (items, dateStr){
     var res = false;
-    var $it4 = items.GetEnumerator();
-    while ($it4.MoveNext()){
-        var entry = $it4.get_Current();
+    var $it13 = items.GetEnumerator();
+    while ($it13.MoveNext()){
+        var entry = $it13.get_Current();
         if (entry.DateStr.Equals$$String$$StringComparison(dateStr, 5)){
             res = true;
             break;
@@ -381,9 +588,9 @@ FoodApp.Client.ngHistoryModel.prototype.HasGroupByDate = function (items, dateSt
 };
 FoodApp.Client.ngHistoryModel.prototype.GetGroupByDate = function (items, dateStr){
     var res = null;
-    var $it5 = items.GetEnumerator();
-    while ($it5.MoveNext()){
-        var entry = $it5.get_Current();
+    var $it14 = items.GetEnumerator();
+    while ($it14.MoveNext()){
+        var entry = $it14.get_Current();
         if (entry.DateStr.Equals$$String$$StringComparison(dateStr, 5)){
             res = entry;
             break;
@@ -393,9 +600,9 @@ FoodApp.Client.ngHistoryModel.prototype.GetGroupByDate = function (items, dateSt
 };
 FoodApp.Client.ngHistoryModel.prototype.GroupByFoodId = function (){
     var res = new System.Collections.Generic.Dictionary$2.ctor(System.String.ctor, System.Collections.Generic.List$1.ctor);
-    var $it6 = this.Entries.GetEnumerator();
-    while ($it6.MoveNext()){
-        var entry = $it6.get_Current();
+    var $it15 = this.Entries.GetEnumerator();
+    while ($it15.MoveNext()){
+        var entry = $it15.get_Current();
         var food = FoodApp.Common.Managers.FoodManager.Inst.GetFoodById$$String(entry.FoodId);
         if (null != food && !food.isContainer){
             if (!res.ContainsKey(entry.FoodId)){
@@ -571,7 +778,7 @@ FoodApp.Client.ngOrderFilter.prototype.filter = function (obj, arg){
     var allOrders = obj;
     var tmp = allOrders[day];
     if (tmp != null && tmp.length > 0){
-        for (var $i8 = 0,$l8 = tmp.length,order = tmp[$i8]; $i8 < $l8; $i8++, order = tmp[$i8]){
+        for (var $i17 = 0,$l17 = tmp.length,order = tmp[$i17]; $i17 < $l17; $i17++, order = tmp[$i17]){
             var foodItem = FoodApp.Client.ngFoodController.inst.findFoodById(order.FoodId);
             if (null != foodItem && !foodItem.isContainer){
                 res.push(order);
@@ -660,9 +867,9 @@ FoodApp.Client.ngUsersSettingsModel = function (){
 };
 FoodApp.Client.ngUsersSettingsModel.prototype.GetFoodRateById = function (foodId){
     var res = null;
-    var $it8 = this.FoodRates.GetEnumerator();
-    while ($it8.MoveNext()){
-        var r = $it8.get_Current();
+    var $it17 = this.FoodRates.GetEnumerator();
+    while ($it17.MoveNext()){
+        var r = $it17.get_Current();
         if (FoodApp.Common.CommonUtils.Equals$$String$$String(r.FoodId, foodId)){
             res = r;
             break;
@@ -681,9 +888,9 @@ FoodApp.Client.ngUsersSettingsModel.prototype.EnsureFoodRate = function (foodId)
 };
 FoodApp.Client.ngUsersSettingsModel.prototype.Fix = function (){
     var ratesThatNeedRemove = new System.Collections.Generic.List$1.ctor("FoodApp.Common.ngFoodRate");
-    var $it9 = this.FoodRates.GetEnumerator();
-    while ($it9.MoveNext()){
-        var foodRate = $it9.get_Current();
+    var $it18 = this.FoodRates.GetEnumerator();
+    while ($it18.MoveNext()){
+        var foodRate = $it18.get_Current();
         var food = FoodApp.Common.Managers.FoodManager.Inst.GetFoodById$$String(foodRate.FoodId);
         if (null == food){
             ratesThatNeedRemove.Add(foodRate);
@@ -692,9 +899,9 @@ FoodApp.Client.ngUsersSettingsModel.prototype.Fix = function (){
             ratesThatNeedRemove.Add(foodRate);
         }
     }
-    var $it10 = ratesThatNeedRemove.GetEnumerator();
-    while ($it10.MoveNext()){
-        var rateToRemove = $it10.get_Current();
+    var $it19 = ratesThatNeedRemove.GetEnumerator();
+    while ($it19.MoveNext()){
+        var rateToRemove = $it19.get_Current();
         this.FoodRates.Remove(rateToRemove);
     }
 };
@@ -790,8 +997,8 @@ FoodApp.Client.ngFoodController.prototype.refreshFoods = function (complete){
 };
 FoodApp.Client.ngFoodController.prototype.findFoodById = function (id){
     var res = null;
-    for (var $i12 = 0,$t12 = this.get_ngFoods(),$l12 = $t12.length,dayItems = $t12[$i12]; $i12 < $l12; $i12++, dayItems = $t12[$i12]){
-        for (var $i13 = 0,$l13 = dayItems.length,item = dayItems[$i13]; $i13 < $l13; $i13++, item = dayItems[$i13]){
+    for (var $i21 = 0,$t21 = this.get_ngFoods(),$l21 = $t21.length,dayItems = $t21[$i21]; $i21 < $l21; $i21++, dayItems = $t21[$i21]){
+        for (var $i22 = 0,$l22 = dayItems.length,item = dayItems[$i22]; $i22 < $l22; $i22++, item = dayItems[$i22]){
             if (item.FoodId == id){
                 res = item;
                 break;
@@ -840,7 +1047,7 @@ FoodApp.Client.ngOrderController.prototype.getFoodItem = function (id){
 FoodApp.Client.ngOrderController.prototype.formatCount = function (order){
     var res = order.Count + "";
     var food = this.getFoodItem(order.FoodId);
-    if (food.IsByWeightItem){
+    if (food.isByWeightItem){
         res = parseInt((order.Count * 100), 10) + "";
     }
     return res;
@@ -849,7 +1056,7 @@ FoodApp.Client.ngOrderController.prototype.getTotalPrice = function (day){
     var res = 0;
     var ngOrderModels = this.get_ngOrderEntries()[day];
     if (ngOrderModels != null){
-        for (var $i14 = 0,$l14 = ngOrderModels.length,item = ngOrderModels[$i14]; $i14 < $l14; $i14++, item = ngOrderModels[$i14]){
+        for (var $i23 = 0,$l23 = ngOrderModels.length,item = ngOrderModels[$i23]; $i23 < $l23; $i23++, item = ngOrderModels[$i23]){
             var food = this.getFoodItem(item.FoodId);
             if (null != food){
                 res += FoodApp.Common.jsUtils.inst.fixNumber(food.Price * item.Count);
@@ -881,12 +1088,12 @@ FoodApp.Client.ngOrderController.prototype.deleteOrder = function (day, foodId){
     }));
 };
 FoodApp.Client.ngOrderController.prototype.refreshOrders = function (){
-    FoodApp.Common.JsService.Inst.OrderApi.GetOrders($CreateAnonymousDelegate(this, function (data){
+    FoodApp.Common.JsService.Inst.OrderApi.GetAllOrders(FoodApp.Common.JsService.Inst.OrderApi.getUserId(), $CreateAnonymousDelegate(this, function (data){
         var tmp = data;
         while (this.get_ngOrderEntries().length > 0){
             this.get_ngOrderEntries().pop();
         }
-        for (var $i15 = 0,$l15 = tmp.length,obj = tmp[$i15]; $i15 < $l15; $i15++, obj = tmp[$i15]){
+        for (var $i24 = 0,$l24 = tmp.length,obj = tmp[$i24]; $i24 < $l24; $i24++, obj = tmp[$i24]){
             this.get_ngOrderEntries().push(obj);
         }
         FoodApp.Common.eventManager.inst.fire(FoodApp.Common.eventManager.orderListChanged, this.get_ngOrderEntries());
@@ -899,7 +1106,7 @@ FoodApp.Client.ngOrderController.prototype.getOrders = function (day){
 FoodApp.Client.ngOrderController.prototype.getOrderByFoodId = function (day, foodId){
     var res = null;
     var orders = FoodApp.Client.ngOrderController.inst.getOrders(day);
-    for (var $i16 = 0,$l16 = orders.length,order = orders[$i16]; $i16 < $l16; $i16++, order = orders[$i16]){
+    for (var $i25 = 0,$l25 = orders.length,order = orders[$i25]; $i25 < $l25; $i25++, order = orders[$i25]){
         if (order.FoodId == foodId){
             res = order;
             break;
@@ -926,7 +1133,7 @@ FoodApp.ngOrderFilter.prototype.filter = function (obj, arg){
     var allOrders = obj;
     var tmp = allOrders[day];
     if (tmp != null && tmp.length > 0){
-        for (var $i17 = 0,$l17 = tmp.length,order = tmp[$i17]; $i17 < $l17; $i17++, order = tmp[$i17]){
+        for (var $i26 = 0,$l26 = tmp.length,order = tmp[$i26]; $i26 < $l26; $i26++, order = tmp[$i26]){
             var foodItem = FoodApp.Client.ngFoodController.inst.findFoodById(order.FoodId);
             if (null != foodItem && !foodItem.isContainer){
                 res.push(order);

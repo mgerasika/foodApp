@@ -62,5 +62,12 @@ namespace FoodApp.Common {
             string tmp = jsNumber.toPrecision(5).As<string>();
             return JsContext.parseFloat(tmp).As<decimal>();
         }
+
+        public void addRange(JsArray<ngOrderEntry> source, JsArray<ngOrderEntry> target)
+        {
+            foreach (ngOrderEntry other in target) {
+                source.Add(other);
+            }
+        }
     }
 }

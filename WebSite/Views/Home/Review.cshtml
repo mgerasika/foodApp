@@ -1,0 +1,129 @@
+﻿@using System.Web.Mvc.Html
+@using angularjs
+@using FoodApp.Client
+@using FoodApp.Common
+@inherits System.Web.Mvc.WebViewPage
+@{
+    Layout = "~/Views/Layout1.cshtml";
+    string imgUrl = ApiUtils.GetLoggedInUser().Picture;
+    string googleName = ApiUtils.GetLoggedInUser().GoogleName;
+    string name = ApiUtils.GetLoggedInUser().Name;
+    bool isAdmin = ApiUtils.GetLoggedInUser().IsAdmin;
+}
+
+<style type="text/css">
+*[ng-cloak] {
+    background-color: red !important;
+    color: red !important;
+}
+</style>
+
+<input type="hidden" value="@ApiUtils.GetSessionUserId()" id="userId"/>
+<div>
+    <div class="navbar menubar" id="menu" style="position: fixed; top: 0px; width: 100%; z-index: 4;">
+        <div class="container" >
+            <div class="navbar-header">
+               
+                <div style="">
+                    <a class="navbar-brand" style="color: white; font-size: 2.2em;" href="#">Гам-Гам</a><br/>
+                    @if (!string.IsNullOrEmpty(name)) {
+                        <div style="color: white; white-space: pre-line; word-wrap: break-word;">@googleName</div>
+                    }
+                </div>
+            </div>
+            <div>
+                <nav class="collapse navbar-collapse" class="nav nav-tabs" role="tablist">
+                    <ul id="tab" class="nav navbar-nav navbar-right navstyle">
+                        <li>
+                            <a day="0" aria-controls="home" role="tab" data-toggle="tab" href="#header0" class="page-scroll active">Замовлення</a>
+                        </li>
+                        <li>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#contact" class="page-scroll">Контакти</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="@ajs.getClass((ngAppController o) => o)" style="margin-top: 4em;" class="tab-content">
+    <div id="error" style="position: absolute; display: none; left: 25%; top: 1%; z-index: 10; width: 50%;" class="alert alert-danger fade in">
+        <a href="#" class="close" onclick="this.parent.style.display = 'none'">&times;</a>
+        <strong>Cталась помилка!</strong>.
+    </div>
+    <div id="header0" role="tabpanel" class="tab-pane fade in active">
+        <div style="background-color: white;  width: 100%; z-index: 4;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="alldesc">
+                            <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
+                                <h3 style="color: #CB5750; font-weight: bold;font-size: 22px;">Замовлення</h3>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
+                                <p class="desc">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="features" style="padding: 0em;" >
+                <div class="container">
+                    <div class="row">
+                        <hr/>
+                        @{ Html.RenderPartial("ReviewUserControl"); }
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" role="tabpanel" class="address tab-pane fade in">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="alldesc">
+                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px;">
+                                    <p class="all-td"></p>
+                                    <h2>Контакти</h2>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 info centertext">
+                                    <p>Email : mgerasika@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+<script type="text/javascript">
+    window.addEventListener("load", function () {
+        var date = new Date();
+        var day = date.getDay() - 1;
+        if (day > 4) {
+            day = 0;
+        }
+        onTabChanged(day);
+        var id = '#tab a[href="#header0"]';
+        $(id).tab('show');
+        var active = $(id);
+        active.addClass('active');
+
+        $('#tab a').click(function (e) {
+            if (active != $(this) && $(this).attr("day") != undefined) {
+                active.removeClass('active');
+                e.preventDefault();
+                $(this).tab('show');
+                if ($(this).attr("day") != undefined) {
+                    onTabChanged(day);
+                }
+            }
+        });
+    });
+</script>

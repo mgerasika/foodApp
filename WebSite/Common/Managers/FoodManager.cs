@@ -6,7 +6,8 @@ using FoodApp.Common.Parser;
 namespace FoodApp.Common.Managers {
     public class FoodManager {
         public static FoodManager Inst = new FoodManager();
-
+        private Dictionary<string,string> _descriptionCache = new Dictionary<string, string>();
+ 
         public List<ngFoodItem> GetFoods(int day) {
             ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
             List<ngFoodItem> res = GetFoodsInternal(excelTable);
@@ -20,8 +21,14 @@ namespace FoodApp.Common.Managers {
                 if (row.HasPrice && !string.IsNullOrEmpty(row.Name)) {
                     ngFoodItem item = new ngFoodItem();
                     Debug.Assert(!string.IsNullOrEmpty(row.Name));
+
+                    if (!string.IsNullOrEmpty(row.Description)) {
+                        _descriptionCache[row.GetFoodId()] = row.Description;
+                    }
+
                     item.Name = row.Name;
-                    item.Description = row.Description;
+                    item.Description =  string.IsNullOrEmpty(row.Description) && _descriptionCache.ContainsKey(row.GetFoodId()) ?
+                        _descriptionCache[row.GetFoodId()] : row.Description;
 
                     item.isContainer = row.IsContainer();
                     item.isBigContainer = row.IsBigContainer();
@@ -31,7 +38,7 @@ namespace FoodApp.Common.Managers {
                     item.isMeatOrFish = row.IsMeatOrFish();
                     item.isKvasolevaOrChanachi = row.IsKvasolevaOrChanachi();
                     item.isFirst = row.IsFirst();
-                    item.IsByWeightItem = row.IsByWeightItem();
+                    item.isByWeightItem = row.IsByWeightItem();
                     item.Price = row.Price;
                     item.FoodId = row.GetFoodId();
                     item.Category = row.Category;

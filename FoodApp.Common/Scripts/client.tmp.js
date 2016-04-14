@@ -60,10 +60,10 @@ FoodApp.Common.JsApiBase.prototype.getUserId = function (){
 FoodApp.Common.JsApiBase.prototype.Deserealize = function (obj){
     var res = obj;
     if (FoodApp.Common.jsCommonUtils.inst.IsArray(obj)){
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
     }
     else {
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
     }
     return res;
 };
@@ -200,6 +200,11 @@ FoodApp.Common.jsUtils.prototype.fixNumber = function (p){
     var tmp = jsNumber.toPrecision(5);
     return parseFloat(tmp);
 };
+FoodApp.Common.jsUtils.prototype.addRange = function (source, target){
+    for (var $i4 = 0,$l4 = target.length,other = target[$i4]; $i4 < $l4; $i4++, other = target[$i4]){
+        source.push(other);
+    }
+};
 FoodApp.Common.eventManager = function (){
     this._dict = new Object();
 };
@@ -221,7 +226,7 @@ FoodApp.Common.eventManager.prototype.subscribe = function (eventName, action){
 };
 FoodApp.Common.eventManager.prototype.fire = function (name, arg){
     var array = this.GetHandlersByName(name);
-    for (var $i4 = 0,$l4 = array.length,obj = array[$i4]; $i4 < $l4; $i4++, obj = array[$i4]){
+    for (var $i5 = 0,$l5 = array.length,obj = array[$i5]; $i5 < $l5; $i5++, obj = array[$i5]){
         var action = obj;
         action(arg);
     }
@@ -234,7 +239,7 @@ FoodApp.Common.ngFoodItem = function (){
     this.Category = null;
     this.Price = 0;
     this.FoodId = null;
-    this.IsByWeightItem = false;
+    this.isByWeightItem = false;
     this.isContainer = false;
     this.isSmallContainer = false;
     this.isBigContainer = false;
@@ -281,6 +286,7 @@ FoodApp.Common.ngUserModel = function (){
     this.GoogleName = null;
     this.IsAdmin = false;
     this.GoogleFirstName = null;
+    this.IsReviewer = false;
 };
 $Inherit(FoodApp.Common.ngUserModel, FoodApp.Common.ngModelBase);
 FoodApp.Common.ngFoodFilter = function (){
@@ -302,7 +308,7 @@ FoodApp.Common.ngFoodFilter.prototype.filter = function (obj, arg){
     var allFoods = obj;
     var items = allFoods[day];
     if (null != items){
-        for (var $i5 = 0,$l5 = items.length,item = items[$i5]; $i5 < $l5; $i5++, item = items[$i5]){
+        for (var $i6 = 0,$l6 = items.length,item = items[$i6]; $i6 < $l6; $i6++, item = items[$i6]){
             if ((item.Category == category) && !item.isContainer){
                 res.push(item);
             }
@@ -433,10 +439,10 @@ FoodApp.Common.jsCommonUtils.prototype.Equals = function (prefix, prefix2){
     var res = prefix.toLowerCase() == prefix2.toLowerCase();
     return res;
 };
-FoodApp.Common.jsCommonUtils.prototype.Assert = function (p1){
-    this.Assert(p1, "");
+FoodApp.Common.jsCommonUtils.prototype.assert = function (p1){
+    this.assert(p1, "");
 };
-FoodApp.Common.jsCommonUtils.prototype.Assert = function (p1, msg){
+FoodApp.Common.jsCommonUtils.prototype.assert = function (p1, msg){
     if (!p1){
         if (msg == null){
             msg = "";
@@ -500,7 +506,7 @@ FoodApp.Common.jsCommonUtils.prototype.toBool = function (jsString){
 };
 FoodApp.Common.jsCommonUtils.prototype.contains = function (prefixes, prefix){
     var res = false;
-    for (var $i6 = 0,$l6 = prefixes.length,pr = prefixes[$i6]; $i6 < $l6; $i6++, pr = prefixes[$i6]){
+    for (var $i7 = 0,$l7 = prefixes.length,pr = prefixes[$i7]; $i7 < $l7; $i7++, pr = prefixes[$i7]){
         if (pr == prefix){
             res = true;
             break;
@@ -517,7 +523,7 @@ FoodApp.Common.jsCommonUtils.prototype.getQueryParam = function (jsString, p){
         if (args.length == 0){
             args.push(tmp);
         }
-        for (var $i7 = 0,$l7 = args.length,arg = args[$i7]; $i7 < $l7; $i7++, arg = args[$i7]){
+        for (var $i8 = 0,$l8 = args.length,arg = args[$i8]; $i8 < $l8; $i8++, arg = args[$i8]){
             var keyVal = arg.split("=");
             if (keyVal.length == 2){
                 if (keyVal[0] == p){
@@ -543,7 +549,7 @@ FoodApp.Common.jsCommonUtils.prototype.getPrefix = function (tmp){
 };
 FoodApp.Common.jsCommonUtils.prototype.removeFromArray = function (items, obj){
     var tmpArray =  [];
-    for (var $i8 = 0,$l8 = items.length,tmp = items[$i8]; $i8 < $l8; $i8++, tmp = items[$i8]){
+    for (var $i9 = 0,$l9 = items.length,tmp = items[$i9]; $i9 < $l9; $i9++, tmp = items[$i9]){
         if (tmp != obj){
             tmpArray.push(tmp);
         }
@@ -551,18 +557,18 @@ FoodApp.Common.jsCommonUtils.prototype.removeFromArray = function (items, obj){
     while (items.length > 0){
         items.pop();
     }
-    for (var $i9 = 0,$l9 = tmpArray.length,tmp = tmpArray[$i9]; $i9 < $l9; $i9++, tmp = tmpArray[$i9]){
+    for (var $i10 = 0,$l10 = tmpArray.length,tmp = tmpArray[$i10]; $i10 < $l10; $i10++, tmp = tmpArray[$i10]){
         items.push(tmp);
     }
 };
 FoodApp.Common.JsFoodApi = function (serverUrl, userId){
     FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
 };
-FoodApp.Common.JsFoodApi.prototype.GetFoods = function (day, handler){
-    var url = FoodApp.Common.FoodsUrl.Inst.GetFoodsByDayUrl(this._userId, day);
+FoodApp.Common.JsFoodApi.prototype.GetFoodsByDay = function (userId, day, handler){
+    var url = FoodApp.Common.FoodsUrl.Inst.GetFoodsByDayUrl(userId, day);
     this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -572,7 +578,7 @@ FoodApp.Common.JsFoodApi.prototype.GetAllFoods = function (handler){
     var url = FoodApp.Common.FoodsUrl.Inst.GetAllFoodsUrl(this._userId);
     this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -582,7 +588,7 @@ FoodApp.Common.JsFoodApi.prototype.Buy = function (day, foodId, value, handler){
     var url = FoodApp.Common.FoodsUrl.Inst.GetBuyUrl(this._userId, day, foodId, value);
     this.SendPost(url, new Object(), $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -592,7 +598,7 @@ FoodApp.Common.JsFoodApi.prototype.ChangePrice = function (day, foodId, value, h
     var url = FoodApp.Common.FoodsUrl.Inst.GetChangePriceUrl(this._userId, day, foodId, value);
     this.SendPost(url, new Object(), $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -662,11 +668,21 @@ $Inherit(FoodApp.Common.JsMoneyApi, FoodApp.Common.JsApiBase);
 FoodApp.Common.JsOrderApi = function (serverUrl, userId){
     FoodApp.Common.JsApiBase.call(this, serverUrl, userId);
 };
-FoodApp.Common.JsOrderApi.prototype.GetOrders = function (handler){
-    var url = FoodApp.Common.OrderUrl.Inst.GetAllOrdersUrl(this._userId);
+FoodApp.Common.JsOrderApi.prototype.GetAllOrders = function (userId, handler){
+    var url = FoodApp.Common.OrderUrl.Inst.GetAllOrdersUrl(userId);
     this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
+        if (null != handler){
+            handler(res);
+        }
+    }));
+};
+FoodApp.Common.JsOrderApi.prototype.GetOrdersByDay = function (userId, day, handler){
+    var url = FoodApp.Common.OrderUrl.Inst.GetOrdersByDayUrl(userId, day);
+    this.SendGet(url, $CreateAnonymousDelegate(this, function (args){
+        var res = this.Deserealize(args);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }
@@ -676,7 +692,7 @@ FoodApp.Common.JsOrderApi.prototype.DeleteOrder = function (day, foodId, handler
     var url = FoodApp.Common.OrderUrl.Inst.GetDeleteOrderUrl(this._userId, day, foodId);
     this.SendDelete(url, $CreateAnonymousDelegate(this, function (args){
         var res = this.Deserealize(args);
-        FoodApp.Common.jsCommonUtils.inst.Assert(null != res);
+        FoodApp.Common.jsCommonUtils.inst.assert(null != res);
         if (null != handler){
             handler(res);
         }

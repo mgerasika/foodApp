@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using FoodApp.Common;
 using FoodApp.Common.Managers;
 using FoodApp.Controllers;
@@ -51,6 +52,7 @@ namespace FoodApp.Client {
 
         internal List<ngHistoryGroupEntry> GroupByDate() {
             List<ngHistoryGroupEntry> res = new List<ngHistoryGroupEntry>();
+            Entries = Entries.OrderByDescending(o => o.Date).ToList();
             foreach (ngHistoryEntry entry in Entries) {
                 ngFoodItem food = FoodManager.Inst.GetFoodById(entry.FoodId);
                 if (null != food && !food.isContainer) {

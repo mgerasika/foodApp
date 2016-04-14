@@ -3,11 +3,11 @@ using SharpKit.JavaScript;
 namespace FoodApp.Common {
     [JsType(JsMode.Prototype, Filename = CommonApiResources._fileClientJs)]
     public class JsFoodApi : JsApiBase {
-        public void GetFoods(int day, JsHandler<JsArray<ngFoodItem>> handler) {
-            string url = FoodsUrl.Inst.GetFoodsByDayUrl(_userId, day);
+        public void GetFoodsByDay(string userId,int day, JsHandler<JsArray<ngFoodItem>> handler) {
+            string url = FoodsUrl.Inst.GetFoodsByDayUrl(userId, day);
             SendGet(url, delegate(JsArray<ngFoodItem> args) {
                 object res = Deserealize(args);
-                jsCommonUtils.inst.Assert(null != res);
+                jsCommonUtils.inst.assert(null != res);
                 if (null != handler) {
                     handler(res.As<JsArray<ngFoodItem>>());
                 }
@@ -18,7 +18,7 @@ namespace FoodApp.Common {
             string url = FoodsUrl.Inst.GetAllFoodsUrl(_userId);
             SendGet(url, delegate(JsArray<ngFoodItem> args) {
                 object res = Deserealize(args);
-                jsCommonUtils.inst.Assert(null != res);
+                jsCommonUtils.inst.assert(null != res);
                 if (null != handler) {
                     handler(res.As<JsArray<JsArray<ngFoodItem>>>());
                 }
@@ -29,7 +29,7 @@ namespace FoodApp.Common {
             string url = FoodsUrl.Inst.GetBuyUrl(_userId, day, foodId, value);
             SendPost(url, new JsObject(), delegate(JsArray<ngFoodItem> args) {
                 object res = Deserealize(args);
-                jsCommonUtils.inst.Assert(null != res);
+                jsCommonUtils.inst.assert(null != res);
                 if (null != handler) {
                     handler(res.As<bool>());
                 }
@@ -40,7 +40,7 @@ namespace FoodApp.Common {
             string url = FoodsUrl.Inst.GetChangePriceUrl(_userId, day, foodId, value);
             SendPost(url, new JsObject(), delegate(JsArray<ngFoodItem> args) {
                 object res = Deserealize(args);
-                jsCommonUtils.inst.Assert(null != res);
+                jsCommonUtils.inst.assert(null != res);
                 if (null != handler) {
                     handler(res.As<string>());
                 }

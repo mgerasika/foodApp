@@ -72,16 +72,18 @@ namespace FoodApp.Common.Managers {
             ngUserModel user = ApiUtils.GetLoggedInUser();
             List<ngFoodItem> allFoods = FoodManager.Inst.GetAllFoods();
             ngHistoryModel historyModelByUser = GetHistoryModelByUser(user);
-            foreach (ngHistoryEntry entry in historyModelByUser.Entries) {
+            if (null != historyModelByUser) {
+                foreach (ngHistoryEntry entry in historyModelByUser.Entries) {
                     foreach (ngFoodItem food in allFoods) {
                         if (ApiUtils.IsSeamsFoodIds(entry.FoodId, food.FoodId)) {
                             entry.FoodId = food.FoodId;
                             break;
                         }
                     }
-            }
+                }
 
-            Save();
+                Save();
+            }
         }
 
         private ngHistoryModel GetHistoryModelByEmail(string email) {

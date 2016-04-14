@@ -18,12 +18,12 @@ namespace FoodApp.Common {
             return res;
         }
 
-        public void Assert(bool p1)
+        public void assert(bool p1)
         {
-            Assert(p1, "");
+            assert(p1, "");
         }
 
-        public void Assert(bool p1, string msg)
+        public void assert(bool p1, string msg)
         {
             if (!p1)
             {

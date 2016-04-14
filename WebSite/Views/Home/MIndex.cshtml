@@ -47,7 +47,9 @@
 
                     <ul style="font-size: 0px;" id="tab" class="nav navbar-nav navbar-right navstyle carousel-indicators grey">
                         <li style="visibility: hidden;" day="{{day.idx}}" data-target="#myCarousel" data-slide-to="{{day.idx}}" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]"></li>
-                        <li style="visibility: hidden;" day="6" data-target="#myCarousel" data-slide-to="6" ></li>
+                        <li style="visibility: hidden;" day="6" data-target="#myCarousel" data-slide-to="6"></li>
+                        <li style="visibility: hidden;" day="7" data-target="#myCarousel" data-slide-to="7"></li>
+                        <li style="visibility: hidden;" day="8" data-target="#myCarousel" data-slide-to="8" ></li>
                     </ul>
                 </nav>
 
@@ -110,8 +112,96 @@
                             </div>
                         </div>
 
-                        <div day="6" class="item">
-                             <div style="background-color: white; position: fixed; top: 5em; width: 100%; z-index: 4;">
+
+
+                         <div  class="item" day="6" >
+                            
+                            <div style="background-color: white; position: fixed; top: 5em; width: 100%; z-index: 4;">
+                                <div class="container">
+                                    <div class="row bottomBorder">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="alldesc">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
+                                                    <p class="all-td">&nbsp;</p>
+                                                    <h2>Історія</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container">
+                                    <div class="row bottomBorder">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="alldesc">
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="container">
+
+                                <div class="features" style="margin-top: 8em;">
+                                    <div class="container">
+                                        <div class="row">
+                                            @{ Html.RenderPartial("History"); }
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div  class="item" day="7" >
+                            
+                            <div style="background-color: white; position: fixed; top: 5em; width: 100%; z-index: 4;">
+                                <div class="container">
+                                    <div class="row bottomBorder">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="alldesc">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
+                                                    <p class="all-td">&nbsp;</p>
+                                                    <h2>Замовлення</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container">
+                                    <div class="row bottomBorder">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="alldesc">
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="container">
+
+                                <div class="features" style="margin-top: 8em;">
+                                    <div class="container">
+                                        <div class="row">
+                                            @{ Html.RenderPartial("ReviewUserControl"); }
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                        <div day="7" class="item">
+                            <div style="background-color: white; position: fixed; top: 5em; width: 100%; z-index: 4;">
                                 <div class="container">
                                     <div class="row bottomBorder">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -137,8 +227,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
+
+
+                        
                     </div>
             </div>
         </div>

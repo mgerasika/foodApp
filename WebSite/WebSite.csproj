@@ -278,25 +278,26 @@
     <Compile Include="Client\ApiErrorManager.cs" />
     <Compile Include="Client\ApiResponse.cs" />
     <Compile Include="Client\ApiTraceManager.cs" />
+    <Compile Include="Client\controller\review\ngReviewController.cs" />
     <Compile Include="Client\ngAddMoneyModel.cs" />
     <Compile Include="Client\ngMoneyClientEntry.cs" />
-    <Compile Include="Client\ngMoneyController.cs" />
-    <Compile Include="Client\ErrorApiController.cs" />
-    <Compile Include="Client\ngErrorController.cs" />
+    <Compile Include="Client\controller\ngMoneyController.cs" />
+    <Compile Include="Client\controller\ErrorApiController.cs" />
+    <Compile Include="Client\controller\ngErrorController.cs" />
     <Compile Include="Client\ngErrorModel.cs" />
     <Compile Include="Client\ngHistoryModel.cs" />
-    <Compile Include="Client\ngPropousalContoller.cs" />
+    <Compile Include="Client\controller\ngPropousalContoller.cs" />
     <Compile Include="Client\ngPropousalFilter.cs" />
-    <Compile Include="Client\ngHistoryController.cs" />
-    <Compile Include="Client\ngAppController.cs" />
-    <Compile Include="Client\ngControllerBase.cs" />
+    <Compile Include="Client\controller\ngHistoryController.cs" />
+    <Compile Include="Client\controller\ngAppController.cs" />
+    <Compile Include="Client\controller\ngControllerBase.cs" />
     <Compile Include="Client\ngOrderFilter.cs" />
-    <Compile Include="Client\ngToolsController.cs" />
-    <Compile Include="Client\ngTraceController.cs" />
+    <Compile Include="Client\controller\ngToolsController.cs" />
+    <Compile Include="Client\controller\ngTraceController.cs" />
     <Compile Include="Client\ngTraceModel.cs" />
     <Compile Include="Client\ngUsersSettingsModel.cs" />
     <Compile Include="Client\Program.cs" />
-    <Compile Include="Client\TraceApiController.cs" />
+    <Compile Include="Client\controller\TraceApiController.cs" />
     <Compile Include="Common\Managers\BackupHistoryManager.cs" />
     <Compile Include="Common\Managers\ClearOrdersManager.cs" />
     <Compile Include="Common\Managers\PropousalManager.cs" />
@@ -316,8 +317,8 @@
     <Compile Include="Common\Parser\ExcelManager.cs" />
     <Compile Include="Common\Managers\FoodManager.cs" />
     <Compile Include="Common\Managers\ManagerBase.cs" />
-    <Compile Include="Client\ngFoodController.cs" />
-    <Compile Include="Client\ngOrderController.cs" />
+    <Compile Include="Client\controller\ngFoodController.cs" />
+    <Compile Include="Client\controller\ngOrderController.cs" />
     <Compile Include="Common\Parser\LoginTool.cs" />
     <Compile Include="Controllers\api\MoneyController.cs" />
     <Compile Include="Controllers\api\ToolsController.cs" />
@@ -358,6 +359,8 @@
     <Content Include="Views\Home\Trace.cshtml" />
     <Content Include="Views\Home\Money.cshtml" />
     <Content Include="Views\Home\MIndex.cshtml" />
+    <Content Include="Views\Home\Review.cshtml" />
+    <Content Include="Views\Home\ReviewUserControl.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

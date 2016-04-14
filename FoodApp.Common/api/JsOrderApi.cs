@@ -8,13 +8,27 @@ namespace FoodApp.Common {
         }
 
 
-        public void GetOrders(JsHandler<JsArray<JsArray<ngOrderEntry>>> handler) {
-            string url = OrderUrl.Inst.GetAllOrdersUrl(_userId);
+        public void GetAllOrders(string userId,JsHandler<JsArray<JsArray<ngOrderEntry>>> handler) {
+            string url = OrderUrl.Inst.GetAllOrdersUrl(userId);
             SendGet(url, delegate(JsArray<ngFoodItem> args) {
                 object res = Deserealize(args);
-                jsCommonUtils.inst.Assert(null != res);
+                jsCommonUtils.inst.assert(null != res);
                 if (null != handler) {
                     handler(res.As<JsArray<JsArray<ngOrderEntry>>>());
+                }
+            });
+        }
+
+        public void GetOrdersByDay(string userId,int day, JsHandler<JsArray<ngOrderEntry>> handler)
+        {
+            string url = OrderUrl.Inst.GetOrdersByDayUrl(userId,day);
+            SendGet(url, delegate(JsArray<ngOrderEntry> args)
+            {
+                object res = Deserealize(args);
+                jsCommonUtils.inst.assert(null != res);
+                if (null != handler)
+                {
+                    handler(res.As<JsArray<ngOrderEntry>>());
                 }
             });
         }
@@ -23,7 +37,7 @@ namespace FoodApp.Common {
             string url = OrderUrl.Inst.GetDeleteOrderUrl(_userId,day,foodId);
             SendDelete(url, delegate (JsArray<ngFoodItem> args) {
                 object res = Deserealize(args);
-                jsCommonUtils.inst.Assert(null != res);
+                jsCommonUtils.inst.assert(null != res);
                 if (null != handler)
                 {
                     handler(res.As<bool>());

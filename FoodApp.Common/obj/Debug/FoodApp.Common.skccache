@@ -7,29 +7,29 @@
     <ManifestFile Filename="api\JsUsersApi.cs" Modified="-8587409964332950758" />
     <ManifestFile Filename="Common\CommonUtils.cs" Modified="-8587471971659596478" />
     <ManifestFile Filename="api\IFoodsController.cs" Modified="-8587446139171029977" />
-    <ManifestFile Filename="api\IOrderController.cs" Modified="-8587465043243849539" />
+    <ManifestFile Filename="api\IOrderController.cs" Modified="-8587409927215446299" />
     <ManifestFile Filename="Common\CommonApiResources.cs" Modified="-8587465043200443079" />
     <ManifestFile Filename="Common\CategoryNames.cs" Modified="-8587446141724171625" />
-    <ManifestFile Filename="Common\jsUtils.cs" Modified="-8587465075575496119" />
+    <ManifestFile Filename="Common\jsUtils.cs" Modified="-8587409806495027758" />
     <ManifestFile Filename="Common\eventManager.cs" Modified="-8587446042290372654" />
-    <ManifestFile Filename="Model\ngFoodItem.cs" Modified="-8587411394479651688" />
+    <ManifestFile Filename="Model\ngFoodItem.cs" Modified="-8587409901200152126" />
     <ManifestFile Filename="Model\ngFoodRate.cs" Modified="-8587465043243809673" />
     <ManifestFile Filename="Model\ngHistoryEntry.cs" Modified="-8587465043243799712" />
     <ManifestFile Filename="Model\ngHistoryGroupEntry.cs" Modified="-8587465043243779692" />
     <ManifestFile Filename="Model\ngModelBase.cs" Modified="-8587465043243749429" />
     <ManifestFile Filename="Model\ngOrderEntry.cs" Modified="-8587465043243739714" />
-    <ManifestFile Filename="Model\ngUserModel.cs" Modified="-8587465043243719691" />
+    <ManifestFile Filename="Model\ngUserModel.cs" Modified="-8587409954123148298" />
     <ManifestFile Filename="ngFoodFilter.cs" Modified="-8587465043200323399" />
     <ManifestFile Filename="Properties\AssemblyInfo.cs" Modified="-8587471984789454692" />
     <ManifestFile Filename="Common\ajaxHlp.cs" Modified="-8587465040230019304" />
     <ManifestFile Filename="Url\FoodsUrl.cs" Modified="-8587410829252272557" />
     <ManifestFile Filename="Url\HistoryUrl.cs" Modified="-8587465043243669681" />
-    <ManifestFile Filename="api\JsApiBase.cs" Modified="-8587411461933704742" />
-    <ManifestFile Filename="api\jsCommonUtils.cs" Modified="-8587465043243539695" />
-    <ManifestFile Filename="api\JsFoodApi.cs" Modified="-8587410760216640708" />
+    <ManifestFile Filename="api\JsApiBase.cs" Modified="-8587409900987620640" />
+    <ManifestFile Filename="api\jsCommonUtils.cs" Modified="-8587409900987700351" />
+    <ManifestFile Filename="api\JsFoodApi.cs" Modified="-8587409900987590292" />
     <ManifestFile Filename="Url\JsHandler.cs" Modified="-8587465043243509807" />
     <ManifestFile Filename="api\JsMoneyApi.cs" Modified="-8587409963899401213" />
-    <ManifestFile Filename="api\JsOrderApi.cs" Modified="-8587409963848779659" />
+    <ManifestFile Filename="api\JsOrderApi.cs" Modified="-8587409900987680634" />
     <ManifestFile Filename="api\JsService.cs" Modified="-8587409963988076726" />
     <ManifestFile Filename="Url\MoneyUrl.cs" Modified="-8587409963848579985" />
     <ManifestFile Filename="Url\OrderUrl.cs" Modified="-8587464341043834812" />

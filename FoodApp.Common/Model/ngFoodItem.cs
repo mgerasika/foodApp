@@ -8,7 +8,7 @@ namespace FoodApp.Common {
         public string Category { get; set; }
         public decimal Price { get; set; }
         public string FoodId { get; set; }
-        public bool IsByWeightItem { get; set; }
+        public bool isByWeightItem { get; set; }
         public bool isContainer { get; set; }
         public bool isSmallContainer { get; set; }
         public bool isBigContainer { get; set; }

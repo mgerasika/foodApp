@@ -9,7 +9,7 @@
     string foods = ajs.field((ngFoodController o) => o.ngFoods);
     string food = "food";
     string foodId = food + "." + ajs.field((ngFoodItem o) => o.FoodId);
-    string isByWeight = food + "." + ajs.field((ngFoodItem o) => o.IsByWeightItem);
+    string isByWeight = food + "." + ajs.field((ngFoodItem o) => o.isByWeightItem);
     string price = food + "." + ajs.field((ngFoodItem o) => o.Price);
 
     string prefix = ajs.method((ngFoodController o) => o.getPrefix(0)) + "(" + price + ")";

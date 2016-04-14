@@ -41,6 +41,8 @@ namespace FoodApp.Common.Managers {
             return res;
         }
 
+       
+
         internal ngUserModel GetUserByEmail(List<ngUserModel> users, string email) {
             ngUserModel res = null;
             foreach (ngUserModel item in users) {
@@ -103,7 +105,7 @@ namespace FoodApp.Common.Managers {
             ngUserModel res = null;
             List<ngUserModel> users = GetUsers();
             foreach (ngUserModel user in users) {
-                if (user.Name.Equals(spreadSheetVal, StringComparison.OrdinalIgnoreCase)) {
+                if (user.Name != null && user.Name.Equals(spreadSheetVal, StringComparison.OrdinalIgnoreCase)) {
                     res = user;
                     break;
                 }
