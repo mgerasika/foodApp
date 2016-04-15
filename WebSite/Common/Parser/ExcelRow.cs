@@ -92,16 +92,16 @@ namespace FoodApp.Common.Parser {
             return cell;
         }
 
-        private string ParseCategory() {
+        private string GetCategory() {
             string res = "";
 
-            bool hasCaption = false;
+            bool isCategoryRow = false;
             for (int j = 0; j < _entry.Count; ++j) {
                 CellEntry element = _entry[j];
                 if (element.Column.Equals(ColumnNames.Price)) {
                     string val = element.Value;
                     if (!string.IsNullOrEmpty(val) && val.ToLower().Contains("ціна")) {
-                        hasCaption = true;
+                        isCategoryRow = true;
                         break;
                     }
                 }
@@ -110,13 +110,13 @@ namespace FoodApp.Common.Parser {
                     string val = element.Value;
                     if (!string.IsNullOrEmpty(val) && val.ToLower().Contains("складники"))
                     {
-                        hasCaption = true;
+                        isCategoryRow = true;
                         break;
                     }
                 }
             }
 
-            if (hasCaption) {
+            if (isCategoryRow) {
                 for (int j = 0; j < _entry.Count; ++j) {
                     CellEntry element = _entry[j];
                     if (element.Column.Equals(ColumnNames.Name)) {
@@ -129,7 +129,7 @@ namespace FoodApp.Common.Parser {
         }
 
         public void Parse(ref string lCategory) {
-            string tmpCategory = ParseCategory();
+            string tmpCategory = GetCategory();
             if (!string.IsNullOrEmpty(tmpCategory)) {
                 lCategory = tmpCategory.Replace(":", "");
             }
