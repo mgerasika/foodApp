@@ -22,13 +22,14 @@ namespace FoodApp.Common.Managers {
                     ngFoodItem item = new ngFoodItem();
                     Debug.Assert(!string.IsNullOrEmpty(row.Name));
 
+                    string rowFoodId = row.GetFoodId();
                     if (!string.IsNullOrEmpty(row.Description)) {
-                        _descriptionCache[row.GetFoodId()] = row.Description;
+                        _descriptionCache[rowFoodId] = row.Description;
                     }
 
                     item.Name = row.Name;
-                    item.Description =  string.IsNullOrEmpty(row.Description) && _descriptionCache.ContainsKey(row.GetFoodId()) ?
-                        _descriptionCache[row.GetFoodId()] : row.Description;
+                    item.Description =  string.IsNullOrEmpty(row.Description) && _descriptionCache.ContainsKey(rowFoodId) ?
+                        _descriptionCache[rowFoodId] : row.Description;
 
                     item.isContainer = row.IsContainer();
                     item.isBigContainer = row.IsBigContainer();
@@ -40,14 +41,16 @@ namespace FoodApp.Common.Managers {
                     item.isFirst = row.IsFirst();
                     item.isByWeightItem = row.IsByWeightItem();
                     item.Price = row.Price;
-                    item.FoodId = row.GetFoodId();
-                    item.Category = row.Category;
+                    item.FoodId = rowFoodId;
+                    item.Category = row.NewCategory;
 
                     res.Add(item);
                 }
             }
             return res;
         }
+
+       
 
         public List<ngFoodItem> GetAllFoods() {
             List<ngFoodItem> res = new List<ngFoodItem>();

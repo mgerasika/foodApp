@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using FoodApp.Common.Managers;
 using Google.GData.Spreadsheets;
 
 namespace FoodApp.Common.Parser {
@@ -10,20 +9,19 @@ namespace FoodApp.Common.Parser {
         private readonly ExcelTable _table;
         public List<ExcelCell> Cells = new List<ExcelCell>();
 
-
-        public ExcelRow(ExcelTable table, uint row, List<CellEntry> entry) {
-            _entry = entry;
-            _table = table;
-            Row = row;
-        }
-
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
         private uint Row { get; set; }
         public bool HasPrice { get; set; }
-        public string OriginalCategory { get; set; }
-        public string Category { get; set; }
+        private string _category;
+
+        public string NewCategory {
+            get {
+                string newCategory = GetNewCategory(_category, Name);
+                return newCategory;
+            }
+        }
 
         public ExcelTable GetTable() {
             return _table;
@@ -67,8 +65,8 @@ namespace FoodApp.Common.Parser {
 
         public string GetFoodId() {
             string res = "";
-            if (!string.IsNullOrEmpty(OriginalCategory)) {
-                res = new Regex(@"\W").Replace(OriginalCategory, "");
+            if (!string.IsNullOrEmpty(_category)) {
+                res = new Regex(@"\W").Replace(_category, "");
             }
             if (!string.IsNullOrEmpty(Name)) {
                 res += new Regex(@"\W").Replace(Name, "");
@@ -92,48 +90,12 @@ namespace FoodApp.Common.Parser {
             return cell;
         }
 
-        private string GetCategory() {
-            string res = "";
-
-            bool isCategoryRow = false;
-            for (int j = 0; j < _entry.Count; ++j) {
-                CellEntry element = _entry[j];
-                if (element.Column.Equals(ColumnNames.Price)) {
-                    string val = element.Value;
-                    if (!string.IsNullOrEmpty(val) && val.ToLower().Contains("ціна")) {
-                        isCategoryRow = true;
-                        break;
-                    }
-                }
-                else if (element.Column.Equals(ColumnNames.Description))
-                {
-                    string val = element.Value;
-                    if (!string.IsNullOrEmpty(val) && val.ToLower().Contains("складники"))
-                    {
-                        isCategoryRow = true;
-                        break;
-                    }
-                }
-            }
-
-            if (isCategoryRow) {
-                for (int j = 0; j < _entry.Count; ++j) {
-                    CellEntry element = _entry[j];
-                    if (element.Column.Equals(ColumnNames.Name)) {
-                        res = element.Value;
-                        break;
-                    }
-                }
-            }
-            return res;
-        }
-
         public void Parse(ref string lCategory) {
             string tmpCategory = GetCategory();
             if (!string.IsNullOrEmpty(tmpCategory)) {
                 lCategory = tmpCategory.Replace(":", "");
             }
-            OriginalCategory = lCategory;
+            _category = lCategory;
 
             for (int j = 0; j < _entry.Count; ++j) {
                 CellEntry cell = _entry[j];
@@ -163,37 +125,35 @@ namespace FoodApp.Common.Parser {
                 }
             }
 
-
-            if (OriginalCategory != null && Name != null && OriginalCategory.Contains("Налисники") &&
+            if (_category != null && Name != null && _category.Contains("Налисники") &&
                 !IsContainer(Name)) {
-                Name = OriginalCategory + " " + Name;
+                Name = _category + " " + Name;
             }
         }
 
-        public static string GetNewCategory(string category, string name) {
-            string res = category;
-            if (category.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
+        private string GetNewCategory(string originalCategory, string rowName) {
+            string res = originalCategory;
+            if (originalCategory.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
                 res = CategoryNames.Salat;
             }
 
-            else if (category.Equals("Гарніри", StringComparison.OrdinalIgnoreCase)) {
+            else if (originalCategory.Equals("Гарніри", StringComparison.OrdinalIgnoreCase)) {
                 res = CategoryNames.Garnir;
             }
 
-            else if (category.Equals("Перші страви", StringComparison.OrdinalIgnoreCase)) {
+            else if (originalCategory.Equals("Перші страви", StringComparison.OrdinalIgnoreCase)) {
                 res = CategoryNames.First;
             }
-            else if (IsContainer(name))
-            {
+            else if (IsContainer(rowName)) {
                 res = CategoryNames.PlactisContainer;
             }
-            else if (name != null && name.ToLower().Contains("батон")) {
+            else if (rowName != null && rowName.ToLower().Contains("батон")) {
                 res = CategoryNames.Breat;
             }
-            else if (category.ToLower().Contains("комплексний")) {
+            else if (originalCategory.ToLower().Contains("комплексний")) {
                 res = CategoryNames.ComplexDinner;
             }
-            else if (name != null && name.ToLower().Contains("налисники")) {
+            else if (rowName != null && rowName.ToLower().Contains("налисники")) {
                 res = CategoryNames.Garnir;
             }
 
@@ -204,11 +164,7 @@ namespace FoodApp.Common.Parser {
             return res;
         }
 
-        private static bool IsContainer(string name) {
-            return name != null && (name.ToLower().Contains("контейнери") || name.ToLower().Contains("контейнер"));
-        }
-
-        internal void MergeEntry(CellEntry newEntry) {
+        public void MergeEntry(CellEntry newEntry) {
             CellEntry old = null;
             foreach (CellEntry obj in _entry) {
                 if (obj.Column == newEntry.Column && obj.Row == newEntry.Row) {
@@ -225,7 +181,7 @@ namespace FoodApp.Common.Parser {
 
         public bool IsByWeightItem() {
             bool res = false;
-            if (Category.Equals(CategoryNames.Salat, StringComparison.OrdinalIgnoreCase)) {
+            if (NewCategory.Equals(CategoryNames.Salat, StringComparison.OrdinalIgnoreCase)) {
                 res = true;
             }
             if (Name.Contains("Стегна кур.запечені") ||
@@ -248,7 +204,7 @@ namespace FoodApp.Common.Parser {
 
         public bool IsFirst() {
             bool res = false;
-            if (Category.Equals(CategoryNames.First)) {
+            if (NewCategory.Equals(CategoryNames.First)) {
                 res = true;
             }
             return res;
@@ -256,7 +212,7 @@ namespace FoodApp.Common.Parser {
 
         public bool IsMeatOrFish() {
             bool res = false;
-            if (Category.Equals(CategoryNames.MeatOrFish)) {
+            if (NewCategory.Equals(CategoryNames.MeatOrFish)) {
                 res = true;
             }
             return res;
@@ -264,7 +220,7 @@ namespace FoodApp.Common.Parser {
 
         public bool IsSalat() {
             bool res = false;
-            if (Category.Equals(CategoryNames.Salat)) {
+            if (NewCategory.Equals(CategoryNames.Salat)) {
                 res = true;
             }
             return res;
@@ -272,7 +228,7 @@ namespace FoodApp.Common.Parser {
 
         public bool IsGarnir() {
             bool res = false;
-            if (Category.Equals(CategoryNames.Garnir)) {
+            if (NewCategory.Equals(CategoryNames.Garnir)) {
                 res = true;
             }
             return res;
@@ -283,13 +239,13 @@ namespace FoodApp.Common.Parser {
         }
 
         public bool IsContainer() {
-            bool res = IsContainer(this.Name);
+            bool res = IsContainer(Name);
             return res;
         }
 
         public bool IsSmallContainer() {
             bool res = false;
-            if (IsContainer(this.Name)&& Name.Contains("1")) {
+            if (IsContainer(Name) && Name.Contains("1")) {
                 res = true;
             }
             return res;
@@ -297,11 +253,54 @@ namespace FoodApp.Common.Parser {
 
         public bool IsBigContainer() {
             bool res = false;
-            if (IsContainer(this.Name) && Name.Contains("2"))
-            {
+            if (IsContainer(Name) && Name.Contains("2")) {
                 res = true;
             }
             return res;
+        }
+
+        public ExcelRow(ExcelTable table, uint row, List<CellEntry> entry) {
+            _entry = entry;
+            _table = table;
+            Row = row;
+        }
+
+        private string GetCategory() {
+            string res = "";
+
+            bool isCategoryRow = false;
+            for (int j = 0; j < _entry.Count; ++j) {
+                CellEntry element = _entry[j];
+                if (element.Column.Equals(ColumnNames.Price)) {
+                    string val = element.Value;
+                    if (!string.IsNullOrEmpty(val) && val.ToLower().Contains("ціна")) {
+                        isCategoryRow = true;
+                        break;
+                    }
+                }
+                else if (element.Column.Equals(ColumnNames.Description)) {
+                    string val = element.Value;
+                    if (!string.IsNullOrEmpty(val) && val.ToLower().Contains("складники")) {
+                        isCategoryRow = true;
+                        break;
+                    }
+                }
+            }
+
+            if (isCategoryRow) {
+                for (int j = 0; j < _entry.Count; ++j) {
+                    CellEntry element = _entry[j];
+                    if (element.Column.Equals(ColumnNames.Name)) {
+                        res = element.Value;
+                        break;
+                    }
+                }
+            }
+            return res;
+        }
+
+        private static bool IsContainer(string name) {
+            return name != null && (name.ToLower().Contains("контейнери") || name.ToLower().Contains("контейнер"));
         }
     }
 }

@@ -96,12 +96,26 @@ namespace FoodApp.Controllers {
         }
 
         public ActionResult MIndex() {
-            return View();
+            ActionResult viewResult = null;
+            if (!IsAuthAndLogined()) {
+                viewResult = AuthinficateAndLogin();
+            }
+            if (null == viewResult) {
+                viewResult = View();
+            }
+            return viewResult;
         }
 
         [Route("Review")]
         public ActionResult Review() {
-            return View();
+            ActionResult viewResult = null;
+            if (!IsAuthAndLogined()) {
+                viewResult = AuthinficateAndLogin();
+            }
+            if (null == viewResult) {
+                viewResult = View();
+            }
+            return viewResult;
         }
 
 
@@ -110,64 +124,8 @@ namespace FoodApp.Controllers {
 
             bool isMobile = Request.Browser.IsMobileDevice;
 
-            if (Request.QueryString["code"] != null && null == ApiUtils.GetLoggedInUser()) {
-                OAuth2Parameters lParams = CreateParameters();
-                lParams.AccessType = "offline";
-                lParams.AccessCode = HttpContext.Request.QueryString["code"];
-                OAuthUtil.GetAccessToken(lParams);
-                string lUrl = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json";
-                HttpWebRequest client = WebRequest.Create(lUrl) as HttpWebRequest;
-                client.Method = "GET";
-                client.Headers.Add("Authorization", "Bearer " + lParams.AccessToken);
-                try {
-                    using (HttpWebResponse response = (HttpWebResponse) client.GetResponse()) {
-                        using (Stream dataStream = response.GetResponseStream()) {
-                            using (StreamReader reader = new StreamReader(dataStream)) {
-                                if (response.StatusCode == HttpStatusCode.OK) {
-                                    JavaScriptSerializer json = new JavaScriptSerializer();
-                                    IDictionary<string, object> data =
-                                        json.Deserialize<IDictionary<string, object>>(reader.ReadToEnd());
-
-                                    string email = Convert.ToString(data["email"]);
-                                    ngUserModel userModel = UsersManager.Inst.GetUserByEmail(email);
-                                    if (null == userModel) {
-                                        //create new user.
-                                        //userModel = UsersManager.Inst.GetUserByEmail("unknown@gmail.com");
-                                        ngUserModel tmp = new ngUserModel();
-                                        tmp.Email = email;
-                                        tmp.IsAdmin = false;
-                                        tmp.IsReviewer = true;
-                                        tmp.Id = Guid.NewGuid().ToString();
-                                        UsersManager.Inst.AddItemAndSave(tmp);
-                                        userModel = tmp;
-                                    }
-                                    if (string.IsNullOrEmpty(userModel.GoogleFirstName)) {
-                                        userModel.Picture = Convert.ToString(data["picture"]);
-                                        userModel.GoogleName = Convert.ToString(data["name"]);
-                                        userModel.GoogleFirstName = Convert.ToString(data["given_name"]);
-                                        UsersManager.Inst.Save();
-                                    }
-                                    if (email.Contains("mgerasika") || email.Contains("mherasika") || email.Contains("omartsinets")) {
-                                        if (!userModel.IsAdmin) {
-                                            userModel.IsAdmin = true;
-                                            UsersManager.Inst.Save();
-                                        }
-                                    }
-                                    ApiUtils.SetSessionUserId(userModel.Id);
-
-                                    if (userModel.IsReviewer) {
-                                        viewResult = RedirectToAction("Review");
-                                    }
-                                    else {
-                                        viewResult = isMobile ? RedirectToAction("MIndex") : RedirectToAction("Index");
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex) {
-                }
+            if (!IsAuthAndLogined()) {
+                viewResult = AuthinficateAndLogin();
             }
             if (null == viewResult) {
                 if (null == ApiUtils.GetLoggedInUser()) {
@@ -203,6 +161,75 @@ namespace FoodApp.Controllers {
             OAuth2Parameters lParams = CreateParameters();
             string lUrl = OAuthUtil.CreateOAuth2AuthorizationUrl(lParams);
             return Redirect(lUrl);
+        }
+
+        private ActionResult AuthinficateAndLogin() {
+            ActionResult res = null;
+            bool isMobile = Request.Browser.IsMobileDevice;
+
+            OAuth2Parameters lParams = CreateParameters();
+            lParams.AccessType = "offline";
+            lParams.AccessCode = HttpContext.Request.QueryString["code"];
+            OAuthUtil.GetAccessToken(lParams);
+            string lUrl = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json";
+            HttpWebRequest client = WebRequest.Create(lUrl) as HttpWebRequest;
+            client.Method = "GET";
+            client.Headers.Add("Authorization", "Bearer " + lParams.AccessToken);
+            try {
+                using (HttpWebResponse response = (HttpWebResponse) client.GetResponse()) {
+                    using (Stream dataStream = response.GetResponseStream()) {
+                        using (StreamReader reader = new StreamReader(dataStream)) {
+                            if (response.StatusCode == HttpStatusCode.OK) {
+                                JavaScriptSerializer json = new JavaScriptSerializer();
+                                IDictionary<string, object> data =
+                                    json.Deserialize<IDictionary<string, object>>(reader.ReadToEnd());
+
+                                string email = Convert.ToString(data["email"]);
+                                ngUserModel userModel = UsersManager.Inst.GetUserByEmail(email);
+                                if (null == userModel) {
+                                    //create new user.
+                                    //userModel = UsersManager.Inst.GetUserByEmail("unknown@gmail.com");
+                                    ngUserModel tmp = new ngUserModel();
+                                    tmp.Email = email;
+                                    tmp.IsAdmin = false;
+                                    tmp.IsReviewer = true;
+                                    tmp.Id = Guid.NewGuid().ToString();
+                                    UsersManager.Inst.AddItemAndSave(tmp);
+                                    userModel = tmp;
+                                }
+                                if (string.IsNullOrEmpty(userModel.GoogleFirstName)) {
+                                    userModel.Picture = Convert.ToString(data["picture"]);
+                                    userModel.GoogleName = Convert.ToString(data["name"]);
+                                    userModel.GoogleFirstName = Convert.ToString(data["given_name"]);
+                                    UsersManager.Inst.Save();
+                                }
+                                if (email.Contains("mgerasika") || email.Contains("mherasika") || email.Contains("omartsinets")) {
+                                    if (!userModel.IsAdmin) {
+                                        userModel.IsAdmin = true;
+                                        UsersManager.Inst.Save();
+                                    }
+                                }
+                                ApiUtils.SetSessionUserId(userModel.Id);
+
+                                if (userModel.IsReviewer) {
+                                    res = RedirectToAction("Review");
+                                }
+                                else {
+                                    res = isMobile ? RedirectToAction("MIndex") : RedirectToAction("Index");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) {
+            }
+            return res;
+        }
+
+        private bool IsAuthAndLogined() {
+            bool res = Request.QueryString["code"] != null && null == ApiUtils.GetLoggedInUser();
+            return !res;
         }
 
         private static OAuth2Parameters CreateParameters() {

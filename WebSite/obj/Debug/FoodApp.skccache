@@ -39,11 +39,11 @@
     <ManifestFile Filename="Common\Parser\ColumnNames.cs" Modified="-8587468759383181226" />
     <ManifestFile Filename="Common\Parser\ExcelCell.cs" Modified="-8587410766815249373" />
     <ManifestFile Filename="Common\Parser\ExcelParser.cs" Modified="-8587410798187805169" />
-    <ManifestFile Filename="Common\Parser\ExcelRow.cs" Modified="-8587411384286639968" />
-    <ManifestFile Filename="Common\Parser\ExcelTable.cs" Modified="-8587410800926372541" />
-    <ManifestFile Filename="Common\Parser\ExcelDoc.cs" Modified="-8587410800926662088" />
+    <ManifestFile Filename="Common\Parser\ExcelRow.cs" Modified="-8587409079130482157" />
+    <ManifestFile Filename="Common\Parser\ExcelTable.cs" Modified="-8587409090666356057" />
+    <ManifestFile Filename="Common\Parser\ExcelDoc.cs" Modified="-8587409063733029662" />
     <ManifestFile Filename="Common\Parser\ExcelManager.cs" Modified="-8587409790320705524" />
-    <ManifestFile Filename="Common\Managers\FoodManager.cs" Modified="-8587409901245266412" />
+    <ManifestFile Filename="Common\Managers\FoodManager.cs" Modified="-8587409073134994763" />
     <ManifestFile Filename="Common\Managers\ManagerBase.cs" Modified="-8587465043243139302" />
     <ManifestFile Filename="Client\controller\ngFoodController.cs" Modified="-8587409911111066297" />
     <ManifestFile Filename="Client\controller\ngOrderController.cs" Modified="-8587409901245396131" />
@@ -53,14 +53,14 @@
     <ManifestFile Filename="Controllers\api\UsersController.cs" Modified="-8587409962887564571" />
     <ManifestFile Filename="ngOrderFilter.cs" Modified="-8587464972348904053" />
     <ManifestFile Filename="Properties\WebApiResources.cs" Modified="-8587468759382961499" />
-    <ManifestFile Filename="Common\ApiUtils.cs" Modified="-8587410658239866094" />
+    <ManifestFile Filename="Common\ApiUtils.cs" Modified="-8587409063733199856" />
     <ManifestFile Filename="Controllers\api\ApiControllerBase.cs" Modified="-8587465043242949700" />
     <ManifestFile Filename="Controllers\api\PropousalController.cs" Modified="-8587465043242849739" />
     <ManifestFile Filename="Controllers\api\HistoryController.cs" Modified="-8587465043242899704" />
     <ManifestFile Filename="Controllers\api\FoodsController.cs" Modified="-8587410828502071489" />
     <ManifestFile Filename="Controllers\api\AppController.cs" Modified="-8587465043242929700" />
     <ManifestFile Filename="Controllers\api\OrderController.cs" Modified="-8587409927137387397" />
-    <ManifestFile Filename="Controllers\HomeController.cs" Modified="-8587409877832330874" />
+    <ManifestFile Filename="Controllers\HomeController.cs" Modified="-8587409066366968209" />
     <ManifestFile Filename="Model\EMoneyOperation.cs" Modified="-8587411465858083721" />
     <ManifestFile Filename="Global.asax.cs" Modified="-8587411451484190313" />
     <ManifestFile Filename="Model\ngMoneyModel.cs" Modified="-8587411507185959141" />
@@ -137,7 +137,7 @@
     <ManifestFile Filename="Views\Home\Login.cshtml" Modified="-8587483256924410100" />
     <ManifestFile Filename="Views\Home\Settings.cshtml" Modified="-8587410648546520892" />
     <ManifestFile Filename="Views\Layout1.cshtml" Modified="-8587410590728927198" />
-    <ManifestFile Filename="Views\Home\History.cshtml" Modified="-8587465043202573031" />
+    <ManifestFile Filename="Views\Home\History.cshtml" Modified="-8587409780378983430" />
     <ManifestFile Filename="Views\Home\Propousal.cshtml" Modified="-8587411498946103309" />
     <ManifestFile Filename="Views\Home\Admin.cshtml" Modified="-8587410798187284901" />
     <ManifestFile Filename="Views\Home\AdminFoods.cshtml" Modified="-8587409901245226152" />

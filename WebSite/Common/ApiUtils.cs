@@ -10,8 +10,8 @@ namespace FoodApp.Common {
     public class ApiUtils {
 #if DEBUG
         public const string REDIRECT_URL = "http://localhost:15845/";
-        public const string c_sExcelFileName = "mykhaylo_test";
-        //public const string c_sExcelFileName = "Меню на тиждень";
+        //public const string c_sExcelFileName = "mykhaylo_test";
+        public const string c_sExcelFileName = "Меню на тиждень";
 #else
         public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
         public const string c_sExcelFileName = "Меню на тиждень";

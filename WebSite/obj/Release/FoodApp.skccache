@@ -39,8 +39,8 @@
     <ManifestFile Filename="Common\Parser\ColumnNames.cs" Modified="-8587468759383181226" />
     <ManifestFile Filename="Common\Parser\ExcelCell.cs" Modified="-8587410766815249373" />
     <ManifestFile Filename="Common\Parser\ExcelParser.cs" Modified="-8587410798187805169" />
-    <ManifestFile Filename="Common\Parser\ExcelRow.cs" Modified="-8587409093233386186" />
-    <ManifestFile Filename="Common\Parser\ExcelTable.cs" Modified="-8587410800926372541" />
+    <ManifestFile Filename="Common\Parser\ExcelRow.cs" Modified="-8587409090665755860" />
+    <ManifestFile Filename="Common\Parser\ExcelTable.cs" Modified="-8587409090666356057" />
     <ManifestFile Filename="Common\Parser\ExcelDoc.cs" Modified="-8587410800926662088" />
     <ManifestFile Filename="Common\Parser\ExcelManager.cs" Modified="-8587409790320705524" />
     <ManifestFile Filename="Common\Managers\FoodManager.cs" Modified="-8587409714435821813" />
