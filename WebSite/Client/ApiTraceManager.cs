@@ -99,5 +99,17 @@ namespace FoodApp.Client {
             traces.Clear();
             Save(traces);
         }
+
+        public List<ngTraceModel> GetTracesByDay(DateTime dateTime)
+        {
+            List<ngTraceModel> res = new List<ngTraceModel>();
+            List<ngTraceModel> traces = GetTraces();
+            foreach (ngTraceModel trace in traces) {
+                if (ApiUtils.EqualDate(trace.Date, dateTime)) {
+                    res.Add(trace);
+                }
+            }
+            return res;
+        }
     }
 }

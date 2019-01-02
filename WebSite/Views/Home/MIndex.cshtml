@@ -9,6 +9,7 @@
     string googleName = ApiUtils.GetLoggedInUser().GoogleName;
     string name = ApiUtils.GetLoggedInUser().Name;
     bool isAdmin = ApiUtils.GetLoggedInUser().IsAdmin;
+    string orders = ajs.field((ngOrderController o) => o.ngOrderEntries);
 }
 
 
@@ -18,66 +19,104 @@
         width: 100% !important;
         float: none;
     }
+
+    .menuHeader {
+        color: #CB5750; font-weight: bold; font-size: 28px;
+    }
 </style>
 
 <input type="hidden" value="@ApiUtils.GetSessionUserId()" id="userId"/>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-wrap="false" style="font-size: 100%;">
 
-<div>
-    <div class="navbar menubar" id="menu" style="position: fixed; top: 0px; width: 100%; z-index: 4;">
-        <div class="container" >
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="glyphicon glyphicon-align-justify"></span>
-                </button>
-                <div style="">
-                    <a class="navbar-brand" style="color: white; font-size: 2.2em; line-height: 1.4em;" href="#">Гам-Гам</a><br/>
-                    @if (!string.IsNullOrEmpty(name)) {
-                        <div style="color: white; white-space: pre-line; word-wrap: break-word; margin-top: 0.9em;">@name</div>
-                    }
+    <div>
+        <div class="navbar menubar" id="menu" style="position: fixed; top: 0px; width: 100%; z-index: 4;">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <div style="">
+                        <a class="navbar-brand" style="color: white; font-size: 2.2em;" href="#">Гам-Гам</a><br />
+                        @if (!string.IsNullOrEmpty(name))
+                        {
+                            <div style="color: white; white-space: pre-line; word-wrap: break-word;">@name</div>
+                        }
+                    </div>
                 </div>
+                <div>
+                    <nav class="collapse navbar-collapse" class="nav nav-tabs" role="tablist">
+                        @if (!string.IsNullOrEmpty(imgUrl))
+                        {
+                            <div style="background-image: url('@imgUrl'); background-size: cover; float: left; height: 4em; width: 4em;"></div>
+                        }
 
-            </div>
-            <div >
-                <nav class="collapse navbar-collapse" class="nav nav-tabs" role="tablist">
-                    @if (!string.IsNullOrEmpty(imgUrl)) {
-                        <div style="background-image: url('@imgUrl'); background-size: cover; float: left; height: 4em; width: 4em;"></div>
-                    }
+                        <ul style="font-size: 0px;" id="tab" class="nav navbar-nav navbar-right navstyle carousel-indicators grey">
+                            <li style="visibility: hidden;" day="{{day.idx}}" data-target="#myCarousel" data-slide-to="{{day.idx}}" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]"></li>
+                            <li style="visibility: hidden;" day="5" data-target="#myCarousel" data-slide-to="5"></li>
+                            <li style="visibility: hidden;" day="6" data-target="#myCarousel" data-slide-to="6"></li>
+                            <li style="visibility: hidden;" day="7" data-target="#myCarousel" data-slide-to="7"></li>
+                        </ul>
+                    </nav>
 
-                    <ul style="font-size: 0px;" id="tab" class="nav navbar-nav navbar-right navstyle carousel-indicators grey">
-                        <li style="visibility: hidden;" day="{{day.idx}}" data-target="#myCarousel" data-slide-to="{{day.idx}}" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]"></li>
-                        <li style="visibility: hidden;" day="6" data-target="#myCarousel" data-slide-to="6"></li>
-                        <li style="visibility: hidden;" day="7" data-target="#myCarousel" data-slide-to="7"></li>
-                        <li style="visibility: hidden;" day="8" data-target="#myCarousel" data-slide-to="8" ></li>
-                    </ul>
-                </nav>
-
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div ng-controller="@ajs.getClass((ngAppController o) => o)" >
-    <div ng-controller="@ajs.getClass((ngOrderController o) => o)">
+    <div ng-controller="@ajs.getClass((ngAppController o) => o)"  >
+        <div ng-controller="@ajs.getClass((ngOrderController o) => o)">
             <div ng-controller="@ajs.getClass((ngMoneyController o) => o)">
-                <div ng-controller="@ajs.getClass((ngFoodController o) => o)" class="tab-content">
-                       <div id="error" style="position: absolute; display: none; left: 25%; top: 1%; z-index: 10; width: 50%;" class="alert alert-danger fade in">
-                            <a href="#" class="close" onclick="this.parent.style.display = 'none'">&times;</a>
-                            <strong>Cталась помилка!</strong>.
+                <div ng-controller="@ajs.getClass((ngFoodController o) => o)" style="margin-top: 4em;" class="tab-content">
+                    <div id="error" style="position: absolute; display: none; left: 25%; top: 1%; z-index: 10; width: 50%;" class="alert alert-danger fade in">
+                        <a href="#" class="close" onclick="this.parentNode.style.display = 'none'">&times;</a>
+                        <strong>Cталась помилка!</strong>.
+                    </div>
+
+                    <div class="carousel-inner">
+                        <div class="item" day="{{day.idx}}" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="alldesc">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
+                                                <h3 class="menuHeader">{{day.name}}</h3>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12" style="width: 70%;">
+                                                @{ Html.RenderPartial("Money", "day.idx"); }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <hr />
+
+                            <div ng-show="@orders [day.idx] .length>0">
+                                <div class="container">
+                                    <div class="row">
+                                        @{ Html.RenderPartial("Orders", "day.idx"); }
+                                    </div>
+                                </div>
+
+                                    <hr/>
+                            </div>
+
+                            <div class="container" >
+                                <div class="row" style="vertical-align: top;margin-top: -4em;">
+                                    @{ Html.RenderPartial("Foods", "day.idx"); }
+                                </div>
+                            </div>
                         </div>
 
-                    <div class="carousel-inner" >
-                        <div  class="item" day="{{day.idx}}" ng-repeat="day in [{'idx':0,'name':'Понеділок'}, {'idx':1,'name':'Вівторок'}, {'idx':2,'name':'Середа'}, {'idx':3,'name':'Четвер'}, {'idx':4,'name':'Пятниця'}]">
-                            
-                            <div style="background-color: white; position: fixed; top: 5em; width: 100%; z-index: 4;">
+
+                        <div class="item" day="5">
+                            <div style="background-color: white; width: 100%; z-index: 4;">
                                 <div class="container">
-                                    <div class="row bottomBorder">
+                                    <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="alldesc">
                                                 <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
-                                                    <p class="all-td">&nbsp;</p>
-                                                    <h2>{{day.name}}</h2>
+                                                    <h3 class="menuHeader">Історія</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,66 +124,20 @@
                                 </div>
 
                                 <div class="container">
-                                    <div class="row bottomBorder">
+                                    <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="alldesc">
-                                                <p class="desc">
-                                                    <div style="float: left; width: 75%;"> @{ Html.RenderPartial("Orders", "day.idx"); }&nbsp;</div>
-                                                    <div style="float: left; width: 25%;"> @{ Html.RenderPartial("Money"); }&nbsp;</div>
-                                                </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
+
+                            <hr />
 
                             <div class="container">
-
-                                <div class="features" style="margin-top: 8em;">
-                                    <div class="container">
-                                        <div class="row">
-                                            @{ Html.RenderPartial("Foods", "day.idx"); }
-                                        </div>
-                                    </div>
-                                    <div style="clear: both;"></div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                         <div  class="item" day="6" >
-                            
-                            <div style="background-color: white; position: fixed; top: 5em; width: 100%; z-index: 4;">
-                                <div class="container">
-                                    <div class="row bottomBorder">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <div class="alldesc">
-                                                <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
-                                                    <p class="all-td">&nbsp;</p>
-                                                    <h2>Історія</h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="container">
-                                    <div class="row bottomBorder">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <div class="alldesc">
-                                               
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="container">
-
-                                <div class="features" style="margin-top: 8em;">
+                                <div>
                                     <div class="container">
                                         <div class="row">
                                             @{ Html.RenderPartial("History"); }
@@ -156,17 +149,14 @@
                         </div>
 
 
-
-                        <div  class="item" day="7" >
-                            
-                            <div style="background-color: white; position: fixed; top: 5em; width: 100%; z-index: 4;">
+                        <div class="item" day="6">
+                            <div style="background-color: white; width: 100%; z-index: 4;">
                                 <div class="container">
-                                    <div class="row bottomBorder">
+                                    <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="alldesc">
                                                 <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
-                                                    <p class="all-td">&nbsp;</p>
-                                                    <h2>Замовлення</h2>
+                                                    <h3 class="menuHeader">Замовлення</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -174,10 +164,9 @@
                                 </div>
 
                                 <div class="container">
-                                    <div class="row bottomBorder">
+                                    <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="alldesc">
-                                               
                                             </div>
                                         </div>
                                     </div>
@@ -185,9 +174,11 @@
 
                             </div>
 
+                            <hr />
+
                             <div class="container">
 
-                                <div class="features" style="margin-top: 8em;">
+                                <div>
                                     <div class="container">
                                         <div class="row">
                                             @{ Html.RenderPartial("ReviewUserControl"); }
@@ -199,16 +190,13 @@
                         </div>
 
 
-                        
                         <div day="7" class="item">
-                            <div style="background-color: white; position: fixed; top: 5em; width: 100%; z-index: 4;">
                                 <div class="container">
-                                    <div class="row bottomBorder">
+                                    <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="alldesc">
                                                 <div class="col-md-6 col-sm-6 col-xs-12 centertext" style="padding-left: 0px; width: 30%;">
-                                                    <p class="all-td">&nbsp;</p>
-                                                    <h2>Контакти</h2>
+                                                    <h3 class="menuHeader">Контакти</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -216,7 +204,7 @@
                                 </div>
 
                                 <div class="container">
-                                    <div class="row bottomBorder">
+                                    <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="alldesc">
                                                 <p class="desc">
@@ -226,27 +214,36 @@
                                         </div>
                                     </div>
                                 </div>
+
+                            <hr />
+                            <div class="container">
+
+                                <div>
+                                    <div class="container">
+                                        <div class="row" style="height: 20em;">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
 
 
-                        
                     </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div style="position: absolute; left: -999px; top: -999px;">
-    <a id="leftLnk" class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a id="rightLnk" class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+    <div style="position: absolute; left: -999px; top: -999px;">
+        <a id="leftLnk" class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a id="rightLnk" class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 </div>
 
 <script type="text/javascript">

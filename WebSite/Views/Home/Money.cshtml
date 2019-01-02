@@ -4,6 +4,7 @@
 @inherits System.Web.Mvc.WebViewPage
 
 @{
+    object dayOfWeek = Model;
     string orders = ajs.field((ngOrderController o) => o.ngOrderEntries);
     string orderItem = "orderItem";
     string foodId = orderItem + "." + ajs.field((ngOrderEntry o) => o.FoodId);
@@ -12,7 +13,6 @@
     string canRefund = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.canRefund);
     string hasOrders = ajs.method((ngMoneyController o) => o.hasOrders()) + "()"; 
     string total = ajs.field((ngMoneyController o) => o.ngEntry) + "." + ajs.field((ngMoneyClientEntry o) => o.total);
-    string dayOfWeek = ajs.field((ngAppController o) => o.ngDayOfWeek);
 }
 
 

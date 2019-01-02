@@ -11,12 +11,7 @@
     bool isAdmin = ApiUtils.GetLoggedInUser().IsAdmin;
 }
 
-<style type="text/css">
-*[ng-cloak] {
-    background-color: red !important;
-    color: red !important;
-}
-</style>
+
 
 <input type="hidden" value="@ApiUtils.GetSessionUserId()" id="userId"/>
 <div>
@@ -49,7 +44,7 @@
 
 <div ng-controller="@ajs.getClass((ngAppController o) => o)" style="margin-top: 4em;" class="tab-content">
     <div id="error" style="position: absolute; display: none; left: 25%; top: 1%; z-index: 10; width: 50%;" class="alert alert-danger fade in">
-        <a href="#" class="close" onclick="this.parent.style.display = 'none'">&times;</a>
+        <a href="#" class="close" onclick="this.parentNode.style.display = 'none'">&times;</a>
         <strong>Cталась помилка!</strong>.
     </div>
     <div id="header0" role="tabpanel" class="tab-pane fade in active">

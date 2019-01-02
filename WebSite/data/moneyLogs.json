@@ -434,122 +434,2229 @@
     "Value": 143.45
   },
   {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:07:45.9195315+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:08:44.7960199+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/12",
+    "Operation": 3,
+    "Value": 10.750
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:10:38.3882464+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/12",
+    "Operation": 2,
+    "Value": 10.750
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:11:07.6322863+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 12.250
+  },
+  {
     "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T15:16:16.5416622+03:00",
+    "DateTime": "2016-04-12T15:12:29.3229468+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:36:41.0179093+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 12.250
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:37:25.0129535+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 24.50
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:37:42.412744+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 24.50
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:40:21.0466043+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 43.450
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:41:40.5216201+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 43.450
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:41:52.3698397+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 43.450
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:41:58.5114037+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 43.450
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:42:04.1865185+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 43.450
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:42:25.3762718+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 43.450
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:42:50.6033544+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 59.200
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:43:18.8639196+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 59.200
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:44:37.1040312+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/12",
+    "Operation": 3,
+    "Value": 26.20
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:44:41.5691442+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/12",
+    "Operation": 2,
+    "Value": 26.20
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:45:51.4775661+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 100.0
+  },
+  {
+    "UserId": "01258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:46:30.2366594+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 5.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:47:13.5104503+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 741.0
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:54:04.256037+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 40.0
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:54:20.8161425+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 40.0
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:54:32.2570631+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 40.0
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:54:56.6038169+03:00",
+    "OrderId": "user:02258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
+    "Operation": 3,
+    "Value": 16.50
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:55:39.8385732+03:00",
+    "OrderId": "user:02258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
+    "Operation": 2,
+    "Value": 16.50
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:58:19.082636+03:00",
+    "OrderId": "user:02258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
+    "Operation": 3,
+    "Value": 28.250
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:58:54.6515661+03:00",
+    "OrderId": "user:02258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
+    "Operation": 2,
+    "Value": 28.250
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:59:01.5149546+03:00",
+    "OrderId": "user:02258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
+    "Operation": 3,
+    "Value": 28.250
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T15:59:56.0022485+03:00",
+    "OrderId": "user:02258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
+    "Operation": 2,
+    "Value": 28.250
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:00:01.5083088+03:00",
+    "OrderId": "user:02258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
+    "Operation": 3,
+    "Value": 28.250
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:01:35.175019+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 0.0
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:03:04.1936584+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 30.0
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:03:11.3757951+03:00",
+    "OrderId": "user:02258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
+    "Operation": 2,
+    "Value": 28.250
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:03:47.4841709+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 30.0
+  },
+  {
+    "UserId": "02258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:03:55.6590913+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 40.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:50:31.5373568+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/12",
+    "Operation": 3,
+    "Value": 9.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:51:05.3096817+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/12",
+    "Operation": 2,
+    "Value": 9.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:51:12.2202755+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/12",
+    "Operation": 3,
+    "Value": 9.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T16:51:37.1109881+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/12",
+    "Operation": 2,
+    "Value": 9.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:10:33.5604815+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 1.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:10:47.0347256+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 10.750
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:11:08.2615015+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 10.750
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:11:20.9969159+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 1.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:18:51.3638925+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 9.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:18:56.5955138+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 9.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:19:01.2849248+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 9.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:19:05.8838837+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 9.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:19:11.2998438+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 3,
+    "Value": 9.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-12T20:19:19.9854369+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "Operation": 2,
+    "Value": 9.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-13T11:02:51.5987916+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-13T11:03:09.3920342+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/13",
+    "Operation": 3,
+    "Value": 36.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-13T11:05:00.0249352+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-13T11:05:35.5800378+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/13",
+    "Operation": 3,
+    "Value": 66.85
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-13T12:45:30.8675419+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/13",
+    "Operation": 3,
+    "Value": 8.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-13T12:45:40.1546505+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/13",
+    "Operation": 2,
+    "Value": 8.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-14T10:17:58.9918732+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/4/14",
+    "Operation": 3,
+    "Value": 79.60
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-14T10:22:41.5897126+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-14T10:23:02.9731313+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/4/14",
+    "Operation": 3,
+    "Value": 39.50
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-18T10:21:15.8784687+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-18T10:51:00.9128607+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/18",
+    "Operation": 3,
+    "Value": 63.0500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-19T10:07:04.1639744+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-19T10:07:17.8444996+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/19",
+    "Operation": 3,
+    "Value": 36.00
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-19T10:12:55.938887+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/19",
+    "Operation": 3,
+    "Value": 35.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-19T10:20:00.9116601+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/19",
+    "Operation": 3,
+    "Value": 75.35
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-20T10:23:55.5651555+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/20",
+    "Operation": 3,
+    "Value": 51.70
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-20T10:44:12.7867241+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/20",
+    "Operation": 3,
+    "Value": 47.600
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-20T11:10:15.163732+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-20T11:11:06.1648998+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/20",
+    "Operation": 3,
+    "Value": 32.5000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-21T10:21:45.3102661+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-21T10:22:07.3558602+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/4/21",
+    "Operation": 3,
+    "Value": 60.25
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-21T10:29:38.0849077+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-21T10:29:58.6667339+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/4/21",
+    "Operation": 3,
+    "Value": 71.75
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-21T10:35:07.643683+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/4/21",
+    "Operation": 3,
+    "Value": 35.25
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-25T10:21:08.6925302+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/25",
+    "Operation": 3,
+    "Value": 33.85
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-25T10:22:32.4637049+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/25",
+    "Operation": 3,
+    "Value": 53.500
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-25T10:28:57.5062372+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/25",
+    "Operation": 3,
+    "Value": 72.8500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-25T10:46:45.6494944+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/4/25",
+    "Operation": 3,
+    "Value": 36.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-26T10:24:36.6945291+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-26T10:24:50.7019167+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-26T10:25:08.5731065+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/26",
+    "Operation": 3,
+    "Value": 35.0000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-26T10:26:02.3985994+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/26",
+    "Operation": 3,
+    "Value": 81.55
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-26T10:31:38.8807153+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/26",
+    "Operation": 3,
+    "Value": 50.5000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-26T12:26:36.4864794+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-26T15:04:33.1614844+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/26",
+    "Operation": 3,
+    "Value": 36.00
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-27T09:42:42.4144383+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/27",
+    "Operation": 3,
+    "Value": 43.15
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-27T10:42:29.3792903+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/27",
+    "Operation": 3,
+    "Value": 88.85
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-27T11:30:34.7025361+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/27",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-28T10:21:48.7854512+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/4/28",
+    "Operation": 3,
+    "Value": 44.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-28T10:24:38.0314473+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-28T10:25:53.9604714+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/4/28",
+    "Operation": 3,
+    "Value": 70.25
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-28T10:37:57.0636042+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-28T10:59:14.2460825+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/4/28",
+    "Operation": 3,
+    "Value": 124.7000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-04-28T12:30:47.2867602+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 500.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-04T10:14:11.033416+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/5/4",
+    "Operation": 3,
+    "Value": 69.8500
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-04T10:15:01.4901618+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-04T10:15:08.9017925+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-04T10:15:23.0295902+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/5/4",
+    "Operation": 3,
+    "Value": 25.0000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-04T13:05:38.1397733+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 900.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-05T10:10:32.3310703+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-05T10:16:31.7600109+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/5/5",
+    "Operation": 3,
+    "Value": 103.7500
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-05T10:19:49.8253017+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/5/5",
+    "Operation": 3,
+    "Value": 28.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-05T10:25:42.7514813+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/5/5",
+    "Operation": 3,
+    "Value": 77.900
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-10T10:26:24.1914684+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/5/10",
+    "Operation": 3,
+    "Value": 34.85
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-10T10:37:12.1496794+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/5/10",
+    "Operation": 3,
+    "Value": 98.850
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-11T09:19:28.3647551+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 20.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-11T09:19:51.5419993+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/5/11",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-11T10:19:23.9703914+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/5/11",
+    "Operation": 3,
+    "Value": 78.85
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-12T10:05:39.1432909+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-12T10:06:01.4219734+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/5/12",
+    "Operation": 3,
+    "Value": 61.95
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-12T10:27:49.6997238+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/5/12",
+    "Operation": 3,
+    "Value": 78.05
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-16T10:10:14.6712154+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-16T10:18:10.2063208+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/5/16",
+    "Operation": 3,
+    "Value": 49.9000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-16T10:20:52.7136462+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/5/16",
+    "Operation": 3,
+    "Value": 64.3500
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-16T10:20:58.7412636+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-16T10:21:37.3959884+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/5/16",
+    "Operation": 3,
+    "Value": 35.80
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-17T10:07:23.486235+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/5/17",
+    "Operation": 3,
+    "Value": 45.85
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-17T10:30:59.6803192+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/5/17",
+    "Operation": 3,
+    "Value": 88.550
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-17T10:58:30.3163238+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/5/17",
+    "Operation": 3,
+    "Value": 44.7000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-18T10:12:52.0894708+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/5/18",
+    "Operation": 3,
+    "Value": 69.05
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-18T10:26:49.4393681+03:00",
     "OrderId": "id -> add money",
     "Operation": 0,
     "Value": 100.0
   },
   {
     "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T15:19:37.4545871+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "DateTime": "2016-05-18T10:27:16.2964575+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/5/18",
     "Operation": 3,
-    "Value": 0.0
+    "Value": 53.35
   },
   {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T15:22:52.1675203+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
-    "Operation": 2,
-    "Value": 0.0
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T15:26:00.4743892+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-18T10:28:44.7769811+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/5/18",
     "Operation": 3,
-    "Value": 9.00
+    "Value": 34.8500
   },
   {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T15:26:33.2086846+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
-    "Operation": 2,
-    "Value": 9.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T15:26:53.1133734+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
-    "Operation": 3,
-    "Value": 9.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T15:27:31.6766188+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
-    "Operation": 2,
-    "Value": 9.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T15:34:41.2802302+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
-    "Operation": 3,
-    "Value": 8.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T15:34:45.8415367+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
-    "Operation": 2,
-    "Value": 8.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T16:42:25.8523145+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
-    "Operation": 3,
-    "Value": 10.80
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T16:42:30.1718352+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/4/12",
-    "Operation": 2,
-    "Value": 10.80
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T16:43:35.877803+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
-    "Operation": 3,
-    "Value": 8.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T16:46:21.0727991+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
-    "Operation": 2,
-    "Value": 8.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T16:46:52.7431246+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
-    "Operation": 3,
-    "Value": 8.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T16:46:57.1042991+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
-    "Operation": 2,
-    "Value": 8.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-12T16:47:02.8262301+03:00",
-    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/4/12",
-    "Operation": 3,
-    "Value": 8.00
-  },
-  {
-    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
-    "DateTime": "2016-04-13T08:27:45.1185068+03:00",
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-18T10:36:45.9927858+03:00",
     "OrderId": "id -> add money",
     "Operation": 0,
-    "Value": 8.0
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-18T10:37:50.3300785+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/5/18",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-19T10:51:02.5665185+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/5/19",
+    "Operation": 3,
+    "Value": 25.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-24T10:08:16.0121+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-24T10:08:54.6420955+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/5/24",
+    "Operation": 3,
+    "Value": 59.7000
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-25T09:57:40.2152888+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/5/25",
+    "Operation": 3,
+    "Value": 34.85
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-30T10:45:39.1466808+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/5/30",
+    "Operation": 3,
+    "Value": 76.100
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-30T10:45:54.197673+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/5/30",
+    "Operation": 3,
+    "Value": 36.00
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-31T10:26:54.7713691+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-31T10:28:15.4059431+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/5/31",
+    "Operation": 3,
+    "Value": 38.5000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-31T10:40:24.3637699+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/5/31",
+    "Operation": 3,
+    "Value": 40.95
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-31T11:18:29.6021227+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-05-31T11:19:00.2623363+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/5/31",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-01T10:32:06.6732036+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/6/1",
+    "Operation": 3,
+    "Value": 49.85
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-01T10:34:18.28426+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/6/1",
+    "Operation": 3,
+    "Value": 44.8500
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-02T10:04:34.0968403+03:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/2",
+    "Operation": 3,
+    "Value": 40.5000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-02T10:39:44.2694159+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/2",
+    "Operation": 3,
+    "Value": 52.3000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-02T10:40:19.2925488+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 146.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-02T10:46:22.6887841+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/2",
+    "Operation": 3,
+    "Value": 92.95
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-02T10:47:15.3193735+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/2",
+    "Operation": 3,
+    "Value": 87.55
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-06T10:14:35.2917548+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/6/6",
+    "Operation": 3,
+    "Value": 64.35
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-06T10:24:16.7177506+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/6/6",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-07T10:46:52.3115345+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/6/7",
+    "Operation": 3,
+    "Value": 90.000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-08T10:17:09.3269666+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-08T10:17:25.2620905+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/6/8",
+    "Operation": 3,
+    "Value": 71.0000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-08T10:47:18.6397712+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/6/8",
+    "Operation": 3,
+    "Value": 88.350
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-09T08:41:22.5364508+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/9",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-09T10:30:38.0839734+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/9",
+    "Operation": 3,
+    "Value": 71.95
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-13T10:16:47.1809615+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-13T10:17:34.1861656+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/6/13",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-13T10:57:27.2607032+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 500.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-13T11:01:39.9411678+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/6/13",
+    "Operation": 3,
+    "Value": 94.4000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-14T10:08:44.725344+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-14T10:08:58.2517933+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/6/14",
+    "Operation": 3,
+    "Value": 58.8500
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-14T10:33:05.1872781+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-14T10:34:10.6063527+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/6/14",
+    "Operation": 3,
+    "Value": 47.4000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-14T10:36:22.4564059+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/6/14",
+    "Operation": 3,
+    "Value": 78.35
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-15T10:37:13.1787766+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/6/15",
+    "Operation": 3,
+    "Value": 72.50
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-15T10:59:50.0357451+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 70.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-15T11:00:14.9818269+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/6/15",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-16T10:24:55.7973464+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/16",
+    "Operation": 3,
+    "Value": 64.05
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-21T10:49:18.6471207+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/6/21",
+    "Operation": 3,
+    "Value": 64.7500
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-22T10:45:50.4330567+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/6/22",
+    "Operation": 3,
+    "Value": 67.65
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-23T10:51:03.7643474+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-23T10:51:25.8880538+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/23",
+    "Operation": 3,
+    "Value": 88.7500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-23T10:56:50.9506412+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-23T10:57:09.4400854+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/23",
+    "Operation": 3,
+    "Value": 66.7500
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-27T10:56:26.1059263+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/6/27",
+    "Operation": 3,
+    "Value": 86.35
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-27T20:46:19.0945057+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/6/27",
+    "Operation": 2,
+    "Value": 86.35
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-29T10:23:29.1479975+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/6/29",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-29T10:27:32.2564135+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/6/29",
+    "Operation": 3,
+    "Value": 60.8500
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-30T10:47:40.8475421+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/30",
+    "Operation": 3,
+    "Value": 64.70
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-30T10:47:58.7659382+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-06-30T10:48:48.121075+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/6/30",
+    "Operation": 3,
+    "Value": 61.250
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-04T09:25:54.3902206+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/7/4",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-04T10:50:33.8988011+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-04T11:07:32.7864636+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/7/4",
+    "Operation": 3,
+    "Value": 79.8500
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-05T10:30:47.2890147+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/7/5",
+    "Operation": 3,
+    "Value": 78.45
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-05T10:32:08.4861403+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-05T10:32:21.2860984+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/7/5",
+    "Operation": 3,
+    "Value": 60.05
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-06T10:11:34.6714936+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/7/6",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-06T10:49:51.9988132+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/7/6",
+    "Operation": 3,
+    "Value": 88.2000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-07T10:20:33.1341564+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 500.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-07T10:20:52.7089714+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/7/7",
+    "Operation": 3,
+    "Value": 66.6500
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-07T10:21:38.886276+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/7/7",
+    "Operation": 3,
+    "Value": 49.10
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-11T10:46:04.5885701+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/7/11",
+    "Operation": 3,
+    "Value": 71.55
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-12T10:19:03.5516096+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/7/12",
+    "Operation": 3,
+    "Value": 79.25
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-13T10:00:26.9438545+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-13T10:01:06.3907011+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/7/13",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-13T10:58:12.0754358+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/7/13",
+    "Operation": 3,
+    "Value": 86.8500
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-14T10:00:45.8912908+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 500.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-14T10:01:15.591745+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/7/14",
+    "Operation": 3,
+    "Value": 79.05
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-14T10:02:21.0083708+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/7/14",
+    "Operation": 3,
+    "Value": 53.3000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-18T10:34:26.0906464+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/7/18",
+    "Operation": 3,
+    "Value": 44.750
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-18T10:51:12.1838844+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/7/18",
+    "Operation": 3,
+    "Value": 88.85
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-19T10:05:36.5478478+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-19T10:08:24.0630302+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/7/19",
+    "Operation": 3,
+    "Value": 80.85
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-19T10:12:14.9813578+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/7/19",
+    "Operation": 3,
+    "Value": 59.20
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-20T09:57:08.9052254+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-20T09:57:33.9063332+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/7/20",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-20T10:53:23.6477779+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/7/20",
+    "Operation": 3,
+    "Value": 118.20
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-21T12:07:51.0146974+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-21T12:15:02.1823718+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/7/21",
+    "Operation": 3,
+    "Value": 70.8500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-25T10:11:59.8180942+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/7/25",
+    "Operation": 3,
+    "Value": 108.2500
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-25T10:37:36.3962376+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/7/25",
+    "Operation": 3,
+    "Value": 73.65
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-26T10:41:08.2785678+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 400.0
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-26T10:51:12.0202444+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/7/26",
+    "Operation": 3,
+    "Value": 109.8500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-26T11:54:29.4288279+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/7/26",
+    "Operation": 3,
+    "Value": 58.4500
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-27T10:43:19.6209952+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/7/27",
+    "Operation": 3,
+    "Value": 68.35
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-27T11:24:48.7546308+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-27T11:26:31.228532+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/7/27",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-28T10:45:29.5583582+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 50.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-28T10:54:03.5078572+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/7/28",
+    "Operation": 3,
+    "Value": 56.5500
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-07-28T10:57:47.6782593+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/7/28",
+    "Operation": 3,
+    "Value": 96.55
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-01T10:32:08.3290774+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 115.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-01T10:32:23.7838399+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/8/1",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-02T10:25:06.6430956+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/8/2",
+    "Operation": 3,
+    "Value": 58.75
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-03T12:57:28.0712022+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 185.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-03T12:58:10.0252746+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 25.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-08T10:16:08.068735+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/8/8",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-10T11:11:38.8460172+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/8/10",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-11T10:45:14.0968411+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/8/11",
+    "Operation": 3,
+    "Value": 58.25
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-15T09:09:32.3361987+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/8/15",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-15T10:22:09.4503008+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/8/15",
+    "Operation": 2,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-15T10:23:20.2286286+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-15T10:23:44.551929+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/8/15",
+    "Operation": 3,
+    "Value": 78.5000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-16T09:58:21.1296902+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/8/16",
+    "Operation": 3,
+    "Value": 25.50
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-17T10:19:00.8454471+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/8/17",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-17T14:16:11.9088962+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/8/17",
+    "Operation": 3,
+    "Value": 42.50
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-18T10:50:05.5846292+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/8/18",
+    "Operation": 3,
+    "Value": 58.25
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-23T13:59:39.0639597+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 44.5
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-29T10:25:55.8665786+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-29T10:29:13.3257219+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/8/29",
+    "Operation": 3,
+    "Value": 119.85
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-30T09:26:12.5092929+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/8/30",
+    "Operation": 3,
+    "Value": 60.05
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-31T10:28:39.9862616+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-08-31T10:28:44.3403894+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/8/31",
+    "Operation": 3,
+    "Value": 84.40
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-05T10:05:37.1431491+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/9/5",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-05T10:10:54.9124535+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/9/5",
+    "Operation": 3,
+    "Value": 52.25
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-05T11:02:23.293371+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/9/5",
+    "Operation": 2,
+    "Value": 52.25
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-05T11:22:31.8583999+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/9/5",
+    "Operation": 3,
+    "Value": 51.0000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-06T11:00:51.549046+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/9/6",
+    "Operation": 3,
+    "Value": 60.05
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-07T11:04:23.7910112+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 70.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-07T11:04:48.4556092+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/9/7",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-12T09:47:48.6419734+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/9/12",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-13T11:52:56.4613592+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 300.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-13T11:53:18.6492541+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/9/13",
+    "Operation": 3,
+    "Value": 96.4000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-14T10:09:42.3703104+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/9/14",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-19T10:34:04.8429735+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/9/19",
+    "Operation": 3,
+    "Value": 73.85
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-20T09:56:07.1458116+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/9/20",
+    "Operation": 3,
+    "Value": 20.35
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-21T10:20:52.6629584+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/9/21",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-22T10:13:07.4905258+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 40.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-22T10:14:22.1209418+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/9/22",
+    "Operation": 3,
+    "Value": 59.25
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-22T11:15:31.0707118+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/9/22",
+    "Operation": 3,
+    "Value": 56.6500
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-22T13:02:50.2272934+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/9/22",
+    "Operation": 2,
+    "Value": 56.6500
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-22T13:03:07.5013724+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/9/22",
+    "Operation": 3,
+    "Value": 38.9500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-26T10:37:30.8366432+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 100.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-26T10:41:29.6840364+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/9/26",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-27T10:08:07.1125098+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/9/27",
+    "Operation": 3,
+    "Value": 63.55
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-28T10:22:29.1553096+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 20.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-09-28T10:26:46.5533418+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/9/28",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-03T10:49:04.6949722+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 500.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-03T10:52:44.2066778+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/10/3",
+    "Operation": 3,
+    "Value": 40.0000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-04T10:54:32.3747329+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/10/4",
+    "Operation": 3,
+    "Value": 61.85
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-04T12:27:50.4908786+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/10/4",
+    "Operation": 3,
+    "Value": 46.0500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-05T10:05:39.6099932+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/10/5",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-05T10:37:07.1953798+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/10/5",
+    "Operation": 3,
+    "Value": 55.0000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-05T10:52:52.9182487+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/10/5",
+    "Operation": 3,
+    "Value": 38.5000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-07T10:55:53.9688118+03:00",
+    "OrderId": "id -> remove money",
+    "Operation": 1,
+    "Value": 40.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-10T10:33:31.9350622+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/10/10",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-11T10:21:56.7533966+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/10/11",
+    "Operation": 3,
+    "Value": 56.1000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-11T17:12:45.4295553+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/10/11",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-12T10:09:28.8783104+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/10/12",
+    "Operation": 3,
+    "Value": 47.65
+  },
+  {
+    "UserId": "10258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-13T09:31:29.9476469+03:00",
+    "OrderId": "user:10258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/10/13",
+    "Operation": 3,
+    "Value": 53.75
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-17T09:22:58.7948944+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/10/17",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-17T10:21:41.6274957+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/10/17",
+    "Operation": 3,
+    "Value": 45.250
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-18T09:18:00.4122037+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/10/18",
+    "Operation": 3,
+    "Value": 63.55
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-18T10:42:44.9581247+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-18T10:43:00.602173+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/10/18",
+    "Operation": 3,
+    "Value": 46.4000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-19T10:09:35.353937+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/10/19",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-20T09:41:03.6499888+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/10/20",
+    "Operation": 3,
+    "Value": 50.800
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-20T09:41:12.4160833+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/10/20",
+    "Operation": 2,
+    "Value": 50.800
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-20T09:41:36.0347085+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/10/20",
+    "Operation": 3,
+    "Value": 50.800
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-20T10:21:53.9771936+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/10/20",
+    "Operation": 3,
+    "Value": 48.80
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-20T10:21:58.9283738+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/10/20",
+    "Operation": 2,
+    "Value": 48.80
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-20T10:22:14.8806705+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/10/20",
+    "Operation": 3,
+    "Value": 54.80
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-24T09:50:21.9484177+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/10/24",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-24T12:07:42.1795743+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/10/24",
+    "Operation": 3,
+    "Value": 33.0000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-25T10:13:34.1490582+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/10/25",
+    "Operation": 3,
+    "Value": 46.40
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-25T12:01:06.087239+03:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-25T12:01:47.1702269+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/10/25",
+    "Operation": 3,
+    "Value": 131.6000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-26T09:26:58.8317058+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/10/26",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-27T10:06:31.0487788+03:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/10/27",
+    "Operation": 3,
+    "Value": 46.55
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-27T10:32:27.221769+03:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/10/27",
+    "Operation": 3,
+    "Value": 44.0000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-31T10:06:23.5367909+02:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-10-31T10:07:51.9399741+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/10/31",
+    "Operation": 3,
+    "Value": 33.0000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-01T12:17:53.4443742+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/11/1",
+    "Operation": 3,
+    "Value": 48.6500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-02T11:37:13.3955759+02:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 74.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-03T12:09:01.6919921+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/11/3",
+    "Operation": 3,
+    "Value": 36.2500
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-07T12:10:51.6758458+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/11/7",
+    "Operation": 3,
+    "Value": 52.0000
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-08T10:10:07.38085+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/11/8",
+    "Operation": 3,
+    "Value": 45.35
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-10T12:28:00.7589837+02:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-10T12:43:29.5059517+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/11/10",
+    "Operation": 3,
+    "Value": 32.5000
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-16T10:16:11.758566+02:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/11/16",
+    "Operation": 3,
+    "Value": 41.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-16T11:08:01.9160745+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/11/16",
+    "Operation": 3,
+    "Value": 48.7500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-17T10:01:22.786721+02:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:3 date:2016/11/17",
+    "Operation": 3,
+    "Value": 47.25
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-23T10:46:03.6725004+02:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 160.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-23T10:49:39.8396641+02:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/11/23",
+    "Operation": 3,
+    "Value": 136.50
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-28T10:13:51.2968888+02:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/11/28",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "47258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-28T10:54:40.739019+02:00",
+    "OrderId": "user:47258346-5281-4fd7-9234-d5eb994c534c dayofweek:0 date:2016/11/28",
+    "Operation": 3,
+    "Value": 58.7500
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-29T10:40:17.4943184+02:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 150.0
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-29T10:42:35.8253706+02:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/11/29",
+    "Operation": 3,
+    "Value": 40.00
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-29T10:53:39.4469505+02:00",
+    "OrderId": "id -> add money",
+    "Operation": 0,
+    "Value": 200.0
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-29T10:53:47.7051146+02:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:1 date:2016/11/29",
+    "Operation": 3,
+    "Value": 37.8500
+  },
+  {
+    "UserId": "03258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-30T10:40:07.8434643+02:00",
+    "OrderId": "user:03258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/11/30",
+    "Operation": 3,
+    "Value": 50.05
+  },
+  {
+    "UserId": "11258346-5281-4fd7-9234-d5eb994c534c",
+    "DateTime": "2016-11-30T11:10:44.7070539+02:00",
+    "OrderId": "user:11258346-5281-4fd7-9234-d5eb994c534c dayofweek:2 date:2016/11/30",
+    "Operation": 3,
+    "Value": 40.0000
   }
 ]

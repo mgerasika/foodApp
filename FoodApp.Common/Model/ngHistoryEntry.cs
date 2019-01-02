@@ -10,5 +10,9 @@ namespace FoodApp.Common
         public DateTime Date { get; set; }
         public decimal Count { get; set; }
         public decimal FoodPrice { get; set; }
+
+        public override string ToString() {
+            return Date.ToShortDateString();
+        }
     }
 }

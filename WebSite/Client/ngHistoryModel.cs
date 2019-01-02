@@ -28,6 +28,10 @@ namespace FoodApp.Client {
             return res;
         }
 
+        public override string ToString() {
+            return Email;
+        }
+
         internal List<ngHistoryGroupEntry> GroupByDate(int dayOfWeek)
         {
             List<ngHistoryGroupEntry> res = new List<ngHistoryGroupEntry>();
@@ -42,6 +46,7 @@ namespace FoodApp.Client {
                     {
                         ngHistoryGroupEntry newGroup = new ngHistoryGroupEntry();
                         newGroup.DateStr = key;
+                        newGroup.Date = entry.Date;
                         res.Add(newGroup);
                     }
                     GetGroupByDate(res, key).Entries.Add(entry);
@@ -52,18 +57,16 @@ namespace FoodApp.Client {
 
         internal List<ngHistoryGroupEntry> GroupByDate() {
             List<ngHistoryGroupEntry> res = new List<ngHistoryGroupEntry>();
-            Entries = Entries.OrderByDescending(o => o.Date).ToList();
+            Entries = Entries.OrderBy(o => o.Date).ToList();
             foreach (ngHistoryEntry entry in Entries) {
-                ngFoodItem food = FoodManager.Inst.GetFoodById(entry.FoodId);
-                if (null != food && !food.isContainer) {
-                    string key = entry.Date.ToShortDateString();
-                    if (!HasGroupByDate(res,key)) {
-                        ngHistoryGroupEntry newGroup = new ngHistoryGroupEntry();
-                        newGroup.DateStr = key;
-                        res.Add(newGroup);
-                    }
-                    GetGroupByDate(res,key).Entries.Add(entry);
+                string key = entry.Date.ToShortDateString();
+                if (!HasGroupByDate(res,key)) {
+                    ngHistoryGroupEntry newGroup = new ngHistoryGroupEntry();
+                    newGroup.DateStr = key;
+                    newGroup.Date = entry.Date;
+                    res.Add(newGroup);
                 }
+                GetGroupByDate(res,key).Entries.Add(entry);
             }
             return res;
         }

@@ -7,7 +7,7 @@ using Google.GData.Spreadsheets;
 namespace FoodApp.Common.Parser {
     public class BatchCellUpdater {
         private static bool RequestUpdateCells(List<ExcelCell> cells) {
-            bool res = true;
+            bool res = false;
 
             if (cells.Count > 0) {
                 ExcelTable excelTable = cells[0].GetRow().GetTable();
@@ -35,8 +35,7 @@ namespace FoodApp.Common.Parser {
                 foreach (CellEntry entry in batchResponse.Entries) {
                     string batchId = entry.BatchData.Id;
 
-                    if (entry.BatchData.Status.Code != 200) {
-                        res = false;
+                    if (entry.BatchData.Status.Code != 200 ) {
                         GDataBatchStatus status = entry.BatchData.Status;
                         Console.WriteLine("{0} failed ({1})", batchId, status.Reason);
                     }
@@ -45,6 +44,7 @@ namespace FoodApp.Common.Parser {
                         Debug.Assert(null != cell);
                         cell.Value = cell.EditTmpValue;
                         cell.SetEntry(entry);
+                        res = true;
                     }
                 }
             }

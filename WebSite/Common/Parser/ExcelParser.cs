@@ -68,8 +68,7 @@ namespace FoodApp.Common.Parser {
             {
                 if (null == SpreadsheetsService)
                 {
-
-                    ApiTraceManager.Inst.LogTrace("Init excel parser");
+                    //ApiTraceManager.Inst.LogTrace("Init excel parser");
                     _parameters = new OAuth2Parameters();
                     _parameters.ClientId = ApiUtils.CLIENT_ID;
                     _parameters.ClientSecret = ApiUtils.CLIENT_SECRET;

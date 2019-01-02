@@ -58,7 +58,10 @@
                         </li>
                        
                         <li>
-                            <a aria-controls="home" role="tab" data-toggle="tab" href="#history" class="page-scroll">Історія</a>
+                            <a aria-controls="home" role="tab" data-toggle="tab" href="#history" class="page-scroll">
+                                <span class="glyphicon glyphicon-info-sign" style="color: red;"></span>
+                                Історія
+                            </a>
                         </li>
                         @if (isAdmin) {
                             <li >
@@ -84,7 +87,7 @@
                 <div ng-controller="@ajs.getClass((ngFoodController o) => o)" class="tab-content">
 
                        <div id="error" style="position: absolute; display: none; left: 25%; top: 1%; z-index: 10; width: 50%;" class="alert alert-danger fade in">
-                            <a href="#" class="close" onclick="this.parent.style.display = 'none'">&times;</a>
+                            <a href="#" class="close" onclick="this.parentNode.style.display = 'none'">&times;</a>
                             <strong>Cталась помилка!</strong>.
                         </div>
 
@@ -103,7 +106,7 @@
                                                 <p class="desc">
 
                                                     <div style="float: left; width: 75%;"> @{ Html.RenderPartial("Orders", "day.idx"); }&nbsp;</div>
-                                                    <div style="float: left; width: 25%;"> @{ Html.RenderPartial("Money"); }&nbsp;</div>
+                                                    <div style="float: left; width: 25%;"> @{ Html.RenderPartial("Money", "day.idx"); }&nbsp;</div>
 
 
 

@@ -214,8 +214,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="images\bg.jpg" />
-    <Content Include="images\idea.png" />
     <Content Include="images\loading.gif" />
     <Content Include="images\money.png" />
     <Content Include="images\support.png" />
@@ -235,7 +233,7 @@
     <Content Include="js\jquery.mobile-1.4.5.min.js" />
     <Content Include="js\jquery.quovolver.js" />
     <Content Include="js\jquery.sticky.js" />
-    <Content Include="js\jquery.touchSwipe.min.js" />
+    <Content Include="js\jquery.touchSwipe.js" />
     <Content Include="js\jquery.waypoints.min.js" />
     <Content Include="lib\GoogleSearchAPI.dll" />
     <Content Include="Model\Scripts\bootstrap.js" />
@@ -268,6 +266,8 @@
     <Content Include="Model\Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Model\Scripts\output.js" />
     <Content Include="css\style.css" />
+    <Content Include="robots.txt" />
+    <Content Include="sitemap.xml" />
     <Content Include="tab.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

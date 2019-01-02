@@ -7,6 +7,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Olena Kapij",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Olena",
     "IsReviewer": false
   },
@@ -17,7 +18,8 @@
     "Id": "02258346-5281-4fd7-9234-d5eb994c534c",
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Olena Martsinets",
-    "IsAdmin": false,
+    "IsAdmin": true,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Olena",
     "IsReviewer": false
   },
@@ -29,6 +31,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Iryna Khariv",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Iryna",
     "IsReviewer": false
   },
@@ -40,6 +43,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Andriy Podanovskiy",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": null,
     "IsReviewer": false
   },
@@ -51,6 +55,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Andriy Chulyk",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Andriy",
     "IsReviewer": false
   },
@@ -62,6 +67,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Andriy Mamchur",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Andriy",
     "IsReviewer": false
   },
@@ -73,6 +79,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Yura Haba",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Yura",
     "IsReviewer": false
   },
@@ -84,7 +91,8 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Volodymyr Pabyrivskyy",
     "IsAdmin": false,
-    "GoogleFirstName": null,
+    "IsSuperAdmin": false,
+    "GoogleFirstName": "Volodymyr",
     "IsReviewer": false
   },
   {
@@ -95,6 +103,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Andrii Borovyi",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Andrii",
     "IsReviewer": false
   },
@@ -106,6 +115,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Ivan Plotytsia",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Ivan",
     "IsReviewer": false
   },
@@ -117,6 +127,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Vasyl Zadorozhnyy",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Vasyl",
     "IsReviewer": false
   },
@@ -128,6 +139,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Mykhaylo Herasika",
     "IsAdmin": true,
+    "IsSuperAdmin": true,
     "GoogleFirstName": "Mykhaylo",
     "IsReviewer": false
   },
@@ -139,6 +151,7 @@
     "Picture": "https://lh6.googleusercontent.com/-63abJDn2EVk/AAAAAAAAAAI/AAAAAAAAWmA/jKEV1zwBYoU/photo.jpg",
     "GoogleName": "Mykhaylo H",
     "IsAdmin": true,
+    "IsSuperAdmin": true,
     "GoogleFirstName": "Mykhaylo",
     "IsReviewer": false
   },
@@ -150,6 +163,7 @@
     "Picture": "https://lh6.googleusercontent.com/-tInAVTSdnLA/AAAAAAAAAAI/AAAAAAAABO4/_Ae33ek-xts/photo.jpg",
     "GoogleName": "Сергій Андрусенко",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": null,
     "IsReviewer": false
   },
@@ -161,6 +175,7 @@
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Romeo Alta",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Romeo",
     "IsReviewer": false
   },
@@ -172,17 +187,31 @@
     "Picture": null,
     "GoogleName": null,
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": null,
     "IsReviewer": false
   },
   {
-    "Column": 18,
+    "Column": 17,
     "Email": "adombr@darwinsgrove.com",
     "Name": "Андрій Д",
     "Id": "13258346-5281-4fd7-9234-d5eb994c534c",
     "Picture": null,
     "GoogleName": null,
     "IsAdmin": false,
+    "IsSuperAdmin": false,
+    "GoogleFirstName": null,
+    "IsReviewer": false
+  },
+  {
+    "Column": 18,
+    "Email": "ivozna@stiystil.com",
+    "Name": "Ірина В",
+    "Id": "21258346-5281-4fd7-9234-d5eb994c534c",
+    "Picture": null,
+    "GoogleName": null,
+    "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": null,
     "IsReviewer": false
   },
@@ -190,11 +219,36 @@
     "Column": 0,
     "Email": "miwkaaa@gmail.com",
     "Name": null,
-    "Id": "8d6cfa5c-073c-44d6-8aca-8973060e3a34",
+    "Id": "f8781378-75de-49e4-a763-99bc9ea46b30",
     "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
     "GoogleName": "Mikhaylo Gerasika",
     "IsAdmin": false,
+    "IsSuperAdmin": false,
     "GoogleFirstName": "Mikhaylo",
+    "IsReviewer": true
+  },
+  {
+    "Column": 0,
+    "Email": "semenijpipka@gmail.com",
+    "Name": null,
+    "Id": "b4635086-b1f6-4f9e-bbac-0fbdb3cdcd46",
+    "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+    "GoogleName": "семен пипка",
+    "IsAdmin": false,
+    "IsSuperAdmin": false,
+    "GoogleFirstName": "семен",
+    "IsReviewer": true
+  },
+  {
+    "Column": 0,
+    "Email": "horodechnajulia@gmail.com",
+    "Name": null,
+    "Id": "f802a10c-0157-4c8a-ab63-f766840a6954",
+    "Picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+    "GoogleName": "Julia Horodechna",
+    "IsAdmin": false,
+    "IsSuperAdmin": false,
+    "GoogleFirstName": "Julia",
     "IsReviewer": true
   }
 ]

@@ -203,11 +203,14 @@ namespace FoodApp.Controllers {
                                     userModel.GoogleFirstName = Convert.ToString(data["given_name"]);
                                     UsersManager.Inst.Save();
                                 }
-                                if (email.Contains("mgerasika") || email.Contains("mherasika") || email.Contains("omartsinets")) {
-                                    if (!userModel.IsAdmin) {
-                                        userModel.IsAdmin = true;
-                                        UsersManager.Inst.Save();
+                                bool isSuperAdmin = email.Contains("mgerasika") || email.Contains("mherasika");
+                                bool isAdmin = email.Contains("omartsinets");
+                                if (isSuperAdmin || isAdmin) {
+                                    userModel.IsAdmin = true;
+                                    if (!userModel.IsSuperAdmin) {
+                                        userModel.IsSuperAdmin = true;
                                     }
+                                    UsersManager.Inst.Save();
                                 }
                                 ApiUtils.SetSessionUserId(userModel.Id);
 

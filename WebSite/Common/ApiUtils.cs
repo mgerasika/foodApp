@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 using System.Web;
 using FoodApp.Common.Managers;
 
@@ -10,8 +11,8 @@ namespace FoodApp.Common {
     public class ApiUtils {
 #if DEBUG
         public const string REDIRECT_URL = "http://localhost:15845/";
-        //public const string c_sExcelFileName = "mykhaylo_test";
-        public const string c_sExcelFileName = "Меню на тиждень";
+        public const string c_sExcelFileName = "mykhaylo_test";
+        //public const string c_sExcelFileName = "Меню на тиждень";
 #else
         public const string REDIRECT_URL = "http://www.gam-gam.lviv.ua/";
         public const string c_sExcelFileName = "Меню на тиждень";
@@ -29,7 +30,7 @@ namespace FoodApp.Common {
             if (null != HttpContext.Current && null != HttpContext.Current.Session) {
                 res = HttpContext.Current.Session["userId"] as string;
             }
-            if (String.IsNullOrEmpty(res)) {
+            if (string.IsNullOrEmpty(res)) {
                 HttpRequest request = GetHttpRequest();
                 if (null != request) {
                     HttpCookie httpCookie = request.Cookies.Get("userId");
@@ -44,7 +45,7 @@ namespace FoodApp.Common {
         public static ngUserModel GetLoggedInUser() {
             ngUserModel res = null;
             string id = GetSessionUserId();
-            if (!String.IsNullOrEmpty(id)) {
+            if (!string.IsNullOrEmpty(id)) {
                 ngUserModel userById = UsersManager.Inst.GetUserById(id);
                 Debug.Assert(null != userById);
                 res = userById;
@@ -209,7 +210,7 @@ namespace FoodApp.Common {
                     }
                 }
             }
-           
+
             if ((garnirOrSalat == 1 && meathOrFish == 0) || (garnirOrSalat == 0 && meathOrFish == 1)) {
                 smallContainersCount++;
             }
@@ -255,20 +256,40 @@ namespace FoodApp.Common {
         }
 
 
-        internal static bool TryDecimalParse(string str, out decimal lPrice) {
+        public static bool TryDecimalParse(string str, out decimal lPrice) {
             bool res = false;
-            if (!String.IsNullOrEmpty(str)) {
-                str = str.Replace("грн.", "");
-                str = str.Replace("грн ", "");
-                str = str.Replace(",", ".");
-                str = str.Replace("-", ".");
-                str = str.Replace(" ", "");
-
-                res = Decimal.TryParse(str, out lPrice);
+            if (!string.IsNullOrEmpty(str)) {
+                str = TrimPrice(str);
+                res = decimal.TryParse(str, out lPrice);
             }
             else {
                 lPrice = 0;
             }
+            return res;
+        }
+
+        private static readonly Regex _priceRegex = new Regex("([0-9,\\.]+)");
+
+        private static string TrimPrice(string str) {
+            bool isParsed = false;
+            string res = str.ToLower();
+            res = res.Replace(" ","");
+
+            MatchCollection matchCollection = _priceRegex.Matches(res);
+            foreach (Match match in matchCollection) {
+                if (!isParsed) {
+                    if (match.Success) {
+                        foreach (Group group in match.Groups) {
+                            if (@group.Success && !string.IsNullOrEmpty(@group.Value)) {
+                                res = @group.Value;
+                                isParsed = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            res = res.Replace(",", ".");
             return res;
         }
 
@@ -328,11 +349,36 @@ namespace FoodApp.Common {
             return res;
         }
 
-        public static void SendEmail(ngUserModel user, string subject,string msg)
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587) { Credentials = new NetworkCredential("gamgamlviv@gmail.com", "nikita1984"), EnableSsl = true };
+        public static void SendEmail(ngUserModel user, string subject, string msg) {
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587) {Credentials = new NetworkCredential("gamgamlviv@gmail.com", "nikita1984"), EnableSsl = true};
             client.Send("gamgamlviv@gmail.com", "gamgamlviv@gmail.com", subject, msg);
             client.Send("gamgamlviv@gmail.com", user.Email, subject, msg);
+        }
+
+        internal static bool CanFixPrice(string str) {
+            bool res = false;
+            if (!str.Contains(" грн.")) {
+                res = true;
+            }
+            else {
+                str = str.Replace(" грн.", "");
+                if (str.Contains(".")) {
+                    res = true;
+                }
+            }
+
+            return res;
+        }
+
+        public static ngOrderEntry GetOrderByFoodId(List<ngOrderEntry> orders, string foodId) {
+            ngOrderEntry res = null;
+            foreach (ngOrderEntry order in orders) {
+                if (order.FoodId.Equals(foodId)) {
+                    res = order;
+                    break;
+                }
+            }
+            return res;
         }
     }
 }

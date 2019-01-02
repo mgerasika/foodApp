@@ -8,12 +8,40 @@
     string historyGroup = "historyGroup";
     string historyItem = "historyItem";
     string foodId = historyItem + "." + ajs.field((ngHistoryEntry o) => o.FoodId);
+
+    string users = ajs.field((ngHistoryController o) => o.ngUsers);
+    string user = "user";
+    string userName = user + "." + ajs.field((ngUserModel o) => o.Name);
+    string userId = user + "." + ajs.field((ngUserModel o) => o.Id);
+    bool isSuperAdmin = ApiUtils.GetLoggedInUser().IsSuperAdmin;
 }
 
 
 <div>
-
     <div ng-controller="@ajs.getClass((ngHistoryController o) => o)">
+
+        @if (isSuperAdmin) {
+            <select ng-model="@userId" ng-change="@ajs.method((ngMoneyController o) => o.checkMoneyClick(null)) (@userId)">
+                <option ng-repeat="@user in @users" value="{{@userId}}">{{@userName}}</option>
+            </select>
+        }
+
+        <div>
+            <canvas id="lineChart" width="400" height="200"></canvas>
+        </div>
+
+        <div>
+            <canvas id="barChart" width="400" height="200"></canvas>
+        </div>
+
+         @if (isSuperAdmin) {
+             <div>
+                 <canvas id="line2Chart" width="400" height="200"></canvas>
+             </div>
+         }
+
+
+
 
         <div ng-repeat="@historyGroup in @orders">
             <table class="table" style="border: 0px;">
@@ -23,11 +51,6 @@
                         <div style="float: left;"> <h4>{{@historyGroup .@ajs.field((ngHistoryGroupEntry o) => o.DateStr)}}</h4>
                         </div>
 
-                        <div style="float: right;">
-                            <button ng-click="@ajs.method((ngHistoryController o) => o.deleteHistoryClick(null)) (@historyGroup)" class="btn btn-success foodBtn">Видалити із історії</button>
-
-
-                        </div>
                         <div style="clear: both; padding-left: 1em;">
                             <ul style="clear: both;" ng-repeat="@historyItem in @historyGroup. @ajs.field((ngHistoryGroupEntry o) => o.Entries)">
                                 <li>
@@ -39,7 +62,7 @@
 
                 </tr>
             </table>
-           <hr/>
-            </div>
+            <hr/>
+        </div>
     </div>
 </div>

@@ -21,12 +21,12 @@ namespace FoodApp.Common.Managers {
             //start sunday
             if (DateTime.Now.Hour == 12) {
                 lock (_lockObject) {
-                    CreateHistory();
+                    BackupHistory();
                 }
             }
         }
 
-        public void CreateHistory() {
+        private void BackupHistory() {
             DateTime dt = DateTime.Now;
             if (!HistoryManager.Inst.HasAnyEntry(dt)) {
                 int dayOfWeek = (int) dt.DayOfWeek - 1;

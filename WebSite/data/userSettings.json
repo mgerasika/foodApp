@@ -2,84 +2,144 @@
   {
     "FoodRates": [
       {
-        "FoodId": "_SalatyOseledec\"pishuboyu",
-        "Rate": 0.076923076923076927
-      },
-      {
-        "FoodId": "_PershistravyRozsol\"nyk250h",
-        "Rate": 0.19230769230769232
-      },
-      {
         "FoodId": "_SalatyBuryachok",
-        "Rate": 0.23076923076923078
-      },
-      {
-        "FoodId": "_HarniryHoroxovepyure",
-        "Rate": 0.15384615384615386
-      },
-      {
-        "FoodId": "_SalatyPikantnyj",
-        "Rate": 0.038461538461538464
+        "Rate": 0.1125
       },
       {
         "FoodId": "_PershistravyBorщchervonyj250h",
-        "Rate": 0.34615384615384615
+        "Rate": 0.3375
       },
       {
         "FoodId": "_PershistravyZupahoroxova250h",
-        "Rate": 0.076923076923076927
+        "Rate": 0.01875
       },
       {
         "FoodId": "_SalatyKapusta",
-        "Rate": 0.11538461538461539
+        "Rate": 0.525
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
-        "Rate": 0.038461538461538464
-      },
-      {
-        "FoodId": "_StravyzrybyXekzovochamy",
-        "Rate": 0.038461538461538464
-      },
-      {
-        "FoodId": "_SalatyOseledec\"pidshuboyu",
-        "Rate": 0.076923076923076927
-      },
-      {
-        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
-        "Rate": 0.038461538461538464
-      },
-      {
-        "FoodId": "_SalatySolo",
-        "Rate": 0.038461538461538464
+        "Rate": 0.13125
       },
       {
         "FoodId": "_PershistravyBorщzchervonyj250h",
-        "Rate": 0.038461538461538464
+        "Rate": 0.1
       },
       {
         "FoodId": "_HarniryPolenta",
-        "Rate": 0.038461538461538464
+        "Rate": 0.10625
       },
       {
         "FoodId": "_StravyiztelyatynyTelyatynavhirchsousi",
-        "Rate": 0.038461538461538464
+        "Rate": 0.01875
       },
       {
         "FoodId": "_HarniryHrechka150h",
-        "Rate": 0.11538461538461539
+        "Rate": 0.1125
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzkapusty",
+        "Rate": 0.05625
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmakomtavyshneyu",
+        "Rate": 0.0375
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmakomtapolunyceyu",
+        "Rate": 0.025
+      },
+      {
+        "FoodId": "_SalatyVinehret",
+        "Rate": 0.00625
+      },
+      {
+        "FoodId": "_PershistravyBorщzelenyj250h",
+        "Rate": 0.00625
+      },
+      {
+        "FoodId": "_ZakuskyharyachiPechinkazcybuleyu",
+        "Rate": 0.00625
+      },
+      {
+        "FoodId": "_StravyizsvynynyBuzhenyna",
+        "Rate": 0.0125
+      },
+      {
+        "FoodId": "_PershistravyKapusnyak",
+        "Rate": 0.05
+      },
+      {
+        "FoodId": "_StravyizkurKurkavsousi",
+        "Rate": 0.05
+      },
+      {
+        "FoodId": "_SalatyMizeriya",
+        "Rate": 0.0125
       },
       {
         "FoodId": "_HarniryLobio",
-        "Rate": 0.26923076923076922
+        "Rate": 0.0625
       },
       {
-        "FoodId": "_SalatyRedyska",
-        "Rate": 0.038461538461538464
+        "FoodId": "_Harniryhoroxovepyure",
+        "Rate": 0.00625
       },
       {
-        "FoodId": "_PershistravyCHanaxy300h",
-        "Rate": 0.038461538461538464
+        "FoodId": "_Salatyolivye",
+        "Rate": 0.00625
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Rate": 0.025
+      },
+      {
+        "FoodId": "_PershistravyRozsol\"nyk250h",
+        "Rate": 0.1125
+      },
+      {
+        "FoodId": "_StravyzrybyXekzovochamy",
+        "Rate": 0.0125
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Rate": 0.0125
+      },
+      {
+        "FoodId": "_StravyzrybyXeksmazhenenyj80h",
+        "Rate": 0.00625
+      },
+      {
+        "FoodId": "_SalatyZamors\"kyj",
+        "Rate": 0.0125
+      },
+      {
+        "FoodId": "_SalatySolo",
+        "Rate": 0.00625
+      },
+      {
+        "FoodId": "_PershistravyZupafasolzkurkrylom60250h",
+        "Rate": 0.00625
+      },
+      {
+        "FoodId": "_SalatyOseledec\"pishuboyu",
+        "Rate": 0.0125
+      },
+      {
+        "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
+        "Rate": 0.01875
+      },
+      {
+        "FoodId": "_KompleksnyjobidBorщukrayis\"kyjkartoplyapyurekotletapechinkovastzburyachkaxlib2kus",
+        "Rate": 0.00625
+      },
+      {
+        "FoodId": "_SalatyPikantnyj",
+        "Rate": 0.00625
+      },
+      {
+        "FoodId": "_HarniryKartoplyaizshponderom200h",
+        "Rate": 0.00625
       }
     ],
     "Email": "okapij@darwinsgrove.com",
@@ -88,36 +148,84 @@
   {
     "FoodRates": [
       {
-        "FoodId": "_SalatyPikantnyj",
-        "Rate": 0.125
-      },
-      {
-        "FoodId": "_PershistravyYUshkahrybna250h",
-        "Rate": 0.125
-      },
-      {
         "FoodId": "_HarniryKartoplyaposelyans\"ky200h",
-        "Rate": 0.125
+        "Rate": 0.06
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
-        "Rate": 0.25
+        "Rate": 0.52
       },
       {
-        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
-        "Rate": 0.125
+        "FoodId": "_SalatyBuryachok",
+        "Rate": 0.12
       },
       {
-        "FoodId": "_HarniryRyszovochamy150h",
-        "Rate": 0.125
-      },
-      {
-        "FoodId": "_HarniryLobio",
-        "Rate": 0.125
+        "FoodId": "_StravyiztelyatynyTelyatynavhirchsousi",
+        "Rate": 0.12
       },
       {
         "FoodId": "_SalatyKapusta",
-        "Rate": 0.125
+        "Rate": 0.08
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzhrybamy",
+        "Rate": 0.02
+      },
+      {
+        "FoodId": "_HarniryBrokolizhorixamy",
+        "Rate": 0.06
+      },
+      {
+        "FoodId": "_SalatyLisovyj",
+        "Rate": 0.02
+      },
+      {
+        "FoodId": "_SalatyMizeriya",
+        "Rate": 0.04
+      },
+      {
+        "FoodId": "_HarniryLobio",
+        "Rate": 0.04
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Rate": 0.1
+      },
+      {
+        "FoodId": "_PershistravyRozsol\"nyk250h",
+        "Rate": 0.02
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Rate": 0.02
+      },
+      {
+        "FoodId": "_SalatyPikantnyj",
+        "Rate": 0.06
+      },
+      {
+        "FoodId": "_SalatyYAntar",
+        "Rate": 0.02
+      },
+      {
+        "FoodId": "_SalatyZamors\"kyj",
+        "Rate": 0.04
+      },
+      {
+        "FoodId": "_PershistravySupizshpynatu250h",
+        "Rate": 0.02
+      },
+      {
+        "FoodId": "_HarniryRyszovochamy150h",
+        "Rate": 0.02
+      },
+      {
+        "FoodId": "_PershistravyYUshkahrybna250h",
+        "Rate": 0.02
+      },
+      {
+        "FoodId": "_HarniryKartoplyaizshponderom200h",
+        "Rate": 0.02
       }
     ],
     "Email": "omartsinets@darwinsgrove.com",
@@ -126,56 +234,120 @@
   {
     "FoodRates": [
       {
-        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
-        "Rate": 0.035714285714285712
-      },
-      {
         "FoodId": "_SalatyMorkyabl",
-        "Rate": 0.5714285714285714
-      },
-      {
-        "FoodId": "_SalatyOseledec\"pishuboyu",
-        "Rate": 0.035714285714285712
+        "Rate": 0.51572327044025157
       },
       {
         "FoodId": "_SalatyBuryachok",
-        "Rate": 0.17857142857142858
+        "Rate": 0.081761006289308172
       },
       {
         "FoodId": "_ZakuskyharyachiPechinkazcybuleyu",
-        "Rate": 0.035714285714285712
-      },
-      {
-        "FoodId": "_StravyizkurKurkavsousi",
-        "Rate": 0.035714285714285712
-      },
-      {
-        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
-        "Rate": 0.071428571428571425
+        "Rate": 0.025157232704402517
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
-        "Rate": 0.10714285714285714
+        "Rate": 0.11320754716981132
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzsyromdomashnim",
-        "Rate": 0.071428571428571425
+        "Rate": 0.094339622641509441
       },
       {
         "FoodId": "_HarniryKartoplyapyure200h",
-        "Rate": 0.17857142857142858
+        "Rate": 0.081761006289308172
       },
       {
         "FoodId": "_HarniryHrechka150h",
-        "Rate": 0.2857142857142857
+        "Rate": 0.15723270440251572
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmakomtavyshneyu",
+        "Rate": 0.037735849056603772
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzhrybamy",
+        "Rate": 0.056603773584905662
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmakomtapolunyceyu",
+        "Rate": 0.018867924528301886
+      },
+      {
+        "FoodId": "_HarniryRysvidvarnyj150h",
+        "Rate": 0.0440251572327044
+      },
+      {
+        "FoodId": "_HarniryPolenta",
+        "Rate": 0.037735849056603772
+      },
+      {
+        "FoodId": "_SalatyKapusta",
+        "Rate": 0.025157232704402517
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynavhirchsousi",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_PershistravyBorщzchervonyj250h",
+        "Rate": 0.012578616352201259
+      },
+      {
+        "FoodId": "_PershistravyZupahoroxova250h",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_HarniryKartoplyaposelyans\"ky200h",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzkapusty",
+        "Rate": 0.050314465408805034
+      },
+      {
+        "FoodId": "_StravyizsvynynyBuzhenyna",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_HarniryBrokolizhorixamy",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_StravyizkurKurkavsousi",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_HarniryLobio",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_HarniryKapustatushzhrybamy",
+        "Rate": 0.012578616352201259
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Rate": 0.031446540880503145
       },
       {
         "FoodId": "_HarniryRyszovochamy150h",
-        "Rate": 0.071428571428571425
+        "Rate": 0.025157232704402517
       },
       {
-        "FoodId": "_HarniryHrechka",
-        "Rate": 0.035714285714285712
+        "FoodId": "_StravyzrybyXeksmazhenenyj80h",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_SalatyZamors\"kyj",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_StravyizkurKurkavhrybsousi",
+        "Rate": 0.0062893081761006293
+      },
+      {
+        "FoodId": "_SalatyOseledec\"pishuboyu",
+        "Rate": 0.0062893081761006293
       }
     ],
     "Email": "ikhariv@darwinsgrove.com",
@@ -184,64 +356,100 @@
   {
     "FoodRates": [
       {
-        "FoodId": "_SalatyOseledec\"pishuboyu",
-        "Rate": 0.17647058823529413
-      },
-      {
         "FoodId": "_PershistravyBorщchervonyj250h",
-        "Rate": 0.41176470588235292
-      },
-      {
-        "FoodId": "_SalatyOseledec\"pidshuboyu",
-        "Rate": 0.11764705882352941
-      },
-      {
-        "FoodId": "_PershistravyYUshkahrybna250h",
-        "Rate": 0.11764705882352941
+        "Rate": 0.21978021978021978
       },
       {
         "FoodId": "_SalatyMorkyabl",
-        "Rate": 0.17647058823529413
-      },
-      {
-        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
-        "Rate": 0.47058823529411764
+        "Rate": 0.12087912087912088
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzkapusty",
-        "Rate": 0.11764705882352941
+        "Rate": 0.40659340659340659
       },
       {
         "FoodId": "_SalatyBuryachok",
-        "Rate": 0.058823529411764705
+        "Rate": 0.16483516483516483
       },
       {
         "FoodId": "_HarniryKartoplyaposelyans\"ky200h",
-        "Rate": 0.058823529411764705
+        "Rate": 0.054945054945054944
       },
       {
         "FoodId": "_PershistravyBorщzchervonyj250h",
-        "Rate": 0.058823529411764705
+        "Rate": 0.076923076923076927
       },
       {
         "FoodId": "_PershistravyZupahoroxova250h",
-        "Rate": 0.058823529411764705
+        "Rate": 0.19780219780219779
       },
       {
-        "FoodId": "_HarniryOvochikombinovani",
-        "Rate": 0.058823529411764705
+        "FoodId": "_SalatyKapusta",
+        "Rate": 0.0989010989010989
       },
       {
-        "FoodId": "_SalatyVinihret",
-        "Rate": 0.058823529411764705
+        "FoodId": "_HarniryKartoplyapyure200h",
+        "Rate": 0.01098901098901099
       },
       {
-        "FoodId": "_KompleksnyjobidBorщukrayis\"kyjkartoplyapyurekotletakuryachavhoroshkovomusousistzburyachkaxlib2kus",
-        "Rate": 0.058823529411764705
+        "FoodId": "_StravyizsvynynyVidbyvnaizsvyn80h",
+        "Rate": 0.01098901098901099
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzhrybamy",
+        "Rate": 0.01098901098901099
+      },
+      {
+        "FoodId": "_PershistravyBorщzelenyj250h",
+        "Rate": 0.10989010989010989
+      },
+      {
+        "FoodId": "_HarniryHrechka150h",
+        "Rate": 0.0989010989010989
+      },
+      {
+        "FoodId": "_HarniryRysvidvarnyj150h",
+        "Rate": 0.01098901098901099
+      },
+      {
+        "FoodId": "_KompleksnyjobidXlibbatonsiryj",
+        "Rate": 0.032967032967032968
+      },
+      {
+        "FoodId": "_SalatyVinehret",
+        "Rate": 0.043956043956043959
+      },
+      {
+        "FoodId": "_ZakuskyharyachiPechinkazcybuleyu",
+        "Rate": 0.054945054945054944
+      },
+      {
+        "FoodId": "_PershistravyKapusnyak",
+        "Rate": 0.01098901098901099
+      },
+      {
+        "FoodId": "_PershistravyYUshkahrybna250h",
+        "Rate": 0.065934065934065936
+      },
+      {
+        "FoodId": "_PershistravyRozsol\"nyk250h",
+        "Rate": 0.01098901098901099
+      },
+      {
+        "FoodId": "_SalatyOseledec\"pishuboyu",
+        "Rate": 0.032967032967032968
       },
       {
         "FoodId": "_PershistravyZupaovocheva250h",
-        "Rate": 0.11764705882352941
+        "Rate": 0.02197802197802198
+      },
+      {
+        "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
+        "Rate": 0.065934065934065936
+      },
+      {
+        "FoodId": "_HarniryOvochikombinovani",
+        "Rate": 0.01098901098901099
       }
     ],
     "Email": "apodanovskiy@darwinsgrove.com",
@@ -250,60 +458,108 @@
   {
     "FoodRates": [
       {
-        "FoodId": "_SalatyDachnyj",
-        "Rate": 0.2
-      },
-      {
-        "FoodId": "_ZakuskyharyachiSosysky",
-        "Rate": 0.1
-      },
-      {
         "FoodId": "_SalatyKapusta",
-        "Rate": 0.2
+        "Rate": 0.055555555555555552
       },
       {
         "FoodId": "_HarniryPolenta",
-        "Rate": 0.2
+        "Rate": 0.055555555555555552
       },
       {
         "FoodId": "_SalatyBuryachok",
-        "Rate": 0.1
-      },
-      {
-        "FoodId": "_StravyiztelyatynyTelyatynazchornoslyvom",
-        "Rate": 0.1
-      },
-      {
-        "FoodId": "_PershistravySupkremizpecheryc\"250h",
-        "Rate": 0.2
+        "Rate": 0.24074074074074073
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
-        "Rate": 0.3
+        "Rate": 0.42592592592592593
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzhrybamy",
-        "Rate": 0.1
+        "Rate": 0.07407407407407407
       },
       {
         "FoodId": "_StravyizsvynynyVidbyvnaizsvyn80h",
-        "Rate": 0.1
-      },
-      {
-        "FoodId": "_HarniryRyszovochamy150h",
-        "Rate": 0.1
+        "Rate": 0.037037037037037035
       },
       {
         "FoodId": "_HarniryHrechka150h",
-        "Rate": 0.1
+        "Rate": 0.037037037037037035
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynavhirchsousi",
+        "Rate": 0.037037037037037035
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynazchornoslyvom",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_StravyizsvynynyKovbaskasmazhena",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzkapusty",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_PershistravyCHanaxy",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_PershistravyBorщzelenyj250h",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_ZakuskyharyachiPechinkazcybuleyu",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_HarniryKartoplyaposelyans\"ky200h",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_ZakuskyharyachiSosysky",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_SalatyMizeriya",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_PershistravySupkremizpecheryc\"250h",
+        "Rate": 0.092592592592592587
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_HarniryRyszovochamy150h",
+        "Rate": 0.055555555555555552
+      },
+      {
+        "FoodId": "_HarniryOvochikombinovani",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_PershistravySupizshpynatu250h",
+        "Rate": 0.055555555555555552
       },
       {
         "FoodId": "_HarniryLobio",
-        "Rate": 0.1
+        "Rate": 0.018518518518518517
       },
       {
-        "FoodId": "_StravyzrybyXeksmazhenyj100h",
-        "Rate": 0.1
+        "FoodId": "_SalatyZamors\"kyj",
+        "Rate": 0.018518518518518517
+      },
+      {
+        "FoodId": "_PershistravySupkremzcybporej250h",
+        "Rate": 0.055555555555555552
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Rate": 0.037037037037037035
       }
     ],
     "Email": "achulyk@darwinsgrove.com",
@@ -312,40 +568,68 @@
   {
     "FoodRates": [
       {
-        "FoodId": "_SalatyPikantnyj",
-        "Rate": 0.2
-      },
-      {
         "FoodId": "_PershistravyBorщchervonyj250h",
-        "Rate": 0.6
-      },
-      {
-        "FoodId": "_SalatyLisovyj",
-        "Rate": 0.2
-      },
-      {
-        "FoodId": "_SalatySolo",
-        "Rate": 0.2
-      },
-      {
-        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
-        "Rate": 0.2
+        "Rate": 0.5625
       },
       {
         "FoodId": "_KompleksnyjobidXlibbatonsiryj",
-        "Rate": 0.2
+        "Rate": 0.375
       },
       {
         "FoodId": "_HarniryHrechka150h",
-        "Rate": 0.6
+        "Rate": 0.5
       },
       {
         "FoodId": "_HarniryKartoplyapyure200h",
-        "Rate": 0.2
+        "Rate": 0.0625
       },
       {
-        "FoodId": "_KompleksnyjobidYUshkahrybrysvidvarnyjstdachnyjfilevidvarnexlib2kus",
-        "Rate": 0.2
+        "FoodId": "_Nalysnyky80hNalysnyky80hzhrybamy",
+        "Rate": 0.125
+      },
+      {
+        "FoodId": "_StravyizsvynynyBuzhenyna",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_SalatyLisovyj",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_SalatyPekins\"kyj",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Rate": 0.25
+      },
+      {
+        "FoodId": "_SalatyPikantnyj",
+        "Rate": 0.3125
+      },
+      {
+        "FoodId": "_SalatyZamors\"kyj",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_KompleksnyjobidBorщukrayis\"kyjkartoplyapyurekotletapechinkovastzburyachkaxlib2kus",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_KompleksnyjobidYUshkahrybrysvidvarnyjstvinehretpechinkazcybuleyuxlib2kus",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_PershistravyBorщzkvaskom250h",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_SalatySolo",
+        "Rate": 0.0625
       }
     ],
     "Email": "amamchur@darwinsgrove.com",
@@ -354,68 +638,68 @@
   {
     "FoodRates": [
       {
-        "FoodId": "_SalatyPikantnyj",
-        "Rate": 0.10526315789473684
-      },
-      {
         "FoodId": "_PershistravyBorщchervonyj250h",
-        "Rate": 0.36842105263157893
+        "Rate": 0.092198581560283682
       },
       {
         "FoodId": "_SalatyMorkyabl",
-        "Rate": 0.15789473684210525
+        "Rate": 0.021276595744680851
       },
       {
         "FoodId": "_SalatyKapusta",
-        "Rate": 0.26315789473684209
+        "Rate": 0.27659574468085107
       },
       {
         "FoodId": "_HarniryKartoplyaposelyans\"ky200h",
-        "Rate": 0.21052631578947367
+        "Rate": 0.11347517730496454
       },
       {
         "FoodId": "_PershistravyBorщzelenyj250h",
-        "Rate": 0.10526315789473684
+        "Rate": 0.014184397163120567
       },
       {
         "FoodId": "_KompleksnyjobidXlibbatonsiryj",
-        "Rate": 0.31578947368421051
-      },
-      {
-        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
-        "Rate": 0.052631578947368418
+        "Rate": 0.28368794326241137
       },
       {
         "FoodId": "_PershistravyZupahoroxova250h",
-        "Rate": 0.10526315789473684
+        "Rate": 0.22695035460992907
       },
       {
         "FoodId": "_StravyiztelyatynyTelyatynavhirchsousi",
-        "Rate": 0.052631578947368418
+        "Rate": 0.014184397163120567
       },
       {
         "FoodId": "_HarniryKartoplyapyure200h",
-        "Rate": 0.10526315789473684
+        "Rate": 0.014184397163120567
       },
       {
         "FoodId": "_HarniryHrechka150h",
-        "Rate": 0.26315789473684209
+        "Rate": 0.099290780141843976
       },
       {
-        "FoodId": "_SalatyLisovyj",
-        "Rate": 0.052631578947368418
+        "FoodId": "_PershistravyBorщzchervonyj250h",
+        "Rate": 0.014184397163120567
       },
       {
-        "FoodId": "_KompleksnyjobidYUshkahrybrysvidvarnyjstdachnyjfilevidvarnexlib2kus",
-        "Rate": 0.15789473684210525
+        "FoodId": "_StravyizsvynynyBuzhenyna",
+        "Rate": 0.049645390070921988
       },
       {
-        "FoodId": "_KompleksnyjobidBorщukrayins\"kyjhrechkakotlkuryachastzkapustyxlib2kus",
-        "Rate": 0.10526315789473684
+        "FoodId": "_SalatyPikantnyj",
+        "Rate": 0.035460992907801421
       },
       {
-        "FoodId": "_KompleksnyjobidBorщukrayis\"kyjkartoplyapyurekotletakuryachavhoroshkovomusousistzburyachkaxlib2kus",
-        "Rate": 0.10526315789473684
+        "FoodId": "_SalatyZamors\"kyj",
+        "Rate": 0.0070921985815602835
+      },
+      {
+        "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
+        "Rate": 0.056737588652482268
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Rate": 0.0070921985815602835
       }
     ],
     "Email": "haba.yura@darwinsgrove.com",
@@ -425,31 +709,51 @@
     "FoodRates": [
       {
         "FoodId": "_PershistravyBorщchervonyj250h",
-        "Rate": 0.33333333333333331
+        "Rate": 0.125
       },
       {
         "FoodId": "_SalatyBuryachok",
-        "Rate": 0.33333333333333331
+        "Rate": 0.5
       },
       {
         "FoodId": "_StravyizkurStehnakurzapecheni",
-        "Rate": 0.33333333333333331
+        "Rate": 0.125
       },
       {
         "FoodId": "_KompleksnyjobidXlibbatonsiryj",
-        "Rate": 0.33333333333333331
+        "Rate": 0.0625
       },
       {
         "FoodId": "_HarniryHrechka150h",
-        "Rate": 0.33333333333333331
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_HarniryKartoplyaposelyans\"ky200h",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_PershistravyBorщzelenyj250h",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynavhirchsousi",
+        "Rate": 0.3125
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynazchornoslyvom",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_SalatyPekins\"kyj",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Rate": 0.0625
       },
       {
         "FoodId": "_SalatyOlivye",
-        "Rate": 0.33333333333333331
-      },
-      {
-        "FoodId": "_SalatyYAntar",
-        "Rate": 0.33333333333333331
+        "Rate": 0.0625
       }
     ],
     "Email": "vpabyrivskyy@darwinsgrove.com",
@@ -459,43 +763,63 @@
     "FoodRates": [
       {
         "FoodId": "_KompleksnyjobidXlibbatonsiryj",
-        "Rate": 0.6
-      },
-      {
-        "FoodId": "_SalatyOseledec\"pidshuboyu",
-        "Rate": 0.4
-      },
-      {
-        "FoodId": "_StravyzrybyXekzovochamy",
-        "Rate": 0.2
+        "Rate": 0.7
       },
       {
         "FoodId": "_PershistravyZupahoroxova250h",
-        "Rate": 0.2
+        "Rate": 0.1
       },
       {
-        "FoodId": "_HarniryRyszovochamy150h",
-        "Rate": 0.2
+        "FoodId": "_SalatyKapusta",
+        "Rate": 0.1
       },
       {
-        "FoodId": "_HarniryOvochikombinovani",
-        "Rate": 0.2
+        "FoodId": "_Nalysnyky80hNalysnyky80hzkapusty",
+        "Rate": 0.1
       },
       {
-        "FoodId": "_SalatyOlivye",
-        "Rate": 0.2
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmakomtavyshneyu",
+        "Rate": 0.1
       },
       {
-        "FoodId": "_HarniryKartoplyapyure200h",
-        "Rate": 0.2
+        "FoodId": "_Nalysnyky80hNalysnyky80hzmakomtapolunyceyu",
+        "Rate": 0.1
       },
       {
-        "FoodId": "_StravyzrybyXeksmazhenyj100h",
-        "Rate": 0.2
+        "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
+        "Rate": 0.1
+      },
+      {
+        "FoodId": "_SalatyVinehret",
+        "Rate": 0.1
       },
       {
         "FoodId": "_PershistravyZupaovocheva250h",
-        "Rate": 0.2
+        "Rate": 0.4
+      },
+      {
+        "FoodId": "_HarniryOvochikombinovani",
+        "Rate": 0.1
+      },
+      {
+        "FoodId": "_StravyzrybyXekzovochamy",
+        "Rate": 0.1
+      },
+      {
+        "FoodId": "_HarniryRyszovochamy150h",
+        "Rate": 0.1
+      },
+      {
+        "FoodId": "_HarniryMakaronyzbrynzoyu",
+        "Rate": 0.1
+      },
+      {
+        "FoodId": "_SalatyOlivye",
+        "Rate": 0.1
+      },
+      {
+        "FoodId": "_PershistravySupizshpynatu250h",
+        "Rate": 0.1
       }
     ],
     "Email": "aborovyi@darwinsgrove.com",
@@ -504,100 +828,144 @@
   {
     "FoodRates": [
       {
-        "FoodId": "_PershistravyRozsol\"nyk250h",
-        "Rate": 0.14705882352941177
-      },
-      {
         "FoodId": "_KompleksnyjobidXlibbatonsiryj",
-        "Rate": 0.55882352941176472
+        "Rate": 0.23958333333333334
       },
       {
         "FoodId": "_StravyizsvynynyVidbyvnaizsvyn80h",
-        "Rate": 0.14705882352941177
-      },
-      {
-        "FoodId": "_SalatyLisovyj",
-        "Rate": 0.029411764705882353
-      },
-      {
-        "FoodId": "_PershistravySupkremizshpynatu250h",
-        "Rate": 0.17647058823529413
-      },
-      {
-        "FoodId": "_SalatyYAntar",
-        "Rate": 0.058823529411764705
+        "Rate": 0.083333333333333329
       },
       {
         "FoodId": "_SalatyMorkyabl",
-        "Rate": 0.029411764705882353
+        "Rate": 0.010416666666666666
       },
       {
         "FoodId": "_SalatyBuryachok",
-        "Rate": 0.58823529411764708
+        "Rate": 0.45833333333333331
       },
       {
         "FoodId": "_PershistravyBorщchervonyj250h",
-        "Rate": 0.058823529411764705
+        "Rate": 0.03125
       },
       {
         "FoodId": "_PershistravyBorщzelenyj250h",
-        "Rate": 0.029411764705882353
+        "Rate": 0.10416666666666667
       },
       {
         "FoodId": "_PershistravyZupahoroxova250h",
-        "Rate": 0.029411764705882353
-      },
-      {
-        "FoodId": "_StravyizsvynynyBuzhenyna",
-        "Rate": 0.088235294117647065
-      },
-      {
-        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
-        "Rate": 0.17647058823529413
-      },
-      {
-        "FoodId": "_StravyiztelyatynyTelyatynavidvarna",
-        "Rate": 0.029411764705882353
+        "Rate": 0.010416666666666666
       },
       {
         "FoodId": "_StravyizsvynynyVidbyvna80h",
-        "Rate": 0.058823529411764705
+        "Rate": 0.052083333333333336
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
-        "Rate": 0.029411764705882353
-      },
-      {
-        "FoodId": "_HarniryKvitnakapustavsuxaryax",
-        "Rate": 0.029411764705882353
+        "Rate": 0.010416666666666666
       },
       {
         "FoodId": "_StravyiztelyatynyTelyatynavhirchsousi",
-        "Rate": 0.029411764705882353
+        "Rate": 0.1875
       },
       {
         "FoodId": "_HarniryKartoplyapyure200h",
-        "Rate": 0.17647058823529413
+        "Rate": 0.10416666666666667
       },
       {
         "FoodId": "_HarniryHrechka150h",
-        "Rate": 0.058823529411764705
+        "Rate": 0.14583333333333334
       },
       {
-        "FoodId": "_SalatyOlivye",
-        "Rate": 0.11764705882352941
+        "FoodId": "_HarniryRysvidvarnyj150h",
+        "Rate": 0.020833333333333332
       },
       {
-        "FoodId": "_HarniryRysvidvarnyj",
-        "Rate": 0.029411764705882353
+        "FoodId": "_PershistravyCHanaxy",
+        "Rate": 0.041666666666666664
       },
       {
-        "FoodId": "_PershistravyCHanaxy300h",
-        "Rate": 0.058823529411764705
+        "FoodId": "_StravyiztelyatynyTelyatynazchornoslyvom",
+        "Rate": 0.020833333333333332
+      },
+      {
+        "FoodId": "_HarniryPolenta",
+        "Rate": 0.010416666666666666
+      },
+      {
+        "FoodId": "_StravyizsvynynyBuzhenyna",
+        "Rate": 0.072916666666666671
+      },
+      {
+        "FoodId": "_SalatyLisovyj",
+        "Rate": 0.010416666666666666
+      },
+      {
+        "FoodId": "_SalatyPekins\"kyj",
+        "Rate": 0.010416666666666666
+      },
+      {
+        "FoodId": "_PershistravySupkremizpecheryc\"250h",
+        "Rate": 0.041666666666666664
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynavidvarna",
+        "Rate": 0.09375
       },
       {
         "FoodId": "_PershistravyZupaovocheva250h",
-        "Rate": 0.088235294117647065
+        "Rate": 0.09375
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Rate": 0.09375
+      },
+      {
+        "FoodId": "_PershistravyRozsol\"nyk250h",
+        "Rate": 0.125
+      },
+      {
+        "FoodId": "_HarniryRyszovochamy150h",
+        "Rate": 0.03125
+      },
+      {
+        "FoodId": "_StravyiztelyatynyTelyatynazhrybamy",
+        "Rate": 0.020833333333333332
+      },
+      {
+        "FoodId": "_PershistravySupkremizshpynatu250h",
+        "Rate": 0.11458333333333333
+      },
+      {
+        "FoodId": "_StravyizkurKotletakur",
+        "Rate": 0.010416666666666666
+      },
+      {
+        "FoodId": "_HarniryKvitnakapustavsuxaryax",
+        "Rate": 0.010416666666666666
+      },
+      {
+        "FoodId": "_PershistravySupizshpynatu250h",
+        "Rate": 0.010416666666666666
+      },
+      {
+        "FoodId": "_SalatyYAntar",
+        "Rate": 0.020833333333333332
+      },
+      {
+        "FoodId": "_PershistravyBorщzkvaskom250h",
+        "Rate": 0.03125
+      },
+      {
+        "FoodId": "_SalatyOlivye",
+        "Rate": 0.041666666666666664
+      },
+      {
+        "FoodId": "_PershistravySupkremzcybporej250h",
+        "Rate": 0.020833333333333332
+      },
+      {
+        "FoodId": "_SalatySmakota",
+        "Rate": 0.010416666666666666
       }
     ],
     "Email": "iplotytsia@darwinsgrove.com",
@@ -607,59 +975,111 @@
     "FoodRates": [
       {
         "FoodId": "_SalatyKapusta",
-        "Rate": 0.33333333333333331
+        "Rate": 0.3949579831932773
       },
       {
         "FoodId": "_PershistravyBorщchervonyj250h",
-        "Rate": 0.25
-      },
-      {
-        "FoodId": "_HarniryBrokolizhorixamy",
-        "Rate": 0.083333333333333329
+        "Rate": 0.12605042016806722
       },
       {
         "FoodId": "_KompleksnyjobidXlibbatonsiryj",
-        "Rate": 0.41666666666666669
-      },
-      {
-        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
-        "Rate": 0.16666666666666666
-      },
-      {
-        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
-        "Rate": 0.16666666666666666
+        "Rate": 0.37815126050420167
       },
       {
         "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
-        "Rate": 0.1
-      },
-      {
-        "FoodId": "_HarniryOvochikombinovani",
-        "Rate": 0.083333333333333329
+        "Rate": 0.050420168067226892
       },
       {
         "FoodId": "_HarniryKartoplyapyure200h",
-        "Rate": 0.083333333333333329
+        "Rate": 0.058823529411764705
+      },
+      {
+        "FoodId": "_SalatyMorkyabl",
+        "Rate": 0.0084033613445378148
+      },
+      {
+        "FoodId": "_HarniryKartoplyaposelyans\"ky200h",
+        "Rate": 0.10084033613445378
+      },
+      {
+        "FoodId": "_PershistravyBorщzelenyj250h",
+        "Rate": 0.1092436974789916
+      },
+      {
+        "FoodId": "_PershistravyZupahoroxova250h",
+        "Rate": 0.15126050420168066
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzkapusty",
+        "Rate": 0.067226890756302518
+      },
+      {
+        "FoodId": "_StravyizsvynynyVidbyvnaizsvyn80h",
+        "Rate": 0.0084033613445378148
+      },
+      {
+        "FoodId": "_StravyizsvynynyKovbaskasmazhena",
+        "Rate": 0.0084033613445378148
       },
       {
         "FoodId": "_HarniryRysvidvarnyj150h",
-        "Rate": 0.083333333333333329
+        "Rate": 0.01680672268907563
       },
       {
-        "FoodId": "_KompleksnyjobidZupahoroxovakashapshenychnapechinkavsousisalatvinihretuzvarxlib2kus",
-        "Rate": 0.083333333333333329
+        "FoodId": "_StravyizsvynynyVidbyvna80h",
+        "Rate": 0.0084033613445378148
       },
       {
-        "FoodId": "_PershistravyCHanaxy300h",
-        "Rate": 0.41666666666666669
+        "FoodId": "_SalatyVinehret",
+        "Rate": 0.0084033613445378148
       },
       {
-        "FoodId": "_KompleksnyjobidBorщukrayins\"kyjhrechkakotlkuryachastzkapustyxlib2kus",
-        "Rate": 0.083333333333333329
+        "FoodId": "_HarniryBrokolizhorixamy",
+        "Rate": 0.0084033613445378148
       },
       {
-        "FoodId": "_StravyizkurШashlykkuryachyj",
-        "Rate": 0.083333333333333329
+        "FoodId": "_PershistravyBorщzchervonyj250h",
+        "Rate": 0.0084033613445378148
+      },
+      {
+        "FoodId": "_PershistravyKapusnyak",
+        "Rate": 0.0084033613445378148
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Rate": 0.14285714285714285
+      },
+      {
+        "FoodId": "_PershistravyRozsol\"nyk250h",
+        "Rate": 0.0084033613445378148
+      },
+      {
+        "FoodId": "_StravyzrybyXeksmazhenenyj80h",
+        "Rate": 0.01680672268907563
+      },
+      {
+        "FoodId": "_HarniryKartoplyaizshponderom200h",
+        "Rate": 0.025210084033613446
+      },
+      {
+        "FoodId": "_KompleksnyjobidZupahoroxKashapshenychnaKotletaL\"vivs\"kaStmorkyablXlib2kus",
+        "Rate": 0.01680672268907563
+      },
+      {
+        "FoodId": "_PershistravySupizshpynatu250h",
+        "Rate": 0.0084033613445378148
+      },
+      {
+        "FoodId": "_HarniryOvochikombinovani",
+        "Rate": 0.0084033613445378148
+      },
+      {
+        "FoodId": "_KompleksnyjobidBorщukrayis\"kyjkartoplyapyurekotletapechinkovastzburyachkaxlib2kus",
+        "Rate": 0.0084033613445378148
+      },
+      {
+        "FoodId": "_HarniryKartoplyavmundyraxzsousom",
+        "Rate": 0.0084033613445378148
       }
     ],
     "Email": "vzadorozhnyy@darwinsgrove.com",
@@ -754,56 +1174,20 @@
   {
     "FoodRates": [
       {
-        "FoodId": "_SalatySolo",
-        "Rate": 0.14814814814814814
-      },
-      {
         "FoodId": "_PershistravyZupahoroxova250h",
-        "Rate": 0.29629629629629628
-      },
-      {
-        "FoodId": "_SalatyDachnyj",
-        "Rate": 0.29629629629629628
-      },
-      {
-        "FoodId": "_HarniryHoroxovepyure",
-        "Rate": 0.14814814814814814
-      },
-      {
-        "FoodId": "_SalatyNizhnyj",
-        "Rate": 0.07407407407407407
+        "Rate": 0.16363636363636364
       },
       {
         "FoodId": "_SalatyMorkyabl",
-        "Rate": 0.18518518518518518
-      },
-      {
-        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
-        "Rate": 0.07407407407407407
-      },
-      {
-        "FoodId": "_PershistravyYUshkahrybna250h",
-        "Rate": 0.037037037037037035
-      },
-      {
-        "FoodId": "_StravyizkurKotletakur",
-        "Rate": 0.07407407407407407
+        "Rate": 0.072727272727272724
       },
       {
         "FoodId": "_SalatyKapusta",
-        "Rate": 0.14814814814814814
+        "Rate": 0.054545454545454543
       },
       {
         "FoodId": "_StravyizsvynynyKovbaskasmazhena",
-        "Rate": 0.07407407407407407
-      },
-      {
-        "FoodId": "_PershistravyRozsol\"nyk250h",
-        "Rate": 0.0625
-      },
-      {
-        "FoodId": "_SalatyOseledec\"pishuboyu",
-        "Rate": 0.037037037037037035
+        "Rate": 0.018181818181818181
       },
       {
         "FoodId": "_PershistravyBorщchervonyj250h",
@@ -818,32 +1202,80 @@
         "Rate": 0.037037037037037035
       },
       {
-        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
-        "Rate": 0.034482758620689655
-      },
-      {
-        "FoodId": "_SalatyLisovyj",
-        "Rate": 0.037037037037037035
-      },
-      {
         "FoodId": "_HarniryHrechka150h",
-        "Rate": 0.18518518518518518
+        "Rate": 0.054545454545454543
       },
       {
         "FoodId": "_HarniryKartoplyapyure200h",
-        "Rate": 0.037037037037037035
+        "Rate": 0.036363636363636362
       },
       {
-        "FoodId": "_SalatyBuryachok",
-        "Rate": 0.037037037037037035
+        "FoodId": "_HarniryKartoplyaposelyans\"ky200h",
+        "Rate": 0.036363636363636362
       },
       {
-        "FoodId": "_PershistravyCHanaxy300h",
-        "Rate": 0.14814814814814814
+        "FoodId": "_PershistravyCHanaxy",
+        "Rate": 0.10909090909090909
       },
       {
-        "FoodId": "_HarniryRyszmaslom",
-        "Rate": 0.037037037037037035
+        "FoodId": "_HarniryRysvidvarnyj150h",
+        "Rate": 0.072727272727272724
+      },
+      {
+        "FoodId": "_SalatyVinehret",
+        "Rate": 0.054545454545454543
+      },
+      {
+        "FoodId": "_SalatyNizhnyj",
+        "Rate": 0.018181818181818181
+      },
+      {
+        "FoodId": "_PershistravyBorщzelenyj250h",
+        "Rate": 0.018181818181818181
+      },
+      {
+        "FoodId": "_SalatyLisovyj",
+        "Rate": 0.018181818181818181
+      },
+      {
+        "FoodId": "_StravyizkurKurkavsousi",
+        "Rate": 0.090909090909090912
+      },
+      {
+        "FoodId": "_SalatyYAntar",
+        "Rate": 0.018181818181818181
+      },
+      {
+        "FoodId": "_Harniryhoroxovepyure",
+        "Rate": 0.018181818181818181
+      },
+      {
+        "FoodId": "_SalatyDachnyj",
+        "Rate": 0.16363636363636364
+      },
+      {
+        "FoodId": "_StravyizkurKotletapoKyyivs\"ky80h",
+        "Rate": 0.054545454545454543
+      },
+      {
+        "FoodId": "_SalatySolo",
+        "Rate": 0.072727272727272724
+      },
+      {
+        "FoodId": "_StravyizkurKotletakur",
+        "Rate": 0.036363636363636362
+      },
+      {
+        "FoodId": "_PershistravyYUshkahrybna250h",
+        "Rate": 0.018181818181818181
+      },
+      {
+        "FoodId": "_PershistravyZupafasolzkurkrylom60250h",
+        "Rate": 0.018181818181818181
+      },
+      {
+        "FoodId": "_SalatyOseledec\"pishuboyu",
+        "Rate": 0.018181818181818181
       }
     ],
     "Email": "mgerasika@gmail.com",
@@ -874,14 +1306,6 @@
         "Rate": 0.2857142857142857
       },
       {
-        "FoodId": "_SalatyNizhnyj",
-        "Rate": 0.14285714285714285
-      },
-      {
-        "FoodId": "_PershistravyYUshkahrybna250h",
-        "Rate": 0.14285714285714285
-      },
-      {
         "FoodId": "_PershistravyBorщchervonyj250h",
         "Rate": 0.42857142857142855
       },
@@ -890,7 +1314,7 @@
         "Rate": 0.14285714285714285
       },
       {
-        "FoodId": "_Nalysnyky80hNalysnyky80hzmyasom",
+        "FoodId": "_SalatyNizhnyj",
         "Rate": 0.14285714285714285
       },
       {
@@ -898,11 +1322,11 @@
         "Rate": 0.14285714285714285
       },
       {
-        "FoodId": "_PershistravyCHanaxy300h",
+        "FoodId": "_PershistravyYUshkahrybna250h",
         "Rate": 0.14285714285714285
       },
       {
-        "FoodId": "_HarniryRyszmaslom",
+        "FoodId": "_PershistravyBorщzkvaskom250h",
         "Rate": 0.14285714285714285
       }
     ],
@@ -910,7 +1334,56 @@
     "UserId": "12258346-5281-4fd7-9234-d5eb994c534c"
   },
   {
-    "FoodRates": [],
+    "FoodRates": [
+      {
+        "FoodId": "_SalatyMorkyabl",
+        "Rate": 0.125
+      },
+      {
+        "FoodId": "_HarniryKartoplyapyure200h",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_PershistravyBorщzchervonyj250h",
+        "Rate": 0.1875
+      },
+      {
+        "FoodId": "_Nalysnyky80hNalysnyky80hzsyromfetatashpynatom",
+        "Rate": 0.25
+      },
+      {
+        "FoodId": "_SalatyBuryachok",
+        "Rate": 0.0625
+      },
+      {
+        "FoodId": "_PershistravyBorщzelenyj250h",
+        "Rate": 0.1875
+      },
+      {
+        "FoodId": "_HarniryPolenta",
+        "Rate": 0.1875
+      },
+      {
+        "FoodId": "_PershistravyBorщchervonyj250h",
+        "Rate": 0.1875
+      },
+      {
+        "FoodId": "_HarniryHrechka150h",
+        "Rate": 0.3125
+      },
+      {
+        "FoodId": "_SalatyKapusta",
+        "Rate": 0.375
+      },
+      {
+        "FoodId": "_HarniryOvochikombinovani",
+        "Rate": 0.125
+      },
+      {
+        "FoodId": "_PershistravyZupaovocheva250h",
+        "Rate": 0.0625
+      }
+    ],
     "Email": "adombr@darwinsgrove.com",
     "UserId": "13258346-5281-4fd7-9234-d5eb994c534c"
   },
@@ -922,6 +1395,26 @@
   {
     "FoodRates": [],
     "Email": "miwkaaa@gmail.com",
-    "UserId": "8d6cfa5c-073c-44d6-8aca-8973060e3a34"
+    "UserId": "f8781378-75de-49e4-a763-99bc9ea46b30"
+  },
+  {
+    "FoodRates": [],
+    "Email": "semenijpipka@gmail.com",
+    "UserId": "b4635086-b1f6-4f9e-bbac-0fbdb3cdcd46"
+  },
+  {
+    "FoodRates": [],
+    "Email": "horodechnajulia@gmail.com",
+    "UserId": "f802a10c-0157-4c8a-ab63-f766840a6954"
+  },
+  {
+    "FoodRates": [
+      {
+        "FoodId": "_HarniryKartoplyapyure200h",
+        "Rate": 0.2
+      }
+    ],
+    "Email": "ivozna@stiystil.com",
+    "UserId": "21258346-5281-4fd7-9234-d5eb994c534c"
   }
 ]

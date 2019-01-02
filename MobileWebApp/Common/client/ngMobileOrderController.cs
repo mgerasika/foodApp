@@ -28,7 +28,7 @@ namespace MobileWebApp.Common.client {
         public string formatCount(ngOrderEntry order) {
             string res = order.Count.As<string>() + "";
             ngFoodItem food = getFoodItem(order.FoodId);
-            if (food.IsByWeightItem) {
+            if (food.isByWeightItem) {
                 res = JsContext.parseInt((order.Count*100).As<string>(), 10).As<string>() + "";
             }
             return res;
@@ -72,7 +72,7 @@ namespace MobileWebApp.Common.client {
         }
 
         public void refreshOrders() {
-            JsService.Inst.OrderApi.GetOrders( delegate(JsArray<JsArray<ngOrderEntry>> tmp) {
+            JsService.Inst.OrderApi.GetAllOrders(ngMobileAppController.inst.ngUserId, delegate(JsArray<JsArray<ngOrderEntry>> tmp) {
                 while (ngOrderEntries.length > 0) {
                     ngOrderEntries.pop();
                 }

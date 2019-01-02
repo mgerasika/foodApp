@@ -97,13 +97,15 @@ namespace FoodApp.Client {
             JsService.Inst.UsersApi.GetUsers(delegate(JsArray<ngUserModel> users) {
                 JsArray<ngUserModel> tmp = new JsArray<ngUserModel>();
                 foreach (ngUserModel ngUser in users) {
-                    if (-1 != ngUser.Email.As<JsString>().indexOf("darwins")) {
+                    JsString email = ngUser.Email.As<JsString>();
+                    if (-1 != email.indexOf("darwins") || -1 != email.indexOf("stiystil"))
+                    {
                         tmp.Add(ngUser);
                     }
                 }
 
                 if (tmp.length > 0) {
-                    requestGetOrders(tmp);
+                    requestGetOrders(tmp.reverse());
                 }
             });
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using FoodApp.Common.Parser;
 
@@ -40,8 +41,6 @@ namespace FoodApp.Common.Managers {
             ngUserModel res = GetUserByEmail(GetUsers(), email);
             return res;
         }
-
-       
 
         internal ngUserModel GetUserByEmail(List<ngUserModel> users, string email) {
             ngUserModel res = null;
@@ -108,6 +107,23 @@ namespace FoodApp.Common.Managers {
                 if (user.Name != null && user.Name.Equals(spreadSheetVal, StringComparison.OrdinalIgnoreCase)) {
                     res = user;
                     break;
+                }
+            }
+            return res;
+        }
+
+        public ngUserModel GetUserByName(string name)
+        {
+            ngUserModel res = null;
+            if (!string.IsNullOrEmpty(name)) {
+                List<ngUserModel> users = GetUsers();
+                foreach (ngUserModel item in users) {
+                    if (item.Name != null) {
+                        if (item.Name.Equals(name, StringComparison.OrdinalIgnoreCase)) {
+                            res = item;
+                            break;
+                        }
+                    }
                 }
             }
             return res;

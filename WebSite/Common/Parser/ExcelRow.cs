@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using FoodApp.Client;
+using Google.GData.Client;
 using Google.GData.Spreadsheets;
 
 namespace FoodApp.Common.Parser {
     public class ExcelRow {
         private readonly List<CellEntry> _entry;
         private readonly ExcelTable _table;
+        private string _category;
         public List<ExcelCell> Cells = new List<ExcelCell>();
 
         public string Name { get; set; }
@@ -14,12 +17,43 @@ namespace FoodApp.Common.Parser {
         public decimal Price { get; set; }
         private uint Row { get; set; }
         public bool HasPrice { get; set; }
-        private string _category;
+
+        public override string ToString() {
+            return Name;
+        }
 
         public string NewCategory {
             get {
-                string newCategory = GetNewCategory(_category, Name);
-                return newCategory;
+                string res = _category;
+                if (_category.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
+                    res = CategoryNames.Salat;
+                }
+
+                else if (_category.Equals("Гарніри", StringComparison.OrdinalIgnoreCase)) {
+                    res = CategoryNames.Garnir;
+                }
+
+                else if (_category.Equals("Перші страви", StringComparison.OrdinalIgnoreCase)) {
+                    res = CategoryNames.First;
+                }
+                else if (IsContainer(Name)) {
+                    res = CategoryNames.PlactisContainer;
+                }
+                else if (Name != null && Name.ToLower().Contains("батон")) {
+                    res = CategoryNames.Breat;
+                }
+                else if (_category.ToLower().Contains("комплексний")) {
+                    res = CategoryNames.ComplexDinner;
+                }
+                else if (Name != null && Name.ToLower().Contains("налисники")) {
+                    res = CategoryNames.Garnir;
+                }
+
+                else {
+                    res = CategoryNames.MeatOrFish;
+                }
+
+                return res;
             }
         }
 
@@ -115,6 +149,15 @@ namespace FoodApp.Common.Parser {
                         if (ApiUtils.TryDecimalParse(str, out lPrice)) {
                             Price = lPrice;
                             HasPrice = true;
+
+                            if (ApiUtils.CanFixPrice(str)) {
+                                cell.InputValue = string.Format("{0}", Convert.ToString(lPrice).Replace(".", ","));
+                                AtomEntry atomEntry = cell.Update();
+                                cell = atomEntry as CellEntry;
+                                _entry[j] = cell;
+
+                                ApiTraceManager.Inst.LogTrace(string.Format("Автоматично виплавлено ціну з {0} на {1}", str, cell.InputValue));
+                            }
                         }
                     }
                 }
@@ -125,44 +168,11 @@ namespace FoodApp.Common.Parser {
                 }
             }
 
-            if (_category != null && Name != null && _category.Contains("Налисники") &&
-                !IsContainer(Name)) {
+            if (_category != null && Name != null && _category.Contains("Налисники") && !IsContainer(Name)) {
                 Name = _category + " " + Name;
             }
         }
 
-        private string GetNewCategory(string originalCategory, string rowName) {
-            string res = originalCategory;
-            if (originalCategory.Equals("Салати", StringComparison.OrdinalIgnoreCase)) {
-                res = CategoryNames.Salat;
-            }
-
-            else if (originalCategory.Equals("Гарніри", StringComparison.OrdinalIgnoreCase)) {
-                res = CategoryNames.Garnir;
-            }
-
-            else if (originalCategory.Equals("Перші страви", StringComparison.OrdinalIgnoreCase)) {
-                res = CategoryNames.First;
-            }
-            else if (IsContainer(rowName)) {
-                res = CategoryNames.PlactisContainer;
-            }
-            else if (rowName != null && rowName.ToLower().Contains("батон")) {
-                res = CategoryNames.Breat;
-            }
-            else if (originalCategory.ToLower().Contains("комплексний")) {
-                res = CategoryNames.ComplexDinner;
-            }
-            else if (rowName != null && rowName.ToLower().Contains("налисники")) {
-                res = CategoryNames.Garnir;
-            }
-
-            else {
-                res = CategoryNames.MeatOrFish;
-            }
-
-            return res;
-        }
 
         public void MergeEntry(CellEntry newEntry) {
             CellEntry old = null;
@@ -187,14 +197,20 @@ namespace FoodApp.Common.Parser {
             if (Name.Contains("Стегна кур.запечені") ||
                 Name.Contains("Кур.філе в гриб") ||
                 Name.Contains("Буженина") ||
+                Name.Contains("Ковбаски") ||
+                Name.Contains("Курка з баклажанами") ||
+                Name.Contains("Стегна запечені") ||
+                Name.Contains("Курка в соусі") ||
+                Name.Contains("Курка з грибами") ||
                 Name.Contains("Ковбаска смажена") ||
                 Name.Contains("Телятина") ||
+                Name.Contains("Свинина гриль") ||
                 Name.Contains("Горохове пюре") ||
                 Name.Contains("Курка відварна") ||
                 Name.Contains("Шашлик") ||
                 Name.Contains("Курка відварна") ||
-                Name.Contains("Курка відварна") ||
-                Name.Contains("Курка відварна") ||
+                Name.Contains("Філе кур .відварне") ||
+                Name.Contains("Курка з ананасами") ||
                 Name.Contains("Печінка з цибулею")) {
                 res = true;
             }

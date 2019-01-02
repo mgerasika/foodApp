@@ -12,8 +12,15 @@ namespace FoodApp.Common.Managers {
         }
 
         public List<ngOrderEntry> GetOrders(ngUserModel user, int day) {
-            List<ngOrderEntry> res = new List<ngOrderEntry>();
+           
             ExcelTable excelTable = ExcelManager.Inst.Doc.GetExcelTable(day);
+            List<ngOrderEntry> res = GetOrdersInternal(user, excelTable);
+
+            return res;
+        }
+
+        public List<ngOrderEntry> GetOrdersInternal(ngUserModel user, ExcelTable excelTable) {
+            List<ngOrderEntry> res = new List<ngOrderEntry>();
             if (null != excelTable) {
                 List<ExcelRow> rows = excelTable.Rows;
                 foreach (ExcelRow row in rows) {
@@ -26,7 +33,6 @@ namespace FoodApp.Common.Managers {
                     }
                 }
             }
-
             return res;
         }
 
